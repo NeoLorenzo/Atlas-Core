@@ -1,0 +1,119 @@
+{
+  "generatedAt": "2026-05-30T06:29:33.188Z",
+  "gameStartDate": "2025-01-01",
+  "totalCountriesConsidered": 242,
+  "metrics": {
+    "gdpCurrentUsd": {
+      "canonicalMetric": "gdpCurrentUsd",
+      "comparedSources": {
+        "wdi": "gdpCurrentUsd",
+        "imf": "gdpCurrentUsdBillions"
+      },
+      "totals": {
+        "countriesWithWdiValue": 202,
+        "countriesWithImfValue": 193,
+        "countriesWhereBothExist": 187,
+        "countriesWhereOnlyWdiExists": 15,
+        "countriesWhereOnlyImfExists": 6
+      },
+      "years": {
+        "wdi": {
+          "average": 2023.95,
+          "latest": 2024
+        },
+        "imf": {
+          "average": 2024,
+          "latest": 2024
+        }
+      },
+      "recencyComparison": {
+        "countriesWhereWdiIsNewer": 0,
+        "countriesWhereImfIsNewer": 8
+      }
+    },
+    "gdpPerCapitaCurrentUsd": {
+      "canonicalMetric": "gdpPerCapitaCurrentUsd",
+      "comparedSources": {
+        "wdi": "gdpPerCapitaCurrentUsd",
+        "imf": "gdpPerCapitaCurrentUsd"
+      },
+      "totals": {
+        "countriesWithWdiValue": 202,
+        "countriesWithImfValue": 193,
+        "countriesWhereBothExist": 187,
+        "countriesWhereOnlyWdiExists": 15,
+        "countriesWhereOnlyImfExists": 6
+      },
+      "years": {
+        "wdi": {
+          "average": 2023.95,
+          "latest": 2024
+        },
+        "imf": {
+          "average": 2024,
+          "latest": 2024
+        }
+      },
+      "recencyComparison": {
+        "countriesWhereWdiIsNewer": 0,
+        "countriesWhereImfIsNewer": 8
+      }
+    },
+    "gdpGrowthAnnualPct": {
+      "canonicalMetric": "gdpGrowthAnnualPct",
+      "comparedSources": {
+        "wdi": "gdpGrowthAnnualPct",
+        "imf": "realGdpGrowthPct"
+      },
+      "totals": {
+        "countriesWithWdiValue": 202,
+        "countriesWithImfValue": 193,
+        "countriesWhereBothExist": 186,
+        "countriesWhereOnlyWdiExists": 16,
+        "countriesWhereOnlyImfExists": 7
+      },
+      "years": {
+        "wdi": {
+          "average": 2023.95,
+          "latest": 2024
+        },
+        "imf": {
+          "average": 2024,
+          "latest": 2024
+        }
+      },
+      "recencyComparison": {
+        "countriesWhereWdiIsNewer": 0,
+        "countriesWhereImfIsNewer": 7
+      }
+    },
+    "inflationAnnualPct": {
+      "canonicalMetric": "inflationAnnualPct",
+      "comparedSources": {
+        "wdi": "inflationConsumerAnnualPct",
+        "imf": "inflationAverageConsumerPricesPct"
+      },
+      "totals": {
+        "countriesWithWdiValue": 175,
+        "countriesWithImfValue": 193,
+        "countriesWhereBothExist": 171,
+        "countriesWhereOnlyWdiExists": 4,
+        "countriesWhereOnlyImfExists": 22
+      },
+      "years": {
+        "wdi": {
+          "average": 2023.99,
+          "latest": 2024
+        },
+        "imf": {
+          "average": 2024,
+          "latest": 2024
+        }
+      },
+      "recencyComparison": {
+        "countriesWhereWdiIsNewer": 0,
+        "countriesWhereImfIsNewer": 2
+      }
+    }
+  }
+}

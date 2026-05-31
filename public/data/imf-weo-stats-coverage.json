@@ -1,0 +1,549 @@
+{
+  "generatedAt": "2026-05-30T06:11:40.667Z",
+  "totalImfCountriesChecked": 236,
+  "countriesWithCompleteData": 189,
+  "countriesWithPartialData": 4,
+  "countriesWithNoData": 43,
+  "missingIndicatorsByCountry": {
+    "AIA": {
+      "name": "Anguilla",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "ASM": {
+      "name": "American Samoa",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "BMU": {
+      "name": "Bermuda",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "CHI": {
+      "name": "Channel Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "COK": {
+      "name": "Cook Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "CUB": {
+      "name": "Cuba",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "CYM": {
+      "name": "Cayman Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "ESH": {
+      "name": "Western Sahara",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "FLK": {
+      "name": "Falkland Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "FRO": {
+      "name": "Faeroe Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "GIB": {
+      "name": "Gibraltar",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "GLP": {
+      "name": "Guadeloupe",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "GRL": {
+      "name": "Greenland",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "GUF": {
+      "name": "French Guiana",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "GUM": {
+      "name": "Guam",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "IMY": {
+      "name": "Isle of Man",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "LBY": {
+      "name": "Libya",
+      "missingIndicators": [
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "MCO": {
+      "name": "Monaco",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "MNP": {
+      "name": "Northern Mariana Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "MSR": {
+      "name": "Montserrat",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "MTQ": {
+      "name": "Martinique",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "MYT": {
+      "name": "Mayotte",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "NCL": {
+      "name": "New Caledonia",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "NIU": {
+      "name": "Niue",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "PCN": {
+      "name": "Pitcairn",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "PRI": {
+      "name": "Puerto Rico",
+      "missingIndicators": [
+        "currentAccountBalancePctOfGdp"
+      ]
+    },
+    "PRK": {
+      "name": "Korea, Dem. People's Rep. of",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "PYF": {
+      "name": "French Polynesia",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "SHN": {
+      "name": "Saint Helena",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "SJM": {
+      "name": "Svalbard and Jan Mayen Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "SOM": {
+      "name": "Somalia",
+      "missingIndicators": [
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "SPM": {
+      "name": "Saint-Pierre and Miquelon",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "SYR": {
+      "name": "Syria",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "TCA": {
+      "name": "Turks and Caicos Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "TKL": {
+      "name": "Tokelau",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "VAT": {
+      "name": "Holy See",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "VGB": {
+      "name": "British Virgin Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "VIR": {
+      "name": "United States Virgin Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "WLF": {
+      "name": "Wallis and Futuna Islands",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "YEM": {
+      "name": "Yemen",
+      "missingIndicators": [
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "CUW": {
+      "name": "Curacao",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "MFX": {
+      "name": "Saint Martin",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "SXM": {
+      "name": "Sint Maarten",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "IOT": {
+      "name": "British Indian Ocean Territories",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "BES": {
+      "name": "Bonaire, Sint Eustatius and Saba",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    },
+    "KOS": {
+      "name": "Kosovo",
+      "missingIndicators": [
+        "realGdpGrowthPct",
+        "gdpCurrentUsdBillions",
+        "gdpPerCapitaCurrentUsd",
+        "inflationAverageConsumerPricesPct",
+        "currentAccountBalancePctOfGdp",
+        "governmentNetLendingBorrowingPctOfGdp",
+        "governmentGrossDebtPctOfGdp"
+      ]
+    }
+  }
+}

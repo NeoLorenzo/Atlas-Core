@@ -1,0 +1,2331 @@
+{
+  "generatedAt": "2026-05-30T13:43:05.152Z",
+  "totalCountries": 256,
+  "coverageByCanonicalMetric": {
+    "population": 216,
+    "gdpCurrentUsd": 208,
+    "gdpPerCapitaCurrentUsd": 208,
+    "gdpGrowthAnnualPct": 209,
+    "inflationAnnualPct": 197,
+    "unemploymentPct": 183,
+    "urbanPopulationPct": 216,
+    "lifeExpectancyYears": 216,
+    "tradePctOfGdp": 173,
+    "medianAgeYears": 237,
+    "fertilityRateBirthsPerWoman": 237,
+    "populationGrowthRatePct": 237,
+    "netMigration": 237,
+    "youthSharePct": 237,
+    "workingAgeSharePct": 237,
+    "elderlySharePct": 237,
+    "childDependencyRatio": 237,
+    "oldAgeDependencyRatio": 237,
+    "totalDependencyRatio": 237,
+    "currentAccountBalancePctOfGdp": 192,
+    "governmentNetLendingBorrowingPctOfGdp": 193,
+    "governmentGrossDebtPctOfGdp": 190,
+    "voiceAndAccountability": 192,
+    "politicalStability": 192,
+    "governmentEffectiveness": 192,
+    "regulatoryQuality": 192,
+    "ruleOfLaw": 192,
+    "controlOfCorruption": 192,
+    "totalExportsUsd": 235,
+    "totalImportsUsd": 235,
+    "tradeBalanceUsd": 235,
+    "exportDiversityProductCount": 235,
+    "importDiversityProductCount": 235,
+    "exportConcentrationHhi": 235,
+    "importConcentrationHhi": 235,
+    "economicComplexityIndex": 235
+  },
+  "sourceUsedByMetric": {
+    "population": {
+      "World Bank WDI": 216,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 40
+    },
+    "gdpCurrentUsd": {
+      "World Bank WDI": 194,
+      "IMF WEO / DataMapper": 14,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 48
+    },
+    "gdpPerCapitaCurrentUsd": {
+      "World Bank WDI": 194,
+      "IMF WEO / DataMapper": 14,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 48
+    },
+    "gdpGrowthAnnualPct": {
+      "World Bank WDI": 195,
+      "IMF WEO / DataMapper": 14,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 47
+    },
+    "inflationAnnualPct": {
+      "World Bank WDI": 4,
+      "IMF WEO / DataMapper": 193,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 59
+    },
+    "unemploymentPct": {
+      "World Bank WDI": 183,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 73
+    },
+    "urbanPopulationPct": {
+      "World Bank WDI": 216,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 40
+    },
+    "lifeExpectancyYears": {
+      "World Bank WDI": 216,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 40
+    },
+    "tradePctOfGdp": {
+      "World Bank WDI": 173,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 83
+    },
+    "medianAgeYears": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "fertilityRateBirthsPerWoman": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "populationGrowthRatePct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "netMigration": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "youthSharePct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "workingAgeSharePct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "elderlySharePct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "childDependencyRatio": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "oldAgeDependencyRatio": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "totalDependencyRatio": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 237,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 19
+    },
+    "currentAccountBalancePctOfGdp": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 192,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 64
+    },
+    "governmentNetLendingBorrowingPctOfGdp": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 193,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 63
+    },
+    "governmentGrossDebtPctOfGdp": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 190,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 66
+    },
+    "voiceAndAccountability": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 192,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 64
+    },
+    "politicalStability": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 192,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 64
+    },
+    "governmentEffectiveness": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 192,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 64
+    },
+    "regulatoryQuality": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 192,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 64
+    },
+    "ruleOfLaw": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 192,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 64
+    },
+    "controlOfCorruption": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 192,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "nullSource": 64
+    },
+    "totalExportsUsd": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 235,
+      "nullSource": 21
+    },
+    "totalImportsUsd": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 235,
+      "nullSource": 21
+    },
+    "tradeBalanceUsd": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 235,
+      "nullSource": 21
+    },
+    "exportDiversityProductCount": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 235,
+      "nullSource": 21
+    },
+    "importDiversityProductCount": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 235,
+      "nullSource": 21
+    },
+    "exportConcentrationHhi": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 235,
+      "nullSource": 21
+    },
+    "importConcentrationHhi": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 235,
+      "nullSource": 21
+    },
+    "economicComplexityIndex": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 235,
+      "nullSource": 21
+    }
+  },
+  "politicalSystemCoverage": {
+    "textFieldCoverage": {
+      "governmentType": 229,
+      "capital": 226,
+      "administrativeDivisions": 212,
+      "independence": 227,
+      "constitution": 228,
+      "legalSystem": 231,
+      "suffrage": 228,
+      "executiveBranch": 229,
+      "legislativeBranch": 228,
+      "judicialBranch": 227,
+      "politicalPartiesAndLeaders": 227,
+      "electionsAppointments": 227,
+      "internationalOrganizationParticipation": 230,
+      "governmentFamily": 229,
+      "monarchyType": 44,
+      "legislatureType": 228,
+      "headOfStateTitle": 229,
+      "headOfGovernmentTitle": 229
+    },
+    "booleanFieldCoverage": {
+      "hasMonarchy": 229,
+      "hasParliament": 228,
+      "hasElections": 229,
+      "hasUniversalSuffrage": 222,
+      "isFederal": 229,
+      "isRepublic": 229,
+      "isOnePartyState": 229,
+      "isMilitaryRegime": 230
+    },
+    "countriesWithAnyPoliticalSystemData": 232,
+    "countriesWithNoPoliticalSystemData": 24
+  },
+  "wdiValuesUsed": 1591,
+  "imfValuesUsed": 810,
+  "wgiValuesUsed": 1152,
+  "wppValuesUsed": 2370,
+  "atlasValuesUsed": 1880,
+  "factbookTextValuesUsed": 3908,
+  "factbookBooleanValuesUsed": 1825,
+  "unresolvedMissingValues": {
+    "countriesWithMissingMetrics": 108,
+    "missingByCountry": {
+      "ABW": {
+        "name": "Aruba",
+        "missingMetrics": [
+          "unemploymentPct",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "AIA": {
+        "name": "Anguilla",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "AND": {
+        "name": "Andorra",
+        "missingMetrics": [
+          "unemploymentPct",
+          "tradePctOfGdp"
+        ]
+      },
+      "ANS": {
+        "name": "Undeclared Countries",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "ASM": {
+        "name": "American Samoa",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "ATA": {
+        "name": "Antarctica",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "ATF": {
+        "name": "French Southern and Antarctic Lands",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "ATG": {
+        "name": "Antigua and Barbuda",
+        "missingMetrics": [
+          "unemploymentPct",
+          "tradePctOfGdp"
+        ]
+      },
+      "BDI": {
+        "name": "Burundi",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "BES": {
+        "name": "Bonaire, Sint Eustatius and Saba",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "BLM": {
+        "name": "Saint Barthélemy",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "BMU": {
+        "name": "Bermuda",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "BRB": {
+        "name": "Barbados",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "BVT": {
+        "name": "Bouvet Island",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "CAF": {
+        "name": "Central African Republic",
+        "missingMetrics": [
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "CCK": {
+        "name": "Cocos (Keeling) Islands",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "CHI": {
+        "name": "Channel Islands",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "COK": {
+        "name": "Cook Islands",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "CUB": {
+        "name": "Cuba",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "inflationAnnualPct",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "CUW": {
+        "name": "Curacao",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "CXR": {
+        "name": "Christmas Island",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "CYM": {
+        "name": "Cayman Islands",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "DMA": {
+        "name": "Dominica",
+        "missingMetrics": [
+          "unemploymentPct",
+          "tradePctOfGdp"
+        ]
+      },
+      "ERI": {
+        "name": "Eritrea",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "ESH": {
+        "name": "Western Sahara",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "FJI": {
+        "name": "Fiji",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "FLK": {
+        "name": "Falkland Islands",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "FRO": {
+        "name": "Faroe Islands",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "FSM": {
+        "name": "Micronesia, Fed. Sts.",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "GGY": {
+        "name": "Guernsey",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "GIB": {
+        "name": "Gibraltar",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "GLP": {
+        "name": "Guadeloupe",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "GRD": {
+        "name": "Grenada",
+        "missingMetrics": [
+          "unemploymentPct",
+          "tradePctOfGdp"
+        ]
+      },
+      "GRL": {
+        "name": "Greenland",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "GUF": {
+        "name": "French Guiana",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "GUM": {
+        "name": "Guam",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "GUY": {
+        "name": "Guyana",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "HKG": {
+        "name": "Hong Kong SAR, China",
+        "missingMetrics": [
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "HMD": {
+        "name": "Heard and McDonald Islands",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "IMN": {
+        "name": "Isle of Man",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "IMY": {
+        "name": "Isle of Man",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "IOT": {
+        "name": "British Indian Ocean Territories",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "JAM": {
+        "name": "Jamaica",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "JEY": {
+        "name": "Jersey",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "KIR": {
+        "name": "Kiribati",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "KNA": {
+        "name": "St. Kitts and Nevis",
+        "missingMetrics": [
+          "unemploymentPct",
+          "tradePctOfGdp"
+        ]
+      },
+      "KOS": {
+        "name": "Kosovo",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "LAO": {
+        "name": "Lao PDR",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "LBR": {
+        "name": "Liberia",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "LBY": {
+        "name": "Libya",
+        "missingMetrics": [
+          "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "LCA": {
+        "name": "St. Lucia",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "LIE": {
+        "name": "Liechtenstein",
+        "missingMetrics": [
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "MAC": {
+        "name": "Macao SAR, China",
+        "missingMetrics": [
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "MAF": {
+        "name": "St. Martin (French part)",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "MCO": {
+        "name": "Monaco",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "MFX": {
+        "name": "Saint Martin",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "MHL": {
+        "name": "Marshall Islands",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "MMR": {
+        "name": "Myanmar",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "MNP": {
+        "name": "Northern Mariana Islands",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "MSR": {
+        "name": "Montserrat",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "MTQ": {
+        "name": "Martinique",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "MYT": {
+        "name": "Mayotte",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "NCL": {
+        "name": "New Caledonia",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "NFK": {
+        "name": "Norfolk Island",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "NGA": {
+        "name": "Nigeria",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "NIU": {
+        "name": "Niue",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "NRU": {
+        "name": "Nauru",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "PCN": {
+        "name": "Pitcairn",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "PLW": {
+        "name": "Palau",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "PNG": {
+        "name": "Papua New Guinea",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "PRI": {
+        "name": "Puerto Rico (US)",
+        "missingMetrics": [
+          "currentAccountBalancePctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "PRK": {
+        "name": "Korea, Dem. People's Rep.",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "PSE": {
+        "name": "West Bank and Gaza",
+        "missingMetrics": [
+          "unemploymentPct",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "PYF": {
+        "name": "French Polynesia",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "QAT": {
+        "name": "Qatar",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "REU": {
+        "name": "Réunion",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "SDN": {
+        "name": "Sudan",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "SGS": {
+        "name": "South Georgia and South Sandwich Islds.",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "SHN": {
+        "name": "Saint Helena",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "SJM": {
+        "name": "Svalbard and Jan Mayen Islands",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "SMR": {
+        "name": "San Marino",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "SOM": {
+        "name": "Somalia, Fed. Rep.",
+        "missingMetrics": [
+          "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "SPM": {
+        "name": "Saint-Pierre and Miquelon",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "SSD": {
+        "name": "South Sudan",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "STP": {
+        "name": "Sao Tome and Principe",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "SUR": {
+        "name": "Suriname",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "SXM": {
+        "name": "Sint Maarten (Dutch part)",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "SYC": {
+        "name": "Seychelles",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "SYR": {
+        "name": "Syrian Arab Republic",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "TCA": {
+        "name": "Turks and Caicos Islands",
+        "missingMetrics": [
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "TGO": {
+        "name": "Togo",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "TKL": {
+        "name": "Tokelau",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "TTO": {
+        "name": "Trinidad and Tobago",
+        "missingMetrics": [
+          "population",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "TUV": {
+        "name": "Tuvalu",
+        "missingMetrics": [
+          "unemploymentPct",
+          "tradePctOfGdp"
+        ]
+      },
+      "TWN": {
+        "name": "Taiwan Province of China",
+        "missingMetrics": [
+          "population",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "UKR": {
+        "name": "Ukraine",
+        "missingMetrics": [
+          "unemploymentPct"
+        ]
+      },
+      "UMI": {
+        "name": "United States Minor Outlying Islands",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "UVK": {
+        "name": "Kosovo",
+        "missingMetrics": [
+          "population",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "VAT": {
+        "name": "Holy See",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "VCT": {
+        "name": "St. Vincent and the Grenadines",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "VGB": {
+        "name": "British Virgin Islands",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "VIR": {
+        "name": "Virgin Islands (U.S.)",
+        "missingMetrics": [
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "VUT": {
+        "name": "Vanuatu",
+        "missingMetrics": [
+          "tradePctOfGdp"
+        ]
+      },
+      "WBG": {
+        "name": "West Bank and Gaza",
+        "missingMetrics": [
+          "population",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "WLF": {
+        "name": "Wallis and Futuna Islands",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption"
+        ]
+      },
+      "XKX": {
+        "name": "Kosovo",
+        "missingMetrics": [
+          "unemploymentPct",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex"
+        ]
+      },
+      "YEM": {
+        "name": "Yemen, Rep.",
+        "missingMetrics": [
+          "tradePctOfGdp",
+          "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "ZAF": {
+        "name": "South Africa",
+        "missingMetrics": [
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp"
+        ]
+      }
+    }
+  }
+}

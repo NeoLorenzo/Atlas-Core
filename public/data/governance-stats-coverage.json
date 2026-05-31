@@ -1,0 +1,273 @@
+{
+  "generatedAt": "2026-05-30T05:56:39.605Z",
+  "totalCountriesImported": 216,
+  "countriesWithCompleteGovernanceData": 192,
+  "countriesWithPartialGovernanceData": 0,
+  "countriesWithNoGovernanceData": 24,
+  "missingIndicatorsByCountry": {
+    "ABW": {
+      "name": "Aruba",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "ASM": {
+      "name": "American Samoa",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "BMU": {
+      "name": "Bermuda",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "CHI": {
+      "name": "Channel Islands",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "CUW": {
+      "name": "Curacao",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "CYM": {
+      "name": "Cayman Islands",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "FRO": {
+      "name": "Faroe Islands",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "GIB": {
+      "name": "Gibraltar",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "GRL": {
+      "name": "Greenland",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "GUM": {
+      "name": "Guam",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "HKG": {
+      "name": "Hong Kong SAR, China",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "IMN": {
+      "name": "Isle of Man",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "MAC": {
+      "name": "Macao SAR, China",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "MAF": {
+      "name": "St. Martin (French part)",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "MNP": {
+      "name": "Northern Mariana Islands",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "NCL": {
+      "name": "New Caledonia",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "PRI": {
+      "name": "Puerto Rico (US)",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "PSE": {
+      "name": "West Bank and Gaza",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "PYF": {
+      "name": "French Polynesia",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "SXM": {
+      "name": "Sint Maarten (Dutch part)",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "TCA": {
+      "name": "Turks and Caicos Islands",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "VGB": {
+      "name": "British Virgin Islands",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "VIR": {
+      "name": "Virgin Islands (U.S.)",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    },
+    "XKX": {
+      "name": "Kosovo",
+      "missingIndicators": [
+        "voiceAndAccountability",
+        "politicalStability",
+        "governmentEffectiveness",
+        "regulatoryQuality",
+        "ruleOfLaw",
+        "controlOfCorruption"
+      ]
+    }
+  }
+}

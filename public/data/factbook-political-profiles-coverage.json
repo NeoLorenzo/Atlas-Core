@@ -1,0 +1,270 @@
+{
+  "generatedAt": "2026-05-30T13:42:59.389Z",
+  "sourceUsed": {
+    "name": "factbook/cache.factbook.json",
+    "url": "https://codeload.github.com/factbook/cache.factbook.json/zip/refs/heads/master"
+  },
+  "totalFactbookEntitiesParsed": 260,
+  "totalMatchedToIso3": 234,
+  "totalUnmatched": 26,
+  "unmatchedEntityNames": [
+    "Saint Helena, Ascension, and Tristan da Cunha",
+    "Territory of Heard Island and McDonald Islands",
+    "Territory of Ashmore and Cartier Islands",
+    "Coral Sea Islands Territory",
+    "Pitcairn, Henderson, Ducie, and Oeno Islands",
+    "United States Pacific Island Wildlife Refuges",
+    "Territory of the Wallis and Futuna Islands",
+    "Wake Island",
+    "Navassa Island",
+    "Country of Sint Maarten",
+    "Overseas Collectivity of Saint Barthelemy",
+    "Paracel Islands",
+    "Spratly Islands",
+    "Akrotiri",
+    "Dhekelia",
+    "European Union",
+    "Jan Mayen",
+    "Svalbard",
+    "Clipperton Island",
+    "Southern Ocean",
+    "Indian Ocean",
+    "Arctic Ocean",
+    "Atlantic Ocean",
+    "Pacific Ocean",
+    "British Indian Ocean Territory",
+    "World"
+  ],
+  "countriesWithCompletePoliticalProfile": 207,
+  "countriesWithPartialPoliticalProfile": 27,
+  "missingFieldsByCountry": {
+    "LBY": {
+      "name": "Libya",
+      "missingFields": [
+        "politicalPartiesAndLeaders"
+      ]
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "missingFields": [
+        "legalSystem"
+      ]
+    },
+    "ATA": {
+      "name": "Antarctica",
+      "missingFields": [
+        "capital",
+        "administrativeDivisions",
+        "independence",
+        "constitution",
+        "suffrage",
+        "executiveBranch",
+        "legislativeBranch",
+        "judicialBranch",
+        "politicalPartiesAndLeaders",
+        "electionsAppointments",
+        "internationalOrganizationParticipation"
+      ]
+    },
+    "BVT": {
+      "name": "Bouvet Island",
+      "missingFields": [
+        "governmentType",
+        "capital",
+        "administrativeDivisions",
+        "independence",
+        "constitution",
+        "suffrage",
+        "executiveBranch",
+        "legislativeBranch",
+        "judicialBranch",
+        "politicalPartiesAndLeaders",
+        "electionsAppointments",
+        "internationalOrganizationParticipation"
+      ]
+    },
+    "ATF": {
+      "name": "French Southern and Antarctic Lands",
+      "missingFields": [
+        "governmentType",
+        "capital",
+        "independence",
+        "constitution",
+        "suffrage",
+        "legislativeBranch",
+        "judicialBranch",
+        "politicalPartiesAndLeaders",
+        "electionsAppointments"
+      ]
+    },
+    "CCK": {
+      "name": "Cocos (Keeling) Islands",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "COK": {
+      "name": "Cook Islands",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "GUM": {
+      "name": "Guam",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "CXR": {
+      "name": "Christmas Island",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "NFK": {
+      "name": "Norfolk Island",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "TKL": {
+      "name": "Tokelau",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "ABW": {
+      "name": "Aruba",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "AIA": {
+      "name": "Anguilla",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "MFX": {
+      "name": "Saint Martin",
+      "missingFields": [
+        "administrativeDivisions",
+        "judicialBranch"
+      ]
+    },
+    "TCA": {
+      "name": "Turks and Caicos Islands",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "CUW": {
+      "name": "Curacao",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "VGB": {
+      "name": "British Virgin Islands",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "HKG": {
+      "name": "Hong Kong SAR, China",
+      "missingFields": [
+        "capital",
+        "administrativeDivisions"
+      ]
+    },
+    "MAC": {
+      "name": "Macao SAR, China",
+      "missingFields": [
+        "capital",
+        "administrativeDivisions"
+      ]
+    },
+    "TWN": {
+      "name": "Taiwan Province of China",
+      "missingFields": [
+        "independence"
+      ]
+    },
+    "GIB": {
+      "name": "Gibraltar",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "VAT": {
+      "name": "Holy See",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "PSE": {
+      "name": "West Bank and Gaza",
+      "missingFields": [
+        "governmentType",
+        "capital",
+        "administrativeDivisions",
+        "independence",
+        "constitution",
+        "legalSystem",
+        "suffrage",
+        "executiveBranch",
+        "legislativeBranch",
+        "judicialBranch",
+        "politicalPartiesAndLeaders",
+        "electionsAppointments",
+        "internationalOrganizationParticipation"
+      ]
+    },
+    "OMN": {
+      "name": "Oman",
+      "missingFields": [
+        "electionsAppointments"
+      ]
+    },
+    "FLK": {
+      "name": "Falkland Islands",
+      "missingFields": [
+        "administrativeDivisions"
+      ]
+    },
+    "SGS": {
+      "name": "South Georgia and South Sandwich Islds.",
+      "missingFields": [
+        "governmentType",
+        "capital",
+        "administrativeDivisions",
+        "independence",
+        "constitution",
+        "suffrage",
+        "executiveBranch",
+        "legislativeBranch",
+        "judicialBranch",
+        "politicalPartiesAndLeaders",
+        "electionsAppointments"
+      ]
+    }
+  },
+  "normalizationCountsByGovernmentFamily": {
+    "presidential_republic": 75,
+    "parliamentary_republic": 48,
+    "semi_presidential_republic": 17,
+    "other": 26,
+    "constitutional_monarchy": 36,
+    "absolute_monarchy": 6,
+    "military_regime": 2,
+    "null": 5,
+    "dependent_territory": 14,
+    "federal_republic": 3,
+    "one_party_state": 2
+  },
+  "monarchyCount": 44,
+  "bicameralCount": 99,
+  "unicameralCount": 127,
+  "electionsDetectedCount": 227,
+  "suffrageDetectedCount": 222
+}

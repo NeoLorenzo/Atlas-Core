@@ -1,0 +1,513 @@
+{
+  "generatedAt": "2026-05-30T05:27:09.678Z",
+  "totalCountriesImported": 216,
+  "countriesWithCompleteData": 147,
+  "countriesWithPartialData": 69,
+  "countriesWithNoData": 0,
+  "missingIndicatorsByCountry": {
+    "ABW": {
+      "name": "Aruba",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct"
+      ]
+    },
+    "AND": {
+      "name": "Andorra",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "ASM": {
+      "name": "American Samoa",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "missingIndicators": [
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "BDI": {
+      "name": "Burundi",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "BMU": {
+      "name": "Bermuda",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct"
+      ]
+    },
+    "BRB": {
+      "name": "Barbados",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "CHI": {
+      "name": "Channel Islands",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "COD": {
+      "name": "Congo, Dem. Rep.",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "CUB": {
+      "name": "Cuba",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "CUW": {
+      "name": "Curacao",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "CYM": {
+      "name": "Cayman Islands",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "DMA": {
+      "name": "Dominica",
+      "missingIndicators": [
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "FJI": {
+      "name": "Fiji",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "FRO": {
+      "name": "Faroe Islands",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct"
+      ]
+    },
+    "FSM": {
+      "name": "Micronesia, Fed. Sts.",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct"
+      ]
+    },
+    "GIB": {
+      "name": "Gibraltar",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "GRD": {
+      "name": "Grenada",
+      "missingIndicators": [
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "GRL": {
+      "name": "Greenland",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct"
+      ]
+    },
+    "GUM": {
+      "name": "Guam",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "GUY": {
+      "name": "Guyana",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "IMN": {
+      "name": "Isle of Man",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "missingIndicators": [
+        "unemploymentPct"
+      ]
+    },
+    "KNA": {
+      "name": "St. Kitts and Nevis",
+      "missingIndicators": [
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "LAO": {
+      "name": "Lao PDR",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "LBR": {
+      "name": "Liberia",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "LCA": {
+      "name": "St. Lucia",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "LIE": {
+      "name": "Liechtenstein",
+      "missingIndicators": [
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "MAF": {
+      "name": "St. Martin (French part)",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "MCO": {
+      "name": "Monaco",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "MHL": {
+      "name": "Marshall Islands",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct"
+      ]
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "MNP": {
+      "name": "Northern Mariana Islands",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "NCL": {
+      "name": "New Caledonia",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "NRU": {
+      "name": "Nauru",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct"
+      ]
+    },
+    "PLW": {
+      "name": "Palau",
+      "missingIndicators": [
+        "unemploymentPct"
+      ]
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "PRI": {
+      "name": "Puerto Rico (US)",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "PRK": {
+      "name": "Korea, Dem. People's Rep.",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "PSE": {
+      "name": "West Bank and Gaza",
+      "missingIndicators": [
+        "unemploymentPct"
+      ]
+    },
+    "PYF": {
+      "name": "French Polynesia",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "QAT": {
+      "name": "Qatar",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "SDN": {
+      "name": "Sudan",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct"
+      ]
+    },
+    "SMR": {
+      "name": "San Marino",
+      "missingIndicators": [
+        "unemploymentPct"
+      ]
+    },
+    "SOM": {
+      "name": "Somalia, Fed. Rep.",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "SUR": {
+      "name": "Suriname",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "SWZ": {
+      "name": "Eswatini",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "SXM": {
+      "name": "Sint Maarten (Dutch part)",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "missingIndicators": [
+        "unemploymentPct"
+      ]
+    },
+    "SYR": {
+      "name": "Syrian Arab Republic",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "TCA": {
+      "name": "Turks and Caicos Islands",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "TGO": {
+      "name": "Togo",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "missingIndicators": [
+        "unemploymentPct"
+      ]
+    },
+    "VCT": {
+      "name": "St. Vincent and the Grenadines",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "VEN": {
+      "name": "Venezuela, RB",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    },
+    "VGB": {
+      "name": "British Virgin Islands",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "unemploymentPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "VIR": {
+      "name": "Virgin Islands (U.S.)",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "missingIndicators": [
+        "tradePctOfGdp"
+      ]
+    },
+    "XKX": {
+      "name": "Kosovo",
+      "missingIndicators": [
+        "unemploymentPct"
+      ]
+    },
+    "YEM": {
+      "name": "Yemen, Rep.",
+      "missingIndicators": [
+        "gdpCurrentUsd",
+        "gdpPerCapitaCurrentUsd",
+        "gdpGrowthAnnualPct",
+        "inflationConsumerAnnualPct",
+        "tradePctOfGdp"
+      ]
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "missingIndicators": [
+        "inflationConsumerAnnualPct"
+      ]
+    }
+  }
+}

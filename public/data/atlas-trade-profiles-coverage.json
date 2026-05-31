@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-05-30T07:22:25.340Z",
+  "sourceUrl": "https://intl-atlas-downloads.s3.amazonaws.com/country_hsproduct4digit_year.csv.zip",
+  "sourceFileKey": "country_hsproduct4digit_year.csv.zip",
+  "selectedYear": 2016,
+  "selectedYearStrategyNote": "2024/2023 unavailable in Atlas file; used latest available year 2016.",
+  "totalCountriesImported": 235,
+  "countriesWithExportData": 235,
+  "countriesWithImportData": 235,
+  "countriesWithCompleteTradeProfile": 235,
+  "countriesWithPartialTradeProfile": 0,
+  "countriesWithNoUsableTradeData": 0,
+  "missingFieldsByCountry": {},
+  "economicComplexityIndexFound": true,
+  "notes": {
+    "eci": "ECI detected in source rows.",
+    "aggregation": "Trade indicators are derived from unilateral country-product flows. Top products are capped to top 10 per flow in output."
+  }
+}

@@ -1,0 +1,778 @@
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
+import { constants as fsConstants } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const WDI_PATH = resolve(__dirname, "..", "public", "data", "country-stats.json");
+const WGI_PATH = resolve(__dirname, "..", "public", "data", "governance-stats.json");
+const IMF_PATH = resolve(__dirname, "..", "public", "data", "imf-weo-stats.json");
+const WPP_PATH = resolve(__dirname, "..", "public", "data", "un-wpp-demographics.json");
+const ATLAS_PATH = resolve(__dirname, "..", "public", "data", "atlas-trade-profiles.json");
+const FACTBOOK_PATH = resolve(__dirname, "..", "public", "data", "factbook-political-profiles.json");
+
+const OUTPUT_PATH = resolve(__dirname, "..", "public", "data", "canonical-country-data.json");
+const COVERAGE_PATH = resolve(__dirname, "..", "public", "data", "canonical-country-data-coverage.json");
+
+const OVERLAP_CONFIG = {
+  gdpCurrentUsd: {
+    wdi: "gdpCurrentUsd",
+    imf: "gdpCurrentUsdBillions",
+    imfMultiplier: 1_000_000_000,
+    defaultPreference: "IMF WEO / DataMapper",
+  },
+  gdpPerCapitaCurrentUsd: {
+    wdi: "gdpPerCapitaCurrentUsd",
+    imf: "gdpPerCapitaCurrentUsd",
+    defaultPreference: "IMF WEO / DataMapper",
+  },
+  gdpGrowthAnnualPct: {
+    wdi: "gdpGrowthAnnualPct",
+    imf: "realGdpGrowthPct",
+    defaultPreference: "IMF WEO / DataMapper",
+  },
+  inflationAnnualPct: {
+    wdi: "inflationConsumerAnnualPct",
+    imf: "inflationAverageConsumerPricesPct",
+    defaultPreference: "IMF WEO / DataMapper",
+  },
+};
+
+const GOVERNANCE_KEYS = [
+  "voiceAndAccountability",
+  "politicalStability",
+  "governmentEffectiveness",
+  "regulatoryQuality",
+  "ruleOfLaw",
+  "controlOfCorruption",
+];
+
+const TRADE_STRUCTURE_KEYS = [
+  "totalExportsUsd",
+  "totalImportsUsd",
+  "tradeBalanceUsd",
+  "exportDiversityProductCount",
+  "importDiversityProductCount",
+  "exportConcentrationHhi",
+  "importConcentrationHhi",
+  "economicComplexityIndex",
+];
+
+const POLITICAL_SYSTEM_TEXT_KEYS = [
+  "governmentType",
+  "capital",
+  "administrativeDivisions",
+  "independence",
+  "constitution",
+  "legalSystem",
+  "suffrage",
+  "executiveBranch",
+  "legislativeBranch",
+  "judicialBranch",
+  "politicalPartiesAndLeaders",
+  "electionsAppointments",
+  "internationalOrganizationParticipation",
+  "governmentFamily",
+  "monarchyType",
+  "legislatureType",
+  "headOfStateTitle",
+  "headOfGovernmentTitle",
+];
+
+const POLITICAL_SYSTEM_BOOLEAN_KEYS = [
+  "hasMonarchy",
+  "hasParliament",
+  "hasElections",
+  "hasUniversalSuffrage",
+  "isFederal",
+  "isRepublic",
+  "isOnePartyState",
+  "isMilitaryRegime",
+];
+
+const CANONICAL_KEYS = {
+  economy: [
+    "population",
+    "gdpCurrentUsd",
+    "gdpPerCapitaCurrentUsd",
+    "gdpGrowthAnnualPct",
+    "inflationAnnualPct",
+    "unemploymentPct",
+    "urbanPopulationPct",
+    "lifeExpectancyYears",
+    "tradePctOfGdp",
+  ],
+  demographics: [
+    "medianAgeYears",
+    "fertilityRateBirthsPerWoman",
+    "populationGrowthRatePct",
+    "netMigration",
+    "youthSharePct",
+    "workingAgeSharePct",
+    "elderlySharePct",
+    "childDependencyRatio",
+    "oldAgeDependencyRatio",
+    "totalDependencyRatio",
+  ],
+  fiscal: [
+    "currentAccountBalancePctOfGdp",
+    "governmentNetLendingBorrowingPctOfGdp",
+    "governmentGrossDebtPctOfGdp",
+  ],
+  governance: GOVERNANCE_KEYS,
+  tradeStructure: TRADE_STRUCTURE_KEYS,
+};
+
+function isRecord(value) {
+  return typeof value === "object" && value !== null;
+}
+
+function readJson(path) {
+  return readFile(path, "utf8").then((raw) => JSON.parse(raw));
+}
+
+async function readJsonOptional(path) {
+  try {
+    await access(path, fsConstants.F_OK);
+    return readJson(path);
+  } catch {
+    return null;
+  }
+}
+
+function getValue(record, key, multiplier = 1) {
+  const value = record?.indicators?.[key];
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return null;
+  }
+  return value * multiplier;
+}
+
+function getYear(record, key) {
+  const year = record?.indicatorYears?.[key];
+  if (typeof year !== "number" || Number.isNaN(year)) {
+    return null;
+  }
+  return year;
+}
+
+function makeDataPoint(value, year, source) {
+  if (value === null || year === null || !source) {
+    return { value: null, year: null, source: null };
+  }
+  return { value, year, source };
+}
+
+function makeTextDataPoint(value, source) {
+  if (typeof value !== "string" || value.trim().length === 0 || !source) {
+    return { value: null, source: null };
+  }
+  return { value: value.trim(), source };
+}
+
+function makeBooleanDataPoint(value, source) {
+  if (typeof value !== "boolean" || !source) {
+    return { value: null, source: null };
+  }
+  return { value, source };
+}
+
+function pickOverlapDataPoint(wdiRecord, imfRecord, config, coverageSummary) {
+  const wdiValue = getValue(wdiRecord, config.wdi);
+  const wdiYear = getYear(wdiRecord, config.wdi);
+
+  const imfValue = getValue(imfRecord, config.imf, config.imfMultiplier ?? 1);
+  const imfYear = getYear(imfRecord, config.imf);
+
+  const hasWdi = wdiValue !== null;
+  const hasImf = imfValue !== null;
+
+  if (!hasWdi && !hasImf) {
+    return makeDataPoint(null, null, null);
+  }
+  if (hasWdi && !hasImf) {
+    return makeDataPoint(wdiValue, wdiYear, "World Bank WDI");
+  }
+  if (!hasWdi && hasImf) {
+    return makeDataPoint(imfValue, imfYear, "IMF WEO / DataMapper");
+  }
+
+  if (wdiYear !== null && imfYear !== null && wdiYear !== imfYear) {
+    if (wdiYear > imfYear) {
+      return makeDataPoint(wdiValue, wdiYear, "World Bank WDI");
+    }
+    return makeDataPoint(imfValue, imfYear, "IMF WEO / DataMapper");
+  }
+
+  const wdiCoverage = coverageSummary.wdi[config.wdi] ?? 0;
+  const imfCoverage = coverageSummary.imf[config.imf] ?? 0;
+
+  if (wdiCoverage > imfCoverage) {
+    return makeDataPoint(wdiValue, wdiYear, "World Bank WDI");
+  }
+  if (imfCoverage > wdiCoverage) {
+    return makeDataPoint(imfValue, imfYear, "IMF WEO / DataMapper");
+  }
+
+  if (config.defaultPreference === "World Bank WDI") {
+    return makeDataPoint(wdiValue, wdiYear, "World Bank WDI");
+  }
+  return makeDataPoint(imfValue, imfYear, "IMF WEO / DataMapper");
+}
+
+function computeCoverageCounts(recordsByIso3, keys) {
+  const counts = Object.fromEntries(keys.map((key) => [key, 0]));
+  for (const record of Object.values(recordsByIso3)) {
+    for (const key of keys) {
+      const value = record?.indicators?.[key];
+      if (typeof value === "number" && Number.isFinite(value)) {
+        counts[key] += 1;
+      }
+    }
+  }
+  return counts;
+}
+
+function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook) {
+  return (
+    wdi?.countriesByIso3?.[iso3]?.name ??
+    imf?.countriesByIso3?.[iso3]?.name ??
+    wgi?.countriesByIso3?.[iso3]?.name ??
+    wpp?.countriesByIso3?.[iso3]?.name ??
+    atlas?.countriesByIso3?.[iso3]?.name ??
+    factbook?.countriesByIso3?.[iso3]?.name ??
+    iso3
+  );
+}
+
+function getAtlasIndicatorValue(record, key) {
+  const value = record?.indicators?.[key];
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return null;
+  }
+  return value;
+}
+
+function getAtlasIndicatorYear(record) {
+  return typeof record?.year === "number" && Number.isFinite(record.year) ? record.year : null;
+}
+
+function getAtlasTopArray(record, key) {
+  const value = record?.[key];
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .filter((entry) => isRecord(entry) && typeof entry.productCode === "string")
+    .map((entry) => ({
+      productCode: entry.productCode,
+      productName: typeof entry.productName === "string" ? entry.productName : null,
+      exportValueUsd: typeof entry.exportValueUsd === "number" ? entry.exportValueUsd : undefined,
+      importValueUsd: typeof entry.importValueUsd === "number" ? entry.importValueUsd : undefined,
+      shareOfExportsPct: typeof entry.shareOfExportsPct === "number" ? entry.shareOfExportsPct : undefined,
+      shareOfImportsPct: typeof entry.shareOfImportsPct === "number" ? entry.shareOfImportsPct : undefined,
+    }))
+    .map((entry) => {
+      const clean = {
+        productCode: entry.productCode,
+        productName: entry.productName,
+      };
+      if (entry.exportValueUsd !== undefined) {
+        clean.exportValueUsd = entry.exportValueUsd;
+      }
+      if (entry.importValueUsd !== undefined) {
+        clean.importValueUsd = entry.importValueUsd;
+      }
+      if (entry.shareOfExportsPct !== undefined) {
+        clean.shareOfExportsPct = entry.shareOfExportsPct;
+      }
+      if (entry.shareOfImportsPct !== undefined) {
+        clean.shareOfImportsPct = entry.shareOfImportsPct;
+      }
+      return clean;
+    });
+}
+
+async function main() {
+  const [wdi, wgi, imf, wpp, atlasMaybe, factbookMaybe] = await Promise.all([
+    readJson(WDI_PATH),
+    readJson(WGI_PATH),
+    readJson(IMF_PATH),
+    readJson(WPP_PATH),
+    readJsonOptional(ATLAS_PATH),
+    readJsonOptional(FACTBOOK_PATH),
+  ]);
+
+  if (
+    !isRecord(wdi?.countriesByIso3) ||
+    !isRecord(wgi?.countriesByIso3) ||
+    !isRecord(imf?.countriesByIso3) ||
+    !isRecord(wpp?.countriesByIso3)
+  ) {
+    throw new Error(
+      "Expected country-stats.json, governance-stats.json, imf-weo-stats.json, and un-wpp-demographics.json to contain countriesByIso3",
+    );
+  }
+
+  const atlasCountriesByIso3 =
+    isRecord(atlasMaybe?.countriesByIso3) ? atlasMaybe.countriesByIso3 : {};
+  const factbookCountriesByIso3 =
+    isRecord(factbookMaybe?.countriesByIso3) ? factbookMaybe.countriesByIso3 : {};
+  if (!isRecord(atlasMaybe?.countriesByIso3)) {
+    console.warn("atlas-trade-profiles.json not found or invalid; tradeStructure will be emitted as null datapoints.");
+  }
+  if (!isRecord(factbookMaybe?.countriesByIso3)) {
+    console.warn("factbook-political-profiles.json not found or invalid; politicalSystem will be emitted with nulls.");
+  }
+
+  const wdiCoverage = computeCoverageCounts(wdi.countriesByIso3, [
+    "gdpCurrentUsd",
+    "gdpPerCapitaCurrentUsd",
+    "gdpGrowthAnnualPct",
+    "inflationConsumerAnnualPct",
+  ]);
+  const imfCoverage = computeCoverageCounts(imf.countriesByIso3, [
+    "gdpCurrentUsdBillions",
+    "gdpPerCapitaCurrentUsd",
+    "realGdpGrowthPct",
+    "inflationAverageConsumerPricesPct",
+  ]);
+
+  const coverageSummary = { wdi: wdiCoverage, imf: imfCoverage };
+
+  const allIso3 = Array.from(
+    new Set([
+      ...Object.keys(wdi.countriesByIso3),
+      ...Object.keys(wgi.countriesByIso3),
+      ...Object.keys(imf.countriesByIso3),
+      ...Object.keys(wpp.countriesByIso3),
+      ...Object.keys(atlasCountriesByIso3),
+      ...Object.keys(factbookCountriesByIso3),
+    ]),
+  ).sort();
+
+  const countriesByIso3 = {};
+
+  for (const iso3 of allIso3) {
+    const wdiRecord = wdi.countriesByIso3[iso3];
+    const imfRecord = imf.countriesByIso3[iso3];
+    const wgiRecord = wgi.countriesByIso3[iso3];
+    const wppRecord = wpp.countriesByIso3[iso3];
+    const atlasRecord = atlasCountriesByIso3[iso3];
+    const factbookRecord = factbookCountriesByIso3[iso3];
+    const atlasYear = getAtlasIndicatorYear(atlasRecord);
+    const factbookSource = factbookRecord?.source === "CIA World Factbook" ? "CIA World Factbook" : null;
+
+    const economy = {
+      population: makeDataPoint(
+        getValue(wdiRecord, "population"),
+        getYear(wdiRecord, "population"),
+        getValue(wdiRecord, "population") === null ? null : "World Bank WDI",
+      ),
+      gdpCurrentUsd: pickOverlapDataPoint(
+        wdiRecord,
+        imfRecord,
+        OVERLAP_CONFIG.gdpCurrentUsd,
+        coverageSummary,
+      ),
+      gdpPerCapitaCurrentUsd: pickOverlapDataPoint(
+        wdiRecord,
+        imfRecord,
+        OVERLAP_CONFIG.gdpPerCapitaCurrentUsd,
+        coverageSummary,
+      ),
+      gdpGrowthAnnualPct: pickOverlapDataPoint(
+        wdiRecord,
+        imfRecord,
+        OVERLAP_CONFIG.gdpGrowthAnnualPct,
+        coverageSummary,
+      ),
+      inflationAnnualPct: pickOverlapDataPoint(
+        wdiRecord,
+        imfRecord,
+        OVERLAP_CONFIG.inflationAnnualPct,
+        coverageSummary,
+      ),
+      unemploymentPct: makeDataPoint(
+        getValue(wdiRecord, "unemploymentPct"),
+        getYear(wdiRecord, "unemploymentPct"),
+        getValue(wdiRecord, "unemploymentPct") === null ? null : "World Bank WDI",
+      ),
+      urbanPopulationPct: makeDataPoint(
+        getValue(wdiRecord, "urbanPopulationPct"),
+        getYear(wdiRecord, "urbanPopulationPct"),
+        getValue(wdiRecord, "urbanPopulationPct") === null ? null : "World Bank WDI",
+      ),
+      lifeExpectancyYears: makeDataPoint(
+        getValue(wdiRecord, "lifeExpectancyYears"),
+        getYear(wdiRecord, "lifeExpectancyYears"),
+        getValue(wdiRecord, "lifeExpectancyYears") === null ? null : "World Bank WDI",
+      ),
+      tradePctOfGdp: makeDataPoint(
+        getValue(wdiRecord, "tradePctOfGdp"),
+        getYear(wdiRecord, "tradePctOfGdp"),
+        getValue(wdiRecord, "tradePctOfGdp") === null ? null : "World Bank WDI",
+      ),
+    };
+
+    const demographics = {
+      medianAgeYears: makeDataPoint(
+        getValue(wppRecord, "medianAgeYears"),
+        getYear(wppRecord, "medianAgeYears"),
+        getValue(wppRecord, "medianAgeYears") === null ? null : "UN WPP 2024",
+      ),
+      fertilityRateBirthsPerWoman: makeDataPoint(
+        getValue(wppRecord, "fertilityRateBirthsPerWoman"),
+        getYear(wppRecord, "fertilityRateBirthsPerWoman"),
+        getValue(wppRecord, "fertilityRateBirthsPerWoman") === null ? null : "UN WPP 2024",
+      ),
+      populationGrowthRatePct: makeDataPoint(
+        getValue(wppRecord, "populationGrowthRatePct"),
+        getYear(wppRecord, "populationGrowthRatePct"),
+        getValue(wppRecord, "populationGrowthRatePct") === null ? null : "UN WPP 2024",
+      ),
+      netMigration: makeDataPoint(
+        getValue(wppRecord, "netMigration"),
+        getYear(wppRecord, "netMigration"),
+        getValue(wppRecord, "netMigration") === null ? null : "UN WPP 2024",
+      ),
+      youthSharePct: makeDataPoint(
+        getValue(wppRecord, "youthSharePct"),
+        getYear(wppRecord, "youthSharePct"),
+        getValue(wppRecord, "youthSharePct") === null ? null : "UN WPP 2024",
+      ),
+      workingAgeSharePct: makeDataPoint(
+        getValue(wppRecord, "workingAgeSharePct"),
+        getYear(wppRecord, "workingAgeSharePct"),
+        getValue(wppRecord, "workingAgeSharePct") === null ? null : "UN WPP 2024",
+      ),
+      elderlySharePct: makeDataPoint(
+        getValue(wppRecord, "elderlySharePct"),
+        getYear(wppRecord, "elderlySharePct"),
+        getValue(wppRecord, "elderlySharePct") === null ? null : "UN WPP 2024",
+      ),
+      childDependencyRatio: makeDataPoint(
+        getValue(wppRecord, "childDependencyRatio"),
+        getYear(wppRecord, "childDependencyRatio"),
+        getValue(wppRecord, "childDependencyRatio") === null ? null : "UN WPP 2024",
+      ),
+      oldAgeDependencyRatio: makeDataPoint(
+        getValue(wppRecord, "oldAgeDependencyRatio"),
+        getYear(wppRecord, "oldAgeDependencyRatio"),
+        getValue(wppRecord, "oldAgeDependencyRatio") === null ? null : "UN WPP 2024",
+      ),
+      totalDependencyRatio: makeDataPoint(
+        getValue(wppRecord, "totalDependencyRatio"),
+        getYear(wppRecord, "totalDependencyRatio"),
+        getValue(wppRecord, "totalDependencyRatio") === null ? null : "UN WPP 2024",
+      ),
+    };
+
+    const fiscal = {
+      currentAccountBalancePctOfGdp: makeDataPoint(
+        getValue(imfRecord, "currentAccountBalancePctOfGdp"),
+        getYear(imfRecord, "currentAccountBalancePctOfGdp"),
+        getValue(imfRecord, "currentAccountBalancePctOfGdp") === null ? null : "IMF WEO / DataMapper",
+      ),
+      governmentNetLendingBorrowingPctOfGdp: makeDataPoint(
+        getValue(imfRecord, "governmentNetLendingBorrowingPctOfGdp"),
+        getYear(imfRecord, "governmentNetLendingBorrowingPctOfGdp"),
+        getValue(imfRecord, "governmentNetLendingBorrowingPctOfGdp") === null ? null : "IMF WEO / DataMapper",
+      ),
+      governmentGrossDebtPctOfGdp: makeDataPoint(
+        getValue(imfRecord, "governmentGrossDebtPctOfGdp"),
+        getYear(imfRecord, "governmentGrossDebtPctOfGdp"),
+        getValue(imfRecord, "governmentGrossDebtPctOfGdp") === null ? null : "IMF WEO / DataMapper",
+      ),
+    };
+
+    const governance = {
+      voiceAndAccountability: makeDataPoint(
+        getValue(wgiRecord, "voiceAndAccountability"),
+        getYear(wgiRecord, "voiceAndAccountability"),
+        getValue(wgiRecord, "voiceAndAccountability") === null ? null : "World Bank WGI",
+      ),
+      politicalStability: makeDataPoint(
+        getValue(wgiRecord, "politicalStability"),
+        getYear(wgiRecord, "politicalStability"),
+        getValue(wgiRecord, "politicalStability") === null ? null : "World Bank WGI",
+      ),
+      governmentEffectiveness: makeDataPoint(
+        getValue(wgiRecord, "governmentEffectiveness"),
+        getYear(wgiRecord, "governmentEffectiveness"),
+        getValue(wgiRecord, "governmentEffectiveness") === null ? null : "World Bank WGI",
+      ),
+      regulatoryQuality: makeDataPoint(
+        getValue(wgiRecord, "regulatoryQuality"),
+        getYear(wgiRecord, "regulatoryQuality"),
+        getValue(wgiRecord, "regulatoryQuality") === null ? null : "World Bank WGI",
+      ),
+      ruleOfLaw: makeDataPoint(
+        getValue(wgiRecord, "ruleOfLaw"),
+        getYear(wgiRecord, "ruleOfLaw"),
+        getValue(wgiRecord, "ruleOfLaw") === null ? null : "World Bank WGI",
+      ),
+      controlOfCorruption: makeDataPoint(
+        getValue(wgiRecord, "controlOfCorruption"),
+        getYear(wgiRecord, "controlOfCorruption"),
+        getValue(wgiRecord, "controlOfCorruption") === null ? null : "World Bank WGI",
+      ),
+    };
+
+    const tradeStructure = {
+      totalExportsUsd: makeDataPoint(
+        getAtlasIndicatorValue(atlasRecord, "totalExportsUsd"),
+        atlasYear,
+        getAtlasIndicatorValue(atlasRecord, "totalExportsUsd") === null ? null : "Atlas of Economic Complexity",
+      ),
+      totalImportsUsd: makeDataPoint(
+        getAtlasIndicatorValue(atlasRecord, "totalImportsUsd"),
+        atlasYear,
+        getAtlasIndicatorValue(atlasRecord, "totalImportsUsd") === null ? null : "Atlas of Economic Complexity",
+      ),
+      tradeBalanceUsd: makeDataPoint(
+        getAtlasIndicatorValue(atlasRecord, "tradeBalanceUsd"),
+        atlasYear,
+        getAtlasIndicatorValue(atlasRecord, "tradeBalanceUsd") === null ? null : "Atlas of Economic Complexity",
+      ),
+      exportDiversityProductCount: makeDataPoint(
+        getAtlasIndicatorValue(atlasRecord, "exportDiversityProductCount"),
+        atlasYear,
+        getAtlasIndicatorValue(atlasRecord, "exportDiversityProductCount") === null
+          ? null
+          : "Atlas of Economic Complexity",
+      ),
+      importDiversityProductCount: makeDataPoint(
+        getAtlasIndicatorValue(atlasRecord, "importDiversityProductCount"),
+        atlasYear,
+        getAtlasIndicatorValue(atlasRecord, "importDiversityProductCount") === null
+          ? null
+          : "Atlas of Economic Complexity",
+      ),
+      exportConcentrationHhi: makeDataPoint(
+        getAtlasIndicatorValue(atlasRecord, "exportConcentrationHhi"),
+        atlasYear,
+        getAtlasIndicatorValue(atlasRecord, "exportConcentrationHhi") === null
+          ? null
+          : "Atlas of Economic Complexity",
+      ),
+      importConcentrationHhi: makeDataPoint(
+        getAtlasIndicatorValue(atlasRecord, "importConcentrationHhi"),
+        atlasYear,
+        getAtlasIndicatorValue(atlasRecord, "importConcentrationHhi") === null
+          ? null
+          : "Atlas of Economic Complexity",
+      ),
+      economicComplexityIndex: makeDataPoint(
+        getAtlasIndicatorValue(atlasRecord, "economicComplexityIndex"),
+        atlasYear,
+        getAtlasIndicatorValue(atlasRecord, "economicComplexityIndex") === null
+          ? null
+          : "Atlas of Economic Complexity",
+      ),
+      topExports: getAtlasTopArray(atlasRecord, "topExports"),
+      topImports: getAtlasTopArray(atlasRecord, "topImports"),
+    };
+
+    const politicalSystem = {
+      source: factbookSource,
+      governmentType: makeTextDataPoint(factbookRecord?.raw?.governmentType ?? null, factbookSource),
+      capital: makeTextDataPoint(factbookRecord?.raw?.capital ?? null, factbookSource),
+      administrativeDivisions: makeTextDataPoint(factbookRecord?.raw?.administrativeDivisions ?? null, factbookSource),
+      independence: makeTextDataPoint(factbookRecord?.raw?.independence ?? null, factbookSource),
+      constitution: makeTextDataPoint(factbookRecord?.raw?.constitution ?? null, factbookSource),
+      legalSystem: makeTextDataPoint(factbookRecord?.raw?.legalSystem ?? null, factbookSource),
+      suffrage: makeTextDataPoint(factbookRecord?.raw?.suffrage ?? null, factbookSource),
+      executiveBranch: makeTextDataPoint(factbookRecord?.raw?.executiveBranch ?? null, factbookSource),
+      legislativeBranch: makeTextDataPoint(factbookRecord?.raw?.legislativeBranch ?? null, factbookSource),
+      judicialBranch: makeTextDataPoint(factbookRecord?.raw?.judicialBranch ?? null, factbookSource),
+      politicalPartiesAndLeaders: makeTextDataPoint(
+        factbookRecord?.raw?.politicalPartiesAndLeaders ?? null,
+        factbookSource,
+      ),
+      electionsAppointments: makeTextDataPoint(factbookRecord?.raw?.electionsAppointments ?? null, factbookSource),
+      internationalOrganizationParticipation: makeTextDataPoint(
+        factbookRecord?.raw?.internationalOrganizationParticipation ?? null,
+        factbookSource,
+      ),
+      governmentFamily: makeTextDataPoint(factbookRecord?.normalized?.governmentFamily ?? null, factbookSource),
+      hasMonarchy: makeBooleanDataPoint(factbookRecord?.normalized?.hasMonarchy ?? null, factbookSource),
+      monarchyType: makeTextDataPoint(factbookRecord?.normalized?.monarchyType ?? null, factbookSource),
+      hasParliament: makeBooleanDataPoint(factbookRecord?.normalized?.hasParliament ?? null, factbookSource),
+      legislatureType: makeTextDataPoint(factbookRecord?.normalized?.legislatureType ?? null, factbookSource),
+      hasElections: makeBooleanDataPoint(factbookRecord?.normalized?.hasElections ?? null, factbookSource),
+      hasUniversalSuffrage: makeBooleanDataPoint(
+        factbookRecord?.normalized?.hasUniversalSuffrage ?? null,
+        factbookSource,
+      ),
+      isFederal: makeBooleanDataPoint(factbookRecord?.normalized?.isFederal ?? null, factbookSource),
+      isRepublic: makeBooleanDataPoint(factbookRecord?.normalized?.isRepublic ?? null, factbookSource),
+      isOnePartyState: makeBooleanDataPoint(factbookRecord?.normalized?.isOnePartyState ?? null, factbookSource),
+      isMilitaryRegime: makeBooleanDataPoint(factbookRecord?.normalized?.isMilitaryRegime ?? null, factbookSource),
+      headOfStateTitle: makeTextDataPoint(factbookRecord?.normalized?.headOfStateTitle ?? null, factbookSource),
+      headOfGovernmentTitle: makeTextDataPoint(factbookRecord?.normalized?.headOfGovernmentTitle ?? null, factbookSource),
+    };
+
+    countriesByIso3[iso3] = {
+      iso3,
+      name: getCountryName(iso3, wdi, imf, wgi, wpp, atlasMaybe, factbookMaybe),
+      gameStartDate: "2025-01-01",
+      economy,
+      demographics,
+      fiscal,
+      governance,
+      tradeStructure,
+      politicalSystem,
+    };
+  }
+
+  const canonical = {
+    source: "Canonical merged country data",
+    gameStartDate: "2025-01-01",
+    generatedAt: new Date().toISOString(),
+    countriesByIso3,
+  };
+
+  const metricCoverage = {};
+  const sourceUsageByMetric = {};
+  const missingByCountry = {};
+  const sourceUsageTotals = {
+    wdiValuesUsed: 0,
+    imfValuesUsed: 0,
+    wgiValuesUsed: 0,
+    wppValuesUsed: 0,
+    atlasValuesUsed: 0,
+    factbookTextValuesUsed: 0,
+    factbookBooleanValuesUsed: 0,
+  };
+
+  for (const section of Object.keys(CANONICAL_KEYS)) {
+    for (const metric of CANONICAL_KEYS[section]) {
+      metricCoverage[metric] = 0;
+      sourceUsageByMetric[metric] = {
+        "World Bank WDI": 0,
+        "IMF WEO / DataMapper": 0,
+        "World Bank WGI": 0,
+        "UN WPP 2024": 0,
+        "Atlas of Economic Complexity": 0,
+        nullSource: 0,
+      };
+    }
+  }
+
+  for (const [iso3, country] of Object.entries(countriesByIso3)) {
+    const missingMetrics = [];
+
+    for (const section of Object.keys(CANONICAL_KEYS)) {
+      for (const metric of CANONICAL_KEYS[section]) {
+        const point = country[section][metric];
+        if (point.value !== null) {
+          metricCoverage[metric] += 1;
+        } else {
+          missingMetrics.push(metric);
+        }
+
+        if (point.source === "World Bank WDI") {
+          sourceUsageByMetric[metric]["World Bank WDI"] += 1;
+          sourceUsageTotals.wdiValuesUsed += 1;
+        } else if (point.source === "IMF WEO / DataMapper") {
+          sourceUsageByMetric[metric]["IMF WEO / DataMapper"] += 1;
+          sourceUsageTotals.imfValuesUsed += 1;
+        } else if (point.source === "World Bank WGI") {
+          sourceUsageByMetric[metric]["World Bank WGI"] += 1;
+          sourceUsageTotals.wgiValuesUsed += 1;
+        } else if (point.source === "UN WPP 2024") {
+          sourceUsageByMetric[metric]["UN WPP 2024"] += 1;
+          sourceUsageTotals.wppValuesUsed += 1;
+        } else if (point.source === "Atlas of Economic Complexity") {
+          sourceUsageByMetric[metric]["Atlas of Economic Complexity"] += 1;
+          sourceUsageTotals.atlasValuesUsed += 1;
+        } else {
+          sourceUsageByMetric[metric].nullSource += 1;
+        }
+      }
+    }
+
+    if (missingMetrics.length > 0) {
+      missingByCountry[iso3] = {
+        name: country.name,
+        missingMetrics,
+      };
+    }
+  }
+
+  const politicalSystemCoverage = {
+    textFieldCoverage: {},
+    booleanFieldCoverage: {},
+    countriesWithAnyPoliticalSystemData: 0,
+    countriesWithNoPoliticalSystemData: 0,
+  };
+
+  for (const key of POLITICAL_SYSTEM_TEXT_KEYS) {
+    politicalSystemCoverage.textFieldCoverage[key] = 0;
+  }
+  for (const key of POLITICAL_SYSTEM_BOOLEAN_KEYS) {
+    politicalSystemCoverage.booleanFieldCoverage[key] = 0;
+  }
+
+  for (const country of Object.values(countriesByIso3)) {
+    let anyPoliticalData = false;
+
+    for (const key of POLITICAL_SYSTEM_TEXT_KEYS) {
+      const point = country.politicalSystem[key];
+      if (point?.value !== null) {
+        politicalSystemCoverage.textFieldCoverage[key] += 1;
+        anyPoliticalData = true;
+        if (point.source === "CIA World Factbook") {
+          sourceUsageTotals.factbookTextValuesUsed += 1;
+        }
+      }
+    }
+
+    for (const key of POLITICAL_SYSTEM_BOOLEAN_KEYS) {
+      const point = country.politicalSystem[key];
+      if (typeof point?.value === "boolean") {
+        politicalSystemCoverage.booleanFieldCoverage[key] += 1;
+        anyPoliticalData = true;
+        if (point.source === "CIA World Factbook") {
+          sourceUsageTotals.factbookBooleanValuesUsed += 1;
+        }
+      }
+    }
+
+    if (anyPoliticalData) {
+      politicalSystemCoverage.countriesWithAnyPoliticalSystemData += 1;
+    } else {
+      politicalSystemCoverage.countriesWithNoPoliticalSystemData += 1;
+    }
+  }
+
+  const coverage = {
+    generatedAt: new Date().toISOString(),
+    totalCountries: allIso3.length,
+    coverageByCanonicalMetric: metricCoverage,
+    sourceUsedByMetric: sourceUsageByMetric,
+    politicalSystemCoverage,
+    ...sourceUsageTotals,
+    unresolvedMissingValues: {
+      countriesWithMissingMetrics: Object.keys(missingByCountry).length,
+      missingByCountry,
+    },
+  };
+
+  await mkdir(resolve(__dirname, "..", "public", "data"), { recursive: true });
+  await writeFile(OUTPUT_PATH, `${JSON.stringify(canonical, null, 2)}\n`, "utf8");
+  await writeFile(COVERAGE_PATH, `${JSON.stringify(coverage, null, 2)}\n`, "utf8");
+
+  console.info(`Wrote ${OUTPUT_PATH}`);
+  console.info(`Wrote ${COVERAGE_PATH}`);
+  console.info(`Countries in canonical dataset: ${allIso3.length}`);
+}
+
+main().catch((error) => {
+  console.error("Failed to build canonical country data.", error);
+  process.exitCode = 1;
+});

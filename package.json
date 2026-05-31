@@ -1,0 +1,43 @@
+{
+  "name": "atlas-core-january-2025",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "audit:stats": "node scripts/auditCountryStatsOverlap.mjs",
+    "build:country-data": "node scripts/buildCanonicalCountryData.mjs",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "generate:country-borders": "node scripts/generateCountryBorders.mjs",
+    "import:atlas": "node scripts/importAtlasTradeProfiles.mjs",
+    "import:factbook": "node scripts/importFactbookPoliticalProfiles.mjs",
+    "import:weo": "node scripts/importImfWeoStats.mjs",
+    "import:wpp": "node scripts/importUnWppDemographics.mjs",
+    "import:wgi": "node scripts/importWorldBankGovernanceStats.mjs",
+    "import:wdi": "node scripts/importWorldBankCountryStats.mjs",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@turf/turf": "^7.3.5",
+    "csv-parse": "^6.2.1",
+    "maplibre-gl": "^5.24.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "unzipper": "^0.12.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
+  }
+}

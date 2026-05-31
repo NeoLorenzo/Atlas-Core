@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-05-30T06:54:14.061Z",
+  "totalCountriesAreasChecked": 555,
+  "countriesAreasMatchedToIso3": 237,
+  "countriesWithCompleteDemographicData": 237,
+  "countriesWithPartialDemographicData": 0,
+  "countriesWithNoDemographicData": 0,
+  "missingIndicatorsByCountry": {},
+  "notes": {
+    "apiProbe": {
+      "indicatorsCatalogAccessible": true,
+      "dataEndpointAccessible": false,
+      "dataEndpointStatus": 401
+    },
+    "directImportMetrics": [
+      "medianAgeYears",
+      "fertilityRateBirthsPerWoman",
+      "populationGrowthRatePct",
+      "netMigration"
+    ],
+    "computedFromAgeStructureMetrics": [
+      "youthSharePct",
+      "workingAgeSharePct",
+      "elderlySharePct",
+      "childDependencyRatio",
+      "oldAgeDependencyRatio",
+      "totalDependencyRatio"
+    ],
+    "sourceFiles": {
+      "locations": "https://population.un.org/wpp/assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_Locations_notes.csv",
+      "demographicIndicators": "https://population.un.org/wpp/assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz",
+      "agePercentages": "https://population.un.org/wpp/assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_PopulationByAge5GroupSex_Percentage_Medium.csv.gz"
+    },
+    "comments": [
+      "UN Data Portal API indicator metadata endpoints are accessible in this environment, but data endpoints may require bearer authorization (observed 401).",
+      "Fallback uses official UN WPP 2024 bulk CSV files discovered from the official downloads manifest.",
+      "Age structure shares and dependency ratios were computed using the official PopulationByAge5GroupSex_Percentage_Medium dataset."
+    ]
+  }
+}
