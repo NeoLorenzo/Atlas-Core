@@ -1,0 +1,289 @@
+{
+  "source": "GHSL GHS-UCDB R2024A",
+  "generatedAt": "2026-06-04T15:03:01.183Z",
+  "records": {
+    "total": 11422,
+    "matched": 11343,
+    "unmatched": 79
+  },
+  "countries": {
+    "total": 189,
+    "withSettlementData": 189,
+    "withoutSettlementData": 0
+  },
+  "provinces": {
+    "total": 4596,
+    "withPopulationEstimate": 0,
+    "withUrbanCentre": 0,
+    "withoutSettlementData": 0
+  },
+  "urbanCentres": {
+    "total": 11422,
+    "matchedToProvince": 11343,
+    "unmatchedToProvince": 79
+  },
+  "fieldCoverage": {
+    "populationEstimate": 100,
+    "builtUpAreaKm2": 100,
+    "urbanCentreCount": 100,
+    "populationConcentrationHhi": 0
+  },
+  "unmatchedExamples": [
+    {
+      "id": "ghsl-2902",
+      "name": "Mombasa",
+      "countryIso3": "KEN",
+      "countryName": "Kenya",
+      "coordinates": [
+        39.66145384093362,
+        -4.034615372140412
+      ]
+    },
+    {
+      "id": "ghsl-5525",
+      "name": "Cagayan de Oro",
+      "countryIso3": "PHL",
+      "countryName": "Philippines",
+      "coordinates": [
+        124.65982886638223,
+        8.491615854086435
+      ]
+    },
+    {
+      "id": "ghsl-7529",
+      "name": "Kutubdia",
+      "countryIso3": "BGD",
+      "countryName": "Bangladesh",
+      "coordinates": [
+        91.94918804961056,
+        21.775300165118033
+      ]
+    },
+    {
+      "id": "ghsl-3563",
+      "name": "Kocaeli",
+      "countryIso3": "TUR",
+      "countryName": "Turkey",
+      "coordinates": [
+        29.90271087561235,
+        40.760996078414394
+      ]
+    },
+    {
+      "id": "ghsl-5218",
+      "name": "Portsmouth",
+      "countryIso3": "GBR",
+      "countryName": "United Kingdom",
+      "coordinates": [
+        -1.0913839763555129,
+        50.8291650836165
+      ]
+    },
+    {
+      "id": "ghsl-5401",
+      "name": "Iligan",
+      "countryIso3": "PHL",
+      "countryName": "Philippines",
+      "coordinates": [
+        124.23992895689021,
+        8.242148573833475
+      ]
+    },
+    {
+      "id": "ghsl-6967",
+      "name": "Bandar Abbas",
+      "countryIso3": "IRN",
+      "countryName": "Iran (Islamic Republic of)",
+      "coordinates": [
+        56.30105026277775,
+        27.19628846664519
+      ]
+    },
+    {
+      "id": "ghsl-1160",
+      "name": "Port-de-Paix",
+      "countryIso3": "HTI",
+      "countryName": "Haiti",
+      "coordinates": [
+        -72.7833889302777,
+        19.94545803348665
+      ]
+    },
+    {
+      "id": "ghsl-6973",
+      "name": "Cape Coral",
+      "countryIso3": "USA",
+      "countryName": "United States of America",
+      "coordinates": [
+        -81.92997700718233,
+        26.586824921682968
+      ]
+    },
+    {
+      "id": "ghsl-5868",
+      "name": "Myeik",
+      "countryIso3": "MMR",
+      "countryName": "Myanmar",
+      "coordinates": [
+        98.60629695687358,
+        12.443482166019967
+      ]
+    },
+    {
+      "id": "ghsl-4450",
+      "name": "Toulon",
+      "countryIso3": "FRA",
+      "countryName": "France",
+      "coordinates": [
+        5.9121050693165165,
+        43.11831994911988
+      ]
+    },
+    {
+      "id": "ghsl-8317",
+      "name": "Ternate",
+      "countryIso3": "IDN",
+      "countryName": "Indonesia",
+      "coordinates": [
+        127.37374591568614,
+        0.7882141846674886
+      ]
+    },
+    {
+      "id": "ghsl-5637",
+      "name": "Mawlamyine",
+      "countryIso3": "MMR",
+      "countryName": "Myanmar",
+      "coordinates": [
+        97.63568861304553,
+        16.47222763749622
+      ]
+    },
+    {
+      "id": "ghsl-7876",
+      "name": "Ribeira",
+      "countryIso3": "BRA",
+      "countryName": "Brazil",
+      "coordinates": [
+        -43.19363016594069,
+        -22.805018912483302
+      ]
+    },
+    {
+      "id": "ghsl-3868",
+      "name": "Veraval",
+      "countryIso3": "IND",
+      "countryName": "India",
+      "coordinates": [
+        70.3750402531765,
+        20.911290499577838
+      ]
+    },
+    {
+      "id": "ghsl-6846",
+      "name": "Ciudad del Carmen",
+      "countryIso3": "MEX",
+      "countryName": "Mexico",
+      "coordinates": [
+        -91.80611653874604,
+        18.648794261690316
+      ]
+    },
+    {
+      "id": "ghsl-3498",
+      "name": "Santander",
+      "countryIso3": "ESP",
+      "countryName": "Spain",
+      "coordinates": [
+        -3.823304637385359,
+        43.45309530528929
+      ]
+    },
+    {
+      "id": "ghsl-406",
+      "name": "Stavanger",
+      "countryIso3": "NOR",
+      "countryName": "Norway",
+      "coordinates": [
+        5.722575095236398,
+        58.9309410018375
+      ]
+    },
+    {
+      "id": "ghsl-11628",
+      "name": "Port Blair",
+      "countryIso3": "IND",
+      "countryName": "India",
+      "coordinates": [
+        92.72705945466443,
+        11.663232302760957
+      ]
+    },
+    {
+      "id": "ghsl-2510",
+      "name": "Borj Al Burullous",
+      "countryIso3": "EGY",
+      "countryName": "Egypt",
+      "coordinates": [
+        31.055805594939862,
+        31.5668942103703
+      ]
+    },
+    {
+      "id": "ghsl-10707",
+      "name": "Dianbai",
+      "countryIso3": "CHN",
+      "countryName": "China",
+      "coordinates": [
+        111.00251841644615,
+        21.518036200079354
+      ]
+    },
+    {
+      "id": "ghsl-5105",
+      "name": "Rostock",
+      "countryIso3": "DEU",
+      "countryName": "Germany",
+      "coordinates": [
+        12.103594367626277,
+        54.11350361674549
+      ]
+    },
+    {
+      "id": "ghsl-858",
+      "name": "Tekirdağ",
+      "countryIso3": "TUR",
+      "countryName": "Turkey",
+      "coordinates": [
+        27.51510911629479,
+        40.97666800369745
+      ]
+    },
+    {
+      "id": "ghsl-11652",
+      "name": "Shenhu",
+      "countryIso3": "CHN",
+      "countryName": "China",
+      "coordinates": [
+        118.64370059678257,
+        24.63604718509728
+      ]
+    },
+    {
+      "id": "ghsl-8206",
+      "name": "Baubau",
+      "countryIso3": "IDN",
+      "countryName": "Indonesia",
+      "coordinates": [
+        122.60332023075843,
+        -5.466698170588805
+      ]
+    }
+  ],
+  "notes": [
+    "This first-pass pipeline uses the official GHSL UCDB R2024A urban-centre release.",
+    "Province and country settlement rollups are urban-centre-only aggregates derived from matched UCDB records.",
+    "No full GHSL raster zonal aggregation is performed in this pass for province-wide population or built-up totals.",
+    "Field names intentionally use urban-centre-specific wording to avoid implying whole-province or whole-country totals."
+  ]
+}

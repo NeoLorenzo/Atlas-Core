@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+public/data/raw/ghsl/
+temp_ghsl_ucdb.gpkg

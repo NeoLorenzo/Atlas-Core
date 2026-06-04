@@ -372,6 +372,47 @@ function includesAny(text, needles) {
   return needles.some((needle) => normalized.includes(normalizeText(needle)));
 }
 
+function inferOnePartyState(governmentType, parties) {
+  if (!governmentType && !parties) {
+    return null;
+  }
+
+  const governmentText = normalizeText(governmentType);
+  const partiesText = normalizeText(parties);
+  const combined = `${governmentText} ${partiesText}`.trim();
+
+  const strongPositiveSignals = [
+    "single party",
+    "single-party",
+    "one party state",
+    "one-party state",
+    "one party rule",
+    "one-party rule",
+    "one party system",
+    "one-party system",
+    "only party",
+    "only legal party",
+    "sole legal party",
+    "the only party recognized by the government",
+    "banned other political parties",
+    "ban on political parties",
+    "communist state",
+    "party led state",
+    "party-led state",
+  ];
+
+  if (includesAny(combined, strongPositiveSignals)) {
+    return true;
+  }
+
+  // Mentions like "French Communist Party" in multiparty democracies are not one-party indicators.
+  if (includesAny(partiesText, ["communist party"])) {
+    return false;
+  }
+
+  return false;
+}
+
 function normalizeGovernmentFamily(governmentTypeText) {
   const text = normalizeText(governmentTypeText);
   if (!text) {
@@ -505,15 +546,7 @@ function computeNormalized(raw) {
 
   const isFederal = governmentType ? includesAny(governmentType, ["federal"]) : null;
   const isRepublic = governmentType ? includesAny(governmentType, ["republic"]) : null;
-  const isOnePartyState =
-    governmentType || parties
-      ? includesAny(`${governmentType ?? ""} ${parties ?? ""}`, [
-          "one party",
-          "single party",
-          "communist party",
-          "party dominant",
-        ])
-      : null;
+  const isOnePartyState = inferOnePartyState(governmentType, parties);
   const isMilitaryRegime =
     governmentType || executive
       ? includesAny(`${governmentType ?? ""} ${executive ?? ""}`, ["military junta", "military council", "military regime", "junta"])

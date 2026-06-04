@@ -1,0 +1,897 @@
+{
+  "generatedAt": "2026-06-02T14:52:33.649Z",
+  "totalCountriesImported": 216,
+  "countriesWithCompleteSecurityData": 114,
+  "countriesWithPartialSecurityData": 74,
+  "countriesWithNoSecurityData": 28,
+  "coverageBySecurityMetric": {
+    "militaryExpenditureUsd": 166,
+    "militaryExpenditurePctOfGdp": 163,
+    "militaryExpenditurePctOfGovtExpenditure": 160,
+    "armedForcesPersonnel": 173,
+    "armedForcesPctOfLaborForce": 171,
+    "armsImportsSipriTiv": 186,
+    "armsExportsSipriTiv": 124
+  },
+  "missingIndicatorsByCountry": {
+    "ABW": {
+      "name": "Aruba",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv"
+      ]
+    },
+    "AND": {
+      "name": "Andorra",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "ASM": {
+      "name": "American Samoa",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BDI": {
+      "name": "Burundi",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BEN": {
+      "name": "Benin",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BHS": {
+      "name": "Bahamas, The",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure"
+      ]
+    },
+    "BLZ": {
+      "name": "Belize",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BMU": {
+      "name": "Bermuda",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BRB": {
+      "name": "Barbados",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "BWA": {
+      "name": "Botswana",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "CHI": {
+      "name": "Channel Islands",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "COG": {
+      "name": "Congo, Rep.",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "COM": {
+      "name": "Comoros",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce"
+      ]
+    },
+    "CPV": {
+      "name": "Cabo Verde",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "missingIndicators": [
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure"
+      ]
+    },
+    "CUB": {
+      "name": "Cuba",
+      "missingIndicators": [
+        "militaryExpenditurePctOfGovtExpenditure"
+      ]
+    },
+    "CUW": {
+      "name": "Curacao",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "CYM": {
+      "name": "Cayman Islands",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "DMA": {
+      "name": "Dominica",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "FRO": {
+      "name": "Faroe Islands",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "FSM": {
+      "name": "Micronesia, Fed. Sts.",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GIB": {
+      "name": "Gibraltar",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GIN": {
+      "name": "Guinea",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GMB": {
+      "name": "Gambia, The",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GRD": {
+      "name": "Grenada",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GRL": {
+      "name": "Greenland",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "GUM": {
+      "name": "Guam",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "HKG": {
+      "name": "Hong Kong SAR, China",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "HND": {
+      "name": "Honduras",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "HTI": {
+      "name": "Haiti",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "IMN": {
+      "name": "Isle of Man",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "ISL": {
+      "name": "Iceland",
+      "missingIndicators": [
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure"
+      ]
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "KNA": {
+      "name": "St. Kitts and Nevis",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "LAO": {
+      "name": "Lao PDR",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "LBR": {
+      "name": "Liberia",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "LCA": {
+      "name": "St. Lucia",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "LIE": {
+      "name": "Liechtenstein",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MAC": {
+      "name": "Macao SAR, China",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MAF": {
+      "name": "St. Martin (French part)",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MCO": {
+      "name": "Monaco",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MDV": {
+      "name": "Maldives",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MHL": {
+      "name": "Marshall Islands",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MLI": {
+      "name": "Mali",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MNP": {
+      "name": "Northern Mariana Islands",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "NAM": {
+      "name": "Namibia",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "NCL": {
+      "name": "New Caledonia",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "NPL": {
+      "name": "Nepal",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "NRU": {
+      "name": "Nauru",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "PLW": {
+      "name": "Palau",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "PRI": {
+      "name": "Puerto Rico (US)",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "PRK": {
+      "name": "Korea, Dem. People's Rep.",
+      "missingIndicators": [
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure"
+      ]
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "PSE": {
+      "name": "West Bank and Gaza",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "PYF": {
+      "name": "French Polynesia",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SMR": {
+      "name": "San Marino",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SOM": {
+      "name": "Somalia, Fed. Rep.",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SUR": {
+      "name": "Suriname",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SWZ": {
+      "name": "Eswatini",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SXM": {
+      "name": "Sint Maarten (Dutch part)",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "missingIndicators": [
+        "armedForcesPctOfLaborForce"
+      ]
+    },
+    "TCA": {
+      "name": "Turks and Caicos Islands",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "TGO": {
+      "name": "Togo",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "TON": {
+      "name": "Tonga",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "TUR": {
+      "name": "Turkiye",
+      "missingIndicators": [
+        "militaryExpenditurePctOfGovtExpenditure"
+      ]
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "TZA": {
+      "name": "Tanzania",
+      "missingIndicators": [
+        "armsExportsSipriTiv"
+      ]
+    },
+    "VCT": {
+      "name": "St. Vincent and the Grenadines",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "VEN": {
+      "name": "Venezuela, RB",
+      "missingIndicators": [
+        "militaryExpenditurePctOfGovtExpenditure"
+      ]
+    },
+    "VGB": {
+      "name": "British Virgin Islands",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "VIR": {
+      "name": "Virgin Islands (U.S.)",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsImportsSipriTiv",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "WSM": {
+      "name": "Samoa",
+      "missingIndicators": [
+        "militaryExpenditureUsd",
+        "militaryExpenditurePctOfGdp",
+        "militaryExpenditurePctOfGovtExpenditure",
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    },
+    "XKX": {
+      "name": "Kosovo",
+      "missingIndicators": [
+        "armedForcesPersonnel",
+        "armedForcesPctOfLaborForce",
+        "armsExportsSipriTiv"
+      ]
+    }
+  }
+}

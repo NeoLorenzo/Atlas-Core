@@ -59,17 +59,16 @@ const ISO3_PROPERTY_CANDIDATES = [
 
 type FeatureProperties = Record<string, unknown>;
 type ProvinceFeatureCollection = FeatureCollection<Geometry, GeoJsonProperties>;
-type DataSource =
-  | "World Bank WDI"
-  | "World Bank WGI"
-  | "IMF WEO / DataMapper"
-  | "UN WPP 2024"
-  | "Atlas of Economic Complexity"
-  | "CIA World Factbook"
-  | null;
+type DataSource = string | null;
 
 type DataPoint = {
   value: number | null;
+  year: number | null;
+  source: DataSource;
+};
+
+type TextFactPoint = {
+  value: string | null;
   year: number | null;
   source: DataSource;
 };
@@ -136,9 +135,22 @@ type TradeStructureData = {
   topImports: TradeStructureProduct[];
 };
 
+type SecurityData = {
+  militaryExpenditureUsd: DataPoint;
+  militaryExpenditurePctOfGdp: DataPoint;
+  militaryExpenditurePctOfGovtExpenditure: DataPoint;
+  armedForcesPersonnel: DataPoint;
+  armedForcesPctOfLaborForce: DataPoint;
+  armsImportsSipriTiv: DataPoint;
+  armsExportsSipriTiv: DataPoint;
+  militarySpendPerCapitaUsd: DataPoint;
+  militarySpendPerSoldierUsd: DataPoint;
+  mobilizationBasePct: DataPoint;
+};
+
 type TextDataPoint = {
   value: string | null;
-  source: "CIA World Factbook" | null;
+  source: DataSource;
 };
 
 type BooleanDataPoint = {
@@ -185,7 +197,9 @@ type CanonicalCountryData = {
   governance: GovernanceData;
   demographics: DemographicsData;
   tradeStructure: TradeStructureData;
+  security: SecurityData;
   politicalSystem: PoliticalSystemData;
+  settlement?: CountrySettlementData;
 };
 
 type CanonicalCountryDataFile = {
@@ -195,9 +209,52 @@ type CanonicalCountryDataFile = {
   countriesByIso3: Record<string, CanonicalCountryData>;
 };
 
+type CountrySettlementData = {
+  urbanCentreCount: DataPoint;
+  largestUrbanCentres: Array<{
+    id: string;
+    name: string;
+    provinceId: string | null;
+    population: DataPoint;
+  }>;
+  urbanCentreBuiltUpAreaKm2: DataPoint;
+  urbanCentreBuiltUpSharePct: DataPoint;
+  populationConcentrationHhi: DataPoint;
+  provincePopulationCoveragePct: DataPoint;
+  settlementDataCompleteness: TextFactPoint;
+};
+
+type ProvinceSettlementData = {
+  urbanCentrePopulationEstimate: DataPoint;
+  urbanCentrePopulationDensityPerKm2: DataPoint;
+  urbanCentreBuiltUpAreaKm2: DataPoint;
+  urbanCentreBuiltUpSharePct: DataPoint;
+  urbanCentreCount: DataPoint;
+  largestUrbanCentreId: string | null;
+  largestUrbanCentreName: string | null;
+  largestUrbanCentrePopulationEstimate: DataPoint;
+  populationConcentrationHhi: DataPoint;
+  settlementDataCompleteness: TextFactPoint;
+};
+
+type CanonicalProvinceData = {
+  provinceId: string;
+  provinceName: string;
+  countryIso3: string | null;
+  countryName: string;
+  areaKm2: DataPoint;
+  settlement: ProvinceSettlementData;
+};
+
+type CanonicalProvinceDataFile = Record<string, CanonicalProvinceData>;
+
 type MapMode =
   | "countries"
   | "provinces"
+  | "urbanCentrePopulationEstimate"
+  | "urbanCentrePopulationDensity"
+  | "urbanCentreCount"
+  | "urbanCentreBuiltUpSharePct"
   | "population"
   | "gdp"
   | "gdpPerCapita"
@@ -228,6 +285,10 @@ type MapMode =
   | "exportDiversity"
   | "exportConcentration"
   | "economicComplexity"
+  | "militaryExpenditure"
+  | "militaryExpenditurePctOfGdp"
+  | "armedForcesPersonnel"
+  | "militarySpendPerCapita"
   | "governmentFamily"
   | "monarchy"
   | "parliament"
@@ -242,12 +303,31 @@ type SelectedProvince = {
   countryKey: string;
   iso3: string | null;
   canonicalData: CanonicalCountryData | null;
+  countryCanonicalData: CanonicalCountryData | null;
+  provinceCanonicalData: CanonicalProvinceData | null;
   rawProperties: Record<string, unknown>;
 };
 
 type IndicatorRange = {
   min: number;
   max: number;
+};
+
+type ColorLegendEntry = {
+  label: string;
+  color: string;
+};
+
+type MapColorLegend = {
+  title: string;
+  detail: string;
+  entries: ColorLegendEntry[];
+  gradientStops?: string[];
+  gradientLabels?: {
+    left: string;
+    center?: string;
+    right: string;
+  };
 };
 
 type CanonicalOverlaySummary = {
@@ -257,11 +337,17 @@ type CanonicalOverlaySummary = {
   wppProvinceMatchRate: number;
   atlasCountriesWithData: number;
   atlasProvinceMatchRate: number;
+  securityCountriesWithData: number;
+  securityProvinceMatchRate: number;
   factbookCountriesMatched: number;
   politicalProvinceMatchRate: number;
 };
 
 const COLOR_RAMPS = {
+  urbanCentrePopulationEstimate: { low: "#172554", high: "#60a5fa" },
+  urbanCentrePopulationDensity: { low: "#3f6212", high: "#bef264" },
+  urbanCentreCount: { low: "#4c0519", high: "#fb7185" },
+  urbanCentreBuiltUpSharePct: { low: "#422006", high: "#f59e0b" },
   population: { low: "#0f172a", high: "#38bdf8" },
   gdp: { low: "#052e16", high: "#4ade80" },
   gdpPerCapita: { low: "#422006", high: "#fde047" },
@@ -287,6 +373,10 @@ const COLOR_RAMPS = {
   exportDiversity: { low: "#431407", high: "#facc15" },
   exportConcentration: { low: "#064e3b", high: "#ef4444" },
   economicComplexity: { low: "#1e1b4b", mid: "#334155", high: "#22d3ee" },
+  militaryExpenditure: { low: "#172554", high: "#93c5fd" },
+  militaryExpenditurePctOfGdp: { low: "#3f1d0d", high: "#f97316" },
+  armedForcesPersonnel: { low: "#0f3d2e", high: "#4ade80" },
+  militarySpendPerCapita: { low: "#3b0764", high: "#f0abfc" },
 } as const;
 
 const POLITICAL_SYSTEM_COLORS = {
@@ -330,6 +420,10 @@ const POLITICAL_SYSTEM_COLORS = {
 const MAP_MODES: { key: MapMode; label: string }[] = [
   { key: "countries", label: "Countries" },
   { key: "provinces", label: "Provinces" },
+  { key: "urbanCentrePopulationEstimate", label: "Urban-centre population" },
+  { key: "urbanCentrePopulationDensity", label: "Urban-centre density" },
+  { key: "urbanCentreCount", label: "Urban-centre count" },
+  { key: "urbanCentreBuiltUpSharePct", label: "Urban-centre built-up share" },
   { key: "population", label: "Population" },
   { key: "gdp", label: "GDP" },
   { key: "gdpPerCapita", label: "GDP per Capita" },
@@ -360,6 +454,10 @@ const MAP_MODES: { key: MapMode; label: string }[] = [
   { key: "exportDiversity", label: "Export Diversity" },
   { key: "exportConcentration", label: "Export Concentration" },
   { key: "economicComplexity", label: "Economic Complexity" },
+  { key: "militaryExpenditure", label: "Military Expenditure" },
+  { key: "militaryExpenditurePctOfGdp", label: "Military Spending (% GDP)" },
+  { key: "armedForcesPersonnel", label: "Armed Forces Personnel" },
+  { key: "militarySpendPerCapita", label: "Military Spend per Capita" },
   { key: "governmentFamily", label: "Government Type" },
   { key: "monarchy", label: "Monarchy" },
   { key: "parliament", label: "Parliament" },
@@ -371,6 +469,10 @@ const MAP_MODES: { key: MapMode; label: string }[] = [
 const MAP_MODE_COLOR_PROPERTY: Record<MapMode, string> = {
   countries: "__countryFillColor",
   provinces: "__provinceFillColor",
+  urbanCentrePopulationEstimate: "__urbanCentrePopulationEstimateColor",
+  urbanCentrePopulationDensity: "__urbanCentrePopulationDensityColor",
+  urbanCentreCount: "__urbanCentreCountColor",
+  urbanCentreBuiltUpSharePct: "__urbanCentreBuiltUpSharePctColor",
   population: "__populationColor",
   gdp: "__gdpColor",
   gdpPerCapita: "__gdpPerCapitaColor",
@@ -401,6 +503,10 @@ const MAP_MODE_COLOR_PROPERTY: Record<MapMode, string> = {
   exportDiversity: "__exportDiversityColor",
   exportConcentration: "__exportConcentrationColor",
   economicComplexity: "__economicComplexityColor",
+  militaryExpenditure: "__militaryExpenditureColor",
+  militaryExpenditurePctOfGdp: "__militaryExpenditurePctOfGdpColor",
+  armedForcesPersonnel: "__armedForcesPersonnelColor",
+  militarySpendPerCapita: "__militarySpendPerCapitaColor",
   governmentFamily: "__governmentFamilyColor",
   monarchy: "__monarchyColor",
   parliament: "__parliamentColor",
@@ -412,6 +518,10 @@ const MAP_MODE_COLOR_PROPERTY: Record<MapMode, string> = {
 const MAP_MODE_LABEL: Record<MapMode, string> = {
   countries: "Countries",
   provinces: "Provinces",
+  urbanCentrePopulationEstimate: "Urban-centre population",
+  urbanCentrePopulationDensity: "Urban-centre density",
+  urbanCentreCount: "Urban-centre count",
+  urbanCentreBuiltUpSharePct: "Urban-centre built-up share",
   population: "Population",
   gdp: "GDP",
   gdpPerCapita: "GDP per Capita",
@@ -442,6 +552,10 @@ const MAP_MODE_LABEL: Record<MapMode, string> = {
   exportDiversity: "Export Diversity",
   exportConcentration: "Export Concentration",
   economicComplexity: "Economic Complexity",
+  militaryExpenditure: "Military Expenditure",
+  militaryExpenditurePctOfGdp: "Military Spending (% GDP)",
+  armedForcesPersonnel: "Armed Forces Personnel",
+  militarySpendPerCapita: "Military Spend per Capita",
   governmentFamily: "Government Type",
   monarchy: "Monarchy",
   parliament: "Parliament",
@@ -449,6 +563,363 @@ const MAP_MODE_LABEL: Record<MapMode, string> = {
   federalism: "Federalism",
   onePartyState: "One-Party State",
 };
+
+const GOVERNMENT_FAMILY_LABELS: Record<keyof typeof POLITICAL_SYSTEM_COLORS.governmentFamily, string> = {
+  presidential_republic: "Presidential Republic",
+  semi_presidential_republic: "Semi-Presidential Republic",
+  parliamentary_republic: "Parliamentary Republic",
+  federal_republic: "Federal Republic",
+  constitutional_monarchy: "Constitutional Monarchy",
+  absolute_monarchy: "Absolute Monarchy",
+  one_party_state: "One-Party State",
+  military_regime: "Military Regime",
+  theocracy: "Theocracy",
+  confederation: "Confederation",
+  dependent_territory: "Dependent Territory",
+  other: "Other / Mixed",
+};
+
+function createSequentialLegend(
+  title: string,
+  detail: string,
+  ramp: { low: string; high: string },
+  lowLabel = "Lower",
+  highLabel = "Higher",
+): MapColorLegend {
+  return {
+    title,
+    detail,
+    entries: [{ label: "No data", color: NO_DATA_COLOR }],
+    gradientStops: [ramp.low, ramp.high],
+    gradientLabels: { left: lowLabel, right: highLabel },
+  };
+}
+
+function createDivergingLegend(
+  title: string,
+  detail: string,
+  ramp: { low: string; mid: string; high: string },
+  lowLabel: string,
+  midLabel: string,
+  highLabel: string,
+): MapColorLegend {
+  return {
+    title,
+    detail,
+    entries: [{ label: "No data", color: NO_DATA_COLOR }],
+    gradientStops: [ramp.low, ramp.mid, ramp.high],
+    gradientLabels: { left: lowLabel, center: midLabel, right: highLabel },
+  };
+}
+
+function getMapColorLegend(mode: MapMode): MapColorLegend {
+  if (mode === "countries") {
+    return {
+      title: MAP_MODE_LABEL[mode],
+      detail: "Stable identifier colors (not value-based).",
+      entries: [{ label: "Unique color per country", color: COUNTRY_COLOR_PALETTE[0] }],
+    };
+  }
+
+  if (mode === "provinces") {
+    return {
+      title: MAP_MODE_LABEL[mode],
+      detail: "Stable identifier colors (not value-based).",
+      entries: [{ label: "Unique color per province", color: PROVINCE_COLOR_PALETTE[0] }],
+    };
+  }
+
+  if (mode === "urbanCentrePopulationEstimate") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Matched GHSL urban-centre population captured inside each province.",
+      COLOR_RAMPS.urbanCentrePopulationEstimate,
+    );
+  }
+
+  if (mode === "urbanCentrePopulationDensity") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Matched GHSL urban-centre population per province square kilometre.",
+      COLOR_RAMPS.urbanCentrePopulationDensity,
+    );
+  }
+
+  if (mode === "urbanCentreCount") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Number of GHSL urban centres matched to each province.",
+      COLOR_RAMPS.urbanCentreCount,
+    );
+  }
+
+  if (mode === "urbanCentreBuiltUpSharePct") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Share of province area covered by matched urban-centre built-up surface.",
+      COLOR_RAMPS.urbanCentreBuiltUpSharePct,
+    );
+  }
+
+  if (mode === "gdpGrowth") {
+    return createDivergingLegend(
+      MAP_MODE_LABEL[mode],
+      "Red = contraction, green = expansion.",
+      COLOR_RAMPS.gdpGrowth,
+      "Lower",
+      "Neutral",
+      "Higher",
+    );
+  }
+
+  if (mode === "fiscalBalance") {
+    return createDivergingLegend(
+      MAP_MODE_LABEL[mode],
+      "Deficit to surplus (% GDP).",
+      COLOR_RAMPS.fiscalBalance,
+      "Deficit",
+      "Near 0",
+      "Surplus",
+    );
+  }
+
+  if (mode === "currentAccount") {
+    return createDivergingLegend(
+      MAP_MODE_LABEL[mode],
+      "Deficit to surplus (% GDP).",
+      COLOR_RAMPS.currentAccount,
+      "Deficit",
+      "Near 0",
+      "Surplus",
+    );
+  }
+
+  if (mode === "populationGrowth") {
+    return createDivergingLegend(
+      MAP_MODE_LABEL[mode],
+      "Negative to positive annual growth.",
+      COLOR_RAMPS.populationGrowth,
+      "Decline",
+      "Flat",
+      "Growth",
+    );
+  }
+
+  if (mode === "netMigration") {
+    return createDivergingLegend(
+      MAP_MODE_LABEL[mode],
+      "Net outflow to net inflow.",
+      COLOR_RAMPS.netMigration,
+      "Outflow",
+      "Balanced",
+      "Inflow",
+    );
+  }
+
+  if (mode === "tradeBalance") {
+    return createDivergingLegend(
+      MAP_MODE_LABEL[mode],
+      "Deficit to surplus (USD).",
+      COLOR_RAMPS.tradeBalance,
+      "Deficit",
+      "Balanced",
+      "Surplus",
+    );
+  }
+
+  if (mode === "economicComplexity") {
+    return createDivergingLegend(
+      MAP_MODE_LABEL[mode],
+      "Lower to higher complexity index.",
+      COLOR_RAMPS.economicComplexity,
+      "Lower",
+      "Median",
+      "Higher",
+    );
+  }
+
+  if (mode === "militaryExpenditure") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Total military expenditure (USD).", COLOR_RAMPS.militaryExpenditure);
+  }
+  if (mode === "militaryExpenditurePctOfGdp") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Military expenditure as a share of GDP.",
+      COLOR_RAMPS.militaryExpenditurePctOfGdp,
+    );
+  }
+  if (mode === "armedForcesPersonnel") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Reported active armed-forces personnel.",
+      COLOR_RAMPS.armedForcesPersonnel,
+    );
+  }
+  if (mode === "militarySpendPerCapita") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Derived military spending per resident.",
+      COLOR_RAMPS.militarySpendPerCapita,
+    );
+  }
+
+  if (
+    mode === "voiceAndAccountability" ||
+    mode === "politicalStability" ||
+    mode === "governmentEffectiveness" ||
+    mode === "regulatoryQuality" ||
+    mode === "ruleOfLaw" ||
+    mode === "controlOfCorruption"
+  ) {
+    return createDivergingLegend(
+      MAP_MODE_LABEL[mode],
+      "WGI scale from lower to higher governance quality.",
+      COLOR_RAMPS.governance,
+      "Lower",
+      "Mid",
+      "Higher",
+    );
+  }
+
+  if (mode === "governmentFamily") {
+    const entries: ColorLegendEntry[] = Object.entries(POLITICAL_SYSTEM_COLORS.governmentFamily).map(([key, color]) => ({
+      label: GOVERNMENT_FAMILY_LABELS[key as keyof typeof POLITICAL_SYSTEM_COLORS.governmentFamily],
+      color,
+    }));
+    entries.push({ label: "No data", color: POLITICAL_SYSTEM_COLORS.noData });
+    return {
+      title: MAP_MODE_LABEL[mode],
+      detail: "CIA Factbook government-family categories.",
+      entries,
+    };
+  }
+
+  if (mode === "monarchy") {
+    return {
+      title: MAP_MODE_LABEL[mode],
+      detail: "CIA Factbook monarchy flags.",
+      entries: [
+        { label: "Monarchy", color: POLITICAL_SYSTEM_COLORS.monarchyBoolean.true },
+        { label: "No monarchy", color: POLITICAL_SYSTEM_COLORS.monarchyBoolean.false },
+        { label: "Unknown", color: POLITICAL_SYSTEM_COLORS.monarchyBoolean.unknown },
+      ],
+    };
+  }
+
+  if (mode === "parliament") {
+    return {
+      title: MAP_MODE_LABEL[mode],
+      detail: "CIA Factbook parliament flags.",
+      entries: [
+        { label: "Has parliament", color: POLITICAL_SYSTEM_COLORS.boolean.true },
+        { label: "No parliament", color: POLITICAL_SYSTEM_COLORS.boolean.false },
+        { label: "Unknown", color: POLITICAL_SYSTEM_COLORS.boolean.unknown },
+      ],
+    };
+  }
+
+  if (mode === "elections") {
+    return {
+      title: MAP_MODE_LABEL[mode],
+      detail: "CIA Factbook elections flags.",
+      entries: [
+        { label: "Has elections", color: POLITICAL_SYSTEM_COLORS.warningBoolean.true },
+        { label: "No elections", color: POLITICAL_SYSTEM_COLORS.warningBoolean.false },
+        { label: "Unknown", color: POLITICAL_SYSTEM_COLORS.warningBoolean.unknown },
+      ],
+    };
+  }
+
+  if (mode === "federalism") {
+    return {
+      title: MAP_MODE_LABEL[mode],
+      detail: "CIA Factbook federal-state flags.",
+      entries: [
+        { label: "Federal", color: POLITICAL_SYSTEM_COLORS.federalismBoolean.true },
+        { label: "Unitary / non-federal", color: POLITICAL_SYSTEM_COLORS.federalismBoolean.false },
+        { label: "Unknown", color: POLITICAL_SYSTEM_COLORS.federalismBoolean.unknown },
+      ],
+    };
+  }
+
+  if (mode === "onePartyState") {
+    return {
+      title: MAP_MODE_LABEL[mode],
+      detail: "CIA Factbook one-party-state flags.",
+      entries: [
+        { label: "One-party state", color: POLITICAL_SYSTEM_COLORS.warningBoolean.true },
+        { label: "Not one-party", color: POLITICAL_SYSTEM_COLORS.warningBoolean.false },
+        { label: "Unknown", color: POLITICAL_SYSTEM_COLORS.warningBoolean.unknown },
+      ],
+    };
+  }
+
+  if (mode === "population") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Population range.", COLOR_RAMPS.population);
+  }
+  if (mode === "gdp") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Total GDP range.", COLOR_RAMPS.gdp);
+  }
+  if (mode === "gdpPerCapita") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "GDP per capita range.", COLOR_RAMPS.gdpPerCapita);
+  }
+  if (mode === "inflation") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Inflation rate range.", COLOR_RAMPS.inflation);
+  }
+  if (mode === "unemployment") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Unemployment rate range.", COLOR_RAMPS.unemployment);
+  }
+  if (mode === "lifeExpectancy") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Life expectancy range.", COLOR_RAMPS.lifeExpectancy);
+  }
+  if (mode === "governmentDebt") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Government gross debt (% GDP).", COLOR_RAMPS.governmentDebt);
+  }
+  if (mode === "medianAge") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Median age range.", COLOR_RAMPS.medianAge);
+  }
+  if (mode === "fertilityRate") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Births per woman range.", COLOR_RAMPS.fertilityRate);
+  }
+  if (mode === "youthShare") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Youth population share range.", COLOR_RAMPS.youthShare);
+  }
+  if (mode === "workingAgeShare") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Working-age population share range.",
+      COLOR_RAMPS.workingAgeShare,
+    );
+  }
+  if (mode === "elderlyShare") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Elderly population share range.", COLOR_RAMPS.elderlyShare);
+  }
+  if (mode === "totalDependency") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Dependency ratio range.", COLOR_RAMPS.totalDependency);
+  }
+  if (mode === "totalExports") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Total exports range.", COLOR_RAMPS.totalExports);
+  }
+  if (mode === "totalImports") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Total imports range.", COLOR_RAMPS.totalImports);
+  }
+  if (mode === "exportDiversity") {
+    return createSequentialLegend(MAP_MODE_LABEL[mode], "Distinct export-product count range.", COLOR_RAMPS.exportDiversity);
+  }
+  if (mode === "exportConcentration") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Export concentration (HHI) range.",
+      COLOR_RAMPS.exportConcentration,
+    );
+  }
+
+  return {
+    title: MAP_MODE_LABEL[mode],
+    detail: "Color scale unavailable.",
+    entries: [{ label: "No data", color: NO_DATA_COLOR }],
+  };
+}
 
 const EMPTY_POINT: DataPoint = { value: null, year: null, source: null };
 
@@ -461,13 +932,16 @@ function isDataPoint(value: unknown): value is DataPoint {
     isRecord(value) &&
     (typeof value.value === "number" || value.value === null) &&
     (typeof value.year === "number" || value.year === null) &&
-    (value.source === "World Bank WDI" ||
-      value.source === "World Bank WGI" ||
-      value.source === "IMF WEO / DataMapper" ||
-      value.source === "UN WPP 2024" ||
-      value.source === "Atlas of Economic Complexity" ||
-      value.source === "CIA World Factbook" ||
-      value.source === null)
+    (typeof value.source === "string" || value.source === null)
+  );
+}
+
+function isTextFactPoint(value: unknown): value is TextFactPoint {
+  return (
+    isRecord(value) &&
+    (typeof value.value === "string" || value.value === null) &&
+    (typeof value.year === "number" || value.year === null) &&
+    (typeof value.source === "string" || value.source === null)
   );
 }
 
@@ -498,6 +972,7 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
     !isRecord(record.governance) ||
     !isRecord(record.demographics) ||
     !isRecord(record.tradeStructure) ||
+    !isRecord(record.security) ||
     !isRecord(record.politicalSystem)
   ) {
     return false;
@@ -507,6 +982,7 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
   const governance = record.governance as Record<string, unknown>;
   const demographics = record.demographics as Record<string, unknown>;
   const tradeStructure = record.tradeStructure as Record<string, unknown>;
+  const security = record.security as Record<string, unknown>;
   const politicalSystem = record.politicalSystem as Record<string, unknown>;
 
   const economyKeys: Array<keyof EconomyData> = [
@@ -554,6 +1030,18 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
     "exportConcentrationHhi",
     "importConcentrationHhi",
     "economicComplexityIndex",
+  ];
+  const securityKeys: Array<keyof SecurityData> = [
+    "militaryExpenditureUsd",
+    "militaryExpenditurePctOfGdp",
+    "militaryExpenditurePctOfGovtExpenditure",
+    "armedForcesPersonnel",
+    "armedForcesPctOfLaborForce",
+    "armsImportsSipriTiv",
+    "armsExportsSipriTiv",
+    "militarySpendPerCapitaUsd",
+    "militarySpendPerSoldierUsd",
+    "mobilizationBasePct",
   ];
   const politicalTextKeys: Array<keyof Omit<PoliticalSystemData, "source" | "hasMonarchy" | "hasParliament" | "hasElections" | "hasUniversalSuffrage" | "isFederal" | "isRepublic" | "isOnePartyState" | "isMilitaryRegime">> = [
     "governmentType",
@@ -604,6 +1092,7 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
     governanceKeys.every((key) => isDataPoint(governance[key])) &&
     demographicsKeys.every((key) => isDataPoint(demographics[key])) &&
     tradeStructureKeys.every((key) => isDataPoint(tradeStructure[key])) &&
+    securityKeys.every((key) => isDataPoint(security[key])) &&
     Array.isArray(tradeStructure.topExports) &&
     Array.isArray(tradeStructure.topImports) &&
     (politicalSystem.source === "CIA World Factbook" || politicalSystem.source === null) &&
@@ -617,6 +1106,31 @@ function isCanonicalCountryDataFile(value: unknown): value is CanonicalCountryDa
     return false;
   }
   return Object.values(value.countriesByIso3).every((country) => isCanonicalCountryData(country));
+}
+
+function isCanonicalProvinceData(value: unknown): value is CanonicalProvinceData {
+  return (
+    isRecord(value) &&
+    typeof value.provinceId === "string" &&
+    typeof value.provinceName === "string" &&
+    typeof value.countryName === "string" &&
+    isDataPoint(value.areaKm2) &&
+    isRecord(value.settlement) &&
+    isDataPoint(value.settlement.urbanCentrePopulationEstimate) &&
+    isDataPoint(value.settlement.urbanCentrePopulationDensityPerKm2) &&
+    isDataPoint(value.settlement.urbanCentreBuiltUpAreaKm2) &&
+    isDataPoint(value.settlement.urbanCentreBuiltUpSharePct) &&
+    isDataPoint(value.settlement.urbanCentreCount) &&
+    (typeof value.settlement.largestUrbanCentreId === "string" || value.settlement.largestUrbanCentreId === null) &&
+    (typeof value.settlement.largestUrbanCentreName === "string" || value.settlement.largestUrbanCentreName === null) &&
+    isDataPoint(value.settlement.largestUrbanCentrePopulationEstimate) &&
+    isDataPoint(value.settlement.populationConcentrationHhi) &&
+    isTextFactPoint(value.settlement.settlementDataCompleteness)
+  );
+}
+
+function isCanonicalProvinceDataFile(value: unknown): value is CanonicalProvinceDataFile {
+  return isRecord(value) && Object.values(value).every((record) => isCanonicalProvinceData(record));
 }
 
 function isProvinceFeatureCollection(value: unknown): value is ProvinceFeatureCollection {
@@ -693,6 +1207,17 @@ function getProvinceIso3(properties: Record<string, unknown>): string | null {
     }
   }
   return null;
+}
+
+function getProvinceStableId(properties: Record<string, unknown>, fallbackIndex: number): string {
+  const candidates = ["adm1_code", "ADM1_CODE", "iso_3166_2", "ISO_3166_2", "code_hasc", "CODE_HASC"];
+  for (const key of candidates) {
+    const value = properties[key];
+    if (typeof value === "string" && value.trim().length > 0) {
+      return value.trim();
+    }
+  }
+  return `province-${fallbackIndex}`;
 }
 
 function hashString(input: string): number {
@@ -817,6 +1342,13 @@ function formatPercent(value: number | null): string {
   return `${value.toFixed(1)}%`;
 }
 
+function formatPeoplePerKm2(value: number | null): string {
+  if (value === null) {
+    return "No data";
+  }
+  return `${new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(value)} / km2`;
+}
+
 function formatYears(value: number | null): string {
   if (value === null) {
     return "No data";
@@ -893,6 +1425,63 @@ function formatBooleanValue(value: boolean | null): string {
   return value ? "Yes" : "No";
 }
 
+function normalizeLooseText(text: string | null | undefined): string {
+  return String(text ?? "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function includesLooseNeedle(text: string, needles: string[]): boolean {
+  return needles.some((needle) => text.includes(normalizeLooseText(needle)));
+}
+
+function inferOnePartyStateFromPoliticalSystem(politicalSystem: PoliticalSystemData | null): boolean | null {
+  if (!politicalSystem) {
+    return null;
+  }
+
+  const governmentType = politicalSystem.governmentType.value;
+  const parties = politicalSystem.politicalPartiesAndLeaders.value;
+  if (!governmentType && !parties) {
+    return null;
+  }
+
+  const combined = normalizeLooseText(`${governmentType ?? ""} ${parties ?? ""}`);
+  const partiesText = normalizeLooseText(parties ?? "");
+
+  const strongPositiveSignals = [
+    "single party",
+    "single-party",
+    "one party state",
+    "one-party state",
+    "one party rule",
+    "one-party rule",
+    "one party system",
+    "one-party system",
+    "only party",
+    "only legal party",
+    "sole legal party",
+    "the only party recognized by the government",
+    "banned other political parties",
+    "ban on political parties",
+    "communist state",
+    "party led state",
+    "party-led state",
+  ];
+
+  if (includesLooseNeedle(combined, strongPositiveSignals)) {
+    return true;
+  }
+
+  if (includesLooseNeedle(partiesText, ["communist party"])) {
+    return false;
+  }
+
+  return false;
+}
+
 function getBooleanColor(
   value: boolean | null,
   palette: { true: string; false: string; unknown: string },
@@ -921,6 +1510,12 @@ function getSourceAbbreviation(source: DataSource): string {
   if (source === "World Bank WGI") {
     return "WGI";
   }
+  if (source === "World Bank WDI / SIPRI") {
+    return "SIPRI";
+  }
+  if (source === "World Bank WDI / IISS") {
+    return "IISS";
+  }
   if (source === "IMF WEO / DataMapper") {
     return "IMF";
   }
@@ -932,6 +1527,12 @@ function getSourceAbbreviation(source: DataSource): string {
   }
   if (source === "CIA World Factbook") {
     return "CIA";
+  }
+  if (typeof source === "string" && source.startsWith("GHSL")) {
+    return "GHSL";
+  }
+  if (typeof source === "string" && source.startsWith("Derived from ")) {
+    return "DRV";
   }
   return "-";
 }
@@ -954,119 +1555,161 @@ function formatBooleanPoint(point: BooleanDataPoint): string {
   return formatBooleanValue(point.value);
 }
 
-function getActiveMapValue(mode: MapMode, data: CanonicalCountryData | null): string {
+function getActiveMapValue(
+  mode: MapMode,
+  countryData: CanonicalCountryData | null,
+  provinceData: CanonicalProvinceData | null,
+): string {
   if (mode === "countries" || mode === "provinces") {
     return "Political coloring";
   }
-  if (!data) {
+
+  if (mode === "urbanCentrePopulationEstimate") {
+    return `Urban-centre population - ${formatPoint(
+      provinceData?.settlement.urbanCentrePopulationEstimate ?? EMPTY_POINT,
+      formatInteger,
+    )}`;
+  }
+  if (mode === "urbanCentrePopulationDensity") {
+    return `Urban-centre density - ${formatPoint(
+      provinceData?.settlement.urbanCentrePopulationDensityPerKm2 ?? EMPTY_POINT,
+      formatPeoplePerKm2,
+    )}`;
+  }
+  if (mode === "urbanCentreCount") {
+    return `Urban-centre count - ${formatPoint(
+      provinceData?.settlement.urbanCentreCount ?? EMPTY_POINT,
+      formatInteger,
+    )}`;
+  }
+  if (mode === "urbanCentreBuiltUpSharePct") {
+    return `Urban-centre built-up share - ${formatPoint(
+      provinceData?.settlement.urbanCentreBuiltUpSharePct ?? EMPTY_POINT,
+      formatPercent,
+    )}`;
+  }
+
+  if (!countryData) {
     return "No data";
   }
   if (mode === "population") {
-    return `Population - ${formatInteger(data.economy.population.value)}`;
+    return `Population - ${formatInteger(countryData.economy.population.value)}`;
   }
   if (mode === "gdp") {
-    return `GDP - ${formatUsd(data.economy.gdpCurrentUsd.value)}`;
+    return `GDP - ${formatUsd(countryData.economy.gdpCurrentUsd.value)}`;
   }
   if (mode === "gdpPerCapita") {
-    return `GDP per Capita - ${formatUsdPerCapita(data.economy.gdpPerCapitaCurrentUsd.value)}`;
+    return `GDP per Capita - ${formatUsdPerCapita(countryData.economy.gdpPerCapitaCurrentUsd.value)}`;
   }
   if (mode === "gdpGrowth") {
-    return `GDP Growth - ${formatPercent(data.economy.gdpGrowthAnnualPct.value)}`;
+    return `GDP Growth - ${formatPercent(countryData.economy.gdpGrowthAnnualPct.value)}`;
   }
   if (mode === "inflation") {
-    return `Inflation - ${formatPercent(data.economy.inflationAnnualPct.value)}`;
+    return `Inflation - ${formatPercent(countryData.economy.inflationAnnualPct.value)}`;
   }
   if (mode === "unemployment") {
-    return `Unemployment - ${formatPercent(data.economy.unemploymentPct.value)}`;
+    return `Unemployment - ${formatPercent(countryData.economy.unemploymentPct.value)}`;
   }
   if (mode === "lifeExpectancy") {
-    return `Life Expectancy - ${formatYears(data.economy.lifeExpectancyYears.value)}`;
+    return `Life Expectancy - ${formatYears(countryData.economy.lifeExpectancyYears.value)}`;
   }
   if (mode === "governmentDebt") {
-    return `Government Debt - ${formatPercent(data.fiscal.governmentGrossDebtPctOfGdp.value)} of GDP`;
+    return `Government Debt - ${formatPercent(countryData.fiscal.governmentGrossDebtPctOfGdp.value)} of GDP`;
   }
   if (mode === "fiscalBalance") {
-    return `Fiscal Balance - ${formatPercent(data.fiscal.governmentNetLendingBorrowingPctOfGdp.value)} of GDP`;
+    return `Fiscal Balance - ${formatPercent(countryData.fiscal.governmentNetLendingBorrowingPctOfGdp.value)} of GDP`;
   }
   if (mode === "currentAccount") {
-    return `Current Account - ${formatPercent(data.fiscal.currentAccountBalancePctOfGdp.value)} of GDP`;
+    return `Current Account - ${formatPercent(countryData.fiscal.currentAccountBalancePctOfGdp.value)} of GDP`;
   }
   if (mode === "voiceAndAccountability") {
-    return `Voice & Accountability - ${formatGovernanceScore(data.governance.voiceAndAccountability.value)}`;
+    return `Voice & Accountability - ${formatGovernanceScore(countryData.governance.voiceAndAccountability.value)}`;
   }
   if (mode === "politicalStability") {
-    return `Political Stability - ${formatGovernanceScore(data.governance.politicalStability.value)}`;
+    return `Political Stability - ${formatGovernanceScore(countryData.governance.politicalStability.value)}`;
   }
   if (mode === "governmentEffectiveness") {
-    return `Government Effectiveness - ${formatGovernanceScore(data.governance.governmentEffectiveness.value)}`;
+    return `Government Effectiveness - ${formatGovernanceScore(countryData.governance.governmentEffectiveness.value)}`;
   }
   if (mode === "regulatoryQuality") {
-    return `Regulatory Quality - ${formatGovernanceScore(data.governance.regulatoryQuality.value)}`;
+    return `Regulatory Quality - ${formatGovernanceScore(countryData.governance.regulatoryQuality.value)}`;
   }
   if (mode === "ruleOfLaw") {
-    return `Rule of Law - ${formatGovernanceScore(data.governance.ruleOfLaw.value)}`;
+    return `Rule of Law - ${formatGovernanceScore(countryData.governance.ruleOfLaw.value)}`;
   }
   if (mode === "controlOfCorruption") {
-    return `Control of Corruption - ${formatGovernanceScore(data.governance.controlOfCorruption.value)}`;
+    return `Control of Corruption - ${formatGovernanceScore(countryData.governance.controlOfCorruption.value)}`;
   }
   if (mode === "medianAge") {
-    return `Median Age - ${formatYears(data.demographics.medianAgeYears.value)}`;
+    return `Median Age - ${formatYears(countryData.demographics.medianAgeYears.value)}`;
   }
   if (mode === "fertilityRate") {
-    return `Fertility Rate - ${formatFertilityRate(data.demographics.fertilityRateBirthsPerWoman.value)}`;
+    return `Fertility Rate - ${formatFertilityRate(countryData.demographics.fertilityRateBirthsPerWoman.value)}`;
   }
   if (mode === "populationGrowth") {
-    return `Population Growth - ${formatPercent(data.demographics.populationGrowthRatePct.value)}`;
+    return `Population Growth - ${formatPercent(countryData.demographics.populationGrowthRatePct.value)}`;
   }
   if (mode === "netMigration") {
-    return `Net Migration - ${formatInteger(data.demographics.netMigration.value)}`;
+    return `Net Migration - ${formatInteger(countryData.demographics.netMigration.value)}`;
   }
   if (mode === "youthShare") {
-    return `Youth Share - ${formatPercent(data.demographics.youthSharePct.value)}`;
+    return `Youth Share - ${formatPercent(countryData.demographics.youthSharePct.value)}`;
   }
   if (mode === "workingAgeShare") {
-    return `Working-Age Share - ${formatPercent(data.demographics.workingAgeSharePct.value)}`;
+    return `Working-Age Share - ${formatPercent(countryData.demographics.workingAgeSharePct.value)}`;
   }
   if (mode === "elderlyShare") {
-    return `Elderly Share - ${formatPercent(data.demographics.elderlySharePct.value)}`;
+    return `Elderly Share - ${formatPercent(countryData.demographics.elderlySharePct.value)}`;
   }
   if (mode === "totalDependency") {
-    return `Dependency Ratio - ${formatDependencyRatio(data.demographics.totalDependencyRatio.value)}`;
+    return `Dependency Ratio - ${formatDependencyRatio(countryData.demographics.totalDependencyRatio.value)}`;
   }
   if (mode === "totalExports") {
-    return `Exports - ${formatUsd(data.tradeStructure.totalExportsUsd.value)}`;
+    return `Exports - ${formatUsd(countryData.tradeStructure.totalExportsUsd.value)}`;
   }
   if (mode === "totalImports") {
-    return `Imports - ${formatUsd(data.tradeStructure.totalImportsUsd.value)}`;
+    return `Imports - ${formatUsd(countryData.tradeStructure.totalImportsUsd.value)}`;
   }
   if (mode === "tradeBalance") {
-    return `Trade Balance - ${formatSignedUsd(data.tradeStructure.tradeBalanceUsd.value)}`;
+    return `Trade Balance - ${formatSignedUsd(countryData.tradeStructure.tradeBalanceUsd.value)}`;
   }
   if (mode === "exportDiversity") {
-    return `Export Diversity - ${formatInteger(data.tradeStructure.exportDiversityProductCount.value)} products`;
+    return `Export Diversity - ${formatInteger(countryData.tradeStructure.exportDiversityProductCount.value)} products`;
   }
   if (mode === "exportConcentration") {
-    return `Export Concentration - ${formatHhi(data.tradeStructure.exportConcentrationHhi.value)}`;
+    return `Export Concentration - ${formatHhi(countryData.tradeStructure.exportConcentrationHhi.value)}`;
   }
   if (mode === "economicComplexity") {
-    return `Economic Complexity - ${formatGovernanceScore(data.tradeStructure.economicComplexityIndex.value)}`;
+    return `Economic Complexity - ${formatGovernanceScore(countryData.tradeStructure.economicComplexityIndex.value)}`;
+  }
+  if (mode === "militaryExpenditure") {
+    return `Military Expenditure - ${formatUsd(countryData.security.militaryExpenditureUsd.value)}`;
+  }
+  if (mode === "militaryExpenditurePctOfGdp") {
+    return `Military Spending - ${formatPercent(countryData.security.militaryExpenditurePctOfGdp.value)} of GDP`;
+  }
+  if (mode === "armedForcesPersonnel") {
+    return `Armed Forces - ${formatInteger(countryData.security.armedForcesPersonnel.value)}`;
+  }
+  if (mode === "militarySpendPerCapita") {
+    return `Military Spend per Capita - ${formatUsdPerCapita(countryData.security.militarySpendPerCapitaUsd.value)}`;
   }
   if (mode === "governmentFamily") {
-    return `Government Type - ${data.politicalSystem.governmentFamily.value ?? "Unknown"}`;
+    return `Government Type - ${countryData.politicalSystem.governmentFamily.value ?? "Unknown"}`;
   }
   if (mode === "monarchy") {
-    return `Monarchy - ${formatBooleanValue(data.politicalSystem.hasMonarchy.value)}`;
+    return `Monarchy - ${formatBooleanValue(countryData.politicalSystem.hasMonarchy.value)}`;
   }
   if (mode === "parliament") {
-    return `Parliament - ${formatBooleanValue(data.politicalSystem.hasParliament.value)}`;
+    return `Parliament - ${formatBooleanValue(countryData.politicalSystem.hasParliament.value)}`;
   }
   if (mode === "elections") {
-    return `Elections - ${formatBooleanValue(data.politicalSystem.hasElections.value)}`;
+    return `Elections - ${formatBooleanValue(countryData.politicalSystem.hasElections.value)}`;
   }
   if (mode === "federalism") {
-    return `Federalism - ${formatBooleanValue(data.politicalSystem.isFederal.value)}`;
+    return `Federalism - ${formatBooleanValue(countryData.politicalSystem.isFederal.value)}`;
   }
-  return `One-Party State - ${formatBooleanValue(data.politicalSystem.isOnePartyState.value)}`;
+  return `One-Party State - ${formatBooleanValue(inferOnePartyStateFromPoliticalSystem(countryData.politicalSystem))}`;
 }
 
 function buildGeoJsonForMode(baseGeoJson: ProvinceFeatureCollection, mode: MapMode): ProvinceFeatureCollection {
@@ -1118,6 +1761,8 @@ export function GameCanvas() {
     wppProvinceMatchRate: 0,
     atlasCountriesWithData: 0,
     atlasProvinceMatchRate: 0,
+    securityCountriesWithData: 0,
+    securityProvinceMatchRate: 0,
     factbookCountriesMatched: 0,
     politicalProvinceMatchRate: 0,
   });
@@ -1130,11 +1775,11 @@ export function GameCanvas() {
   }, [selectedProvince]);
 
   const selectedTopExports = useMemo(
-    () => (selectedProvince?.canonicalData?.tradeStructure.topExports ?? []).slice(0, 5),
+    () => (selectedProvince?.countryCanonicalData?.tradeStructure.topExports ?? []).slice(0, 5),
     [selectedProvince],
   );
   const selectedTopImports = useMemo(
-    () => (selectedProvince?.canonicalData?.tradeStructure.topImports ?? []).slice(0, 5),
+    () => (selectedProvince?.countryCanonicalData?.tradeStructure.topImports ?? []).slice(0, 5),
     [selectedProvince],
   );
 
@@ -1159,9 +1804,10 @@ export function GameCanvas() {
     map.on("load", () => {
       const loadProvinceData = async () => {
         try {
-          const [provinceResponse, canonicalResponse] = await Promise.all([
+          const [provinceResponse, canonicalResponse, canonicalProvinceResponse] = await Promise.all([
             fetch("/data/provinces.geojson"),
             fetch("/data/canonical-country-data.json").catch(() => null),
+            fetch("/data/canonical-province-data.json").catch(() => null),
           ]);
 
           if (!provinceResponse.ok) {
@@ -1183,6 +1829,18 @@ export function GameCanvas() {
             }
           } else {
             console.warn("Could not load /data/canonical-country-data.json; continuing without canonical country stats.");
+          }
+
+          let canonicalProvinceById: CanonicalProvinceDataFile = {};
+          if (canonicalProvinceResponse && canonicalProvinceResponse.ok) {
+            const canonicalProvinceJson: unknown = await canonicalProvinceResponse.json();
+            if (isCanonicalProvinceDataFile(canonicalProvinceJson)) {
+              canonicalProvinceById = canonicalProvinceJson;
+            } else {
+              console.warn("canonical-province-data.json is not in expected shape; continuing without province settlement stats.");
+            }
+          } else {
+            console.warn("Could not load /data/canonical-province-data.json; continuing without province settlement stats.");
           }
 
           const countryNameToIso3 = new Map<string, string>();
@@ -1211,7 +1869,23 @@ export function GameCanvas() {
           const factbookCountriesMatched = countryValues.filter(
             (country) => country.politicalSystem.source === "CIA World Factbook",
           ).length;
+          const securityCountriesWithData = countryValues.filter((country) =>
+            Object.values(country.security).some((point) => point.value !== null),
+          ).length;
+          const provinceValues = Object.values(canonicalProvinceById);
           const populationRange = getIndicatorRange(countryValues.map((country) => country.economy.population.value));
+          const provincePopulationEstimateRange = getIndicatorRange(
+            provinceValues.map((province) => province.settlement.urbanCentrePopulationEstimate.value),
+          );
+          const provincePopulationDensityRange = getIndicatorRange(
+            provinceValues.map((province) => province.settlement.urbanCentrePopulationDensityPerKm2.value),
+          );
+          const urbanCentreCountRange = getIndicatorRange(
+            provinceValues.map((province) => province.settlement.urbanCentreCount.value),
+          );
+          const builtUpSharePctRange = getIndicatorRange(
+            provinceValues.map((province) => province.settlement.urbanCentreBuiltUpSharePct.value),
+          );
           const gdpRange = getIndicatorRange(countryValues.map((country) => country.economy.gdpCurrentUsd.value));
           const gdpPerCapitaRange = getIndicatorRange(
             countryValues.map((country) => country.economy.gdpPerCapitaCurrentUsd.value),
@@ -1267,163 +1941,300 @@ export function GameCanvas() {
           const economicComplexityMaxAbs = getMaxAbs(
             countryValues.map((country) => country.tradeStructure.economicComplexityIndex.value),
           );
+          const militaryExpenditureRange = getIndicatorRange(
+            countryValues.map((country) => country.security.militaryExpenditureUsd.value),
+          );
+          const militaryExpenditurePctOfGdpRange = getIndicatorRange(
+            countryValues.map((country) => country.security.militaryExpenditurePctOfGdp.value),
+          );
+          const armedForcesPersonnelRange = getIndicatorRange(
+            countryValues.map((country) => country.security.armedForcesPersonnel.value),
+          );
+          const militarySpendPerCapitaRange = getIndicatorRange(
+            countryValues.map((country) => country.security.militarySpendPerCapitaUsd.value),
+          );
           let wppMatchedProvinceCount = 0;
           let atlasMatchedProvinceCount = 0;
+          let securityMatchedProvinceCount = 0;
           let politicalMatchedProvinceCount = 0;
 
           const processedFeatures = rawGeoJson.features.map((feature, index) => {
             const baseProperties = isRecord(feature.properties) ? feature.properties : {};
             const countryKey = getCountryKey(baseProperties);
             const provinceName = getProvinceName(baseProperties);
-            const existingId = feature.id;
-            const provinceId =
-              typeof existingId === "string" || typeof existingId === "number"
-                ? String(existingId)
-                : `province-${index}`;
+            const provinceId = getProvinceStableId(baseProperties, index);
 
             const provinceIso3 = getProvinceIso3(baseProperties);
             const fallbackIso3 = countryNameToIso3.get(normalizeName(countryKey)) ?? null;
             const countryIso3 = (provinceIso3 && canonicalByIso3[provinceIso3] ? provinceIso3 : null) ?? fallbackIso3;
-            const canonicalData = countryIso3 ? canonicalByIso3[countryIso3] ?? null : null;
+            const countryCanonicalData = countryIso3 ? canonicalByIso3[countryIso3] ?? null : null;
+            const provinceCanonicalData = canonicalProvinceById[provinceId] ?? null;
 
-            if (canonicalData) {
+            if (countryCanonicalData) {
               matchedProvinceCount += 1;
             }
-            if (canonicalData && Object.values(canonicalData.demographics).some((point) => point.value !== null)) {
+            if (
+              countryCanonicalData &&
+              Object.values(countryCanonicalData.demographics).some((point) => point.value !== null)
+            ) {
               wppMatchedProvinceCount += 1;
             }
             if (
-              canonicalData &&
+              countryCanonicalData &&
               [
-                canonicalData.tradeStructure.totalExportsUsd,
-                canonicalData.tradeStructure.totalImportsUsd,
-                canonicalData.tradeStructure.tradeBalanceUsd,
-                canonicalData.tradeStructure.exportDiversityProductCount,
-                canonicalData.tradeStructure.importDiversityProductCount,
-                canonicalData.tradeStructure.exportConcentrationHhi,
-                canonicalData.tradeStructure.importConcentrationHhi,
-                canonicalData.tradeStructure.economicComplexityIndex,
+                countryCanonicalData.tradeStructure.totalExportsUsd,
+                countryCanonicalData.tradeStructure.totalImportsUsd,
+                countryCanonicalData.tradeStructure.tradeBalanceUsd,
+                countryCanonicalData.tradeStructure.exportDiversityProductCount,
+                countryCanonicalData.tradeStructure.importDiversityProductCount,
+                countryCanonicalData.tradeStructure.exportConcentrationHhi,
+                countryCanonicalData.tradeStructure.importConcentrationHhi,
+                countryCanonicalData.tradeStructure.economicComplexityIndex,
               ].some((point) => point.value !== null)
             ) {
               atlasMatchedProvinceCount += 1;
             }
-            if (canonicalData && canonicalData.politicalSystem.source === "CIA World Factbook") {
+            if (
+              countryCanonicalData &&
+              Object.values(countryCanonicalData.security).some((point) => point.value !== null)
+            ) {
+              securityMatchedProvinceCount += 1;
+            }
+            if (countryCanonicalData && countryCanonicalData.politicalSystem.source === "CIA World Factbook") {
               politicalMatchedProvinceCount += 1;
             }
 
             const populationT =
-              canonicalData && populationRange
-                ? normalizeValue(canonicalData.economy.population.value, populationRange.min, populationRange.max)
+              countryCanonicalData && populationRange
+                ? normalizeValue(
+                    countryCanonicalData.economy.population.value,
+                    populationRange.min,
+                    populationRange.max,
+                  )
                 : null;
             const gdpT =
-              canonicalData && gdpRange
-                ? normalizeValue(canonicalData.economy.gdpCurrentUsd.value, gdpRange.min, gdpRange.max)
+              countryCanonicalData && gdpRange
+                ? normalizeValue(countryCanonicalData.economy.gdpCurrentUsd.value, gdpRange.min, gdpRange.max)
                 : null;
             const gdpPerCapitaT =
-              canonicalData && gdpPerCapitaRange
+              countryCanonicalData && gdpPerCapitaRange
                 ? normalizeValue(
-                    canonicalData.economy.gdpPerCapitaCurrentUsd.value,
+                    countryCanonicalData.economy.gdpPerCapitaCurrentUsd.value,
                     gdpPerCapitaRange.min,
                     gdpPerCapitaRange.max,
                   )
                 : null;
             const inflationT =
-              canonicalData && inflationRange
-                ? normalizeValue(canonicalData.economy.inflationAnnualPct.value, inflationRange.min, inflationRange.max)
+              countryCanonicalData && inflationRange
+                ? normalizeValue(
+                    countryCanonicalData.economy.inflationAnnualPct.value,
+                    inflationRange.min,
+                    inflationRange.max,
+                  )
                 : null;
             const unemploymentT =
-              canonicalData && unemploymentRange
-                ? normalizeValue(canonicalData.economy.unemploymentPct.value, unemploymentRange.min, unemploymentRange.max)
+              countryCanonicalData && unemploymentRange
+                ? normalizeValue(
+                    countryCanonicalData.economy.unemploymentPct.value,
+                    unemploymentRange.min,
+                    unemploymentRange.max,
+                  )
                 : null;
             const lifeExpectancyT =
-              canonicalData && lifeExpectancyRange
+              countryCanonicalData && lifeExpectancyRange
                 ? normalizeValue(
-                    canonicalData.economy.lifeExpectancyYears.value,
+                    countryCanonicalData.economy.lifeExpectancyYears.value,
                     lifeExpectancyRange.min,
                     lifeExpectancyRange.max,
                   )
                 : null;
             const medianAgeT =
-              canonicalData && medianAgeRange
-                ? normalizeValue(canonicalData.demographics.medianAgeYears.value, medianAgeRange.min, medianAgeRange.max)
+              countryCanonicalData && medianAgeRange
+                ? normalizeValue(
+                    countryCanonicalData.demographics.medianAgeYears.value,
+                    medianAgeRange.min,
+                    medianAgeRange.max,
+                  )
                 : null;
             const fertilityRateT =
-              canonicalData && fertilityRateRange
+              countryCanonicalData && fertilityRateRange
                 ? normalizeValue(
-                    canonicalData.demographics.fertilityRateBirthsPerWoman.value,
+                    countryCanonicalData.demographics.fertilityRateBirthsPerWoman.value,
                     fertilityRateRange.min,
                     fertilityRateRange.max,
                   )
                 : null;
             const youthShareT =
-              canonicalData && youthShareRange
-                ? normalizeValue(canonicalData.demographics.youthSharePct.value, youthShareRange.min, youthShareRange.max)
+              countryCanonicalData && youthShareRange
+                ? normalizeValue(
+                    countryCanonicalData.demographics.youthSharePct.value,
+                    youthShareRange.min,
+                    youthShareRange.max,
+                  )
                 : null;
             const workingAgeShareT =
-              canonicalData && workingAgeShareRange
+              countryCanonicalData && workingAgeShareRange
                 ? normalizeValue(
-                    canonicalData.demographics.workingAgeSharePct.value,
+                    countryCanonicalData.demographics.workingAgeSharePct.value,
                     workingAgeShareRange.min,
                     workingAgeShareRange.max,
                   )
                 : null;
             const elderlyShareT =
-              canonicalData && elderlyShareRange
-                ? normalizeValue(canonicalData.demographics.elderlySharePct.value, elderlyShareRange.min, elderlyShareRange.max)
+              countryCanonicalData && elderlyShareRange
+                ? normalizeValue(
+                    countryCanonicalData.demographics.elderlySharePct.value,
+                    elderlyShareRange.min,
+                    elderlyShareRange.max,
+                  )
                 : null;
             const totalDependencyT =
-              canonicalData && totalDependencyRange
+              countryCanonicalData && totalDependencyRange
                 ? normalizeValue(
-                    canonicalData.demographics.totalDependencyRatio.value,
+                    countryCanonicalData.demographics.totalDependencyRatio.value,
                     totalDependencyRange.min,
                     totalDependencyRange.max,
                   )
                 : null;
             const totalExportsT =
-              canonicalData && totalExportsRange
+              countryCanonicalData && totalExportsRange
                 ? normalizeValue(
-                    canonicalData.tradeStructure.totalExportsUsd.value,
+                    countryCanonicalData.tradeStructure.totalExportsUsd.value,
                     totalExportsRange.min,
                     totalExportsRange.max,
                   )
                 : null;
             const totalImportsT =
-              canonicalData && totalImportsRange
+              countryCanonicalData && totalImportsRange
                 ? normalizeValue(
-                    canonicalData.tradeStructure.totalImportsUsd.value,
+                    countryCanonicalData.tradeStructure.totalImportsUsd.value,
                     totalImportsRange.min,
                     totalImportsRange.max,
                   )
                 : null;
             const exportDiversityT =
-              canonicalData && exportDiversityRange
+              countryCanonicalData && exportDiversityRange
                 ? normalizeValue(
-                    canonicalData.tradeStructure.exportDiversityProductCount.value,
+                    countryCanonicalData.tradeStructure.exportDiversityProductCount.value,
                     exportDiversityRange.min,
                     exportDiversityRange.max,
                   )
                 : null;
             const exportConcentrationT =
-              canonicalData && exportConcentrationRange
+              countryCanonicalData && exportConcentrationRange
                 ? normalizeValue(
-                    canonicalData.tradeStructure.exportConcentrationHhi.value,
+                    countryCanonicalData.tradeStructure.exportConcentrationHhi.value,
                     exportConcentrationRange.min,
                     exportConcentrationRange.max,
+                  )
+                : null;
+            const militaryExpenditureT =
+              countryCanonicalData && militaryExpenditureRange
+                ? normalizeValue(
+                    countryCanonicalData.security.militaryExpenditureUsd.value,
+                    militaryExpenditureRange.min,
+                    militaryExpenditureRange.max,
+                  )
+                : null;
+            const militaryExpenditurePctOfGdpT =
+              countryCanonicalData && militaryExpenditurePctOfGdpRange
+                ? normalizeValue(
+                    countryCanonicalData.security.militaryExpenditurePctOfGdp.value,
+                    militaryExpenditurePctOfGdpRange.min,
+                    militaryExpenditurePctOfGdpRange.max,
+                  )
+                : null;
+            const armedForcesPersonnelT =
+              countryCanonicalData && armedForcesPersonnelRange
+                ? normalizeValue(
+                    countryCanonicalData.security.armedForcesPersonnel.value,
+                    armedForcesPersonnelRange.min,
+                    armedForcesPersonnelRange.max,
+                  )
+                : null;
+            const militarySpendPerCapitaT =
+              countryCanonicalData && militarySpendPerCapitaRange
+                ? normalizeValue(
+                    countryCanonicalData.security.militarySpendPerCapitaUsd.value,
+                    militarySpendPerCapitaRange.min,
+                    militarySpendPerCapitaRange.max,
+                  )
+                : null;
+            const provincePopulationEstimateT =
+              provinceCanonicalData && provincePopulationEstimateRange
+                ? normalizeValue(
+                    provinceCanonicalData.settlement.urbanCentrePopulationEstimate.value,
+                    provincePopulationEstimateRange.min,
+                    provincePopulationEstimateRange.max,
+                  )
+                : null;
+            const provincePopulationDensityT =
+              provinceCanonicalData && provincePopulationDensityRange
+                ? normalizeValue(
+                    provinceCanonicalData.settlement.urbanCentrePopulationDensityPerKm2.value,
+                    provincePopulationDensityRange.min,
+                    provincePopulationDensityRange.max,
+                  )
+                : null;
+            const urbanCentreCountT =
+              provinceCanonicalData && urbanCentreCountRange
+                ? normalizeValue(
+                    provinceCanonicalData.settlement.urbanCentreCount.value,
+                    urbanCentreCountRange.min,
+                    urbanCentreCountRange.max,
+                  )
+                : null;
+            const builtUpSharePctT =
+              provinceCanonicalData && builtUpSharePctRange
+                ? normalizeValue(
+                    provinceCanonicalData.settlement.urbanCentreBuiltUpSharePct.value,
+                    builtUpSharePctRange.min,
+                    builtUpSharePctRange.max,
                   )
                 : null;
 
             return {
               ...feature,
+              id: provinceId,
               properties: {
                 ...baseProperties,
                 __provinceId: provinceId,
                 __provinceName: provinceName,
                 __countryKey: countryKey,
-                __countryName: canonicalData?.name ?? countryKey,
+                __countryName: countryCanonicalData?.name ?? countryKey,
                 __countryDataIso3: countryIso3,
-                __hasCountryData: Boolean(canonicalData),
+                __hasCountryData: Boolean(countryCanonicalData),
+                __hasProvinceData: Boolean(provinceCanonicalData),
                 __countryFillColor: getCountryColor(countryKey),
                 __provinceFillColor: getProvinceColor(provinceId),
+                __urbanCentrePopulationEstimateColor:
+                  provincePopulationEstimateT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.urbanCentrePopulationEstimate.low,
+                        COLOR_RAMPS.urbanCentrePopulationEstimate.high,
+                        provincePopulationEstimateT,
+                      ),
+                __urbanCentrePopulationDensityColor:
+                  provincePopulationDensityT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.urbanCentrePopulationDensity.low,
+                        COLOR_RAMPS.urbanCentrePopulationDensity.high,
+                        provincePopulationDensityT,
+                      ),
+                __urbanCentreCountColor:
+                  urbanCentreCountT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(COLOR_RAMPS.urbanCentreCount.low, COLOR_RAMPS.urbanCentreCount.high, urbanCentreCountT),
+                __urbanCentreBuiltUpSharePctColor:
+                  builtUpSharePctT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.urbanCentreBuiltUpSharePct.low,
+                        COLOR_RAMPS.urbanCentreBuiltUpSharePct.high,
+                        builtUpSharePctT,
+                      ),
                 __populationColor:
                   populationT === null
                     ? NO_DATA_COLOR
@@ -1435,7 +2246,7 @@ export function GameCanvas() {
                     ? NO_DATA_COLOR
                     : interpolateColor(COLOR_RAMPS.gdpPerCapita.low, COLOR_RAMPS.gdpPerCapita.high, gdpPerCapitaT),
                 __gdpGrowthColor: interpolateDivergingColor(
-                  canonicalData?.economy.gdpGrowthAnnualPct.value ?? null,
+                  countryCanonicalData?.economy.gdpGrowthAnnualPct.value ?? null,
                   gdpGrowthMaxAbs,
                   COLOR_RAMPS.gdpGrowth,
                 ),
@@ -1456,42 +2267,42 @@ export function GameCanvas() {
                         lifeExpectancyT,
                       ),
                 __governmentDebtColor:
-                  canonicalData && debtRange
+                  countryCanonicalData && debtRange
                     ? interpolateColor(
                         COLOR_RAMPS.governmentDebt.low,
                         COLOR_RAMPS.governmentDebt.high,
                         normalizeValue(
-                          canonicalData.fiscal.governmentGrossDebtPctOfGdp.value,
+                          countryCanonicalData.fiscal.governmentGrossDebtPctOfGdp.value,
                           debtRange.min,
                           debtRange.max,
                         ) ?? 0,
                       )
                     : NO_DATA_COLOR,
                 __fiscalBalanceColor: interpolateDivergingColor(
-                  canonicalData?.fiscal.governmentNetLendingBorrowingPctOfGdp.value ?? null,
+                  countryCanonicalData?.fiscal.governmentNetLendingBorrowingPctOfGdp.value ?? null,
                   fiscalBalanceMaxAbs,
                   COLOR_RAMPS.fiscalBalance,
                 ),
                 __currentAccountColor: interpolateDivergingColor(
-                  canonicalData?.fiscal.currentAccountBalancePctOfGdp.value ?? null,
+                  countryCanonicalData?.fiscal.currentAccountBalancePctOfGdp.value ?? null,
                   currentAccountMaxAbs,
                   COLOR_RAMPS.currentAccount,
                 ),
                 __voiceAndAccountabilityColor: interpolateGovernanceColor(
-                  canonicalData?.governance.voiceAndAccountability.value ?? null,
+                  countryCanonicalData?.governance.voiceAndAccountability.value ?? null,
                 ),
                 __politicalStabilityColor: interpolateGovernanceColor(
-                  canonicalData?.governance.politicalStability.value ?? null,
+                  countryCanonicalData?.governance.politicalStability.value ?? null,
                 ),
                 __governmentEffectivenessColor: interpolateGovernanceColor(
-                  canonicalData?.governance.governmentEffectiveness.value ?? null,
+                  countryCanonicalData?.governance.governmentEffectiveness.value ?? null,
                 ),
                 __regulatoryQualityColor: interpolateGovernanceColor(
-                  canonicalData?.governance.regulatoryQuality.value ?? null,
+                  countryCanonicalData?.governance.regulatoryQuality.value ?? null,
                 ),
-                __ruleOfLawColor: interpolateGovernanceColor(canonicalData?.governance.ruleOfLaw.value ?? null),
+                __ruleOfLawColor: interpolateGovernanceColor(countryCanonicalData?.governance.ruleOfLaw.value ?? null),
                 __controlOfCorruptionColor: interpolateGovernanceColor(
-                  canonicalData?.governance.controlOfCorruption.value ?? null,
+                  countryCanonicalData?.governance.controlOfCorruption.value ?? null,
                 ),
                 __medianAgeColor:
                   medianAgeT === null
@@ -1502,12 +2313,12 @@ export function GameCanvas() {
                     ? NO_DATA_COLOR
                     : interpolateColor(COLOR_RAMPS.fertilityRate.low, COLOR_RAMPS.fertilityRate.high, fertilityRateT),
                 __populationGrowthColor: interpolateDivergingColor(
-                  canonicalData?.demographics.populationGrowthRatePct.value ?? null,
+                  countryCanonicalData?.demographics.populationGrowthRatePct.value ?? null,
                   populationGrowthMaxAbs,
                   COLOR_RAMPS.populationGrowth,
                 ),
                 __netMigrationColor: interpolateDivergingColor(
-                  canonicalData?.demographics.netMigration.value ?? null,
+                  countryCanonicalData?.demographics.netMigration.value ?? null,
                   netMigrationMaxAbs,
                   COLOR_RAMPS.netMigration,
                 ),
@@ -1544,7 +2355,7 @@ export function GameCanvas() {
                     ? NO_DATA_COLOR
                     : interpolateColor(COLOR_RAMPS.totalImports.low, COLOR_RAMPS.totalImports.high, totalImportsT),
                 __tradeBalanceColor: interpolateDivergingColor(
-                  canonicalData?.tradeStructure.tradeBalanceUsd.value ?? null,
+                  countryCanonicalData?.tradeStructure.tradeBalanceUsd.value ?? null,
                   tradeBalanceMaxAbs,
                   COLOR_RAMPS.tradeBalance,
                 ),
@@ -1565,31 +2376,63 @@ export function GameCanvas() {
                         exportConcentrationT,
                       ),
                 __economicComplexityColor: interpolateDivergingColor(
-                  canonicalData?.tradeStructure.economicComplexityIndex.value ?? null,
+                  countryCanonicalData?.tradeStructure.economicComplexityIndex.value ?? null,
                   economicComplexityMaxAbs,
                   COLOR_RAMPS.economicComplexity,
                 ),
+                __militaryExpenditureColor:
+                  militaryExpenditureT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.militaryExpenditure.low,
+                        COLOR_RAMPS.militaryExpenditure.high,
+                        militaryExpenditureT,
+                      ),
+                __militaryExpenditurePctOfGdpColor:
+                  militaryExpenditurePctOfGdpT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.militaryExpenditurePctOfGdp.low,
+                        COLOR_RAMPS.militaryExpenditurePctOfGdp.high,
+                        militaryExpenditurePctOfGdpT,
+                      ),
+                __armedForcesPersonnelColor:
+                  armedForcesPersonnelT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.armedForcesPersonnel.low,
+                        COLOR_RAMPS.armedForcesPersonnel.high,
+                        armedForcesPersonnelT,
+                      ),
+                __militarySpendPerCapitaColor:
+                  militarySpendPerCapitaT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.militarySpendPerCapita.low,
+                        COLOR_RAMPS.militarySpendPerCapita.high,
+                        militarySpendPerCapitaT,
+                      ),
                 __governmentFamilyColor: getGovernmentFamilyColor(
-                  canonicalData?.politicalSystem.governmentFamily.value ?? null,
+                  countryCanonicalData?.politicalSystem.governmentFamily.value ?? null,
                 ),
                 __monarchyColor: getBooleanColor(
-                  canonicalData?.politicalSystem.hasMonarchy.value ?? null,
+                  countryCanonicalData?.politicalSystem.hasMonarchy.value ?? null,
                   POLITICAL_SYSTEM_COLORS.monarchyBoolean,
                 ),
                 __parliamentColor: getBooleanColor(
-                  canonicalData?.politicalSystem.hasParliament.value ?? null,
+                  countryCanonicalData?.politicalSystem.hasParliament.value ?? null,
                   POLITICAL_SYSTEM_COLORS.boolean,
                 ),
                 __electionsColor: getBooleanColor(
-                  canonicalData?.politicalSystem.hasElections.value ?? null,
+                  countryCanonicalData?.politicalSystem.hasElections.value ?? null,
                   POLITICAL_SYSTEM_COLORS.warningBoolean,
                 ),
                 __federalismColor: getBooleanColor(
-                  canonicalData?.politicalSystem.isFederal.value ?? null,
+                  countryCanonicalData?.politicalSystem.isFederal.value ?? null,
                   POLITICAL_SYSTEM_COLORS.federalismBoolean,
                 ),
                 __onePartyStateColor: getBooleanColor(
-                  canonicalData?.politicalSystem.isOnePartyState.value ?? null,
+                  inferOnePartyStateFromPoliticalSystem(countryCanonicalData?.politicalSystem ?? null),
                   POLITICAL_SYSTEM_COLORS.warningBoolean,
                 ),
               },
@@ -1616,6 +2459,8 @@ export function GameCanvas() {
             processedFeatures.length > 0 ? (wppMatchedProvinceCount / processedFeatures.length) * 100 : 0;
           const atlasProvinceMatchRate =
             processedFeatures.length > 0 ? (atlasMatchedProvinceCount / processedFeatures.length) * 100 : 0;
+          const securityProvinceMatchRate =
+            processedFeatures.length > 0 ? (securityMatchedProvinceCount / processedFeatures.length) * 100 : 0;
           const politicalProvinceMatchRate =
             processedFeatures.length > 0 ? (politicalMatchedProvinceCount / processedFeatures.length) * 100 : 0;
 
@@ -1627,6 +2472,8 @@ export function GameCanvas() {
               wppProvinceMatchRate,
               atlasCountriesWithData,
               atlasProvinceMatchRate,
+              securityCountriesWithData,
+              securityProvinceMatchRate,
               factbookCountriesMatched,
               politicalProvinceMatchRate,
             });
@@ -1785,6 +2632,8 @@ export function GameCanvas() {
             const countryDataIso3 =
               typeof properties.__countryDataIso3 === "string" ? properties.__countryDataIso3 : null;
             const matchedCountryData = countryDataIso3 ? canonicalByIso3[countryDataIso3] ?? null : null;
+            const matchedProvinceData =
+              typeof properties.__provinceId === "string" ? canonicalProvinceById[properties.__provinceId] ?? null : null;
             const resolvedIso3 = countryDataIso3 ?? getProvinceIso3(properties) ?? null;
 
             clearSelectedFeatureState();
@@ -1798,6 +2647,8 @@ export function GameCanvas() {
               countryKey,
               iso3: resolvedIso3,
               canonicalData: matchedCountryData,
+              countryCanonicalData: matchedCountryData,
+              provinceCanonicalData: matchedProvinceData,
               rawProperties: properties,
             });
           };
@@ -1894,22 +2745,53 @@ export function GameCanvas() {
     }
     return { title: MAP_MODE_LABEL[mapMode], detail: "Dark = lower | Bright = higher | Gray = no data" };
   }, [mapMode]);
+  const activeColorLegend = useMemo(() => getMapColorLegend(mapMode), [mapMode]);
 
   return (
     <main className="game-canvas" aria-label="Province-only map canvas">
-      <div ref={containerRef} className="game-canvas__map" />
+      <div className="game-canvas__map-stage">
+        <div ref={containerRef} className="game-canvas__map" />
 
-      <div className="game-canvas__overlay" aria-label="Map debug overlay">
-        <div>Milestone 13: CIA Factbook political systems</div>
-        <div>Mode: {MAP_MODE_LABEL[mapMode]}</div>
-        <div>Countries with canonical data: {overlaySummary.countriesWithData}</div>
-        <div>Province stat match rate: {overlaySummary.provinceMatchRate.toFixed(1)}%</div>
-        <div>WPP countries with demographics: {overlaySummary.wppCountriesWithData}</div>
-        <div>WPP province match rate: {overlaySummary.wppProvinceMatchRate.toFixed(1)}%</div>
-        <div>Atlas countries with trade profiles: {overlaySummary.atlasCountriesWithData}</div>
-        <div>Atlas province match rate: {overlaySummary.atlasProvinceMatchRate.toFixed(1)}%</div>
-        <div>Factbook countries matched: {overlaySummary.factbookCountriesMatched}</div>
-        <div>Political province match rate: {overlaySummary.politicalProvinceMatchRate.toFixed(1)}%</div>
+        <div className="game-canvas__overlay" aria-label="Map debug overlay">
+          <div>Milestone 14: Security dataset overlay</div>
+          <div>Mode: {MAP_MODE_LABEL[mapMode]}</div>
+          <div>Countries with canonical data: {overlaySummary.countriesWithData}</div>
+          <div>Province stat match rate: {overlaySummary.provinceMatchRate.toFixed(1)}%</div>
+          <div>WPP countries with demographics: {overlaySummary.wppCountriesWithData}</div>
+          <div>WPP province match rate: {overlaySummary.wppProvinceMatchRate.toFixed(1)}%</div>
+          <div>Atlas countries with trade profiles: {overlaySummary.atlasCountriesWithData}</div>
+          <div>Atlas province match rate: {overlaySummary.atlasProvinceMatchRate.toFixed(1)}%</div>
+          <div>Security countries with data: {overlaySummary.securityCountriesWithData}</div>
+          <div>Security province match rate: {overlaySummary.securityProvinceMatchRate.toFixed(1)}%</div>
+          <div>Factbook countries matched: {overlaySummary.factbookCountriesMatched}</div>
+          <div>Political province match rate: {overlaySummary.politicalProvinceMatchRate.toFixed(1)}%</div>
+        </div>
+
+        <section className="game-canvas__color-key" aria-label="Map color key">
+          <h3 className="game-canvas__color-key-title">{activeColorLegend.title}</h3>
+          <p className="game-canvas__color-key-detail">{activeColorLegend.detail}</p>
+          {activeColorLegend.gradientStops ? (
+            <div className="game-canvas__color-key-gradient-wrap">
+              <div
+                className="game-canvas__color-key-gradient"
+                style={{ background: `linear-gradient(90deg, ${activeColorLegend.gradientStops.join(", ")})` }}
+              />
+              <div className="game-canvas__color-key-gradient-labels">
+                <span>{activeColorLegend.gradientLabels?.left}</span>
+                {activeColorLegend.gradientLabels?.center ? <span>{activeColorLegend.gradientLabels.center}</span> : null}
+                <span>{activeColorLegend.gradientLabels?.right}</span>
+              </div>
+            </div>
+          ) : null}
+          <div className="game-canvas__color-key-list">
+            {activeColorLegend.entries.map((entry) => (
+              <div key={`${activeColorLegend.title}-${entry.label}`} className="game-canvas__color-key-item">
+                <span className="game-canvas__color-key-swatch" style={{ backgroundColor: entry.color }} />
+                <span>{entry.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
 
       <aside className="game-canvas__panel" aria-label="Province information panel">
@@ -1922,7 +2804,19 @@ export function GameCanvas() {
               <div className="info-panel__row"><span>ISO3:</span><strong>{selectedProvince.iso3 ?? "unknown"}</strong></div>
               <div className="info-panel__row"><span>Province ID:</span><strong>{selectedProvince.id}</strong></div>
               <div className="info-panel__row"><span>Country Key:</span><strong>{selectedProvince.countryKey}</strong></div>
-              <div className="info-panel__row"><span>Active map value:</span><strong>{getActiveMapValue(mapMode, selectedProvince.canonicalData)}</strong></div>
+              <div className="info-panel__row"><span>Active map value:</span><strong>{getActiveMapValue(mapMode, selectedProvince.countryCanonicalData, selectedProvince.provinceCanonicalData)}</strong></div>
+
+              <h3 className="info-panel__subtitle">Settlement - GHSL</h3>
+              <div className="info-panel__row"><span>Area:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.areaKm2 ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Urban-centre population:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentrePopulationEstimate ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Urban-centre density:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentrePopulationDensityPerKm2 ?? EMPTY_POINT, formatPeoplePerKm2)}</strong></div>
+              <div className="info-panel__row"><span>Urban-centre built-up area:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentreBuiltUpAreaKm2 ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Urban-centre built-up share:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentreBuiltUpSharePct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Urban-centre count:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentreCount ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Largest urban centre:</span><strong>{selectedProvince.provinceCanonicalData?.settlement.largestUrbanCentreName ?? "No data"}</strong></div>
+              <div className="info-panel__row"><span>Largest urban-centre population:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.largestUrbanCentrePopulationEstimate ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Population concentration:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.populationConcentrationHhi ?? EMPTY_POINT, formatHhi)}</strong></div>
+              <div className="info-panel__row"><span>Settlement completeness:</span><strong>{formatTextPoint(selectedProvince.provinceCanonicalData?.settlement.settlementDataCompleteness ?? { value: null, year: null, source: null })}</strong></div>
 
               <h3 className="info-panel__subtitle">Economy</h3>
               <div className="info-panel__row"><span>Population:</span><strong>{formatPoint(selectedProvince.canonicalData?.economy.population ?? EMPTY_POINT, formatInteger)}</strong></div>
@@ -1973,7 +2867,7 @@ export function GameCanvas() {
               <div className="info-panel__row"><span>Universal Suffrage:</span><strong>{formatBooleanPoint(selectedProvince.canonicalData?.politicalSystem.hasUniversalSuffrage ?? { value: null, source: null })}</strong></div>
               <div className="info-panel__row"><span>Federal:</span><strong>{formatBooleanPoint(selectedProvince.canonicalData?.politicalSystem.isFederal ?? { value: null, source: null })}</strong></div>
               <div className="info-panel__row"><span>Republic:</span><strong>{formatBooleanPoint(selectedProvince.canonicalData?.politicalSystem.isRepublic ?? { value: null, source: null })}</strong></div>
-              <div className="info-panel__row"><span>One-Party State:</span><strong>{formatBooleanPoint(selectedProvince.canonicalData?.politicalSystem.isOnePartyState ?? { value: null, source: null })}</strong></div>
+              <div className="info-panel__row"><span>One-Party State:</span><strong>{formatBooleanValue(inferOnePartyStateFromPoliticalSystem(selectedProvince.canonicalData?.politicalSystem ?? null))}</strong></div>
               <div className="info-panel__row"><span>Military Regime:</span><strong>{formatBooleanPoint(selectedProvince.canonicalData?.politicalSystem.isMilitaryRegime ?? { value: null, source: null })}</strong></div>
               <div className="info-panel__row"><span>Legal System:</span><strong>{formatTextPoint(selectedProvince.canonicalData?.politicalSystem.legalSystem ?? { value: null, source: null })}</strong></div>
               <div className="info-panel__row"><span>Constitution:</span><strong>{formatTextPoint(selectedProvince.canonicalData?.politicalSystem.constitution ?? { value: null, source: null })}</strong></div>
@@ -2016,6 +2910,18 @@ export function GameCanvas() {
               <div className="info-panel__row"><span>Export Concentration:</span><strong>{formatPoint(selectedProvince.canonicalData?.tradeStructure.exportConcentrationHhi ?? EMPTY_POINT, formatHhi)}</strong></div>
               <div className="info-panel__row"><span>Import Concentration:</span><strong>{formatPoint(selectedProvince.canonicalData?.tradeStructure.importConcentrationHhi ?? EMPTY_POINT, formatHhi)}</strong></div>
               <div className="info-panel__row"><span>Economic Complexity:</span><strong>{formatPoint(selectedProvince.canonicalData?.tradeStructure.economicComplexityIndex ?? EMPTY_POINT, formatGovernanceScore)}</strong></div>
+
+              <h3 className="info-panel__subtitle">Security - World Bank WDI</h3>
+              <div className="info-panel__row"><span>Military Expenditure:</span><strong>{formatPoint(selectedProvince.canonicalData?.security.militaryExpenditureUsd ?? EMPTY_POINT, formatUsd)}</strong></div>
+              <div className="info-panel__row"><span>Military Spending (% GDP):</span><strong>{formatPoint(selectedProvince.canonicalData?.security.militaryExpenditurePctOfGdp ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Military Spending (% Govt):</span><strong>{formatPoint(selectedProvince.canonicalData?.security.militaryExpenditurePctOfGovtExpenditure ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Armed Forces Personnel:</span><strong>{formatPoint(selectedProvince.canonicalData?.security.armedForcesPersonnel ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Armed Forces (% Labor Force):</span><strong>{formatPoint(selectedProvince.canonicalData?.security.armedForcesPctOfLaborForce ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Arms Imports (SIPRI TIV):</span><strong>{formatPoint(selectedProvince.canonicalData?.security.armsImportsSipriTiv ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Arms Exports (SIPRI TIV):</span><strong>{formatPoint(selectedProvince.canonicalData?.security.armsExportsSipriTiv ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Military Spend per Capita:</span><strong>{formatPoint(selectedProvince.canonicalData?.security.militarySpendPerCapitaUsd ?? EMPTY_POINT, formatUsdPerCapita)}</strong></div>
+              <div className="info-panel__row"><span>Military Spend per Soldier:</span><strong>{formatPoint(selectedProvince.canonicalData?.security.militarySpendPerSoldierUsd ?? EMPTY_POINT, formatUsdPerCapita)}</strong></div>
+              <div className="info-panel__row"><span>Mobilization Base:</span><strong>{formatPoint(selectedProvince.canonicalData?.security.mobilizationBasePct ?? EMPTY_POINT, formatPercent)}</strong></div>
 
               <details className="info-panel__details">
                 <summary>Top Exports</summary>
@@ -2079,6 +2985,24 @@ export function GameCanvas() {
           <p className="map-mode__section-title">Political</p>
           <div className="map-mode__buttons">
             {MAP_MODES.filter((mode) => mode.key === "countries" || mode.key === "provinces").map((mode) => (
+              <button
+                key={mode.key}
+                type="button"
+                className={`map-mode__button${mapMode === mode.key ? " map-mode__button--active" : ""}`}
+                onClick={() => setMapMode(mode.key)}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+
+          <p className="map-mode__section-title">Settlement</p>
+          <div className="map-mode__buttons">
+            {MAP_MODES.filter((mode) =>
+              ["urbanCentrePopulationEstimate", "urbanCentrePopulationDensity", "urbanCentreCount", "urbanCentreBuiltUpSharePct"].includes(
+                mode.key,
+              ),
+            ).map((mode) => (
               <button
                 key={mode.key}
                 type="button"
@@ -2186,6 +3110,27 @@ export function GameCanvas() {
                 "exportDiversity",
                 "exportConcentration",
                 "economicComplexity",
+              ].includes(mode.key),
+            ).map((mode) => (
+              <button
+                key={mode.key}
+                type="button"
+                className={`map-mode__button${mapMode === mode.key ? " map-mode__button--active" : ""}`}
+                onClick={() => setMapMode(mode.key)}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+
+          <p className="map-mode__section-title">Security</p>
+          <div className="map-mode__buttons">
+            {MAP_MODES.filter((mode) =>
+              [
+                "militaryExpenditure",
+                "militaryExpenditurePctOfGdp",
+                "armedForcesPersonnel",
+                "militarySpendPerCapita",
               ].includes(mode.key),
             ).map((mode) => (
               <button

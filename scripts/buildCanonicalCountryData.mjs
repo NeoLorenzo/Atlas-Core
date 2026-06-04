@@ -12,6 +12,9 @@ const IMF_PATH = resolve(__dirname, "..", "public", "data", "imf-weo-stats.json"
 const WPP_PATH = resolve(__dirname, "..", "public", "data", "un-wpp-demographics.json");
 const ATLAS_PATH = resolve(__dirname, "..", "public", "data", "atlas-trade-profiles.json");
 const FACTBOOK_PATH = resolve(__dirname, "..", "public", "data", "factbook-political-profiles.json");
+const SECURITY_PATH = resolve(__dirname, "..", "public", "data", "security-stats.json");
+const URBAN_CENTRES_PATH = resolve(__dirname, "..", "public", "data", "urban-centres.json");
+const CANONICAL_PROVINCE_PATH = resolve(__dirname, "..", "public", "data", "canonical-province-data.json");
 
 const OUTPUT_PATH = resolve(__dirname, "..", "public", "data", "canonical-country-data.json");
 const COVERAGE_PATH = resolve(__dirname, "..", "public", "data", "canonical-country-data-coverage.json");
@@ -58,6 +61,19 @@ const TRADE_STRUCTURE_KEYS = [
   "exportConcentrationHhi",
   "importConcentrationHhi",
   "economicComplexityIndex",
+];
+
+const SECURITY_KEYS = [
+  "militaryExpenditureUsd",
+  "militaryExpenditurePctOfGdp",
+  "militaryExpenditurePctOfGovtExpenditure",
+  "armedForcesPersonnel",
+  "armedForcesPctOfLaborForce",
+  "armsImportsSipriTiv",
+  "armsExportsSipriTiv",
+  "militarySpendPerCapitaUsd",
+  "militarySpendPerSoldierUsd",
+  "mobilizationBasePct",
 ];
 
 const POLITICAL_SYSTEM_TEXT_KEYS = [
@@ -123,6 +139,7 @@ const CANONICAL_KEYS = {
   ],
   governance: GOVERNANCE_KEYS,
   tradeStructure: TRADE_STRUCTURE_KEYS,
+  security: SECURITY_KEYS,
 };
 
 function isRecord(value) {
@@ -177,6 +194,61 @@ function makeBooleanDataPoint(value, source) {
     return { value: null, source: null };
   }
   return { value, source };
+}
+
+function getSecurityFact(record, key) {
+  const fact = record?.security?.[key];
+  if (!isRecord(fact)) {
+    return null;
+  }
+
+  const value = typeof fact.value === "number" && Number.isFinite(fact.value) ? fact.value : null;
+  const year = typeof fact.year === "number" && Number.isFinite(fact.year) ? fact.year : null;
+  const source = typeof fact.source === "string" && fact.source.length > 0 ? fact.source : null;
+  if (value === null || year === null || source === null) {
+    return null;
+  }
+
+  return { value, year, source };
+}
+
+function getSecurityDataPoint(record, key) {
+  const fact = getSecurityFact(record, key);
+  if (!fact) {
+    return makeDataPoint(null, null, null);
+  }
+  return makeDataPoint(fact.value, fact.year, fact.source);
+}
+
+function makeDerivedSecurityDataPoint(value, year, source) {
+  if (typeof value !== "number" || !Number.isFinite(value) || year === null || !source) {
+    return makeDataPoint(null, null, null);
+  }
+  return makeDataPoint(value, year, source);
+}
+
+function derivePerCapitaPoint(numerator, denominator, source) {
+  if (!numerator || !denominator || denominator.value <= 0) {
+    return makeDataPoint(null, null, null);
+  }
+
+  return makeDerivedSecurityDataPoint(
+    numerator.value / denominator.value,
+    numerator.year,
+    source,
+  );
+}
+
+function deriveMobilizationBasePoint(personnel, population, source) {
+  if (!personnel || !population || population.value <= 0) {
+    return makeDataPoint(null, null, null);
+  }
+
+  return makeDerivedSecurityDataPoint(
+    (personnel.value / population.value) * 100,
+    personnel.year,
+    source,
+  );
 }
 
 function pickOverlapDataPoint(wdiRecord, imfRecord, config, coverageSummary) {
@@ -235,7 +307,7 @@ function computeCoverageCounts(recordsByIso3, keys) {
   return counts;
 }
 
-function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook) {
+function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security) {
   return (
     wdi?.countriesByIso3?.[iso3]?.name ??
     imf?.countriesByIso3?.[iso3]?.name ??
@@ -243,6 +315,7 @@ function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook) {
     wpp?.countriesByIso3?.[iso3]?.name ??
     atlas?.countriesByIso3?.[iso3]?.name ??
     factbook?.countriesByIso3?.[iso3]?.name ??
+    security?.countriesByIso3?.[iso3]?.name ??
     iso3
   );
 }
@@ -296,14 +369,128 @@ function getAtlasTopArray(record, key) {
     });
 }
 
+function getNumericFactValue(fact) {
+  return typeof fact?.value === "number" && Number.isFinite(fact.value) ? fact.value : null;
+}
+
+function sumNumbers(values) {
+  return values.reduce((sum, value) => sum + value, 0);
+}
+
+function computeHhi(values) {
+  const filtered = values.filter((value) => typeof value === "number" && Number.isFinite(value) && value > 0);
+  if (filtered.length === 0) {
+    return null;
+  }
+  const total = sumNumbers(filtered);
+  if (total <= 0) {
+    return null;
+  }
+  return filtered.reduce((sum, value) => {
+    const share = value / total;
+    return sum + share * share;
+  }, 0);
+}
+
+function buildSettlementDataPoint(value, year, source, digits = 3) {
+  if (typeof value !== "number" || !Number.isFinite(value) || year === null || !source) {
+    return makeDataPoint(null, null, null);
+  }
+  const factor = 10 ** digits;
+  return makeDataPoint(Math.round(value * factor) / factor, year, source);
+}
+
+function buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresById) {
+  const provinceRecords = Object.values(canonicalProvinceDataById).filter((record) => record?.countryIso3 === iso3);
+  const urbanCentres = Object.values(urbanCentresById).filter((record) => record?.countryIso3 === iso3);
+
+  if (provinceRecords.length === 0 && urbanCentres.length === 0) {
+    return {
+      urbanCentreCount: makeDataPoint(null, null, null),
+      largestUrbanCentres: [],
+      urbanCentreBuiltUpAreaKm2: makeDataPoint(null, null, null),
+      urbanCentreBuiltUpSharePct: makeDataPoint(null, null, null),
+      populationConcentrationHhi: makeDataPoint(null, null, null),
+      provincePopulationCoveragePct: makeDataPoint(null, null, null),
+      settlementDataCompleteness: {
+        value: "urban-centres-only",
+        year: 2025,
+        source: "GHSL GHS-UCDB; does not include full raster population or full built-up surface",
+      },
+    };
+  }
+
+  const urbanCentreBuiltUpAreaKm2 = sumNumbers(
+    provinceRecords
+      .map((record) => getNumericFactValue(record?.settlement?.urbanCentreBuiltUpAreaKm2))
+      .filter((value) => value !== null),
+  );
+  const totalAreaKm2 = sumNumbers(
+    provinceRecords.map((record) => getNumericFactValue(record?.areaKm2)).filter((value) => value !== null),
+  );
+  const provincesWithPopulationEstimate = provinceRecords.filter(
+    (record) => getNumericFactValue(record?.settlement?.urbanCentrePopulationEstimate) !== null,
+  ).length;
+  const countryHhi = computeHhi(
+    urbanCentres.map((record) => getNumericFactValue(record?.population)).filter((value) => value !== null),
+  );
+  const largestUrbanCentres = [...urbanCentres]
+    .sort((left, right) => (getNumericFactValue(right.population) ?? -1) - (getNumericFactValue(left.population) ?? -1))
+    .slice(0, 10)
+    .map((record) => ({
+      id: record.id,
+      name: record.name,
+      provinceId: record.provinceId,
+      population: isRecord(record.population) ? record.population : makeDataPoint(null, null, null),
+    }));
+
+  return {
+    urbanCentreCount: buildSettlementDataPoint(urbanCentres.length, 2025, "GHSL GHS-UCDB R2024A", 0),
+    largestUrbanCentres,
+    urbanCentreBuiltUpAreaKm2:
+      urbanCentreBuiltUpAreaKm2 > 0
+        ? buildSettlementDataPoint(urbanCentreBuiltUpAreaKm2, 2025, "GHSL GHS-UCDB R2024A matched province rollup")
+        : makeDataPoint(null, null, null),
+    urbanCentreBuiltUpSharePct:
+      urbanCentreBuiltUpAreaKm2 > 0 && totalAreaKm2 > 0
+        ? buildSettlementDataPoint(
+            (urbanCentreBuiltUpAreaKm2 / totalAreaKm2) * 100,
+            2025,
+            "GHSL GHS-UCDB R2024A matched province rollup + Natural Earth province geometry",
+          )
+        : makeDataPoint(null, null, null),
+    populationConcentrationHhi:
+      countryHhi === null
+        ? makeDataPoint(null, null, null)
+        : buildSettlementDataPoint(countryHhi, 2025, "Derived from GHSL GHS-UCDB R2024A", 4),
+    provincePopulationCoveragePct:
+      provinceRecords.length > 0
+        ? buildSettlementDataPoint(
+            (provincesWithPopulationEstimate / provinceRecords.length) * 100,
+            2025,
+            "Derived coverage audit",
+            2,
+          )
+        : makeDataPoint(null, null, null),
+    settlementDataCompleteness: {
+      value: "urban-centres-only",
+      year: 2025,
+      source: "GHSL GHS-UCDB; does not include full raster population or full built-up surface",
+    },
+  };
+}
+
 async function main() {
-  const [wdi, wgi, imf, wpp, atlasMaybe, factbookMaybe] = await Promise.all([
+  const [wdi, wgi, imf, wpp, atlasMaybe, factbookMaybe, securityMaybe, urbanCentresMaybe, canonicalProvinceMaybe] = await Promise.all([
     readJson(WDI_PATH),
     readJson(WGI_PATH),
     readJson(IMF_PATH),
     readJson(WPP_PATH),
     readJsonOptional(ATLAS_PATH),
     readJsonOptional(FACTBOOK_PATH),
+    readJsonOptional(SECURITY_PATH),
+    readJsonOptional(URBAN_CENTRES_PATH),
+    readJsonOptional(CANONICAL_PROVINCE_PATH),
   ]);
 
   if (
@@ -321,11 +508,24 @@ async function main() {
     isRecord(atlasMaybe?.countriesByIso3) ? atlasMaybe.countriesByIso3 : {};
   const factbookCountriesByIso3 =
     isRecord(factbookMaybe?.countriesByIso3) ? factbookMaybe.countriesByIso3 : {};
+  const securityCountriesByIso3 =
+    isRecord(securityMaybe?.countriesByIso3) ? securityMaybe.countriesByIso3 : {};
   if (!isRecord(atlasMaybe?.countriesByIso3)) {
     console.warn("atlas-trade-profiles.json not found or invalid; tradeStructure will be emitted as null datapoints.");
   }
   if (!isRecord(factbookMaybe?.countriesByIso3)) {
     console.warn("factbook-political-profiles.json not found or invalid; politicalSystem will be emitted with nulls.");
+  }
+  if (!isRecord(securityMaybe?.countriesByIso3)) {
+    console.warn("security-stats.json not found or invalid; security will be emitted as null datapoints.");
+  }
+  const urbanCentresById = isRecord(urbanCentresMaybe) ? urbanCentresMaybe : {};
+  const canonicalProvinceDataById = isRecord(canonicalProvinceMaybe) ? canonicalProvinceMaybe : {};
+  if (!isRecord(urbanCentresMaybe)) {
+    console.warn("urban-centres.json not found or invalid; settlement largest urban centre summaries will be emitted as nulls.");
+  }
+  if (!isRecord(canonicalProvinceMaybe)) {
+    console.warn("canonical-province-data.json not found or invalid; settlement province rollups will be emitted as nulls.");
   }
 
   const wdiCoverage = computeCoverageCounts(wdi.countriesByIso3, [
@@ -351,6 +551,13 @@ async function main() {
       ...Object.keys(wpp.countriesByIso3),
       ...Object.keys(atlasCountriesByIso3),
       ...Object.keys(factbookCountriesByIso3),
+      ...Object.keys(securityCountriesByIso3),
+      ...Object.values(urbanCentresById)
+        .map((record) => (isRecord(record) && typeof record.countryIso3 === "string" ? record.countryIso3 : null))
+        .filter(Boolean),
+      ...Object.values(canonicalProvinceDataById)
+        .map((record) => (isRecord(record) && typeof record.countryIso3 === "string" ? record.countryIso3 : null))
+        .filter(Boolean),
     ]),
   ).sort();
 
@@ -363,6 +570,7 @@ async function main() {
     const wppRecord = wpp.countriesByIso3[iso3];
     const atlasRecord = atlasCountriesByIso3[iso3];
     const factbookRecord = factbookCountriesByIso3[iso3];
+    const securityRecord = securityCountriesByIso3[iso3];
     const atlasYear = getAtlasIndicatorYear(atlasRecord);
     const factbookSource = factbookRecord?.source === "CIA World Factbook" ? "CIA World Factbook" : null;
 
@@ -616,16 +824,56 @@ async function main() {
       headOfGovernmentTitle: makeTextDataPoint(factbookRecord?.normalized?.headOfGovernmentTitle ?? null, factbookSource),
     };
 
+    const militaryExpenditureUsd = getSecurityFact(securityRecord, "militaryExpenditureUsd");
+    const armedForcesPersonnel = getSecurityFact(securityRecord, "armedForcesPersonnel");
+    const population = economy.population.value !== null &&
+      economy.population.year !== null &&
+      economy.population.source !== null
+      ? economy.population
+      : null;
+
+    const security = {
+      militaryExpenditureUsd: getSecurityDataPoint(securityRecord, "militaryExpenditureUsd"),
+      militaryExpenditurePctOfGdp: getSecurityDataPoint(securityRecord, "militaryExpenditurePctOfGdp"),
+      militaryExpenditurePctOfGovtExpenditure: getSecurityDataPoint(
+        securityRecord,
+        "militaryExpenditurePctOfGovtExpenditure",
+      ),
+      armedForcesPersonnel: getSecurityDataPoint(securityRecord, "armedForcesPersonnel"),
+      armedForcesPctOfLaborForce: getSecurityDataPoint(securityRecord, "armedForcesPctOfLaborForce"),
+      armsImportsSipriTiv: getSecurityDataPoint(securityRecord, "armsImportsSipriTiv"),
+      armsExportsSipriTiv: getSecurityDataPoint(securityRecord, "armsExportsSipriTiv"),
+      militarySpendPerCapitaUsd: derivePerCapitaPoint(
+        militaryExpenditureUsd,
+        population,
+        "Derived from World Bank WDI / SIPRI and WDI population",
+      ),
+      militarySpendPerSoldierUsd: derivePerCapitaPoint(
+        militaryExpenditureUsd,
+        armedForcesPersonnel,
+        "Derived from World Bank WDI / SIPRI and World Bank WDI / IISS",
+      ),
+      mobilizationBasePct: deriveMobilizationBasePoint(
+        armedForcesPersonnel,
+        population,
+        "Derived from World Bank WDI / IISS and WDI population",
+      ),
+    };
+
+    const settlement = buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresById);
+
     countriesByIso3[iso3] = {
       iso3,
-      name: getCountryName(iso3, wdi, imf, wgi, wpp, atlasMaybe, factbookMaybe),
+      name: getCountryName(iso3, wdi, imf, wgi, wpp, atlasMaybe, factbookMaybe, securityMaybe),
       gameStartDate: "2025-01-01",
       economy,
       demographics,
       fiscal,
       governance,
       tradeStructure,
+      security,
       politicalSystem,
+      settlement,
     };
   }
 
@@ -645,6 +893,9 @@ async function main() {
     wgiValuesUsed: 0,
     wppValuesUsed: 0,
     atlasValuesUsed: 0,
+    securitySipriValuesUsed: 0,
+    securityIissValuesUsed: 0,
+    derivedSecurityValuesUsed: 0,
     factbookTextValuesUsed: 0,
     factbookBooleanValuesUsed: 0,
   };
@@ -658,6 +909,9 @@ async function main() {
         "World Bank WGI": 0,
         "UN WPP 2024": 0,
         "Atlas of Economic Complexity": 0,
+        "World Bank WDI / SIPRI": 0,
+        "World Bank WDI / IISS": 0,
+        derived: 0,
         nullSource: 0,
       };
     }
@@ -690,6 +944,15 @@ async function main() {
         } else if (point.source === "Atlas of Economic Complexity") {
           sourceUsageByMetric[metric]["Atlas of Economic Complexity"] += 1;
           sourceUsageTotals.atlasValuesUsed += 1;
+        } else if (point.source === "World Bank WDI / SIPRI") {
+          sourceUsageByMetric[metric]["World Bank WDI / SIPRI"] += 1;
+          sourceUsageTotals.securitySipriValuesUsed += 1;
+        } else if (point.source === "World Bank WDI / IISS") {
+          sourceUsageByMetric[metric]["World Bank WDI / IISS"] += 1;
+          sourceUsageTotals.securityIissValuesUsed += 1;
+        } else if (typeof point.source === "string" && point.source.startsWith("Derived from ")) {
+          sourceUsageByMetric[metric].derived += 1;
+          sourceUsageTotals.derivedSecurityValuesUsed += 1;
         } else {
           sourceUsageByMetric[metric].nullSource += 1;
         }
@@ -756,6 +1019,24 @@ async function main() {
     coverageByCanonicalMetric: metricCoverage,
     sourceUsedByMetric: sourceUsageByMetric,
     politicalSystemCoverage,
+    settlementCoverage: {
+      countriesWithSettlementData: Object.values(countriesByIso3).filter(
+        (country) =>
+          country.settlement.urbanCentreCount.value !== null ||
+          country.settlement.urbanCentreBuiltUpAreaKm2.value !== null ||
+          country.settlement.populationConcentrationHhi.value !== null,
+      ).length,
+      countriesWithLargestUrbanCentres: Object.values(countriesByIso3).filter(
+        (country) => country.settlement.largestUrbanCentres.length > 0,
+      ).length,
+      urbanCentresLoaded: Object.keys(urbanCentresById).length,
+      provincesLoaded: Object.keys(canonicalProvinceDataById).length,
+      settlementDataCompleteness: {
+        value: "urban-centres-only",
+        year: 2025,
+        source: "GHSL GHS-UCDB; does not include full raster population or full built-up surface",
+      },
+    },
     ...sourceUsageTotals,
     unresolvedMissingValues: {
       countriesWithMissingMetrics: Object.keys(missingByCountry).length,

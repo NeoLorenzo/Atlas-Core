@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-30T13:43:05.152Z",
-  "totalCountries": 256,
+  "generatedAt": "2026-06-04T15:03:24.212Z",
+  "totalCountries": 272,
   "coverageByCanonicalMetric": {
     "population": 216,
     "gdpCurrentUsd": 208,
@@ -37,7 +37,17 @@
     "importDiversityProductCount": 235,
     "exportConcentrationHhi": 235,
     "importConcentrationHhi": 235,
-    "economicComplexityIndex": 235
+    "economicComplexityIndex": 235,
+    "militaryExpenditureUsd": 166,
+    "militaryExpenditurePctOfGdp": 163,
+    "militaryExpenditurePctOfGovtExpenditure": 160,
+    "armedForcesPersonnel": 173,
+    "armedForcesPctOfLaborForce": 171,
+    "armsImportsSipriTiv": 186,
+    "armsExportsSipriTiv": 124,
+    "militarySpendPerCapitaUsd": 166,
+    "militarySpendPerSoldierUsd": 162,
+    "mobilizationBasePct": 173
   },
   "sourceUsedByMetric": {
     "population": {
@@ -46,7 +56,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 40
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 56
     },
     "gdpCurrentUsd": {
       "World Bank WDI": 194,
@@ -54,7 +67,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 48
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 64
     },
     "gdpPerCapitaCurrentUsd": {
       "World Bank WDI": 194,
@@ -62,7 +78,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 48
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 64
     },
     "gdpGrowthAnnualPct": {
       "World Bank WDI": 195,
@@ -70,7 +89,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 47
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 63
     },
     "inflationAnnualPct": {
       "World Bank WDI": 4,
@@ -78,7 +100,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 59
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 75
     },
     "unemploymentPct": {
       "World Bank WDI": 183,
@@ -86,7 +111,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 73
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 89
     },
     "urbanPopulationPct": {
       "World Bank WDI": 216,
@@ -94,7 +122,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 40
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 56
     },
     "lifeExpectancyYears": {
       "World Bank WDI": 216,
@@ -102,7 +133,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 40
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 56
     },
     "tradePctOfGdp": {
       "World Bank WDI": 173,
@@ -110,7 +144,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 83
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 99
     },
     "medianAgeYears": {
       "World Bank WDI": 0,
@@ -118,7 +155,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "fertilityRateBirthsPerWoman": {
       "World Bank WDI": 0,
@@ -126,7 +166,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "populationGrowthRatePct": {
       "World Bank WDI": 0,
@@ -134,7 +177,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "netMigration": {
       "World Bank WDI": 0,
@@ -142,7 +188,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "youthSharePct": {
       "World Bank WDI": 0,
@@ -150,7 +199,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "workingAgeSharePct": {
       "World Bank WDI": 0,
@@ -158,7 +210,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "elderlySharePct": {
       "World Bank WDI": 0,
@@ -166,7 +221,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "childDependencyRatio": {
       "World Bank WDI": 0,
@@ -174,7 +232,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "oldAgeDependencyRatio": {
       "World Bank WDI": 0,
@@ -182,7 +243,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "totalDependencyRatio": {
       "World Bank WDI": 0,
@@ -190,7 +254,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 237,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 19
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 35
     },
     "currentAccountBalancePctOfGdp": {
       "World Bank WDI": 0,
@@ -198,7 +265,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 64
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 80
     },
     "governmentNetLendingBorrowingPctOfGdp": {
       "World Bank WDI": 0,
@@ -206,7 +276,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 63
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 79
     },
     "governmentGrossDebtPctOfGdp": {
       "World Bank WDI": 0,
@@ -214,7 +287,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 66
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 82
     },
     "voiceAndAccountability": {
       "World Bank WDI": 0,
@@ -222,7 +298,10 @@
       "World Bank WGI": 192,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 64
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 80
     },
     "politicalStability": {
       "World Bank WDI": 0,
@@ -230,7 +309,10 @@
       "World Bank WGI": 192,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 64
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 80
     },
     "governmentEffectiveness": {
       "World Bank WDI": 0,
@@ -238,7 +320,10 @@
       "World Bank WGI": 192,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 64
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 80
     },
     "regulatoryQuality": {
       "World Bank WDI": 0,
@@ -246,7 +331,10 @@
       "World Bank WGI": 192,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 64
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 80
     },
     "ruleOfLaw": {
       "World Bank WDI": 0,
@@ -254,7 +342,10 @@
       "World Bank WGI": 192,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 64
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 80
     },
     "controlOfCorruption": {
       "World Bank WDI": 0,
@@ -262,7 +353,10 @@
       "World Bank WGI": 192,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 0,
-      "nullSource": 64
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 80
     },
     "totalExportsUsd": {
       "World Bank WDI": 0,
@@ -270,7 +364,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 235,
-      "nullSource": 21
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 37
     },
     "totalImportsUsd": {
       "World Bank WDI": 0,
@@ -278,7 +375,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 235,
-      "nullSource": 21
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 37
     },
     "tradeBalanceUsd": {
       "World Bank WDI": 0,
@@ -286,7 +386,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 235,
-      "nullSource": 21
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 37
     },
     "exportDiversityProductCount": {
       "World Bank WDI": 0,
@@ -294,7 +397,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 235,
-      "nullSource": 21
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 37
     },
     "importDiversityProductCount": {
       "World Bank WDI": 0,
@@ -302,7 +408,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 235,
-      "nullSource": 21
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 37
     },
     "exportConcentrationHhi": {
       "World Bank WDI": 0,
@@ -310,7 +419,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 235,
-      "nullSource": 21
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 37
     },
     "importConcentrationHhi": {
       "World Bank WDI": 0,
@@ -318,7 +430,10 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 235,
-      "nullSource": 21
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 37
     },
     "economicComplexityIndex": {
       "World Bank WDI": 0,
@@ -326,7 +441,120 @@
       "World Bank WGI": 0,
       "UN WPP 2024": 0,
       "Atlas of Economic Complexity": 235,
-      "nullSource": 21
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 37
+    },
+    "militaryExpenditureUsd": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 166,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 106
+    },
+    "militaryExpenditurePctOfGdp": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 163,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 109
+    },
+    "militaryExpenditurePctOfGovtExpenditure": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 160,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 112
+    },
+    "armedForcesPersonnel": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 173,
+      "derived": 0,
+      "nullSource": 99
+    },
+    "armedForcesPctOfLaborForce": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 171,
+      "derived": 0,
+      "nullSource": 101
+    },
+    "armsImportsSipriTiv": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 186,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 86
+    },
+    "armsExportsSipriTiv": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 124,
+      "World Bank WDI / IISS": 0,
+      "derived": 0,
+      "nullSource": 148
+    },
+    "militarySpendPerCapitaUsd": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 166,
+      "nullSource": 106
+    },
+    "militarySpendPerSoldierUsd": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 162,
+      "nullSource": 110
+    },
+    "mobilizationBasePct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "derived": 173,
+      "nullSource": 99
     }
   },
   "politicalSystemCoverage": {
@@ -361,17 +589,31 @@
       "isMilitaryRegime": 230
     },
     "countriesWithAnyPoliticalSystemData": 232,
-    "countriesWithNoPoliticalSystemData": 24
+    "countriesWithNoPoliticalSystemData": 40
+  },
+  "settlementCoverage": {
+    "countriesWithSettlementData": 259,
+    "countriesWithLargestUrbanCentres": 189,
+    "urbanCentresLoaded": 11422,
+    "provincesLoaded": 4596,
+    "settlementDataCompleteness": {
+      "value": "urban-centres-only",
+      "year": 2025,
+      "source": "GHSL GHS-UCDB; does not include full raster population or full built-up surface"
+    }
   },
   "wdiValuesUsed": 1591,
   "imfValuesUsed": 810,
   "wgiValuesUsed": 1152,
   "wppValuesUsed": 2370,
   "atlasValuesUsed": 1880,
+  "securitySipriValuesUsed": 799,
+  "securityIissValuesUsed": 344,
+  "derivedSecurityValuesUsed": 501,
   "factbookTextValuesUsed": 3908,
   "factbookBooleanValuesUsed": 1825,
   "unresolvedMissingValues": {
-    "countriesWithMissingMetrics": 108,
+    "countriesWithMissingMetrics": 169,
     "missingByCountry": {
       "ABW": {
         "name": "Aruba",
@@ -382,7 +624,16 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "AIA": {
@@ -405,14 +656,85 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "ALD": {
+        "name": "ALD",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "AND": {
         "name": "Andorra",
         "missingMetrics": [
           "unemploymentPct",
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "ANS": {
@@ -445,7 +767,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "ASM": {
@@ -465,7 +797,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "ATA": {
@@ -498,7 +840,68 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "ATC": {
+        "name": "ATC",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "ATF": {
@@ -531,20 +934,50 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "ATG": {
         "name": "Antigua and Barbuda",
         "missingMetrics": [
           "unemploymentPct",
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd"
+        ]
+      },
+      "AZE": {
+        "name": "Azerbaijan",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "BDI": {
         "name": "Burundi",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "armsExportsSipriTiv"
+        ]
+      },
+      "BEN": {
+        "name": "Benin",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "BES": {
@@ -567,7 +1000,33 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "BFA": {
+        "name": "Burkina Faso",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "BHS": {
+        "name": "Bahamas, The",
+        "missingMetrics": [
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd"
         ]
       },
       "BLM": {
@@ -590,7 +1049,23 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "BLZ": {
+        "name": "Belize",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "BMU": {
@@ -606,13 +1081,46 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "BOL": {
+        "name": "Bolivia",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "BRB": {
         "name": "Barbados",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd"
+        ]
+      },
+      "BTN": {
+        "name": "Bhutan",
+        "missingMetrics": [
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd"
         ]
       },
       "BVT": {
@@ -645,7 +1153,23 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "BWA": {
+        "name": "Botswana",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "CAF": {
@@ -653,7 +1177,8 @@
         "missingMetrics": [
           "currentAccountBalancePctOfGdp",
           "governmentNetLendingBorrowingPctOfGdp",
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "armsExportsSipriTiv"
         ]
       },
       "CCK": {
@@ -686,7 +1211,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "CHI": {
@@ -720,7 +1255,80 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "CLP": {
+        "name": "CLP",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "CMR": {
+        "name": "Cameroon",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "COG": {
+        "name": "Congo, Rep.",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "COK": {
@@ -743,7 +1351,94 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "COM": {
+        "name": "Comoros",
+        "missingMetrics": [
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "CPV": {
+        "name": "Cabo Verde",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "CRI": {
+        "name": "Costa Rica",
+        "missingMetrics": [
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure"
+        ]
+      },
+      "CSI": {
+        "name": "CSI",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "CUB": {
@@ -754,7 +1449,8 @@
           "inflationAnnualPct",
           "currentAccountBalancePctOfGdp",
           "governmentNetLendingBorrowingPctOfGdp",
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure"
         ]
       },
       "CUW": {
@@ -771,7 +1467,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "CXR": {
@@ -804,7 +1510,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "CYM": {
@@ -821,14 +1537,91 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "CYN": {
+        "name": "CYN",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "DJI": {
+        "name": "Djibouti",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "DMA": {
         "name": "Dominica",
         "missingMetrics": [
           "unemploymentPct",
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "ERI": {
@@ -842,6 +1635,57 @@
           "currentAccountBalancePctOfGdp",
           "governmentNetLendingBorrowingPctOfGdp",
           "governmentGrossDebtPctOfGdp"
+        ]
+      },
+      "ESB": {
+        "name": "ESB",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "ESH": {
@@ -864,7 +1708,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "FJI": {
@@ -893,7 +1747,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "FRO": {
@@ -909,13 +1773,32 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "FSM": {
         "name": "Micronesia, Fed. Sts.",
         "missingMetrics": [
-          "unemploymentPct"
+          "unemploymentPct",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "GGY": {
@@ -946,7 +1829,17 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "GIB": {
@@ -966,7 +1859,23 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "GIN": {
+        "name": "Guinea",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "GLP": {
@@ -997,14 +1906,51 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "GMB": {
+        "name": "Gambia, The",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "GNB": {
+        "name": "Guinea-Bissau",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "GNQ": {
+        "name": "Equatorial Guinea",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "GRD": {
         "name": "Grenada",
         "missingMetrics": [
           "unemploymentPct",
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "GRL": {
@@ -1020,7 +1966,23 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "GTM": {
+        "name": "Guatemala",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "GUF": {
@@ -1051,7 +2013,17 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "GUM": {
@@ -1070,7 +2042,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "GUY": {
@@ -1087,7 +2069,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "HMD": {
@@ -1120,7 +2112,29 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "HND": {
+        "name": "Honduras",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "HTI": {
+        "name": "Haiti",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "IMN": {
@@ -1148,7 +2162,17 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "IMY": {
@@ -1189,7 +2213,68 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "IOA": {
+        "name": "IOA",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "IOT": {
@@ -1222,13 +2307,32 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "ISL": {
+        "name": "Iceland",
+        "missingMetrics": [
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "militarySpendPerSoldierUsd"
         ]
       },
       "JAM": {
         "name": "Jamaica",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "armsExportsSipriTiv"
         ]
       },
       "JEY": {
@@ -1259,20 +2363,150 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "KAB": {
+        "name": "KAB",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "KAS": {
+        "name": "KAS",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "KIR": {
         "name": "Kiribati",
         "missingMetrics": [
-          "unemploymentPct"
+          "unemploymentPct",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "KNA": {
         "name": "St. Kitts and Nevis",
         "missingMetrics": [
           "unemploymentPct",
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "KOS": {
@@ -1313,31 +2547,54 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "LAO": {
         "name": "Lao PDR",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "armsExportsSipriTiv"
         ]
       },
       "LBR": {
         "name": "Liberia",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "armsExportsSipriTiv"
         ]
       },
       "LBY": {
         "name": "Libya",
         "missingMetrics": [
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "militarySpendPerSoldierUsd"
         ]
       },
       "LCA": {
         "name": "St. Lucia",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "LIE": {
@@ -1352,7 +2609,23 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "LSO": {
+        "name": "Lesotho",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "MAC": {
@@ -1363,7 +2636,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "MAF": {
@@ -1391,7 +2674,17 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "MCO": {
@@ -1410,7 +2703,34 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "MDG": {
+        "name": "Madagascar",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "MDV": {
+        "name": "Maldives",
+        "missingMetrics": [
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd"
         ]
       },
       "MFX": {
@@ -1451,19 +2771,51 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "MHL": {
         "name": "Marshall Islands",
         "missingMetrics": [
-          "unemploymentPct"
+          "unemploymentPct",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "MLI": {
+        "name": "Mali",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "MMR": {
         "name": "Myanmar",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "armsExportsSipriTiv"
+        ]
+      },
+      "MNG": {
+        "name": "Mongolia",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "MNP": {
@@ -1483,7 +2835,23 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "MRT": {
+        "name": "Mauritania",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "MSR": {
@@ -1506,7 +2874,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "MTQ": {
@@ -1537,7 +2915,23 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "MUS": {
+        "name": "Mauritius",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "MYT": {
@@ -1568,7 +2962,23 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "NAM": {
+        "name": "Namibia",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "NCL": {
@@ -1583,7 +2993,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "NFK": {
@@ -1616,7 +3036,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "NGA": {
@@ -1645,13 +3075,39 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "NPL": {
+        "name": "Nepal",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "NRU": {
         "name": "Nauru",
         "missingMetrics": [
-          "unemploymentPct"
+          "unemploymentPct",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "PCN": {
@@ -1684,19 +3140,90 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "PGA": {
+        "name": "PGA",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "PLW": {
         "name": "Palau",
         "missingMetrics": [
-          "unemploymentPct"
+          "unemploymentPct",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "PNG": {
         "name": "Papua New Guinea",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "armsExportsSipriTiv"
         ]
       },
       "PRI": {
@@ -1716,7 +3243,17 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "PRK": {
@@ -1729,7 +3266,15 @@
           "tradePctOfGdp",
           "currentAccountBalancePctOfGdp",
           "governmentNetLendingBorrowingPctOfGdp",
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure"
+        ]
+      },
+      "PRY": {
+        "name": "Paraguay",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "PSE": {
@@ -1744,7 +3289,64 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd"
+        ]
+      },
+      "PSX": {
+        "name": "PSX",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "PYF": {
@@ -1759,7 +3361,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "QAT": {
@@ -1796,13 +3408,131 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "RWA": {
+        "name": "Rwanda",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "SAH": {
+        "name": "SAH",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "SDN": {
         "name": "Sudan",
         "missingMetrics": [
           "unemploymentPct"
+        ]
+      },
+      "SDS": {
+        "name": "SDS",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "SGS": {
@@ -1835,7 +3565,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "SHN": {
@@ -1858,7 +3598,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "SJM": {
@@ -1899,19 +3649,111 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "SLB": {
+        "name": "Solomon Islands",
+        "missingMetrics": [
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "SLE": {
+        "name": "Sierra Leone",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "SMR": {
         "name": "San Marino",
         "missingMetrics": [
-          "unemploymentPct"
+          "unemploymentPct",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "SOL": {
+        "name": "SOL",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "SOM": {
         "name": "Somalia, Fed. Rep.",
         "missingMetrics": [
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "armsExportsSipriTiv"
         ]
       },
       "SPM": {
@@ -1934,25 +3776,55 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "SSD": {
         "name": "South Sudan",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "armsExportsSipriTiv"
         ]
       },
       "STP": {
         "name": "Sao Tome and Principe",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd"
         ]
       },
       "SUR": {
         "name": "Suriname",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd"
+        ]
+      },
+      "SWZ": {
+        "name": "Eswatini",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "SXM": {
@@ -1969,13 +3841,25 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "SYC": {
         "name": "Seychelles",
         "missingMetrics": [
-          "unemploymentPct"
+          "unemploymentPct",
+          "armedForcesPctOfLaborForce",
+          "militarySpendPerSoldierUsd"
         ]
       },
       "SYR": {
@@ -2005,13 +3889,30 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "TGO": {
         "name": "Togo",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "armsExportsSipriTiv"
+        ]
+      },
+      "TJK": {
+        "name": "Tajikistan",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "TKL": {
@@ -2034,7 +3935,43 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "TKM": {
+        "name": "Turkmenistan",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "TLS": {
+        "name": "Timor-Leste",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "TON": {
+        "name": "Tonga",
+        "missingMetrics": [
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "TTO": {
@@ -2050,14 +3987,45 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "TUN": {
+        "name": "Tunisia",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
+        ]
+      },
+      "TUR": {
+        "name": "Turkiye",
+        "missingMetrics": [
+          "militaryExpenditurePctOfGovtExpenditure"
         ]
       },
       "TUV": {
         "name": "Tuvalu",
         "missingMetrics": [
           "unemploymentPct",
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "TWN": {
@@ -2073,7 +4041,23 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "TZA": {
+        "name": "Tanzania",
+        "missingMetrics": [
+          "armsExportsSipriTiv"
         ]
       },
       "UKR": {
@@ -2112,7 +4096,68 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "USG": {
+        "name": "USG",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "UVK": {
@@ -2146,7 +4191,17 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "VAT": {
@@ -2169,13 +4224,38 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "VCT": {
         "name": "St. Vincent and the Grenadines",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "VEN": {
+        "name": "Venezuela, RB",
+        "missingMetrics": [
+          "militaryExpenditurePctOfGovtExpenditure"
         ]
       },
       "VGB": {
@@ -2195,7 +4275,17 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "VIR": {
@@ -2222,13 +4312,32 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "VUT": {
         "name": "Vanuatu",
         "missingMetrics": [
-          "tradePctOfGdp"
+          "tradePctOfGdp",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "WBG": {
@@ -2262,7 +4371,17 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "WLF": {
@@ -2285,7 +4404,82 @@
           "governmentEffectiveness",
           "regulatoryQuality",
           "ruleOfLaw",
-          "controlOfCorruption"
+          "controlOfCorruption",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "WSB": {
+        "name": "WSB",
+        "missingMetrics": [
+          "population",
+          "gdpCurrentUsd",
+          "gdpPerCapitaCurrentUsd",
+          "gdpGrowthAnnualPct",
+          "inflationAnnualPct",
+          "unemploymentPct",
+          "urbanPopulationPct",
+          "lifeExpectancyYears",
+          "tradePctOfGdp",
+          "medianAgeYears",
+          "fertilityRateBirthsPerWoman",
+          "populationGrowthRatePct",
+          "netMigration",
+          "youthSharePct",
+          "workingAgeSharePct",
+          "elderlySharePct",
+          "childDependencyRatio",
+          "oldAgeDependencyRatio",
+          "totalDependencyRatio",
+          "currentAccountBalancePctOfGdp",
+          "governmentNetLendingBorrowingPctOfGdp",
+          "governmentGrossDebtPctOfGdp",
+          "voiceAndAccountability",
+          "politicalStability",
+          "governmentEffectiveness",
+          "regulatoryQuality",
+          "ruleOfLaw",
+          "controlOfCorruption",
+          "totalExportsUsd",
+          "totalImportsUsd",
+          "tradeBalanceUsd",
+          "exportDiversityProductCount",
+          "importDiversityProductCount",
+          "exportConcentrationHhi",
+          "importConcentrationHhi",
+          "economicComplexityIndex",
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsImportsSipriTiv",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
+        ]
+      },
+      "WSM": {
+        "name": "Samoa",
+        "missingMetrics": [
+          "militaryExpenditureUsd",
+          "militaryExpenditurePctOfGdp",
+          "militaryExpenditurePctOfGovtExpenditure",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerCapitaUsd",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "XKX": {
@@ -2308,7 +4502,12 @@
           "importDiversityProductCount",
           "exportConcentrationHhi",
           "importConcentrationHhi",
-          "economicComplexityIndex"
+          "economicComplexityIndex",
+          "armedForcesPersonnel",
+          "armedForcesPctOfLaborForce",
+          "armsExportsSipriTiv",
+          "militarySpendPerSoldierUsd",
+          "mobilizationBasePct"
         ]
       },
       "YEM": {

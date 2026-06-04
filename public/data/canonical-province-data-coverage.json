@@ -1,0 +1,30 @@
+{
+  "source": "Natural Earth provinces + GHSL settlement rollup",
+  "generatedAt": "2026-06-04T15:03:11.730Z",
+  "provinces": {
+    "total": 4596,
+    "withSettlementData": 4596,
+    "withUrbanCentrePopulationEstimate": 2314,
+    "withUrbanCentre": 2314,
+    "withoutSettlementData": 2282
+  },
+  "countries": {
+    "total": 251,
+    "withSettlementData": 188
+  },
+  "fieldCoverage": {
+    "urbanCentrePopulationEstimate": 50.35,
+    "urbanCentreBuiltUpAreaKm2": 50.35,
+    "urbanCentreCount": 50.35,
+    "populationConcentrationHhi": 50.35
+  },
+  "notes": [
+    "Province area is derived from Natural Earth province geometry.",
+    "Settlement metrics in this file are urban-centre-only aggregates from matched GHSL UCDB records."
+  ],
+  "settlementDataCompleteness": {
+    "value": "urban-centres-only",
+    "year": 2025,
+    "source": "GHSL GHS-UCDB; does not include full raster population or full built-up surface"
+  }
+}
