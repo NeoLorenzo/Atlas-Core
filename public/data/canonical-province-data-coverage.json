@@ -1,12 +1,14 @@
 {
-  "source": "Natural Earth provinces + GHSL settlement rollup",
-  "generatedAt": "2026-06-04T15:03:11.730Z",
+  "source": "Natural Earth provinces + GHSL settlement rollup + GHSL raster aggregation",
+  "generatedAt": "2026-06-05T15:38:29.565Z",
   "provinces": {
     "total": 4596,
     "withSettlementData": 4596,
     "withUrbanCentrePopulationEstimate": 2314,
     "withUrbanCentre": 2314,
-    "withoutSettlementData": 2282
+    "withRasterPopulationEstimate": 4525,
+    "withRasterBuiltUpSurfaceKm2": 4531,
+    "withoutSettlementData": 0
   },
   "countries": {
     "total": 251,
@@ -16,15 +18,28 @@
     "urbanCentrePopulationEstimate": 50.35,
     "urbanCentreBuiltUpAreaKm2": 50.35,
     "urbanCentreCount": 50.35,
-    "populationConcentrationHhi": 50.35
+    "populationConcentrationHhi": 50.35,
+    "rasterPopulationEstimate": 98.46,
+    "rasterPopulationDensityPerKm2": 98.46,
+    "rasterBuiltUpSurfaceKm2": 98.59,
+    "rasterBuiltUpSurfaceSharePct": 98.59,
+    "rasterPopulationPerBuiltUpKm2": 98.22,
+    "nonUrbanCentrePopulationEstimate": 98.43,
+    "urbanCentrePopulationSharePct": 98.43
   },
   "notes": [
     "Province area is derived from Natural Earth province geometry.",
-    "Settlement metrics in this file are urban-centre-only aggregates from matched GHSL UCDB records."
+    "Settlement metrics in this file are urban-centre-only aggregates from matched GHSL UCDB records.",
+    "Raster settlement metrics in this file are province-wide GHSL raster aggregates merged alongside UCDB-only fields."
   ],
   "settlementDataCompleteness": {
     "value": "urban-centres-only",
     "year": 2025,
     "source": "GHSL GHS-UCDB; does not include full raster population or full built-up surface"
+  },
+  "rasterSettlementDataCompleteness": {
+    "value": "partial-ghsl-raster",
+    "year": 2025,
+    "source": "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A"
   }
 }

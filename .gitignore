@@ -23,4 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 public/data/raw/ghsl/
+public/data/raw/ghsl-raster/
 temp_ghsl_ucdb.gpkg

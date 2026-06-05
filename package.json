@@ -14,6 +14,7 @@
     "import:atlas": "node scripts/importAtlasTradeProfiles.mjs",
     "import:factbook": "node scripts/importFactbookPoliticalProfiles.mjs",
     "import:ghsl": "node scripts/importGhslSettlementData.mjs",
+    "import:ghsl-raster": "node scripts/importGhslRasterSettlementData.mjs",
     "import:security": "node scripts/importWorldBankSecurityStats.mjs",
     "import:weo": "node scripts/importImfWeoStats.mjs",
     "import:wpp": "node scripts/importUnWppDemographics.mjs",
@@ -25,6 +26,7 @@
   "dependencies": {
     "@turf/turf": "^7.3.5",
     "csv-parse": "^6.2.1",
+    "geotiff": "^3.0.5",
     "maplibre-gl": "^5.24.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

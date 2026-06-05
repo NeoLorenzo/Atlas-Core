@@ -221,6 +221,15 @@ type CountrySettlementData = {
   urbanCentreBuiltUpSharePct: DataPoint;
   populationConcentrationHhi: DataPoint;
   provincePopulationCoveragePct: DataPoint;
+  rasterPopulationEstimate: DataPoint;
+  rasterBuiltUpSurfaceKm2: DataPoint;
+  rasterPopulationDensityPerKm2: DataPoint;
+  rasterBuiltUpSurfaceSharePct: DataPoint;
+  rasterPopulationPerBuiltUpKm2: DataPoint;
+  nonUrbanCentrePopulationEstimate: DataPoint;
+  urbanCentrePopulationSharePct: DataPoint;
+  provinceRasterPopulationCoveragePct: DataPoint;
+  rasterSettlementDataCompleteness: TextFactPoint;
   settlementDataCompleteness: TextFactPoint;
 };
 
@@ -234,6 +243,14 @@ type ProvinceSettlementData = {
   largestUrbanCentreName: string | null;
   largestUrbanCentrePopulationEstimate: DataPoint;
   populationConcentrationHhi: DataPoint;
+  rasterPopulationEstimate: DataPoint;
+  rasterPopulationDensityPerKm2: DataPoint;
+  rasterBuiltUpSurfaceKm2: DataPoint;
+  rasterBuiltUpSurfaceSharePct: DataPoint;
+  rasterPopulationPerBuiltUpKm2: DataPoint;
+  nonUrbanCentrePopulationEstimate: DataPoint;
+  urbanCentrePopulationSharePct: DataPoint;
+  rasterSettlementDataCompleteness: TextFactPoint;
   settlementDataCompleteness: TextFactPoint;
 };
 
@@ -253,6 +270,7 @@ type MapMode =
   | "provinces"
   | "urbanCentrePopulationEstimate"
   | "urbanCentrePopulationDensity"
+  | "rasterPopulationDensity"
   | "urbanCentreCount"
   | "urbanCentreBuiltUpSharePct"
   | "population"
@@ -346,6 +364,7 @@ type CanonicalOverlaySummary = {
 const COLOR_RAMPS = {
   urbanCentrePopulationEstimate: { low: "#172554", high: "#60a5fa" },
   urbanCentrePopulationDensity: { low: "#3f6212", high: "#bef264" },
+  rasterPopulationDensity: { low: "#082f49", high: "#67e8f9" },
   urbanCentreCount: { low: "#4c0519", high: "#fb7185" },
   urbanCentreBuiltUpSharePct: { low: "#422006", high: "#f59e0b" },
   population: { low: "#0f172a", high: "#38bdf8" },
@@ -422,6 +441,7 @@ const MAP_MODES: { key: MapMode; label: string }[] = [
   { key: "provinces", label: "Provinces" },
   { key: "urbanCentrePopulationEstimate", label: "Urban-centre population" },
   { key: "urbanCentrePopulationDensity", label: "Urban-centre density" },
+  { key: "rasterPopulationDensity", label: "Raster population density" },
   { key: "urbanCentreCount", label: "Urban-centre count" },
   { key: "urbanCentreBuiltUpSharePct", label: "Urban-centre built-up share" },
   { key: "population", label: "Population" },
@@ -471,6 +491,7 @@ const MAP_MODE_COLOR_PROPERTY: Record<MapMode, string> = {
   provinces: "__provinceFillColor",
   urbanCentrePopulationEstimate: "__urbanCentrePopulationEstimateColor",
   urbanCentrePopulationDensity: "__urbanCentrePopulationDensityColor",
+  rasterPopulationDensity: "__rasterPopulationDensityColor",
   urbanCentreCount: "__urbanCentreCountColor",
   urbanCentreBuiltUpSharePct: "__urbanCentreBuiltUpSharePctColor",
   population: "__populationColor",
@@ -520,6 +541,7 @@ const MAP_MODE_LABEL: Record<MapMode, string> = {
   provinces: "Provinces",
   urbanCentrePopulationEstimate: "Urban-centre population",
   urbanCentrePopulationDensity: "Urban-centre density",
+  rasterPopulationDensity: "Raster population density",
   urbanCentreCount: "Urban-centre count",
   urbanCentreBuiltUpSharePct: "Urban-centre built-up share",
   population: "Population",
@@ -642,6 +664,14 @@ function getMapColorLegend(mode: MapMode): MapColorLegend {
       MAP_MODE_LABEL[mode],
       "Matched GHSL urban-centre population per province square kilometre.",
       COLOR_RAMPS.urbanCentrePopulationDensity,
+    );
+  }
+
+  if (mode === "rasterPopulationDensity") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Full-province GHSL raster population per province square kilometre.",
+      COLOR_RAMPS.rasterPopulationDensity,
     );
   }
 
@@ -922,6 +952,66 @@ function getMapColorLegend(mode: MapMode): MapColorLegend {
 }
 
 const EMPTY_POINT: DataPoint = { value: null, year: null, source: null };
+const EMPTY_TEXT_FACT_POINT: TextFactPoint = { value: null, year: null, source: null };
+
+function normalizeProvinceSettlementData(settlement: Record<string, unknown>): ProvinceSettlementData {
+  return {
+    urbanCentrePopulationEstimate: isDataPoint(settlement.urbanCentrePopulationEstimate) ? settlement.urbanCentrePopulationEstimate : EMPTY_POINT,
+    urbanCentrePopulationDensityPerKm2: isDataPoint(settlement.urbanCentrePopulationDensityPerKm2)
+      ? settlement.urbanCentrePopulationDensityPerKm2
+      : EMPTY_POINT,
+    urbanCentreBuiltUpAreaKm2: isDataPoint(settlement.urbanCentreBuiltUpAreaKm2) ? settlement.urbanCentreBuiltUpAreaKm2 : EMPTY_POINT,
+    urbanCentreBuiltUpSharePct: isDataPoint(settlement.urbanCentreBuiltUpSharePct) ? settlement.urbanCentreBuiltUpSharePct : EMPTY_POINT,
+    urbanCentreCount: isDataPoint(settlement.urbanCentreCount) ? settlement.urbanCentreCount : EMPTY_POINT,
+    largestUrbanCentreId: typeof settlement.largestUrbanCentreId === "string" ? settlement.largestUrbanCentreId : null,
+    largestUrbanCentreName: typeof settlement.largestUrbanCentreName === "string" ? settlement.largestUrbanCentreName : null,
+    largestUrbanCentrePopulationEstimate: isDataPoint(settlement.largestUrbanCentrePopulationEstimate)
+      ? settlement.largestUrbanCentrePopulationEstimate
+      : EMPTY_POINT,
+    populationConcentrationHhi: isDataPoint(settlement.populationConcentrationHhi)
+      ? settlement.populationConcentrationHhi
+      : EMPTY_POINT,
+    rasterPopulationEstimate: isDataPoint(settlement.rasterPopulationEstimate) ? settlement.rasterPopulationEstimate : EMPTY_POINT,
+    rasterPopulationDensityPerKm2: isDataPoint(settlement.rasterPopulationDensityPerKm2)
+      ? settlement.rasterPopulationDensityPerKm2
+      : EMPTY_POINT,
+    rasterBuiltUpSurfaceKm2: isDataPoint(settlement.rasterBuiltUpSurfaceKm2) ? settlement.rasterBuiltUpSurfaceKm2 : EMPTY_POINT,
+    rasterBuiltUpSurfaceSharePct: isDataPoint(settlement.rasterBuiltUpSurfaceSharePct)
+      ? settlement.rasterBuiltUpSurfaceSharePct
+      : EMPTY_POINT,
+    rasterPopulationPerBuiltUpKm2: isDataPoint(settlement.rasterPopulationPerBuiltUpKm2)
+      ? settlement.rasterPopulationPerBuiltUpKm2
+      : EMPTY_POINT,
+    nonUrbanCentrePopulationEstimate: isDataPoint(settlement.nonUrbanCentrePopulationEstimate)
+      ? settlement.nonUrbanCentrePopulationEstimate
+      : EMPTY_POINT,
+    urbanCentrePopulationSharePct: isDataPoint(settlement.urbanCentrePopulationSharePct)
+      ? settlement.urbanCentrePopulationSharePct
+      : EMPTY_POINT,
+    rasterSettlementDataCompleteness: isTextFactPoint(settlement.rasterSettlementDataCompleteness)
+      ? settlement.rasterSettlementDataCompleteness
+      : {
+          value: "partial-ghsl-raster",
+          year: 2025,
+          source: "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A",
+        },
+    settlementDataCompleteness: isTextFactPoint(settlement.settlementDataCompleteness)
+      ? settlement.settlementDataCompleteness
+      : EMPTY_TEXT_FACT_POINT,
+  };
+}
+
+function normalizeCanonicalProvinceDataFile(value: CanonicalProvinceDataFile): CanonicalProvinceDataFile {
+  return Object.fromEntries(
+    Object.entries(value).map(([provinceId, record]) => [
+      provinceId,
+      {
+        ...record,
+        settlement: normalizeProvinceSettlementData(record.settlement as unknown as Record<string, unknown>),
+      },
+    ]),
+  );
+}
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -1576,6 +1666,12 @@ function getActiveMapValue(
       formatPeoplePerKm2,
     )}`;
   }
+  if (mode === "rasterPopulationDensity") {
+    return `Raster population density - ${formatPoint(
+      provinceData?.settlement.rasterPopulationDensityPerKm2 ?? EMPTY_POINT,
+      formatPeoplePerKm2,
+    )}`;
+  }
   if (mode === "urbanCentreCount") {
     return `Urban-centre count - ${formatPoint(
       provinceData?.settlement.urbanCentreCount ?? EMPTY_POINT,
@@ -1835,7 +1931,7 @@ export function GameCanvas() {
           if (canonicalProvinceResponse && canonicalProvinceResponse.ok) {
             const canonicalProvinceJson: unknown = await canonicalProvinceResponse.json();
             if (isCanonicalProvinceDataFile(canonicalProvinceJson)) {
-              canonicalProvinceById = canonicalProvinceJson;
+              canonicalProvinceById = normalizeCanonicalProvinceDataFile(canonicalProvinceJson);
             } else {
               console.warn("canonical-province-data.json is not in expected shape; continuing without province settlement stats.");
             }
@@ -1879,6 +1975,9 @@ export function GameCanvas() {
           );
           const provincePopulationDensityRange = getIndicatorRange(
             provinceValues.map((province) => province.settlement.urbanCentrePopulationDensityPerKm2.value),
+          );
+          const provinceRasterPopulationDensityRange = getIndicatorRange(
+            provinceValues.map((province) => province.settlement.rasterPopulationDensityPerKm2.value),
           );
           const urbanCentreCountRange = getIndicatorRange(
             provinceValues.map((province) => province.settlement.urbanCentreCount.value),
@@ -2176,6 +2275,14 @@ export function GameCanvas() {
                     provincePopulationDensityRange.max,
                   )
                 : null;
+            const provinceRasterPopulationDensityT =
+              provinceCanonicalData && provinceRasterPopulationDensityRange
+                ? normalizeValue(
+                    provinceCanonicalData.settlement.rasterPopulationDensityPerKm2.value,
+                    provinceRasterPopulationDensityRange.min,
+                    provinceRasterPopulationDensityRange.max,
+                  )
+                : null;
             const urbanCentreCountT =
               provinceCanonicalData && urbanCentreCountRange
                 ? normalizeValue(
@@ -2222,6 +2329,14 @@ export function GameCanvas() {
                         COLOR_RAMPS.urbanCentrePopulationDensity.low,
                         COLOR_RAMPS.urbanCentrePopulationDensity.high,
                         provincePopulationDensityT,
+                      ),
+                __rasterPopulationDensityColor:
+                  provinceRasterPopulationDensityT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.rasterPopulationDensity.low,
+                        COLOR_RAMPS.rasterPopulationDensity.high,
+                        provinceRasterPopulationDensityT,
                       ),
                 __urbanCentreCountColor:
                   urbanCentreCountT === null
@@ -2808,15 +2923,23 @@ export function GameCanvas() {
 
               <h3 className="info-panel__subtitle">Settlement - GHSL</h3>
               <div className="info-panel__row"><span>Area:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.areaKm2 ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Raster population:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.rasterPopulationEstimate ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Raster population density:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.rasterPopulationDensityPerKm2 ?? EMPTY_POINT, formatPeoplePerKm2)}</strong></div>
+              <div className="info-panel__row"><span>Raster built-up surface:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.rasterBuiltUpSurfaceKm2 ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Raster built-up share:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.rasterBuiltUpSurfaceSharePct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Population per built-up km²:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.rasterPopulationPerBuiltUpKm2 ?? EMPTY_POINT, formatPeoplePerKm2)}</strong></div>
               <div className="info-panel__row"><span>Urban-centre population:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentrePopulationEstimate ?? EMPTY_POINT, formatInteger)}</strong></div>
               <div className="info-panel__row"><span>Urban-centre density:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentrePopulationDensityPerKm2 ?? EMPTY_POINT, formatPeoplePerKm2)}</strong></div>
               <div className="info-panel__row"><span>Urban-centre built-up area:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentreBuiltUpAreaKm2 ?? EMPTY_POINT, formatInteger)}</strong></div>
               <div className="info-panel__row"><span>Urban-centre built-up share:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentreBuiltUpSharePct ?? EMPTY_POINT, formatPercent)}</strong></div>
               <div className="info-panel__row"><span>Urban-centre count:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentreCount ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Non-urban-centre population:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.nonUrbanCentrePopulationEstimate ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Urban-centre population share:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.urbanCentrePopulationSharePct ?? EMPTY_POINT, formatPercent)}</strong></div>
               <div className="info-panel__row"><span>Largest urban centre:</span><strong>{selectedProvince.provinceCanonicalData?.settlement.largestUrbanCentreName ?? "No data"}</strong></div>
               <div className="info-panel__row"><span>Largest urban-centre population:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.largestUrbanCentrePopulationEstimate ?? EMPTY_POINT, formatInteger)}</strong></div>
               <div className="info-panel__row"><span>Population concentration:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.populationConcentrationHhi ?? EMPTY_POINT, formatHhi)}</strong></div>
               <div className="info-panel__row"><span>Settlement completeness:</span><strong>{formatTextPoint(selectedProvince.provinceCanonicalData?.settlement.settlementDataCompleteness ?? { value: null, year: null, source: null })}</strong></div>
+              <div className="info-panel__row"><span>Raster completeness:</span><strong>{formatTextPoint(selectedProvince.provinceCanonicalData?.settlement.rasterSettlementDataCompleteness ?? { value: null, year: null, source: null })}</strong></div>
 
               <h3 className="info-panel__subtitle">Economy</h3>
               <div className="info-panel__row"><span>Population:</span><strong>{formatPoint(selectedProvince.canonicalData?.economy.population ?? EMPTY_POINT, formatInteger)}</strong></div>
@@ -2999,7 +3122,7 @@ export function GameCanvas() {
           <p className="map-mode__section-title">Settlement</p>
           <div className="map-mode__buttons">
             {MAP_MODES.filter((mode) =>
-              ["urbanCentrePopulationEstimate", "urbanCentrePopulationDensity", "urbanCentreCount", "urbanCentreBuiltUpSharePct"].includes(
+              ["urbanCentrePopulationEstimate", "urbanCentrePopulationDensity", "rasterPopulationDensity", "urbanCentreCount", "urbanCentreBuiltUpSharePct"].includes(
                 mode.key,
               ),
             ).map((mode) => (

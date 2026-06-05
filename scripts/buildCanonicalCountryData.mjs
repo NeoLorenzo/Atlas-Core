@@ -377,6 +377,14 @@ function sumNumbers(values) {
   return values.reduce((sum, value) => sum + value, 0);
 }
 
+function roundNumber(value, digits = 2) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return null;
+  }
+  const factor = 10 ** digits;
+  return Math.round(value * factor) / factor;
+}
+
 function computeHhi(values) {
   const filtered = values.filter((value) => typeof value === "number" && Number.isFinite(value) && value > 0);
   if (filtered.length === 0) {
@@ -412,6 +420,19 @@ function buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresByI
       urbanCentreBuiltUpSharePct: makeDataPoint(null, null, null),
       populationConcentrationHhi: makeDataPoint(null, null, null),
       provincePopulationCoveragePct: makeDataPoint(null, null, null),
+      rasterPopulationEstimate: makeDataPoint(null, null, null),
+      rasterBuiltUpSurfaceKm2: makeDataPoint(null, null, null),
+      rasterPopulationDensityPerKm2: makeDataPoint(null, null, null),
+      rasterBuiltUpSurfaceSharePct: makeDataPoint(null, null, null),
+      rasterPopulationPerBuiltUpKm2: makeDataPoint(null, null, null),
+      nonUrbanCentrePopulationEstimate: makeDataPoint(null, null, null),
+      urbanCentrePopulationSharePct: makeDataPoint(null, null, null),
+      provinceRasterPopulationCoveragePct: makeDataPoint(null, null, null),
+      rasterSettlementDataCompleteness: {
+        value: "partial-ghsl-raster",
+        year: 2025,
+        source: "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A",
+      },
       settlementDataCompleteness: {
         value: "urban-centres-only",
         year: 2025,
@@ -430,6 +451,28 @@ function buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresByI
   );
   const provincesWithPopulationEstimate = provinceRecords.filter(
     (record) => getNumericFactValue(record?.settlement?.urbanCentrePopulationEstimate) !== null,
+  ).length;
+  const rasterPopulationTotal = sumNumbers(
+    provinceRecords
+      .map((record) => getNumericFactValue(record?.settlement?.rasterPopulationEstimate))
+      .filter((value) => value !== null),
+  );
+  const rasterBuiltUpSurfaceKm2 = sumNumbers(
+    provinceRecords
+      .map((record) => getNumericFactValue(record?.settlement?.rasterBuiltUpSurfaceKm2))
+      .filter((value) => value !== null),
+  );
+  const urbanCentrePopulationTotal = sumNumbers(
+    provinceRecords
+      .map((record) => getNumericFactValue(record?.settlement?.urbanCentrePopulationEstimate))
+      .filter((value) => value !== null),
+  );
+  const urbanCentrePopulationTotalOrZero = urbanCentrePopulationTotal >= 0 ? urbanCentrePopulationTotal : 0;
+  const provincesWithRasterPopulationEstimate = provinceRecords.filter(
+    (record) => getNumericFactValue(record?.settlement?.rasterPopulationEstimate) !== null,
+  ).length;
+  const provincesWithRasterBuiltUpSurface = provinceRecords.filter(
+    (record) => getNumericFactValue(record?.settlement?.rasterBuiltUpSurfaceKm2) !== null,
   ).length;
   const countryHhi = computeHhi(
     urbanCentres.map((record) => getNumericFactValue(record?.population)).filter((value) => value !== null),
@@ -472,6 +515,87 @@ function buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresByI
             2,
           )
         : makeDataPoint(null, null, null),
+    rasterPopulationEstimate:
+      rasterPopulationTotal > 0
+        ? buildSettlementDataPoint(
+            rasterPopulationTotal,
+            2025,
+            "GHSL GHS-POP R2023A province raster rollup",
+            0,
+          )
+        : makeDataPoint(null, null, null),
+    rasterBuiltUpSurfaceKm2:
+      rasterBuiltUpSurfaceKm2 > 0
+        ? buildSettlementDataPoint(
+            rasterBuiltUpSurfaceKm2,
+            2025,
+            "GHSL GHS-BUILT-S R2023A province raster rollup",
+          )
+        : makeDataPoint(null, null, null),
+    rasterPopulationDensityPerKm2:
+      rasterPopulationTotal > 0 && totalAreaKm2 > 0
+        ? buildSettlementDataPoint(
+            rasterPopulationTotal / totalAreaKm2,
+            2025,
+            "GHSL GHS-POP R2023A province raster rollup + Natural Earth province geometry",
+            2,
+          )
+        : makeDataPoint(null, null, null),
+    rasterBuiltUpSurfaceSharePct:
+      rasterBuiltUpSurfaceKm2 > 0 && totalAreaKm2 > 0
+        ? buildSettlementDataPoint(
+            (rasterBuiltUpSurfaceKm2 / totalAreaKm2) * 100,
+            2025,
+            "GHSL GHS-BUILT-S R2023A province raster rollup + Natural Earth province geometry",
+            3,
+          )
+        : makeDataPoint(null, null, null),
+    rasterPopulationPerBuiltUpKm2:
+      rasterPopulationTotal > 0 && rasterBuiltUpSurfaceKm2 > 0
+        ? buildSettlementDataPoint(
+            rasterPopulationTotal / rasterBuiltUpSurfaceKm2,
+            2025,
+            "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A province raster rollup",
+            2,
+          )
+        : makeDataPoint(null, null, null),
+    nonUrbanCentrePopulationEstimate:
+      rasterPopulationTotal > 0
+        ? buildSettlementDataPoint(
+            Math.max(0, rasterPopulationTotal - urbanCentrePopulationTotalOrZero),
+            2025,
+            "GHSL GHS-POP R2023A province raster rollup + GHSL GHS-UCDB R2024A",
+            0,
+          )
+        : makeDataPoint(null, null, null),
+    urbanCentrePopulationSharePct:
+      rasterPopulationTotal > 0
+        ? buildSettlementDataPoint(
+            (urbanCentrePopulationTotalOrZero / rasterPopulationTotal) * 100,
+            2025,
+            "GHSL GHS-UCDB R2024A + GHSL GHS-POP R2023A",
+            2,
+          )
+        : makeDataPoint(null, null, null),
+    provinceRasterPopulationCoveragePct:
+      provinceRecords.length > 0
+        ? buildSettlementDataPoint(
+            (provincesWithRasterPopulationEstimate / provinceRecords.length) * 100,
+            2025,
+            "Derived coverage audit",
+            2,
+          )
+        : makeDataPoint(null, null, null),
+    rasterSettlementDataCompleteness: {
+      value:
+        provinceRecords.length > 0 &&
+        provincesWithRasterPopulationEstimate / provinceRecords.length >= 0.99 &&
+        provincesWithRasterBuiltUpSurface / provinceRecords.length >= 0.99
+          ? "full-ghsl-raster"
+          : "partial-ghsl-raster",
+      year: 2025,
+      source: "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A",
+    },
     settlementDataCompleteness: {
       value: "urban-centres-only",
       year: 2025,
@@ -1026,15 +1150,43 @@ async function main() {
           country.settlement.urbanCentreBuiltUpAreaKm2.value !== null ||
           country.settlement.populationConcentrationHhi.value !== null,
       ).length,
+      countriesWithRasterPopulationEstimate: Object.values(countriesByIso3).filter(
+        (country) => country.settlement.rasterPopulationEstimate.value !== null,
+      ).length,
+      countriesWithRasterBuiltUpSurfaceKm2: Object.values(countriesByIso3).filter(
+        (country) => country.settlement.rasterBuiltUpSurfaceKm2.value !== null,
+      ).length,
       countriesWithLargestUrbanCentres: Object.values(countriesByIso3).filter(
         (country) => country.settlement.largestUrbanCentres.length > 0,
       ).length,
       urbanCentresLoaded: Object.keys(urbanCentresById).length,
       provincesLoaded: Object.keys(canonicalProvinceDataById).length,
+      countriesWithFullRasterSettlementData: Object.values(countriesByIso3).filter(
+        (country) => country.settlement.rasterSettlementDataCompleteness.value === "full-ghsl-raster",
+      ).length,
+      countriesWithPartialRasterSettlementData: Object.values(countriesByIso3).filter(
+        (country) => country.settlement.rasterSettlementDataCompleteness.value === "partial-ghsl-raster",
+      ).length,
+      provinceRasterPopulationCoveragePct: roundNumber(
+        Object.values(countriesByIso3).reduce(
+          (sum, country) => sum + (country.settlement.provinceRasterPopulationCoveragePct.value ?? 0),
+          0,
+        ) / Math.max(1, Object.values(countriesByIso3).length),
+        2,
+      ),
       settlementDataCompleteness: {
         value: "urban-centres-only",
         year: 2025,
         source: "GHSL GHS-UCDB; does not include full raster population or full built-up surface",
+      },
+      rasterSettlementDataCompleteness: {
+        value: Object.values(countriesByIso3).every(
+          (country) => country.settlement.rasterSettlementDataCompleteness.value === "full-ghsl-raster",
+        )
+          ? "full-ghsl-raster"
+          : "partial-ghsl-raster",
+        year: 2025,
+        source: "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A",
       },
     },
     ...sourceUsageTotals,

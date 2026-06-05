@@ -29,7 +29,7 @@ Implemented:
 - Multiple thematic map views
 - Canonical merged country dataset in `public/data/canonical-country-data.json`
 - Canonical province settlement dataset in `public/data/canonical-province-data.json`
-- GHSL urban-centre and province-settlement rollups in `public/data/urban-centres.json` and `public/data/province-settlement-stats.json`
+- GHSL urban-centre, province-settlement, and province-raster-settlement rollups in `public/data/urban-centres.json`, `public/data/province-settlement-stats.json`, and `public/data/province-raster-settlement-stats.json`
 
 Not implemented yet:
 
@@ -86,8 +86,8 @@ Each country in `public/data/canonical-country-data.json` can contain:
 
 Each province in `public/data/canonical-province-data.json` currently contains:
 
-- `id`
-- `name`
+- `provinceId`
+- `provinceName`
 - `countryIso3`
 - `countryName`
 - `areaKm2`
@@ -103,8 +103,10 @@ Political-system text and booleans are stored as Factbook-derived fields with a 
 
 Settlement caveat:
 
-- Current GHSL-derived province and country settlement fields intentionally use `urbanCentre*` names because they are UCDB urban-centre aggregates, not full province or country raster totals.
-- `settlementDataCompleteness.value = "urban-centres-only"` means no full GHS-POP or GHS-BUILT zonal aggregation has been run yet.
+- Current GHSL-derived `urbanCentre*` province and country settlement fields are UCDB urban-centre aggregates, while `raster*` fields are full-province or full-country GHSL raster totals.
+- `settlementDataCompleteness` and `rasterSettlementDataCompleteness` are intentionally separate.
+- `settlementDataCompleteness.value = "urban-centres-only"` refers to the UCDB-only urban-centre rollup.
+- `rasterSettlementDataCompleteness.value` reports whether province-wide GHSL raster aggregation was available for population and built-up surface.
 
 ## Geometry Files
 
@@ -496,6 +498,70 @@ Important semantic note:
 - They are matched urban-centre aggregates only.
 - The field names intentionally use `urbanCentre*` wording to avoid implying full raster coverage.
 
+### 9. GHSL Raster Province Settlement
+
+Scripts:
+
+- `scripts/importGhslRasterSettlementData.mjs`
+- `scripts/lib/ghslRaster.mjs`
+- `scripts/buildCanonicalProvinceData.mjs`
+- `scripts/buildCanonicalCountryData.mjs`
+
+Generated files:
+
+- `public/data/province-raster-settlement-stats.json`
+- `public/data/province-raster-settlement-stats-coverage.json`
+- `public/data/raw/ghsl-raster/province-index-4326-30ss.geojson`
+- `public/data/raw/ghsl-raster/province-id-mask-population-4326-30ss.tif`
+- `public/data/raw/ghsl-raster/province-id-mask-built-4326-30ss.tif`
+
+Temporary checkpoint files during processing:
+
+- `public/data/province-raster-settlement-stats.partial.json`
+- `public/data/province-raster-settlement-stats-progress.json`
+
+Source behavior:
+
+- Uses GHSL 2025 30-arcsecond global rasters for population and built-up surface.
+- Resolves rasters in this order: explicit local override path, cached file in `public/data/raw/ghsl-raster/`, then download URL.
+- Accepts either ZIP archives or extracted GeoTIFFs for the population and built-up inputs.
+- Uses GDAL by default for the fast path.
+- Rasterizes province numeric ids onto each raster's native grid, then scans rows to aggregate province totals without point-in-polygon checks.
+- Creates separate province-id masks for the population and built rasters so slightly different GHSL grids do not need to be force-aligned.
+- Preserves a slower polygon fallback behind `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1`.
+
+Raster fields emitted:
+
+- `rasterPopulationEstimate`
+- `rasterPopulationDensityPerKm2`
+- `rasterBuiltUpSurfaceKm2`
+- `rasterBuiltUpSurfaceSharePct`
+- `rasterPopulationPerBuiltUpKm2`
+- `rasterSettlementDataCompleteness`
+
+Derived canonical settlement fields that depend on raster population:
+
+- `nonUrbanCentrePopulationEstimate`
+- `urbanCentrePopulationSharePct`
+
+Runtime requirements and controls:
+
+- GDAL is required for the fast importer path. If it is missing, the importer fails clearly unless `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1` is set.
+- `GHSL_POP_RASTER_PATH`
+- `GHSL_BUILT_RASTER_PATH`
+- `GHSL_POP_RASTER_URL`
+- `GHSL_BUILT_RASTER_URL`
+- `GHSL_RASTER_MAX_PROVINCES`
+- `GHSL_RASTER_MAX_ROWS`
+- `GHSL_RASTER_RESUME=1`
+- `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1`
+
+How it is used in canonical data:
+
+- `canonical-province-data.json` merges UCDB `urbanCentre*` fields with province-wide GHSL `raster*` fields.
+- Province `nonUrbanCentrePopulationEstimate` and `urbanCentrePopulationSharePct` are derived from raster population, treating missing UCDB urban-centre population as `0` when raster population exists.
+- `canonical-country-data.json` rolls province raster totals up to country-level `raster*` settlement fields and applies the same UCDB-as-zero rule for raster-derived non-urban and share metrics.
+
 ## Canonical Merge Rules
 
 The canonical merge step is implemented in `scripts/buildCanonicalCountryData.mjs`.
@@ -593,6 +659,8 @@ The canonical builder maps them as follows:
 
 - province-derived urban-centre rollups: GHSL UCDB + Natural Earth province geometry
 - largest urban-centre lists: GHSL UCDB
+- province-derived raster population and built-up rollups: GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A
+- derived non-urban and urban-share metrics: canonical province rollups built from raster population plus UCDB urban-centre population
 
 ## Coverage And Audit Files
 
@@ -609,6 +677,7 @@ Current coverage outputs:
 - `security-stats-coverage.json`
 - `urban-centres-coverage.json`
 - `province-settlement-stats-coverage.json`
+- `province-raster-settlement-stats-coverage.json`
 - `canonical-province-data-coverage.json`
 - `canonical-country-data-coverage.json`
 
@@ -632,6 +701,7 @@ npm run import:factbook
 npm run import:security
 npm run build:urban-centres
 npm run import:ghsl
+npm run import:ghsl-raster
 npm run build:province-data
 npm run build:country-data
 npm run generate:country-borders
@@ -642,6 +712,22 @@ Optional audit:
 ```bash
 npm run audit:stats
 ```
+
+For GHSL raster imports, the importer first checks local override paths, then cached files under `public/data/raw/ghsl-raster/`, then download URLs. Supported overrides:
+
+- `GHSL_POP_RASTER_PATH`
+- `GHSL_BUILT_RASTER_PATH`
+- `GHSL_POP_RASTER_URL`
+- `GHSL_BUILT_RASTER_URL`
+
+The fast raster importer also supports:
+
+- `GHSL_RASTER_MAX_PROVINCES`: limit province output for debug runs
+- `GHSL_RASTER_MAX_ROWS`: limit raster row scanning for debug runs
+- `GHSL_RASTER_RESUME=1`: resume from the checkpoint files if they exist
+- `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1`: bypass GDAL and use the slower polygon-based fallback
+
+While `npm run import:ghsl-raster` is running, it logs source resolution, ZIP extraction, raster metadata, and aggregation progress. It also writes checkpoint files so long runs can be resumed or inspected mid-run.
 
 ## NPM Scripts
 
@@ -657,6 +743,7 @@ npm run audit:stats
 - `import:security`: import World Bank security indicators
 - `build:urban-centres`: build GHSL urban-centre records and coverage
 - `import:ghsl`: build province settlement rollups from matched GHSL urban centres
+- `import:ghsl-raster`: build province-wide GHSL raster population and built-up settlement rollups with GDAL mask aggregation and checkpoint files
 - `build:province-data`: build canonical province settlement data
 - `build:country-data`: build canonical merged country data
 - `generate:country-borders`: derive country borders from provinces
@@ -677,9 +764,14 @@ public/data/
   security-stats.json
   urban-centres.json
   province-settlement-stats.json
+  province-raster-settlement-stats.json
   canonical-province-data.json
   canonical-country-data.json
   *-coverage.json
+  raw/ghsl-raster/
+    province-index-4326-30ss.geojson
+    province-id-mask-population-4326-30ss.tif
+    province-id-mask-built-4326-30ss.tif
 
 scripts/
   importWorldBankCountryStats.mjs
@@ -691,10 +783,12 @@ scripts/
   importWorldBankSecurityStats.mjs
   buildUrbanCentres.mjs
   importGhslSettlementData.mjs
+  importGhslRasterSettlementData.mjs
   buildCanonicalProvinceData.mjs
   buildCanonicalCountryData.mjs
   generateCountryBorders.mjs
   auditCountryStatsOverlap.mjs
+  lib/ghslRaster.mjs
 
 src/map/
   GameCanvas.tsx
@@ -709,8 +803,9 @@ src/map/
 - Atlas currently resolves to `2016` because the selected official file does not expose `2024` or `2023`.
 - Factbook matching is incomplete for some territories, oceans, and supranational entities.
 - Province geometry is checked in directly and treated as ground truth by the current frontend.
-- GHSL settlement coverage is currently UCDB-only. Province and country `urbanCentre*` metrics do not represent full-raster province totals.
-- `settlementDataCompleteness` is the canonical signal for this limitation in generated settlement outputs.
+- GHSL settlement coverage now separates UCDB urban-centre aggregates (`urbanCentre*`) from full raster province and country totals (`raster*`).
+- `settlementDataCompleteness` describes the UCDB urban-centre subset, while `rasterSettlementDataCompleteness` describes province-wide GHSL raster coverage.
+- The fast GHSL raster importer depends on GDAL unless `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1` is used.
 
 ## Recommended Extension Pattern
 
@@ -718,5 +813,5 @@ src/map/
 - Keep `public/data/canonical-province-data.json` as the province settlement input for province-level overlays and inspectors.
 - Add new datasets through importer scripts rather than frontend-specific data patches.
 - Extend `scripts/buildCanonicalCountryData.mjs` when adding new canonical fields.
-- Extend `scripts/buildCanonicalProvinceData.mjs` and `scripts/lib/ghslSettlement.mjs` when adding better province settlement coverage.
+- Extend `scripts/buildCanonicalProvinceData.mjs`, `scripts/lib/ghslSettlement.mjs`, and `scripts/lib/ghslRaster.mjs` when adding better province settlement coverage.
 - Preserve the province-first geometry model and treat country-level values as overlays.

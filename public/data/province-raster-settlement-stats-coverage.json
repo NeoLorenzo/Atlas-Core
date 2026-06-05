@@ -1,0 +1,117 @@
+{
+  "source": "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A",
+  "generatedAt": "2026-06-05T15:33:03.273Z",
+  "aggregationMode": "fast-mask",
+  "selectedGhslEpoch": 2025,
+  "selectedGhslResolution": {
+    "population": "4326_30ss",
+    "builtSurface": "4326_30ss"
+  },
+  "provinces": {
+    "total": 4596,
+    "processed": 4596,
+    "matched": 4540,
+    "skipped": 0
+  },
+  "rows": {
+    "processed": 21384,
+    "total": 21384,
+    "coveragePct": 100
+  },
+  "fieldCoverage": {
+    "rasterPopulationEstimate": {
+      "count": 4525,
+      "pct": 98.46
+    },
+    "rasterPopulationDensityPerKm2": {
+      "count": 4525,
+      "pct": 98.46
+    },
+    "rasterBuiltUpSurfaceKm2": {
+      "count": 4531,
+      "pct": 98.59
+    },
+    "rasterBuiltUpSurfaceSharePct": {
+      "count": 4531,
+      "pct": 98.59
+    },
+    "rasterPopulationPerBuiltUpKm2": {
+      "count": 4514,
+      "pct": 98.22
+    }
+  },
+  "skippedProvinces": [],
+  "selectedSourceFiles": {
+    "population": {
+      "selectedFilePath": "C:\\Atlas-Core\\public\\data\\raw\\ghsl-raster\\GHS_POP_E2025_GLOBE_R2023A_4326_30ss_V1_0.tif",
+      "archivePath": null,
+      "selectedUrl": null,
+      "selectionKind": "env-path",
+      "sourceType": "TIF",
+      "resolution": "4326_30ss",
+      "rasterCrs": "EPSG:4326",
+      "rasterNodataValue": null,
+      "width": 43202,
+      "height": 21384,
+      "boundingBox": [
+        -180.007916,
+        -89.100416,
+        180.008749,
+        89.099583
+      ],
+      "pixelSize": {
+        "x": 0.00833333,
+        "y": -0.00833333
+      }
+    },
+    "builtSurface": {
+      "selectedFilePath": "C:\\Atlas-Core\\public\\data\\raw\\ghsl-raster\\GHS_BUILT_S_E2025_GLOBE_R2023A_4326_30ss_V1_0.tif",
+      "archivePath": null,
+      "selectedUrl": null,
+      "selectionKind": "env-path",
+      "sourceType": "TIF",
+      "resolution": "4326_30ss",
+      "rasterCrs": "EPSG:4326",
+      "rasterNodataValue": null,
+      "width": 43201,
+      "height": 21384,
+      "boundingBox": [
+        -180.001249,
+        -89.100416,
+        180.007083,
+        89.099583
+      ],
+      "pixelSize": {
+        "x": 0.00833333,
+        "y": -0.00833333
+      }
+    },
+    "provinceIndexGeoJsonPath": "C:\\Atlas-Core\\public\\data\\raw\\ghsl-raster\\province-index-4326-30ss.geojson",
+    "provinceMaskPath": null,
+    "populationMaskPath": "C:\\Atlas-Core\\public\\data\\raw\\ghsl-raster\\province-id-mask-population-4326-30ss.tif",
+    "builtMaskPath": "C:\\Atlas-Core\\public\\data\\raw\\ghsl-raster\\province-id-mask-built-4326-30ss.tif"
+  },
+  "validation": {
+    "totalWorldRasterPopulationEstimate": 8114287439,
+    "totalWorldBuiltUpSurfaceKm2": 486981.508,
+    "comparisonSummary": null
+  },
+  "runtimeSummary": {
+    "startedAt": "2026-06-05T15:27:58.247Z",
+    "finishedAt": "2026-06-05T15:33:03.273Z",
+    "durationSeconds": 305.03
+  },
+  "debug": {
+    "enabled": false,
+    "maxProvinces": null,
+    "maxRows": null,
+    "resumeEnabled": false,
+    "resumedFromPartial": false
+  },
+  "notes": [
+    "Province aggregation uses a GDAL-rasterized province-id mask aligned to the GHSL population grid.",
+    "Aggregation scans the mask, population raster, and built-up raster block-by-block without polygon tests in the hot path.",
+    "Non-WGS84 rasters currently fail fast rather than silently reprojecting."
+  ],
+  "warnings": []
+}

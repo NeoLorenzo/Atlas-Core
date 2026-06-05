@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T15:03:24.212Z",
+  "generatedAt": "2026-06-05T15:38:30.820Z",
   "totalCountries": 272,
   "coverageByCanonicalMetric": {
     "population": 216,
@@ -593,13 +593,23 @@
   },
   "settlementCoverage": {
     "countriesWithSettlementData": 259,
+    "countriesWithRasterPopulationEstimate": 240,
+    "countriesWithRasterBuiltUpSurfaceKm2": 245,
     "countriesWithLargestUrbanCentres": 189,
     "urbanCentresLoaded": 11422,
     "provincesLoaded": 4596,
+    "countriesWithFullRasterSettlementData": 218,
+    "countriesWithPartialRasterSettlementData": 54,
+    "provinceRasterPopulationCoveragePct": 86.76,
     "settlementDataCompleteness": {
       "value": "urban-centres-only",
       "year": 2025,
       "source": "GHSL GHS-UCDB; does not include full raster population or full built-up surface"
+    },
+    "rasterSettlementDataCompleteness": {
+      "value": "partial-ghsl-raster",
+      "year": 2025,
+      "source": "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A"
     }
   },
   "wdiValuesUsed": 1591,
