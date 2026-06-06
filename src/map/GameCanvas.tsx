@@ -89,6 +89,8 @@ type DataPoint = {
   source: DataSource;
 };
 
+type CanonicalNumberField = DataPoint;
+
 type TextFactPoint = {
   value: string | null;
   year: number | null;
@@ -176,6 +178,21 @@ type SecurityData = {
   mobilizationBasePct: DataPoint;
 };
 
+type HealthSystemData = {
+  hospitalBedsPer1000?: CanonicalNumberField;
+  physiciansPer1000?: CanonicalNumberField;
+  nursesMidwivesPer1000?: CanonicalNumberField;
+  currentHealthExpenditurePerCapitaUsd?: CanonicalNumberField;
+  currentHealthExpenditurePctOfGdp?: CanonicalNumberField;
+  healthCapacityScore?: CanonicalNumberField;
+  medicalWorkforceScore?: CanonicalNumberField;
+  hospitalSurgeCapacityScore?: CanonicalNumberField;
+  outbreakTreatmentScore?: CanonicalNumberField;
+  healthDataFreshnessScore?: CanonicalNumberField;
+  healthFieldCoverageScore?: CanonicalNumberField;
+  healthCapacityScoreConfidence?: CanonicalNumberField;
+};
+
 type TextDataPoint = {
   value: string | null;
   source: DataSource;
@@ -226,6 +243,7 @@ type CanonicalCountryData = {
   demographics: DemographicsData;
   tradeStructure: TradeStructureData;
   security: SecurityData;
+  healthSystem?: HealthSystemData;
   politicalSystem: PoliticalSystemData;
   settlement?: CountrySettlementData;
 };
@@ -378,6 +396,12 @@ type MapMode =
   | "militaryExpenditurePctOfGdp"
   | "armedForcesPersonnel"
   | "militarySpendPerCapita"
+  | "healthCapacity"
+  | "hospitalBedsPer1000"
+  | "physiciansPer1000"
+  | "nursesMidwivesPer1000"
+  | "healthExpenditurePerCapita"
+  | "healthExpenditurePctOfGdp"
   | "governmentFamily"
   | "monarchy"
   | "parliament"
@@ -485,6 +509,12 @@ const COLOR_RAMPS = {
   militaryExpenditurePctOfGdp: { low: "#3f1d0d", high: "#f97316" },
   armedForcesPersonnel: { low: "#0f3d2e", high: "#4ade80" },
   militarySpendPerCapita: { low: "#3b0764", high: "#f0abfc" },
+  healthCapacity: { low: "#16324f", high: "#22c55e" },
+  hospitalBedsPer1000: { low: "#102a43", high: "#60a5fa" },
+  physiciansPer1000: { low: "#3b0764", high: "#d8b4fe" },
+  nursesMidwivesPer1000: { low: "#14532d", high: "#86efac" },
+  healthExpenditurePerCapita: { low: "#4a1d06", high: "#f59e0b" },
+  healthExpenditurePctOfGdp: { low: "#4c0519", high: "#fb7185" },
 } as const;
 
 const POLITICAL_SYSTEM_COLORS = {
@@ -576,6 +606,12 @@ const MAP_MODES: { key: MapMode; label: string }[] = [
   { key: "militaryExpenditurePctOfGdp", label: "Military Spending (% GDP)" },
   { key: "armedForcesPersonnel", label: "Armed Forces Personnel" },
   { key: "militarySpendPerCapita", label: "Military Spend per Capita" },
+  { key: "healthCapacity", label: "Health Capacity" },
+  { key: "hospitalBedsPer1000", label: "Hospital Beds / 1,000" },
+  { key: "physiciansPer1000", label: "Physicians / 1,000" },
+  { key: "nursesMidwivesPer1000", label: "Nurses & Midwives / 1,000" },
+  { key: "healthExpenditurePerCapita", label: "Health Spend per Capita" },
+  { key: "healthExpenditurePctOfGdp", label: "Health Spend (% GDP)" },
   { key: "governmentFamily", label: "Government Type" },
   { key: "monarchy", label: "Monarchy" },
   { key: "parliament", label: "Parliament" },
@@ -635,6 +671,12 @@ const MAP_MODE_COLOR_PROPERTY: Record<MapMode, string> = {
   militaryExpenditurePctOfGdp: "__militaryExpenditurePctOfGdpColor",
   armedForcesPersonnel: "__armedForcesPersonnelColor",
   militarySpendPerCapita: "__militarySpendPerCapitaColor",
+  healthCapacity: "__healthCapacityColor",
+  hospitalBedsPer1000: "__hospitalBedsPer1000Color",
+  physiciansPer1000: "__physiciansPer1000Color",
+  nursesMidwivesPer1000: "__nursesMidwivesPer1000Color",
+  healthExpenditurePerCapita: "__healthExpenditurePerCapitaColor",
+  healthExpenditurePctOfGdp: "__healthExpenditurePctOfGdpColor",
   governmentFamily: "__governmentFamilyColor",
   monarchy: "__monarchyColor",
   parliament: "__parliamentColor",
@@ -694,6 +736,12 @@ const MAP_MODE_LABEL: Record<MapMode, string> = {
   militaryExpenditurePctOfGdp: "Military Spending (% GDP)",
   armedForcesPersonnel: "Armed Forces Personnel",
   militarySpendPerCapita: "Military Spend per Capita",
+  healthCapacity: "Health Capacity",
+  hospitalBedsPer1000: "Hospital Beds / 1,000",
+  physiciansPer1000: "Physicians / 1,000",
+  nursesMidwivesPer1000: "Nurses & Midwives / 1,000",
+  healthExpenditurePerCapita: "Health Spend per Capita",
+  healthExpenditurePctOfGdp: "Health Spend (% GDP)",
   governmentFamily: "Government Type",
   monarchy: "Monarchy",
   parliament: "Parliament",
@@ -978,6 +1026,48 @@ function getMapColorLegend(mode: MapMode): MapColorLegend {
       MAP_MODE_LABEL[mode],
       "Derived military spending per resident.",
       COLOR_RAMPS.militarySpendPerCapita,
+    );
+  }
+  if (mode === "healthCapacity") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Estimated country-level health-system capacity score from canonical health indicators.",
+      COLOR_RAMPS.healthCapacity,
+    );
+  }
+  if (mode === "hospitalBedsPer1000") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Reported hospital beds per 1,000 people.",
+      COLOR_RAMPS.hospitalBedsPer1000,
+    );
+  }
+  if (mode === "physiciansPer1000") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Reported physicians per 1,000 people.",
+      COLOR_RAMPS.physiciansPer1000,
+    );
+  }
+  if (mode === "nursesMidwivesPer1000") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Reported nurses and midwives per 1,000 people.",
+      COLOR_RAMPS.nursesMidwivesPer1000,
+    );
+  }
+  if (mode === "healthExpenditurePerCapita") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Current health expenditure per capita (USD).",
+      COLOR_RAMPS.healthExpenditurePerCapita,
+    );
+  }
+  if (mode === "healthExpenditurePctOfGdp") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Current health expenditure as a share of GDP.",
+      COLOR_RAMPS.healthExpenditurePctOfGdp,
     );
   }
 
@@ -2184,6 +2274,24 @@ function getActiveMapValue(
   if (mode === "militarySpendPerCapita") {
     return `Military Spend per Capita - ${formatUsdPerCapita(countryData.security.militarySpendPerCapitaUsd.value)}`;
   }
+  if (mode === "healthCapacity") {
+    return `Health Capacity - ${formatNumber(countryData.healthSystem?.healthCapacityScore?.value ?? null)}`;
+  }
+  if (mode === "hospitalBedsPer1000") {
+    return `Hospital Beds / 1,000 - ${formatNumber(countryData.healthSystem?.hospitalBedsPer1000?.value ?? null)}`;
+  }
+  if (mode === "physiciansPer1000") {
+    return `Physicians / 1,000 - ${formatNumber(countryData.healthSystem?.physiciansPer1000?.value ?? null)}`;
+  }
+  if (mode === "nursesMidwivesPer1000") {
+    return `Nurses & Midwives / 1,000 - ${formatNumber(countryData.healthSystem?.nursesMidwivesPer1000?.value ?? null)}`;
+  }
+  if (mode === "healthExpenditurePerCapita") {
+    return `Health Spend per Capita - ${formatUsdPerCapita(countryData.healthSystem?.currentHealthExpenditurePerCapitaUsd?.value ?? null)}`;
+  }
+  if (mode === "healthExpenditurePctOfGdp") {
+    return `Health Spend (% GDP) - ${formatPercent(countryData.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null)}`;
+  }
   if (mode === "governmentFamily") {
     return `Government Type - ${countryData.politicalSystem.governmentFamily.value ?? "Unknown"}`;
   }
@@ -2495,6 +2603,24 @@ export function GameCanvas() {
           const militarySpendPerCapitaRange = getIndicatorRange(
             countryValues.map((country) => country.security.militarySpendPerCapitaUsd.value),
           );
+          const healthCapacityRange = getIndicatorRange(
+            countryValues.map((country) => country.healthSystem?.healthCapacityScore?.value ?? null),
+          );
+          const hospitalBedsPer1000Range = getIndicatorRange(
+            countryValues.map((country) => country.healthSystem?.hospitalBedsPer1000?.value ?? null),
+          );
+          const physiciansPer1000Range = getIndicatorRange(
+            countryValues.map((country) => country.healthSystem?.physiciansPer1000?.value ?? null),
+          );
+          const nursesMidwivesPer1000Range = getIndicatorRange(
+            countryValues.map((country) => country.healthSystem?.nursesMidwivesPer1000?.value ?? null),
+          );
+          const healthExpenditurePerCapitaRange = getIndicatorRange(
+            countryValues.map((country) => country.healthSystem?.currentHealthExpenditurePerCapitaUsd?.value ?? null),
+          );
+          const healthExpenditurePctOfGdpRange = getIndicatorRange(
+            countryValues.map((country) => country.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null),
+          );
           let wppMatchedProvinceCount = 0;
           let atlasMatchedProvinceCount = 0;
           let securityMatchedProvinceCount = 0;
@@ -2700,6 +2826,54 @@ export function GameCanvas() {
                     countryCanonicalData.security.militarySpendPerCapitaUsd.value,
                     militarySpendPerCapitaRange.min,
                     militarySpendPerCapitaRange.max,
+                  )
+                : null;
+            const healthCapacityT =
+              countryCanonicalData && healthCapacityRange
+                ? normalizeValue(
+                    countryCanonicalData.healthSystem?.healthCapacityScore?.value ?? null,
+                    healthCapacityRange.min,
+                    healthCapacityRange.max,
+                  )
+                : null;
+            const hospitalBedsPer1000T =
+              countryCanonicalData && hospitalBedsPer1000Range
+                ? normalizeValue(
+                    countryCanonicalData.healthSystem?.hospitalBedsPer1000?.value ?? null,
+                    hospitalBedsPer1000Range.min,
+                    hospitalBedsPer1000Range.max,
+                  )
+                : null;
+            const physiciansPer1000T =
+              countryCanonicalData && physiciansPer1000Range
+                ? normalizeValue(
+                    countryCanonicalData.healthSystem?.physiciansPer1000?.value ?? null,
+                    physiciansPer1000Range.min,
+                    physiciansPer1000Range.max,
+                  )
+                : null;
+            const nursesMidwivesPer1000T =
+              countryCanonicalData && nursesMidwivesPer1000Range
+                ? normalizeValue(
+                    countryCanonicalData.healthSystem?.nursesMidwivesPer1000?.value ?? null,
+                    nursesMidwivesPer1000Range.min,
+                    nursesMidwivesPer1000Range.max,
+                  )
+                : null;
+            const healthExpenditurePerCapitaT =
+              countryCanonicalData && healthExpenditurePerCapitaRange
+                ? normalizeValue(
+                    countryCanonicalData.healthSystem?.currentHealthExpenditurePerCapitaUsd?.value ?? null,
+                    healthExpenditurePerCapitaRange.min,
+                    healthExpenditurePerCapitaRange.max,
+                  )
+                : null;
+            const healthExpenditurePctOfGdpT =
+              countryCanonicalData && healthExpenditurePctOfGdpRange
+                ? normalizeValue(
+                    countryCanonicalData.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null,
+                    healthExpenditurePctOfGdpRange.min,
+                    healthExpenditurePctOfGdpRange.max,
                   )
                 : null;
             const provincePopulationEstimateT =
@@ -3113,6 +3287,54 @@ export function GameCanvas() {
                         COLOR_RAMPS.militarySpendPerCapita.low,
                         COLOR_RAMPS.militarySpendPerCapita.high,
                         militarySpendPerCapitaT,
+                      ),
+                __healthCapacityColor:
+                  healthCapacityT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.healthCapacity.low,
+                        COLOR_RAMPS.healthCapacity.high,
+                        healthCapacityT,
+                      ),
+                __hospitalBedsPer1000Color:
+                  hospitalBedsPer1000T === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.hospitalBedsPer1000.low,
+                        COLOR_RAMPS.hospitalBedsPer1000.high,
+                        hospitalBedsPer1000T,
+                      ),
+                __physiciansPer1000Color:
+                  physiciansPer1000T === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.physiciansPer1000.low,
+                        COLOR_RAMPS.physiciansPer1000.high,
+                        physiciansPer1000T,
+                      ),
+                __nursesMidwivesPer1000Color:
+                  nursesMidwivesPer1000T === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.nursesMidwivesPer1000.low,
+                        COLOR_RAMPS.nursesMidwivesPer1000.high,
+                        nursesMidwivesPer1000T,
+                      ),
+                __healthExpenditurePerCapitaColor:
+                  healthExpenditurePerCapitaT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.healthExpenditurePerCapita.low,
+                        COLOR_RAMPS.healthExpenditurePerCapita.high,
+                        healthExpenditurePerCapitaT,
+                      ),
+                __healthExpenditurePctOfGdpColor:
+                  healthExpenditurePctOfGdpT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.healthExpenditurePctOfGdp.low,
+                        COLOR_RAMPS.healthExpenditurePctOfGdp.high,
+                        healthExpenditurePctOfGdpT,
                       ),
                 __governmentFamilyColor: getGovernmentFamilyColor(
                   countryCanonicalData?.politicalSystem.governmentFamily.value ?? null,
@@ -3852,6 +4074,19 @@ export function GameCanvas() {
               <div className="info-panel__row"><span>Military Spend per Soldier:</span><strong>{formatPoint(selectedProvince.canonicalData?.security.militarySpendPerSoldierUsd ?? EMPTY_POINT, formatUsdPerCapita)}</strong></div>
               <div className="info-panel__row"><span>Mobilization Base:</span><strong>{formatPoint(selectedProvince.canonicalData?.security.mobilizationBasePct ?? EMPTY_POINT, formatPercent)}</strong></div>
 
+              <h3 className="info-panel__subtitle">Health System - World Bank WDI / WHO</h3>
+              <div className="info-panel__row"><span>Hospital Beds / 1,000:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.hospitalBedsPer1000 ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Physicians / 1,000:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.physiciansPer1000 ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Nurses & Midwives / 1,000:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.nursesMidwivesPer1000 ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Health Expenditure per Capita:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.currentHealthExpenditurePerCapitaUsd ?? EMPTY_POINT, formatUsdPerCapita)}</strong></div>
+              <div className="info-panel__row"><span>Health Expenditure (% GDP):</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.currentHealthExpenditurePctOfGdp ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Health Capacity Score:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.healthCapacityScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Medical Workforce Score:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.medicalWorkforceScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Hospital Surge Score:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.hospitalSurgeCapacityScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Outbreak Treatment Score:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.outbreakTreatmentScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Health Data Freshness:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.healthDataFreshnessScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Health Field Coverage:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.healthFieldCoverageScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+
               <details className="info-panel__details">
                 <summary>Top Exports</summary>
                 {selectedTopExports.length > 0 ? (
@@ -4114,6 +4349,29 @@ export function GameCanvas() {
                 "militaryExpenditurePctOfGdp",
                 "armedForcesPersonnel",
                 "militarySpendPerCapita",
+              ].includes(mode.key),
+            ).map((mode) => (
+              <button
+                key={mode.key}
+                type="button"
+                className={`map-mode__button${mapMode === mode.key ? " map-mode__button--active" : ""}`}
+                onClick={() => setMapMode(mode.key)}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+
+          <p className="map-mode__section-title">Health</p>
+          <div className="map-mode__buttons">
+            {MAP_MODES.filter((mode) =>
+              [
+                "healthCapacity",
+                "hospitalBedsPer1000",
+                "physiciansPer1000",
+                "nursesMidwivesPer1000",
+                "healthExpenditurePerCapita",
+                "healthExpenditurePctOfGdp",
               ].includes(mode.key),
             ).map((mode) => (
               <button

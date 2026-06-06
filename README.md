@@ -72,6 +72,13 @@ The frontend primarily uses:
 
 The source-specific dataset files remain in `public/data/` for inspection, coverage auditing, and rebuilds. The map UI reads from the canonical country file for country statistics and political-system metadata, from the canonical province file for settlement and province-level infrastructure overlays, and lazily loads the frontend-ready infrastructure GeoJSON files when the infrastructure layer toggles are enabled.
 
+Current health-system frontend usage:
+
+- The inspector reads `country.healthSystem` from `public/data/canonical-country-data.json`
+- Country map modes currently expose:
+  `Health Capacity`, `Hospital Beds / 1,000`, `Physicians / 1,000`, `Nurses & Midwives / 1,000`, `Health Spend per Capita`, and `Health Spend (% GDP)`
+- Health confidence remains in canonical data for simulation/data-quality use, but is not currently shown as a dedicated frontend map layer
+
 ## Canonical Data Model
 
 Each country in `public/data/canonical-country-data.json` can contain:
@@ -82,6 +89,7 @@ Each country in `public/data/canonical-country-data.json` can contain:
 - `governance`
 - `tradeStructure`
 - `security`
+- `healthSystem`
 - `politicalSystem`
 - `settlement`
 
@@ -476,7 +484,62 @@ How it is used in canonical data:
 - Populates the `security` section
 - Uses canonical WDI `population` plus imported security fields for derived indicators
 
-### 8. GHSL Urban Centres And Province Settlement
+### 8. World Bank Health System Stats
+
+Script:
+
+- `scripts/importWorldBankHealthStats.mjs`
+
+Generated files:
+
+- `public/data/health-stats.json`
+- `public/data/health-stats-coverage.json`
+
+Source behavior:
+
+- Uses the World Bank API, source `2`
+- Prefers year `2024`
+- Falls back to year `2023`
+- If neither is available for a field, uses the latest available non-null year
+- Filters out aggregate/non-country rows
+- Matches on ISO3 and preserves the selected year per field
+- Country-level only; intended for strategic simulation mechanics rather than local hospital routing
+
+Imported indicators:
+
+- `hospitalBedsPer1000`
+- `physiciansPer1000`
+- `nursesMidwivesPer1000`
+- `currentHealthExpenditurePerCapitaUsd`
+- `currentHealthExpenditurePctOfGdp`
+
+Canonical fields:
+
+- raw imported fields:
+  `hospitalBedsPer1000`, `physiciansPer1000`, `nursesMidwivesPer1000`, `currentHealthExpenditurePerCapitaUsd`, `currentHealthExpenditurePctOfGdp`
+- derived scores:
+  `healthCapacityScore`, `medicalWorkforceScore`, `hospitalSurgeCapacityScore`, `outbreakTreatmentScore`
+- derived data-quality / confidence signals:
+  `healthDataFreshnessScore`, `healthFieldCoverageScore`, `healthCapacityScoreConfidence`
+
+How it is used in canonical data:
+
+- Populates the `healthSystem` section
+- Leaves imported fields as `{ value, year, source }`
+- Derives health capacity scores in the canonical builder with weighted averages over available components
+- Uses the latest available non-null year when 2024/2023 are unavailable because health indicators often lag
+- Separates estimated health capacity from confidence in that estimate
+- Derives confidence from raw health-field coverage plus selected-year freshness
+- Treats confidence as a gameplay/data-quality signal rather than a direct measure of real-world accuracy
+
+Coverage diagnostics:
+
+- `health-stats-coverage.json` includes per-field selected-year distributions
+- It also includes compact per-field year-age buckets:
+  `>= 2023`, `2020-2022`, `2015-2019`, `2010-2014`, and `< 2010`
+- This is intended to help audit stale-but-usable health fields without inflating the main dataset
+
+### 9. GHSL Urban Centres And Province Settlement
 
 Scripts:
 
@@ -539,7 +602,7 @@ Important semantic note:
 - They are matched urban-centre aggregates only.
 - The field names intentionally use `urbanCentre*` wording to avoid implying full raster coverage.
 
-### 9. GHSL Raster Province Settlement
+### 10. GHSL Raster Province Settlement
 
 Scripts:
 
@@ -603,7 +666,7 @@ How it is used in canonical data:
 - Province `nonUrbanCentrePopulationEstimate` and `urbanCentrePopulationSharePct` are derived from raster population, treating missing UCDB urban-centre population as `0` when raster population exists.
 - `canonical-country-data.json` rolls province raster totals up to country-level `raster*` settlement fields and applies the same UCDB-as-zero rule for raster-derived non-urban and share metrics.
 
-### 10. Natural Earth Strategic Infrastructure
+### 11. Natural Earth Strategic Infrastructure
 
 Script:
 
@@ -688,6 +751,7 @@ Input files:
 - `public/data/atlas-trade-profiles.json`
 - `public/data/factbook-political-profiles.json`
 - `public/data/security-stats.json`
+- `public/data/health-stats.json`
 - `public/data/urban-centres.json`
 - `public/data/canonical-province-data.json`
 
@@ -764,6 +828,21 @@ The canonical builder maps them as follows:
 - imported armed-forces personnel metrics: World Bank WDI / IISS
 - derived per-capita / per-soldier / mobilization metrics: canonical builder
 
+`healthSystem`
+
+- imported health capacity fields: World Bank WDI / WHO
+- `medicalWorkforceScore`: `0.55 * norm(physiciansPer1000) + 0.45 * norm(nursesMidwivesPer1000)`
+- `hospitalSurgeCapacityScore`: `norm(hospitalBedsPer1000)`
+- `healthCapacityScore`: `0.30 * norm(hospitalBedsPer1000) + 0.25 * norm(physiciansPer1000) + 0.20 * norm(nursesMidwivesPer1000) + 0.15 * norm(currentHealthExpenditurePerCapitaUsd) + 0.10 * norm(currentHealthExpenditurePctOfGdp)`
+- `outbreakTreatmentScore`: `0.60 * healthCapacityScore + 0.20 * norm(governance.governmentEffectiveness) + 0.10 * norm(governance.ruleOfLaw) + 0.10 * norm(infrastructure.connectivityScore)`
+- `healthDataFreshnessScore`: weighted average of year freshness factors across available raw health fields, multiplied by `100`
+- `healthFieldCoverageScore`: `available raw health field count / 5 * 100`
+- `healthCapacityScoreConfidence`: `0.65 * healthFieldCoverageScore + 0.35 * healthDataFreshnessScore`
+- score normalization uses winsorized percentile bounds with clamped `0..100` output
+- missing score components are reweighted over available inputs instead of forcing null
+- confidence does not directly modify `healthCapacityScore`; downstream simulation systems can decide whether to apply confidence adjustments
+- the frontend currently emphasizes the raw health-capacity factors plus `healthCapacityScore`; confidence remains available in canonical data but is not surfaced as a dedicated map layer
+
 `politicalSystem`
 
 - all text, boolean, and normalized political-system fields: CIA World Factbook
@@ -788,6 +867,7 @@ Current coverage outputs:
 - `atlas-trade-profiles-coverage.json`
 - `factbook-political-profiles-coverage.json`
 - `security-stats-coverage.json`
+- `health-stats-coverage.json`
 - `urban-centres-coverage.json`
 - `province-settlement-stats-coverage.json`
 - `province-raster-settlement-stats-coverage.json`
@@ -815,6 +895,7 @@ npm run import:wpp
 npm run import:atlas
 npm run import:factbook
 npm run import:security
+npm run import:health
 npm run build:urban-centres
 npm run import:ghsl
 npm run import:ghsl-raster
@@ -859,6 +940,7 @@ While `npm run import:ghsl-raster` is running, it logs source resolution, ZIP ex
 - `import:atlas`: import Atlas trade structure data
 - `import:factbook`: import CIA Factbook political-system data
 - `import:security`: import World Bank security indicators
+- `import:health`: import World Bank health-system indicators
 - `build:urban-centres`: build GHSL urban-centre records and coverage
 - `import:ghsl`: build province settlement rollups from matched GHSL urban centres
 - `import:ghsl-raster`: build province-wide GHSL raster population and built-up settlement rollups with GDAL mask aggregation and checkpoint files
@@ -881,6 +963,7 @@ public/data/
   atlas-trade-profiles.json
   factbook-political-profiles.json
   security-stats.json
+  health-stats.json
   urban-centres.json
   province-settlement-stats.json
   province-raster-settlement-stats.json
@@ -907,6 +990,7 @@ scripts/
   importAtlasTradeProfiles.mjs
   importFactbookPoliticalProfiles.mjs
   importWorldBankSecurityStats.mjs
+  importWorldBankHealthStats.mjs
   buildUrbanCentres.mjs
   importGhslSettlementData.mjs
   importGhslRasterSettlementData.mjs
@@ -928,10 +1012,12 @@ src/map/
 - The in-game start date is fixed to `2025-01-01`, but source datasets have real-world publication lags.
 - WDI, WGI, IMF, and WPP all prefer `2024` with `2023` fallback where needed.
 - Security stats prefer `2024`, then `2023`, then the latest non-null year available per field.
+- Health-system stats prefer `2024`, then `2023`, then the latest non-null year available per field because publication lags are common.
 - Atlas currently resolves to `2016` because the selected official file does not expose `2024` or `2023`.
 - Factbook matching is incomplete for some territories, oceans, and supranational entities.
 - Province geometry is checked in directly and treated as ground truth by the current frontend.
 - GHSL settlement coverage now separates UCDB urban-centre aggregates (`urbanCentre*`) from full raster province and country totals (`raster*`).
+- The health-system dataset is intentionally country-level only and should not be treated as local hospital routing or province-scale capacity data.
 - `settlementDataCompleteness` describes the UCDB urban-centre subset, while `rasterSettlementDataCompleteness` describes province-wide GHSL raster coverage.
 - The fast GHSL raster importer depends on GDAL unless `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1` is used.
 - Natural Earth infrastructure is generalized 1:10m data intended for strategic map context.

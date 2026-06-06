@@ -13,6 +13,7 @@ const WPP_PATH = resolve(__dirname, "..", "public", "data", "un-wpp-demographics
 const ATLAS_PATH = resolve(__dirname, "..", "public", "data", "atlas-trade-profiles.json");
 const FACTBOOK_PATH = resolve(__dirname, "..", "public", "data", "factbook-political-profiles.json");
 const SECURITY_PATH = resolve(__dirname, "..", "public", "data", "security-stats.json");
+const HEALTH_PATH = resolve(__dirname, "..", "public", "data", "health-stats.json");
 const URBAN_CENTRES_PATH = resolve(__dirname, "..", "public", "data", "urban-centres.json");
 const CANONICAL_PROVINCE_PATH = resolve(__dirname, "..", "public", "data", "canonical-province-data.json");
 const INFRASTRUCTURE_CONNECTIONS_PATH = resolve(
@@ -83,6 +84,21 @@ const SECURITY_KEYS = [
   "mobilizationBasePct",
 ];
 
+const HEALTH_KEYS = [
+  "hospitalBedsPer1000",
+  "physiciansPer1000",
+  "nursesMidwivesPer1000",
+  "currentHealthExpenditurePerCapitaUsd",
+  "currentHealthExpenditurePctOfGdp",
+  "healthCapacityScore",
+  "medicalWorkforceScore",
+  "hospitalSurgeCapacityScore",
+  "outbreakTreatmentScore",
+  "healthDataFreshnessScore",
+  "healthFieldCoverageScore",
+  "healthCapacityScoreConfidence",
+];
+
 const POLITICAL_SYSTEM_TEXT_KEYS = [
   "governmentType",
   "capital",
@@ -147,7 +163,15 @@ const CANONICAL_KEYS = {
   governance: GOVERNANCE_KEYS,
   tradeStructure: TRADE_STRUCTURE_KEYS,
   security: SECURITY_KEYS,
+  healthSystem: HEALTH_KEYS,
 };
+
+const HEALTH_RAW_SOURCE = "World Bank WDI / WHO";
+const HEALTH_DERIVED_SOURCE = "Derived from World Bank WDI / WHO health indicators";
+const OUTBREAK_DERIVED_SOURCE =
+  "Derived from World Bank WDI / WHO health indicators, World Bank WGI, and infrastructure connectivity";
+const HEALTH_CONFIDENCE_SOURCE =
+  "Derived from World Bank WDI / WHO health indicator coverage and selected years";
 
 function isRecord(value) {
   return typeof value === "object" && value !== null;
@@ -227,11 +251,42 @@ function getSecurityDataPoint(record, key) {
   return makeDataPoint(fact.value, fact.year, fact.source);
 }
 
+function getHealthFact(record, key) {
+  const fact = record?.healthSystem?.[key];
+  if (!isRecord(fact)) {
+    return null;
+  }
+
+  const value = typeof fact.value === "number" && Number.isFinite(fact.value) ? fact.value : null;
+  const year = typeof fact.year === "number" && Number.isFinite(fact.year) ? fact.year : null;
+  const source = typeof fact.source === "string" && fact.source.length > 0 ? fact.source : null;
+  if (value === null || year === null || source === null) {
+    return null;
+  }
+
+  return { value, year, source };
+}
+
+function getHealthDataPoint(record, key) {
+  const fact = getHealthFact(record, key);
+  if (!fact) {
+    return makeDataPoint(null, null, null);
+  }
+  return makeDataPoint(fact.value, fact.year, fact.source);
+}
+
 function makeDerivedSecurityDataPoint(value, year, source) {
   if (typeof value !== "number" || !Number.isFinite(value) || year === null || !source) {
     return makeDataPoint(null, null, null);
   }
   return makeDataPoint(value, year, source);
+}
+
+function makeDerivedScoreDataPoint(value, source) {
+  if (typeof value !== "number" || !Number.isFinite(value) || !source) {
+    return makeDataPoint(null, null, null);
+  }
+  return { value: roundNumber(clamp(value, 0, 100), 2), year: null, source };
 }
 
 function derivePerCapitaPoint(numerator, denominator, source) {
@@ -314,7 +369,7 @@ function computeCoverageCounts(recordsByIso3, keys) {
   return counts;
 }
 
-function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security) {
+function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security, health) {
   return (
     wdi?.countriesByIso3?.[iso3]?.name ??
     imf?.countriesByIso3?.[iso3]?.name ??
@@ -323,6 +378,7 @@ function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security) {
     atlas?.countriesByIso3?.[iso3]?.name ??
     factbook?.countriesByIso3?.[iso3]?.name ??
     security?.countriesByIso3?.[iso3]?.name ??
+    health?.countriesByIso3?.[iso3]?.name ??
     iso3
   );
 }
@@ -388,12 +444,118 @@ function sumNumbers(values) {
   return values.reduce((sum, value) => sum + value, 0);
 }
 
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
 function roundNumber(value, digits = 2) {
   if (typeof value !== "number" || !Number.isFinite(value)) {
     return null;
   }
   const factor = 10 ** digits;
   return Math.round(value * factor) / factor;
+}
+
+function getPointValue(point) {
+  return typeof point?.value === "number" && Number.isFinite(point.value) ? point.value : null;
+}
+
+function quantile(sortedValues, percentile) {
+  if (!Array.isArray(sortedValues) || sortedValues.length === 0) {
+    return null;
+  }
+
+  const position = clamp(percentile, 0, 1) * (sortedValues.length - 1);
+  const lowerIndex = Math.floor(position);
+  const upperIndex = Math.ceil(position);
+  const lowerValue = sortedValues[lowerIndex];
+  const upperValue = sortedValues[upperIndex];
+
+  if (!Number.isFinite(lowerValue) || !Number.isFinite(upperValue)) {
+    return null;
+  }
+
+  if (lowerIndex === upperIndex) {
+    return lowerValue;
+  }
+
+  const fraction = position - lowerIndex;
+  return lowerValue + (upperValue - lowerValue) * fraction;
+}
+
+function buildNormalizer(values) {
+  const cleaned = values
+    .filter((value) => typeof value === "number" && Number.isFinite(value))
+    .sort((a, b) => a - b);
+
+  if (cleaned.length < 2) {
+    return () => null;
+  }
+
+  const minValue = cleaned[0];
+  const maxValue = cleaned[cleaned.length - 1];
+  if (minValue === maxValue) {
+    return () => null;
+  }
+
+  const lowerBound = quantile(cleaned, 0.05) ?? minValue;
+  const upperBound = quantile(cleaned, 0.95) ?? maxValue;
+  const boundedMin = Number.isFinite(lowerBound) ? lowerBound : minValue;
+  const boundedMax = Number.isFinite(upperBound) ? upperBound : maxValue;
+  const effectiveMin = boundedMin < boundedMax ? boundedMin : minValue;
+  const effectiveMax = boundedMin < boundedMax ? boundedMax : maxValue;
+
+  if (!Number.isFinite(effectiveMin) || !Number.isFinite(effectiveMax) || effectiveMin === effectiveMax) {
+    return () => null;
+  }
+
+  return (value) => {
+    if (typeof value !== "number" || !Number.isFinite(value)) {
+      return null;
+    }
+    return roundNumber(((clamp(value, effectiveMin, effectiveMax) - effectiveMin) / (effectiveMax - effectiveMin)) * 100, 4);
+  };
+}
+
+function computeWeightedAverage(components) {
+  let weightedSum = 0;
+  let totalWeight = 0;
+
+  for (const component of components) {
+    if (!component || typeof component.value !== "number" || !Number.isFinite(component.value)) {
+      continue;
+    }
+    if (typeof component.weight !== "number" || !Number.isFinite(component.weight) || component.weight <= 0) {
+      continue;
+    }
+    weightedSum += component.value * component.weight;
+    totalWeight += component.weight;
+  }
+
+  if (totalWeight <= 0) {
+    return null;
+  }
+
+  return clamp(weightedSum / totalWeight, 0, 100);
+}
+
+function freshnessFactor(year) {
+  if (!Number.isFinite(year)) {
+    return null;
+  }
+  if (year >= 2023) {
+    return 1.0;
+  }
+  if (year >= 2020) {
+    return 0.85;
+  }
+  if (year >= 2015) {
+    return 0.65;
+  }
+  if (year >= 2010) {
+    return 0.4;
+  }
+  return 0.2;
 }
 
 function computeHhi(values) {
@@ -865,7 +1027,19 @@ function buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresByI
 }
 
 async function main() {
-  const [wdi, wgi, imf, wpp, atlasMaybe, factbookMaybe, securityMaybe, urbanCentresMaybe, canonicalProvinceMaybe, infrastructureConnectionsMaybe] = await Promise.all([
+  const [
+    wdi,
+    wgi,
+    imf,
+    wpp,
+    atlasMaybe,
+    factbookMaybe,
+    securityMaybe,
+    healthMaybe,
+    urbanCentresMaybe,
+    canonicalProvinceMaybe,
+    infrastructureConnectionsMaybe,
+  ] = await Promise.all([
     readJson(WDI_PATH),
     readJson(WGI_PATH),
     readJson(IMF_PATH),
@@ -873,6 +1047,7 @@ async function main() {
     readJsonOptional(ATLAS_PATH),
     readJsonOptional(FACTBOOK_PATH),
     readJsonOptional(SECURITY_PATH),
+    readJsonOptional(HEALTH_PATH),
     readJsonOptional(URBAN_CENTRES_PATH),
     readJsonOptional(CANONICAL_PROVINCE_PATH),
     readJsonOptional(INFRASTRUCTURE_CONNECTIONS_PATH),
@@ -895,6 +1070,8 @@ async function main() {
     isRecord(factbookMaybe?.countriesByIso3) ? factbookMaybe.countriesByIso3 : {};
   const securityCountriesByIso3 =
     isRecord(securityMaybe?.countriesByIso3) ? securityMaybe.countriesByIso3 : {};
+  const healthCountriesByIso3 =
+    isRecord(healthMaybe?.countriesByIso3) ? healthMaybe.countriesByIso3 : {};
   if (!isRecord(atlasMaybe?.countriesByIso3)) {
     console.warn("atlas-trade-profiles.json not found or invalid; tradeStructure will be emitted as null datapoints.");
   }
@@ -903,6 +1080,9 @@ async function main() {
   }
   if (!isRecord(securityMaybe?.countriesByIso3)) {
     console.warn("security-stats.json not found or invalid; security will be emitted as null datapoints.");
+  }
+  if (!isRecord(healthMaybe?.countriesByIso3)) {
+    console.warn("health-stats.json not found or invalid; healthSystem will be emitted as null datapoints.");
   }
   const urbanCentresById = isRecord(urbanCentresMaybe) ? urbanCentresMaybe : {};
   const canonicalProvinceDataById = isRecord(canonicalProvinceMaybe) ? canonicalProvinceMaybe : {};
@@ -942,6 +1122,7 @@ async function main() {
       ...Object.keys(atlasCountriesByIso3),
       ...Object.keys(factbookCountriesByIso3),
       ...Object.keys(securityCountriesByIso3),
+      ...Object.keys(healthCountriesByIso3),
       ...Object.values(urbanCentresById)
         .map((record) => (isRecord(record) && typeof record.countryIso3 === "string" ? record.countryIso3 : null))
         .filter(Boolean),
@@ -961,6 +1142,7 @@ async function main() {
     const atlasRecord = atlasCountriesByIso3[iso3];
     const factbookRecord = factbookCountriesByIso3[iso3];
     const securityRecord = securityCountriesByIso3[iso3];
+    const healthRecord = healthCountriesByIso3[iso3];
     const atlasYear = getAtlasIndicatorYear(atlasRecord);
     const factbookSource = factbookRecord?.source === "CIA World Factbook" ? "CIA World Factbook" : null;
 
@@ -1250,12 +1432,30 @@ async function main() {
       ),
     };
 
+    const healthSystem = {
+      hospitalBedsPer1000: getHealthDataPoint(healthRecord, "hospitalBedsPer1000"),
+      physiciansPer1000: getHealthDataPoint(healthRecord, "physiciansPer1000"),
+      nursesMidwivesPer1000: getHealthDataPoint(healthRecord, "nursesMidwivesPer1000"),
+      currentHealthExpenditurePerCapitaUsd: getHealthDataPoint(
+        healthRecord,
+        "currentHealthExpenditurePerCapitaUsd",
+      ),
+      currentHealthExpenditurePctOfGdp: getHealthDataPoint(healthRecord, "currentHealthExpenditurePctOfGdp"),
+      healthCapacityScore: makeDataPoint(null, null, null),
+      medicalWorkforceScore: makeDataPoint(null, null, null),
+      hospitalSurgeCapacityScore: makeDataPoint(null, null, null),
+      outbreakTreatmentScore: makeDataPoint(null, null, null),
+      healthDataFreshnessScore: makeDataPoint(null, null, null),
+      healthFieldCoverageScore: makeDataPoint(null, null, null),
+      healthCapacityScoreConfidence: makeDataPoint(null, null, null),
+    };
+
     const settlement = buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresById);
     const infrastructure = buildCountryInfrastructure(iso3, canonicalProvinceDataById, infrastructureConnectionsMaybe);
 
     countriesByIso3[iso3] = {
       iso3,
-      name: getCountryName(iso3, wdi, imf, wgi, wpp, atlasMaybe, factbookMaybe, securityMaybe),
+      name: getCountryName(iso3, wdi, imf, wgi, wpp, atlasMaybe, factbookMaybe, securityMaybe, healthMaybe),
       gameStartDate: "2025-01-01",
       economy,
       demographics,
@@ -1263,9 +1463,122 @@ async function main() {
       governance,
       tradeStructure,
       security,
+      healthSystem,
       politicalSystem,
       settlement,
       infrastructure,
+    };
+  }
+
+  const countryList = Object.values(countriesByIso3);
+  const normalizeHospitalBeds = buildNormalizer(
+    countryList.map((country) => getPointValue(country.healthSystem?.hospitalBedsPer1000)),
+  );
+  const normalizePhysicians = buildNormalizer(
+    countryList.map((country) => getPointValue(country.healthSystem?.physiciansPer1000)),
+  );
+  const normalizeNurses = buildNormalizer(
+    countryList.map((country) => getPointValue(country.healthSystem?.nursesMidwivesPer1000)),
+  );
+  const normalizeHealthSpendPerCapita = buildNormalizer(
+    countryList.map((country) => getPointValue(country.healthSystem?.currentHealthExpenditurePerCapitaUsd)),
+  );
+  const normalizeHealthSpendPctGdp = buildNormalizer(
+    countryList.map((country) => getPointValue(country.healthSystem?.currentHealthExpenditurePctOfGdp)),
+  );
+  const normalizeGovernmentEffectiveness = buildNormalizer(
+    countryList.map((country) => getPointValue(country.governance?.governmentEffectiveness)),
+  );
+  const normalizeRuleOfLaw = buildNormalizer(
+    countryList.map((country) => getPointValue(country.governance?.ruleOfLaw)),
+  );
+  const normalizeConnectivity = buildNormalizer(
+    countryList.map((country) => getPointValue(country.infrastructure?.connectivityScore)),
+  );
+  const healthCapacityWeights = [
+    ["hospitalBedsPer1000", 0.30],
+    ["physiciansPer1000", 0.25],
+    ["nursesMidwivesPer1000", 0.20],
+    ["currentHealthExpenditurePerCapitaUsd", 0.15],
+    ["currentHealthExpenditurePctOfGdp", 0.10],
+  ];
+
+  for (const country of countryList) {
+    const hospitalBedsScore = normalizeHospitalBeds(getPointValue(country.healthSystem?.hospitalBedsPer1000));
+    const physiciansScore = normalizePhysicians(getPointValue(country.healthSystem?.physiciansPer1000));
+    const nursesScore = normalizeNurses(getPointValue(country.healthSystem?.nursesMidwivesPer1000));
+    const spendPerCapitaScore = normalizeHealthSpendPerCapita(
+      getPointValue(country.healthSystem?.currentHealthExpenditurePerCapitaUsd),
+    );
+    const spendPctGdpScore = normalizeHealthSpendPctGdp(
+      getPointValue(country.healthSystem?.currentHealthExpenditurePctOfGdp),
+    );
+
+    const medicalWorkforceScore = computeWeightedAverage([
+      { value: physiciansScore, weight: 0.55 },
+      { value: nursesScore, weight: 0.45 },
+    ]);
+    const hospitalSurgeCapacityScore = computeWeightedAverage([
+      { value: hospitalBedsScore, weight: 1 },
+    ]);
+    const healthCapacityScore = computeWeightedAverage([
+      { value: hospitalBedsScore, weight: 0.30 },
+      { value: physiciansScore, weight: 0.25 },
+      { value: nursesScore, weight: 0.20 },
+      { value: spendPerCapitaScore, weight: 0.15 },
+      { value: spendPctGdpScore, weight: 0.10 },
+    ]);
+
+    const outbreakTreatmentScore = computeWeightedAverage([
+      { value: healthCapacityScore, weight: 0.60 },
+      {
+        value: normalizeGovernmentEffectiveness(getPointValue(country.governance?.governmentEffectiveness)),
+        weight: 0.20,
+      },
+      {
+        value: normalizeRuleOfLaw(getPointValue(country.governance?.ruleOfLaw)),
+        weight: 0.10,
+      },
+      {
+        value: normalizeConnectivity(getPointValue(country.infrastructure?.connectivityScore)),
+        weight: 0.10,
+      },
+    ]);
+
+    const healthFreshnessScore = computeWeightedAverage(
+      healthCapacityWeights.map(([key, weight]) => {
+        const freshness = freshnessFactor(country.healthSystem?.[key]?.year ?? null);
+        return {
+          value: freshness === null ? null : freshness * 100,
+          weight,
+        };
+      }),
+    );
+    const availableHealthFieldCount = healthCapacityWeights.filter(([key]) => {
+      const value = getPointValue(country.healthSystem?.[key]);
+      return value !== null;
+    }).length;
+    const healthFieldCoverageScore =
+      availableHealthFieldCount > 0
+        ? roundNumber((availableHealthFieldCount / healthCapacityWeights.length) * 100, 2)
+        : null;
+    const healthCapacityScoreConfidence = computeWeightedAverage([
+      { value: healthFieldCoverageScore, weight: 0.65 },
+      { value: healthFreshnessScore, weight: 0.35 },
+    ]);
+
+    country.healthSystem = {
+      ...country.healthSystem,
+      healthCapacityScore: makeDerivedScoreDataPoint(healthCapacityScore, HEALTH_DERIVED_SOURCE),
+      medicalWorkforceScore: makeDerivedScoreDataPoint(medicalWorkforceScore, HEALTH_DERIVED_SOURCE),
+      hospitalSurgeCapacityScore: makeDerivedScoreDataPoint(hospitalSurgeCapacityScore, HEALTH_DERIVED_SOURCE),
+      outbreakTreatmentScore: makeDerivedScoreDataPoint(outbreakTreatmentScore, OUTBREAK_DERIVED_SOURCE),
+      healthDataFreshnessScore: makeDerivedScoreDataPoint(healthFreshnessScore, HEALTH_CONFIDENCE_SOURCE),
+      healthFieldCoverageScore: makeDerivedScoreDataPoint(healthFieldCoverageScore, HEALTH_CONFIDENCE_SOURCE),
+      healthCapacityScoreConfidence: makeDerivedScoreDataPoint(
+        healthCapacityScoreConfidence,
+        HEALTH_CONFIDENCE_SOURCE,
+      ),
     };
   }
 
@@ -1288,6 +1601,8 @@ async function main() {
     securitySipriValuesUsed: 0,
     securityIissValuesUsed: 0,
     derivedSecurityValuesUsed: 0,
+    healthWhoValuesUsed: 0,
+    derivedHealthValuesUsed: 0,
     factbookTextValuesUsed: 0,
     factbookBooleanValuesUsed: 0,
   };
@@ -1303,6 +1618,7 @@ async function main() {
         "Atlas of Economic Complexity": 0,
         "World Bank WDI / SIPRI": 0,
         "World Bank WDI / IISS": 0,
+        "World Bank WDI / WHO": 0,
         derived: 0,
         nullSource: 0,
       };
@@ -1342,9 +1658,16 @@ async function main() {
         } else if (point.source === "World Bank WDI / IISS") {
           sourceUsageByMetric[metric]["World Bank WDI / IISS"] += 1;
           sourceUsageTotals.securityIissValuesUsed += 1;
+        } else if (point.source === "World Bank WDI / WHO") {
+          sourceUsageByMetric[metric]["World Bank WDI / WHO"] += 1;
+          sourceUsageTotals.healthWhoValuesUsed += 1;
         } else if (typeof point.source === "string" && point.source.startsWith("Derived from ")) {
           sourceUsageByMetric[metric].derived += 1;
-          sourceUsageTotals.derivedSecurityValuesUsed += 1;
+          if (HEALTH_KEYS.includes(metric)) {
+            sourceUsageTotals.derivedHealthValuesUsed += 1;
+          } else {
+            sourceUsageTotals.derivedSecurityValuesUsed += 1;
+          }
         } else {
           sourceUsageByMetric[metric].nullSource += 1;
         }

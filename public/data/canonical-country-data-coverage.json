@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-06T10:46:33.599Z",
+  "generatedAt": "2026-06-06T11:35:14.850Z",
   "totalCountries": 272,
   "coverageByCanonicalMetric": {
     "population": 216,
@@ -47,7 +47,19 @@
     "armsExportsSipriTiv": 124,
     "militarySpendPerCapitaUsd": 166,
     "militarySpendPerSoldierUsd": 162,
-    "mobilizationBasePct": 173
+    "mobilizationBasePct": 173,
+    "hospitalBedsPer1000": 200,
+    "physiciansPer1000": 207,
+    "nursesMidwivesPer1000": 197,
+    "currentHealthExpenditurePerCapitaUsd": 192,
+    "currentHealthExpenditurePctOfGdp": 192,
+    "healthCapacityScore": 209,
+    "medicalWorkforceScore": 208,
+    "hospitalSurgeCapacityScore": 200,
+    "outbreakTreatmentScore": 254,
+    "healthDataFreshnessScore": 209,
+    "healthFieldCoverageScore": 209,
+    "healthCapacityScoreConfidence": 209
   },
   "sourceUsedByMetric": {
     "population": {
@@ -58,6 +70,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -69,6 +82,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 64
     },
@@ -80,6 +94,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 64
     },
@@ -91,6 +106,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 63
     },
@@ -102,6 +118,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 75
     },
@@ -113,6 +130,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 89
     },
@@ -124,6 +142,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -135,6 +154,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -146,6 +166,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 99
     },
@@ -157,6 +178,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -168,6 +190,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -179,6 +202,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -190,6 +214,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -201,6 +226,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -212,6 +238,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -223,6 +250,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -234,6 +262,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -245,6 +274,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -256,6 +286,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -267,6 +298,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -278,6 +310,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 79
     },
@@ -289,6 +322,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 82
     },
@@ -300,6 +334,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -311,6 +346,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -322,6 +358,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -333,6 +370,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -344,6 +382,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -355,6 +394,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -366,6 +406,7 @@
       "Atlas of Economic Complexity": 235,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -377,6 +418,7 @@
       "Atlas of Economic Complexity": 235,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -388,6 +430,7 @@
       "Atlas of Economic Complexity": 235,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -399,6 +442,7 @@
       "Atlas of Economic Complexity": 235,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -410,6 +454,7 @@
       "Atlas of Economic Complexity": 235,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -421,6 +466,7 @@
       "Atlas of Economic Complexity": 235,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -432,6 +478,7 @@
       "Atlas of Economic Complexity": 235,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -443,6 +490,7 @@
       "Atlas of Economic Complexity": 235,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -454,6 +502,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 166,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 106
     },
@@ -465,6 +514,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 163,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 109
     },
@@ -476,6 +526,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 160,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 112
     },
@@ -487,6 +538,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 173,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 99
     },
@@ -498,6 +550,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 171,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 101
     },
@@ -509,6 +562,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 186,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 86
     },
@@ -520,6 +574,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 124,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 0,
       "nullSource": 148
     },
@@ -531,6 +586,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 166,
       "nullSource": 106
     },
@@ -542,6 +598,7 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 162,
       "nullSource": 110
     },
@@ -553,8 +610,153 @@
       "Atlas of Economic Complexity": 0,
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
       "derived": 173,
       "nullSource": 99
+    },
+    "hospitalBedsPer1000": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 200,
+      "derived": 0,
+      "nullSource": 72
+    },
+    "physiciansPer1000": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 207,
+      "derived": 0,
+      "nullSource": 65
+    },
+    "nursesMidwivesPer1000": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 197,
+      "derived": 0,
+      "nullSource": 75
+    },
+    "currentHealthExpenditurePerCapitaUsd": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 192,
+      "derived": 0,
+      "nullSource": 80
+    },
+    "currentHealthExpenditurePctOfGdp": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 192,
+      "derived": 0,
+      "nullSource": 80
+    },
+    "healthCapacityScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "derived": 209,
+      "nullSource": 63
+    },
+    "medicalWorkforceScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "derived": 208,
+      "nullSource": 64
+    },
+    "hospitalSurgeCapacityScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "derived": 200,
+      "nullSource": 72
+    },
+    "outbreakTreatmentScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "derived": 254,
+      "nullSource": 18
+    },
+    "healthDataFreshnessScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "derived": 209,
+      "nullSource": 63
+    },
+    "healthFieldCoverageScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "derived": 209,
+      "nullSource": 63
+    },
+    "healthCapacityScoreConfidence": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "derived": 209,
+      "nullSource": 63
     }
   },
   "politicalSystemCoverage": {
@@ -628,6 +830,8 @@
   "securitySipriValuesUsed": 799,
   "securityIissValuesUsed": 344,
   "derivedSecurityValuesUsed": 501,
+  "healthWhoValuesUsed": 988,
+  "derivedHealthValuesUsed": 1498,
   "factbookTextValuesUsed": 3908,
   "factbookBooleanValuesUsed": 1825,
   "unresolvedMissingValues": {
@@ -651,7 +855,12 @@
           "armsImportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "AIA": {
@@ -684,7 +893,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "ALD": {
@@ -735,7 +955,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "AND": {
@@ -795,7 +1026,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "ASM": {
@@ -825,7 +1068,12 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "ATA": {
@@ -868,7 +1116,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "ATC": {
@@ -919,7 +1178,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "ATF": {
@@ -962,7 +1232,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "ATG": {
@@ -1028,7 +1309,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "BFA": {
@@ -1077,7 +1370,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "BLZ": {
@@ -1109,7 +1413,10 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "BOL": {
@@ -1181,7 +1488,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "BWA": {
@@ -1239,7 +1558,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "CHI": {
@@ -1283,7 +1614,10 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "CLP": {
@@ -1334,7 +1668,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "CMR": {
@@ -1379,7 +1724,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "COM": {
@@ -1456,7 +1812,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "CUB": {
@@ -1495,7 +1862,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "CXR": {
@@ -1538,7 +1916,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "CYM": {
@@ -1565,7 +1955,9 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "CYN": {
@@ -1616,7 +2008,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "DJI": {
@@ -1703,7 +2106,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "ESH": {
@@ -1736,7 +2150,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "FJI": {
@@ -1775,7 +2201,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "FRO": {
@@ -1801,7 +2238,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "FSM": {
@@ -1857,7 +2305,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "GIB": {
@@ -1887,7 +2346,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "GIN": {
@@ -1934,7 +2404,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "GMB": {
@@ -1994,7 +2476,10 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "GTM": {
@@ -2041,7 +2526,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "GUM": {
@@ -2070,7 +2567,11 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "GUY": {
@@ -2097,7 +2598,9 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "HMD": {
@@ -2140,7 +2643,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "HND": {
@@ -2190,7 +2704,10 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "IMY": {
@@ -2241,7 +2758,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "IOA": {
@@ -2292,7 +2821,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "IOT": {
@@ -2335,7 +2875,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "ISL": {
@@ -2391,7 +2942,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "KAB": {
@@ -2442,7 +3004,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "KAS": {
@@ -2493,7 +3066,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "KIR": {
@@ -2575,7 +3159,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "LAO": {
@@ -2637,7 +3232,12 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "LSO": {
@@ -2664,7 +3264,9 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "MAF": {
@@ -2702,7 +3304,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "MCO": {
@@ -2799,7 +3412,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "MHL": {
@@ -2863,7 +3488,12 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "MRT": {
@@ -2902,7 +3532,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "MTQ": {
@@ -2943,7 +3584,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "MUS": {
@@ -2990,7 +3643,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "NAM": {
@@ -3021,7 +3686,12 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "NFK": {
@@ -3064,7 +3734,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "NGA": {
@@ -3103,7 +3784,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "NPL": {
@@ -3168,7 +3860,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "PGA": {
@@ -3219,7 +3922,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "PLW": {
@@ -3271,7 +3985,10 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "PRK": {
@@ -3286,7 +4003,9 @@
           "governmentNetLendingBorrowingPctOfGdp",
           "governmentGrossDebtPctOfGdp",
           "militaryExpenditurePctOfGdp",
-          "militaryExpenditurePctOfGovtExpenditure"
+          "militaryExpenditurePctOfGovtExpenditure",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "PRY": {
@@ -3364,7 +4083,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "PYF": {
@@ -3389,7 +4119,12 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "QAT": {
@@ -3436,7 +4171,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "RWA": {
@@ -3493,7 +4240,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "SDN": {
@@ -3550,7 +4308,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "SGS": {
@@ -3593,7 +4362,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "SHN": {
@@ -3626,7 +4406,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "SJM": {
@@ -3677,7 +4468,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "SLB": {
@@ -3764,7 +4567,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "SOM": {
@@ -3804,14 +4618,27 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "SSD": {
         "name": "South Sudan",
         "missingMetrics": [
           "tradePctOfGdp",
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "hospitalBedsPer1000",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "STP": {
@@ -3869,7 +4696,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "SYC": {
@@ -3917,7 +4755,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "TGO": {
@@ -3963,7 +4812,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "TKM": {
@@ -4015,7 +4876,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "TUN": {
@@ -4069,7 +4941,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "TZA": {
@@ -4124,7 +5007,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "USG": {
@@ -4175,7 +5069,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "UVK": {
@@ -4219,7 +5124,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "VAT": {
@@ -4252,7 +5169,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "VCT": {
@@ -4303,7 +5231,12 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "hospitalSurgeCapacityScore"
         ]
       },
       "VIR": {
@@ -4340,7 +5273,10 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp"
         ]
       },
       "VUT": {
@@ -4399,7 +5335,19 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "WLF": {
@@ -4432,7 +5380,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "WSB": {
@@ -4483,7 +5442,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "WSM": {
@@ -4525,7 +5495,19 @@
           "armedForcesPctOfLaborForce",
           "armsExportsSipriTiv",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "hospitalBedsPer1000",
+          "physiciansPer1000",
+          "nursesMidwivesPer1000",
+          "currentHealthExpenditurePerCapitaUsd",
+          "currentHealthExpenditurePctOfGdp",
+          "healthCapacityScore",
+          "medicalWorkforceScore",
+          "hospitalSurgeCapacityScore",
+          "outbreakTreatmentScore",
+          "healthDataFreshnessScore",
+          "healthFieldCoverageScore",
+          "healthCapacityScoreConfidence"
         ]
       },
       "YEM": {
