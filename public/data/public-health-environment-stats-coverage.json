@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-06-06T13:24:11.388Z",
+  "source": "World Bank public health environment indicators",
+  "preferredDataYear": 2024,
+  "fallbackDataYear": 2023,
+  "minimumAllowedYear": 2022,
+  "totalCountriesConsidered": 216,
+  "matchedCountryCount": 215,
+  "countriesWithAtLeastOneField": 215,
+  "perFieldCoverageCount": {
+    "safelyManagedDrinkingWaterPct": 148,
+    "safelyManagedSanitationPct": 142,
+    "basicHandwashingFacilitiesPct": 102,
+    "accessToElectricityPct": 214,
+    "ruralElectricityAccessPct": 208,
+    "urbanElectricityAccessPct": 212,
+    "cleanCookingFuelAccessPct": 188
+  },
+  "perFieldSelectedYearDistribution": {
+    "safelyManagedDrinkingWaterPct": {
+      "2023": 1,
+      "2024": 147
+    },
+    "safelyManagedSanitationPct": {
+      "2022": 1,
+      "2023": 1,
+      "2024": 140
+    },
+    "basicHandwashingFacilitiesPct": {
+      "2022": 8,
+      "2023": 4,
+      "2024": 90
+    },
+    "accessToElectricityPct": {
+      "2023": 214
+    },
+    "ruralElectricityAccessPct": {
+      "2023": 208
+    },
+    "urbanElectricityAccessPct": {
+      "2023": 212
+    },
+    "cleanCookingFuelAccessPct": {
+      "2023": 188
+    }
+  },
+  "perFieldMissingCount": {
+    "safelyManagedDrinkingWaterPct": 68,
+    "safelyManagedSanitationPct": 74,
+    "basicHandwashingFacilitiesPct": 114,
+    "accessToElectricityPct": 2,
+    "ruralElectricityAccessPct": 8,
+    "urbanElectricityAccessPct": 4,
+    "cleanCookingFuelAccessPct": 28
+  },
+  "countriesWithNoPublicHealthEnvironmentFields": [
+    {
+      "iso3": "XKX",
+      "countryName": "Kosovo"
+    }
+  ],
+  "freshnessBuckets": {
+    "safelyManagedDrinkingWaterPct": {
+      "2022": 0,
+      "2023": 1,
+      "2024": 147,
+      "missing": 66,
+      "stale_before_2022": 2
+    },
+    "safelyManagedSanitationPct": {
+      "2022": 1,
+      "2023": 1,
+      "2024": 140,
+      "missing": 71,
+      "stale_before_2022": 3
+    },
+    "basicHandwashingFacilitiesPct": {
+      "2022": 8,
+      "2023": 4,
+      "2024": 90,
+      "missing": 97,
+      "stale_before_2022": 17
+    },
+    "accessToElectricityPct": {
+      "2022": 0,
+      "2023": 214,
+      "2024": 0,
+      "missing": 1,
+      "stale_before_2022": 1
+    },
+    "ruralElectricityAccessPct": {
+      "2022": 0,
+      "2023": 208,
+      "2024": 0,
+      "missing": 3,
+      "stale_before_2022": 5
+    },
+    "urbanElectricityAccessPct": {
+      "2022": 0,
+      "2023": 212,
+      "2024": 0,
+      "missing": 3,
+      "stale_before_2022": 1
+    },
+    "cleanCookingFuelAccessPct": {
+      "2022": 0,
+      "2023": 188,
+      "2024": 0,
+      "missing": 28,
+      "stale_before_2022": 0
+    }
+  }
+}

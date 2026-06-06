@@ -193,6 +193,23 @@ type HealthSystemData = {
   healthCapacityScoreConfidence?: CanonicalNumberField;
 };
 
+type PublicHealthEnvironmentData = {
+  safelyManagedDrinkingWaterPct?: CanonicalNumberField;
+  safelyManagedSanitationPct?: CanonicalNumberField;
+  basicHandwashingFacilitiesPct?: CanonicalNumberField;
+  accessToElectricityPct?: CanonicalNumberField;
+  ruralElectricityAccessPct?: CanonicalNumberField;
+  urbanElectricityAccessPct?: CanonicalNumberField;
+  cleanCookingFuelAccessPct?: CanonicalNumberField;
+  publicHealthEnvironmentScore?: CanonicalNumberField;
+  waterborneDiseaseRiskScore?: CanonicalNumberField;
+  hygieneTransmissionRiskScore?: CanonicalNumberField;
+  serviceReliabilityScore?: CanonicalNumberField;
+  publicHealthEnvironmentFieldCoverageScore?: CanonicalNumberField;
+  publicHealthEnvironmentFreshnessScore?: CanonicalNumberField;
+  publicHealthEnvironmentScoreConfidence?: CanonicalNumberField;
+};
+
 type TextDataPoint = {
   value: string | null;
   source: DataSource;
@@ -244,6 +261,7 @@ type CanonicalCountryData = {
   tradeStructure: TradeStructureData;
   security: SecurityData;
   healthSystem?: HealthSystemData;
+  publicHealthEnvironment?: PublicHealthEnvironmentData;
   politicalSystem: PoliticalSystemData;
   settlement?: CountrySettlementData;
 };
@@ -402,6 +420,14 @@ type MapMode =
   | "nursesMidwivesPer1000"
   | "healthExpenditurePerCapita"
   | "healthExpenditurePctOfGdp"
+  | "publicHealthEnvironment"
+  | "waterborneDiseaseRisk"
+  | "hygieneTransmissionRisk"
+  | "serviceReliability"
+  | "safelyManagedDrinkingWater"
+  | "safelyManagedSanitation"
+  | "basicHandwashingFacilities"
+  | "accessToElectricity"
   | "governmentFamily"
   | "monarchy"
   | "parliament"
@@ -515,6 +541,14 @@ const COLOR_RAMPS = {
   nursesMidwivesPer1000: { low: "#14532d", high: "#86efac" },
   healthExpenditurePerCapita: { low: "#4a1d06", high: "#f59e0b" },
   healthExpenditurePctOfGdp: { low: "#4c0519", high: "#fb7185" },
+  publicHealthEnvironment: { low: "#123524", high: "#6ee7b7" },
+  waterborneDiseaseRisk: { low: "#164e63", high: "#ef4444" },
+  hygieneTransmissionRisk: { low: "#1d4ed8", high: "#f97316" },
+  serviceReliability: { low: "#172554", high: "#67e8f9" },
+  safelyManagedDrinkingWater: { low: "#082f49", high: "#67e8f9" },
+  safelyManagedSanitation: { low: "#3f6212", high: "#bef264" },
+  basicHandwashingFacilities: { low: "#14532d", high: "#86efac" },
+  accessToElectricity: { low: "#422006", high: "#fde047" },
 } as const;
 
 const POLITICAL_SYSTEM_COLORS = {
@@ -612,6 +646,14 @@ const MAP_MODES: { key: MapMode; label: string }[] = [
   { key: "nursesMidwivesPer1000", label: "Nurses & Midwives / 1,000" },
   { key: "healthExpenditurePerCapita", label: "Health Spend per Capita" },
   { key: "healthExpenditurePctOfGdp", label: "Health Spend (% GDP)" },
+  { key: "publicHealthEnvironment", label: "Public Health Environment" },
+  { key: "waterborneDiseaseRisk", label: "Waterborne Disease Risk" },
+  { key: "hygieneTransmissionRisk", label: "Hygiene Transmission Risk" },
+  { key: "serviceReliability", label: "Service Reliability" },
+  { key: "safelyManagedDrinkingWater", label: "Safely Managed Drinking Water" },
+  { key: "safelyManagedSanitation", label: "Safely Managed Sanitation" },
+  { key: "basicHandwashingFacilities", label: "Basic Handwashing Facilities" },
+  { key: "accessToElectricity", label: "Access to Electricity" },
   { key: "governmentFamily", label: "Government Type" },
   { key: "monarchy", label: "Monarchy" },
   { key: "parliament", label: "Parliament" },
@@ -677,6 +719,14 @@ const MAP_MODE_COLOR_PROPERTY: Record<MapMode, string> = {
   nursesMidwivesPer1000: "__nursesMidwivesPer1000Color",
   healthExpenditurePerCapita: "__healthExpenditurePerCapitaColor",
   healthExpenditurePctOfGdp: "__healthExpenditurePctOfGdpColor",
+  publicHealthEnvironment: "__publicHealthEnvironmentColor",
+  waterborneDiseaseRisk: "__waterborneDiseaseRiskColor",
+  hygieneTransmissionRisk: "__hygieneTransmissionRiskColor",
+  serviceReliability: "__serviceReliabilityColor",
+  safelyManagedDrinkingWater: "__safelyManagedDrinkingWaterColor",
+  safelyManagedSanitation: "__safelyManagedSanitationColor",
+  basicHandwashingFacilities: "__basicHandwashingFacilitiesColor",
+  accessToElectricity: "__accessToElectricityColor",
   governmentFamily: "__governmentFamilyColor",
   monarchy: "__monarchyColor",
   parliament: "__parliamentColor",
@@ -742,6 +792,14 @@ const MAP_MODE_LABEL: Record<MapMode, string> = {
   nursesMidwivesPer1000: "Nurses & Midwives / 1,000",
   healthExpenditurePerCapita: "Health Spend per Capita",
   healthExpenditurePctOfGdp: "Health Spend (% GDP)",
+  publicHealthEnvironment: "Public Health Environment",
+  waterborneDiseaseRisk: "Waterborne Disease Risk",
+  hygieneTransmissionRisk: "Hygiene Transmission Risk",
+  serviceReliability: "Service Reliability",
+  safelyManagedDrinkingWater: "Safely Managed Drinking Water",
+  safelyManagedSanitation: "Safely Managed Sanitation",
+  basicHandwashingFacilities: "Basic Handwashing Facilities",
+  accessToElectricity: "Access to Electricity",
   governmentFamily: "Government Type",
   monarchy: "Monarchy",
   parliament: "Parliament",
@@ -1068,6 +1126,62 @@ function getMapColorLegend(mode: MapMode): MapColorLegend {
       MAP_MODE_LABEL[mode],
       "Current health expenditure as a share of GDP.",
       COLOR_RAMPS.healthExpenditurePctOfGdp,
+    );
+  }
+  if (mode === "publicHealthEnvironment") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Country-level public-health environment and basic services baseline.",
+      COLOR_RAMPS.publicHealthEnvironment,
+    );
+  }
+  if (mode === "waterborneDiseaseRisk") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Higher values indicate worse water and sanitation-linked disease risk.",
+      COLOR_RAMPS.waterborneDiseaseRisk,
+    );
+  }
+  if (mode === "hygieneTransmissionRisk") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Higher values indicate worse hygiene and sanitation transmission risk.",
+      COLOR_RAMPS.hygieneTransmissionRisk,
+    );
+  }
+  if (mode === "serviceReliability") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Household service-access reliability baseline from electricity and clean-cooking access.",
+      COLOR_RAMPS.serviceReliability,
+    );
+  }
+  if (mode === "safelyManagedDrinkingWater") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Population share with safely managed drinking water services.",
+      COLOR_RAMPS.safelyManagedDrinkingWater,
+    );
+  }
+  if (mode === "safelyManagedSanitation") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Population share with safely managed sanitation services.",
+      COLOR_RAMPS.safelyManagedSanitation,
+    );
+  }
+  if (mode === "basicHandwashingFacilities") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Population share with basic handwashing facilities.",
+      COLOR_RAMPS.basicHandwashingFacilities,
+    );
+  }
+  if (mode === "accessToElectricity") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Population share with access to electricity.",
+      COLOR_RAMPS.accessToElectricity,
     );
   }
 
@@ -1414,6 +1528,9 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
   const tradeStructure = record.tradeStructure as Record<string, unknown>;
   const security = record.security as Record<string, unknown>;
   const politicalSystem = record.politicalSystem as Record<string, unknown>;
+  const publicHealthEnvironment = isRecord(record.publicHealthEnvironment)
+    ? (record.publicHealthEnvironment as Record<string, unknown>)
+    : null;
 
   const economyKeys: Array<keyof EconomyData> = [
     "population",
@@ -1473,6 +1590,22 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
     "militarySpendPerSoldierUsd",
     "mobilizationBasePct",
   ];
+  const publicHealthEnvironmentKeys: Array<keyof PublicHealthEnvironmentData> = [
+    "safelyManagedDrinkingWaterPct",
+    "safelyManagedSanitationPct",
+    "basicHandwashingFacilitiesPct",
+    "accessToElectricityPct",
+    "ruralElectricityAccessPct",
+    "urbanElectricityAccessPct",
+    "cleanCookingFuelAccessPct",
+    "publicHealthEnvironmentScore",
+    "waterborneDiseaseRiskScore",
+    "hygieneTransmissionRiskScore",
+    "serviceReliabilityScore",
+    "publicHealthEnvironmentFieldCoverageScore",
+    "publicHealthEnvironmentFreshnessScore",
+    "publicHealthEnvironmentScoreConfidence",
+  ];
   const politicalTextKeys: Array<keyof Omit<PoliticalSystemData, "source" | "hasMonarchy" | "hasParliament" | "hasElections" | "hasUniversalSuffrage" | "isFederal" | "isRepublic" | "isOnePartyState" | "isMilitaryRegime">> = [
     "governmentType",
     "capital",
@@ -1523,6 +1656,8 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
     demographicsKeys.every((key) => isDataPoint(demographics[key])) &&
     tradeStructureKeys.every((key) => isDataPoint(tradeStructure[key])) &&
     securityKeys.every((key) => isDataPoint(security[key])) &&
+    (publicHealthEnvironment === null ||
+      publicHealthEnvironmentKeys.every((key) => isDataPoint(publicHealthEnvironment[key]))) &&
     Array.isArray(tradeStructure.topExports) &&
     Array.isArray(tradeStructure.topImports) &&
     (politicalSystem.source === "CIA World Factbook" || politicalSystem.source === null) &&
@@ -2292,6 +2427,30 @@ function getActiveMapValue(
   if (mode === "healthExpenditurePctOfGdp") {
     return `Health Spend (% GDP) - ${formatPercent(countryData.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null)}`;
   }
+  if (mode === "publicHealthEnvironment") {
+    return `Public Health Environment - ${formatNumber(countryData.publicHealthEnvironment?.publicHealthEnvironmentScore?.value ?? null)}`;
+  }
+  if (mode === "waterborneDiseaseRisk") {
+    return `Waterborne Disease Risk - ${formatNumber(countryData.publicHealthEnvironment?.waterborneDiseaseRiskScore?.value ?? null)}`;
+  }
+  if (mode === "hygieneTransmissionRisk") {
+    return `Hygiene Transmission Risk - ${formatNumber(countryData.publicHealthEnvironment?.hygieneTransmissionRiskScore?.value ?? null)}`;
+  }
+  if (mode === "serviceReliability") {
+    return `Service Reliability - ${formatNumber(countryData.publicHealthEnvironment?.serviceReliabilityScore?.value ?? null)}`;
+  }
+  if (mode === "safelyManagedDrinkingWater") {
+    return `Safely Managed Drinking Water - ${formatPercent(countryData.publicHealthEnvironment?.safelyManagedDrinkingWaterPct?.value ?? null)}`;
+  }
+  if (mode === "safelyManagedSanitation") {
+    return `Safely Managed Sanitation - ${formatPercent(countryData.publicHealthEnvironment?.safelyManagedSanitationPct?.value ?? null)}`;
+  }
+  if (mode === "basicHandwashingFacilities") {
+    return `Basic Handwashing Facilities - ${formatPercent(countryData.publicHealthEnvironment?.basicHandwashingFacilitiesPct?.value ?? null)}`;
+  }
+  if (mode === "accessToElectricity") {
+    return `Access to Electricity - ${formatPercent(countryData.publicHealthEnvironment?.accessToElectricityPct?.value ?? null)}`;
+  }
   if (mode === "governmentFamily") {
     return `Government Type - ${countryData.politicalSystem.governmentFamily.value ?? "Unknown"}`;
   }
@@ -2621,6 +2780,30 @@ export function GameCanvas() {
           const healthExpenditurePctOfGdpRange = getIndicatorRange(
             countryValues.map((country) => country.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null),
           );
+          const publicHealthEnvironmentRange = getIndicatorRange(
+            countryValues.map((country) => country.publicHealthEnvironment?.publicHealthEnvironmentScore?.value ?? null),
+          );
+          const waterborneDiseaseRiskRange = getIndicatorRange(
+            countryValues.map((country) => country.publicHealthEnvironment?.waterborneDiseaseRiskScore?.value ?? null),
+          );
+          const hygieneTransmissionRiskRange = getIndicatorRange(
+            countryValues.map((country) => country.publicHealthEnvironment?.hygieneTransmissionRiskScore?.value ?? null),
+          );
+          const serviceReliabilityRange = getIndicatorRange(
+            countryValues.map((country) => country.publicHealthEnvironment?.serviceReliabilityScore?.value ?? null),
+          );
+          const safelyManagedDrinkingWaterRange = getIndicatorRange(
+            countryValues.map((country) => country.publicHealthEnvironment?.safelyManagedDrinkingWaterPct?.value ?? null),
+          );
+          const safelyManagedSanitationRange = getIndicatorRange(
+            countryValues.map((country) => country.publicHealthEnvironment?.safelyManagedSanitationPct?.value ?? null),
+          );
+          const basicHandwashingFacilitiesRange = getIndicatorRange(
+            countryValues.map((country) => country.publicHealthEnvironment?.basicHandwashingFacilitiesPct?.value ?? null),
+          );
+          const accessToElectricityRange = getIndicatorRange(
+            countryValues.map((country) => country.publicHealthEnvironment?.accessToElectricityPct?.value ?? null),
+          );
           let wppMatchedProvinceCount = 0;
           let atlasMatchedProvinceCount = 0;
           let securityMatchedProvinceCount = 0;
@@ -2874,6 +3057,70 @@ export function GameCanvas() {
                     countryCanonicalData.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null,
                     healthExpenditurePctOfGdpRange.min,
                     healthExpenditurePctOfGdpRange.max,
+                  )
+                : null;
+            const publicHealthEnvironmentT =
+              countryCanonicalData && publicHealthEnvironmentRange
+                ? normalizeValue(
+                    countryCanonicalData.publicHealthEnvironment?.publicHealthEnvironmentScore?.value ?? null,
+                    publicHealthEnvironmentRange.min,
+                    publicHealthEnvironmentRange.max,
+                  )
+                : null;
+            const waterborneDiseaseRiskT =
+              countryCanonicalData && waterborneDiseaseRiskRange
+                ? normalizeValue(
+                    countryCanonicalData.publicHealthEnvironment?.waterborneDiseaseRiskScore?.value ?? null,
+                    waterborneDiseaseRiskRange.min,
+                    waterborneDiseaseRiskRange.max,
+                  )
+                : null;
+            const hygieneTransmissionRiskT =
+              countryCanonicalData && hygieneTransmissionRiskRange
+                ? normalizeValue(
+                    countryCanonicalData.publicHealthEnvironment?.hygieneTransmissionRiskScore?.value ?? null,
+                    hygieneTransmissionRiskRange.min,
+                    hygieneTransmissionRiskRange.max,
+                  )
+                : null;
+            const serviceReliabilityT =
+              countryCanonicalData && serviceReliabilityRange
+                ? normalizeValue(
+                    countryCanonicalData.publicHealthEnvironment?.serviceReliabilityScore?.value ?? null,
+                    serviceReliabilityRange.min,
+                    serviceReliabilityRange.max,
+                  )
+                : null;
+            const safelyManagedDrinkingWaterT =
+              countryCanonicalData && safelyManagedDrinkingWaterRange
+                ? normalizeValue(
+                    countryCanonicalData.publicHealthEnvironment?.safelyManagedDrinkingWaterPct?.value ?? null,
+                    safelyManagedDrinkingWaterRange.min,
+                    safelyManagedDrinkingWaterRange.max,
+                  )
+                : null;
+            const safelyManagedSanitationT =
+              countryCanonicalData && safelyManagedSanitationRange
+                ? normalizeValue(
+                    countryCanonicalData.publicHealthEnvironment?.safelyManagedSanitationPct?.value ?? null,
+                    safelyManagedSanitationRange.min,
+                    safelyManagedSanitationRange.max,
+                  )
+                : null;
+            const basicHandwashingFacilitiesT =
+              countryCanonicalData && basicHandwashingFacilitiesRange
+                ? normalizeValue(
+                    countryCanonicalData.publicHealthEnvironment?.basicHandwashingFacilitiesPct?.value ?? null,
+                    basicHandwashingFacilitiesRange.min,
+                    basicHandwashingFacilitiesRange.max,
+                  )
+                : null;
+            const accessToElectricityT =
+              countryCanonicalData && accessToElectricityRange
+                ? normalizeValue(
+                    countryCanonicalData.publicHealthEnvironment?.accessToElectricityPct?.value ?? null,
+                    accessToElectricityRange.min,
+                    accessToElectricityRange.max,
                   )
                 : null;
             const provincePopulationEstimateT =
@@ -3335,6 +3582,70 @@ export function GameCanvas() {
                         COLOR_RAMPS.healthExpenditurePctOfGdp.low,
                         COLOR_RAMPS.healthExpenditurePctOfGdp.high,
                         healthExpenditurePctOfGdpT,
+                      ),
+                __publicHealthEnvironmentColor:
+                  publicHealthEnvironmentT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.publicHealthEnvironment.low,
+                        COLOR_RAMPS.publicHealthEnvironment.high,
+                        publicHealthEnvironmentT,
+                      ),
+                __waterborneDiseaseRiskColor:
+                  waterborneDiseaseRiskT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.waterborneDiseaseRisk.low,
+                        COLOR_RAMPS.waterborneDiseaseRisk.high,
+                        waterborneDiseaseRiskT,
+                      ),
+                __hygieneTransmissionRiskColor:
+                  hygieneTransmissionRiskT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.hygieneTransmissionRisk.low,
+                        COLOR_RAMPS.hygieneTransmissionRisk.high,
+                        hygieneTransmissionRiskT,
+                      ),
+                __serviceReliabilityColor:
+                  serviceReliabilityT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.serviceReliability.low,
+                        COLOR_RAMPS.serviceReliability.high,
+                        serviceReliabilityT,
+                      ),
+                __safelyManagedDrinkingWaterColor:
+                  safelyManagedDrinkingWaterT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.safelyManagedDrinkingWater.low,
+                        COLOR_RAMPS.safelyManagedDrinkingWater.high,
+                        safelyManagedDrinkingWaterT,
+                      ),
+                __safelyManagedSanitationColor:
+                  safelyManagedSanitationT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.safelyManagedSanitation.low,
+                        COLOR_RAMPS.safelyManagedSanitation.high,
+                        safelyManagedSanitationT,
+                      ),
+                __basicHandwashingFacilitiesColor:
+                  basicHandwashingFacilitiesT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.basicHandwashingFacilities.low,
+                        COLOR_RAMPS.basicHandwashingFacilities.high,
+                        basicHandwashingFacilitiesT,
+                      ),
+                __accessToElectricityColor:
+                  accessToElectricityT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.accessToElectricity.low,
+                        COLOR_RAMPS.accessToElectricity.high,
+                        accessToElectricityT,
                       ),
                 __governmentFamilyColor: getGovernmentFamilyColor(
                   countryCanonicalData?.politicalSystem.governmentFamily.value ?? null,
@@ -4087,6 +4398,22 @@ export function GameCanvas() {
               <div className="info-panel__row"><span>Health Data Freshness:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.healthDataFreshnessScore ?? EMPTY_POINT, formatNumber)}</strong></div>
               <div className="info-panel__row"><span>Health Field Coverage:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.healthFieldCoverageScore ?? EMPTY_POINT, formatNumber)}</strong></div>
 
+              <h3 className="info-panel__subtitle">Public Health Environment - World Bank WDI</h3>
+              <div className="info-panel__row"><span>Safely Managed Drinking Water:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.safelyManagedDrinkingWaterPct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Safely Managed Sanitation:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.safelyManagedSanitationPct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Basic Handwashing Facilities:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.basicHandwashingFacilitiesPct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Access to Electricity:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.accessToElectricityPct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Rural Electricity Access:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.ruralElectricityAccessPct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Urban Electricity Access:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.urbanElectricityAccessPct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Clean Cooking Fuel Access:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.cleanCookingFuelAccessPct ?? EMPTY_POINT, formatPercent)}</strong></div>
+              <div className="info-panel__row"><span>Public Health Environment Score:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.publicHealthEnvironmentScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Waterborne Disease Risk:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.waterborneDiseaseRiskScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Hygiene Transmission Risk:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.hygieneTransmissionRiskScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Service Reliability:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.serviceReliabilityScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Field Coverage:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.publicHealthEnvironmentFieldCoverageScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Freshness:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.publicHealthEnvironmentFreshnessScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Score Confidence:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.publicHealthEnvironmentScoreConfidence ?? EMPTY_POINT, formatNumber)}</strong></div>
+
               <details className="info-panel__details">
                 <summary>Top Exports</summary>
                 {selectedTopExports.length > 0 ? (
@@ -4372,6 +4699,31 @@ export function GameCanvas() {
                 "nursesMidwivesPer1000",
                 "healthExpenditurePerCapita",
                 "healthExpenditurePctOfGdp",
+              ].includes(mode.key),
+            ).map((mode) => (
+              <button
+                key={mode.key}
+                type="button"
+                className={`map-mode__button${mapMode === mode.key ? " map-mode__button--active" : ""}`}
+                onClick={() => setMapMode(mode.key)}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+
+          <p className="map-mode__section-title">Public Health Environment</p>
+          <div className="map-mode__buttons">
+            {MAP_MODES.filter((mode) =>
+              [
+                "publicHealthEnvironment",
+                "waterborneDiseaseRisk",
+                "hygieneTransmissionRisk",
+                "serviceReliability",
+                "safelyManagedDrinkingWater",
+                "safelyManagedSanitation",
+                "basicHandwashingFacilities",
+                "accessToElectricity",
               ].includes(mode.key),
             ).map((mode) => (
               <button

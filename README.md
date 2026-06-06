@@ -79,6 +79,13 @@ Current health-system frontend usage:
   `Health Capacity`, `Hospital Beds / 1,000`, `Physicians / 1,000`, `Nurses & Midwives / 1,000`, `Health Spend per Capita`, and `Health Spend (% GDP)`
 - Health confidence remains in canonical data for simulation/data-quality use, but is not currently shown as a dedicated frontend map layer
 
+Current public-health-environment frontend usage:
+
+- The inspector reads `country.publicHealthEnvironment` from `public/data/canonical-country-data.json`
+- Country map modes currently expose:
+  `Public Health Environment`, `Waterborne Disease Risk`, `Hygiene Transmission Risk`, `Service Reliability`, `Safely Managed Drinking Water`, `Safely Managed Sanitation`, `Basic Handwashing Facilities`, and `Access to Electricity`
+- This dataset is country-level only and should be treated as a strategic public-health environment / services baseline rather than local water infrastructure or household-level routing data
+
 ## Canonical Data Model
 
 Each country in `public/data/canonical-country-data.json` can contain:
@@ -90,6 +97,7 @@ Each country in `public/data/canonical-country-data.json` can contain:
 - `tradeStructure`
 - `security`
 - `healthSystem`
+- `publicHealthEnvironment`
 - `politicalSystem`
 - `settlement`
 
@@ -539,7 +547,62 @@ Coverage diagnostics:
   `>= 2023`, `2020-2022`, `2015-2019`, `2010-2014`, and `< 2010`
 - This is intended to help audit stale-but-usable health fields without inflating the main dataset
 
-### 9. GHSL Urban Centres And Province Settlement
+### 9. World Bank Public Health Environment Stats
+
+Script:
+
+- `scripts/importWorldBankPublicHealthEnvironmentStats.mjs`
+
+Generated files:
+
+- `public/data/public-health-environment-stats.json`
+- `public/data/public-health-environment-stats-coverage.json`
+
+Source behavior:
+
+- Uses the World Bank API, source `2`
+- Prefers year `2024`
+- Falls back to year `2023`
+- If neither is available, uses the latest available non-null year only when it is `>= 2022`
+- Leaves fields missing when the latest available non-null year is before `2022`
+- Filters out aggregate/non-country rows
+- Matches on ISO3 and preserves the selected year per field
+- Uses `World Bank WDI / WHO-UNICEF JMP` for water, sanitation, and handwashing fields
+- Uses `World Bank WDI / SDG7` for electricity and clean-cooking fields
+- Country-level only; intended as a strategic public-health environment / basic-services baseline rather than local water infrastructure or household-level modeling
+
+Imported indicators:
+
+- `safelyManagedDrinkingWaterPct`
+- `safelyManagedSanitationPct`
+- `basicHandwashingFacilitiesPct`
+- `accessToElectricityPct`
+- `ruralElectricityAccessPct`
+- `urbanElectricityAccessPct`
+- `cleanCookingFuelAccessPct`
+
+Canonical fields:
+
+- raw imported fields:
+  `safelyManagedDrinkingWaterPct`, `safelyManagedSanitationPct`, `basicHandwashingFacilitiesPct`, `accessToElectricityPct`, `ruralElectricityAccessPct`, `urbanElectricityAccessPct`, `cleanCookingFuelAccessPct`
+- derived scores:
+  `publicHealthEnvironmentScore`, `waterborneDiseaseRiskScore`, `hygieneTransmissionRiskScore`, `serviceReliabilityScore`
+- derived data-quality / confidence signals:
+  `publicHealthEnvironmentFieldCoverageScore`, `publicHealthEnvironmentFreshnessScore`, `publicHealthEnvironmentScoreConfidence`
+
+How it is used in canonical data:
+
+- Populates the `publicHealthEnvironment` section
+- Leaves imported fields as `{ value, year, source }`
+- Derives transparent weighted scores in the canonical builder and reweights over available components rather than forcing null when one input is missing
+- Keeps higher values good for access/service scores and higher values bad for risk scores
+
+Coverage diagnostics:
+
+- `public-health-environment-stats-coverage.json` includes total eligible countries, matched-country count, countries with at least one field, per-field coverage counts, per-field selected-year distributions, per-field missing counts, and countries with no public-health-environment fields
+- It also includes per-field freshness buckets for `2024`, `2023`, `2022`, `missing`, and `stale_before_2022`
+
+### 10. GHSL Urban Centres And Province Settlement
 
 Scripts:
 
@@ -602,7 +665,7 @@ Important semantic note:
 - They are matched urban-centre aggregates only.
 - The field names intentionally use `urbanCentre*` wording to avoid implying full raster coverage.
 
-### 10. GHSL Raster Province Settlement
+### 11. GHSL Raster Province Settlement
 
 Scripts:
 
@@ -666,7 +729,7 @@ How it is used in canonical data:
 - Province `nonUrbanCentrePopulationEstimate` and `urbanCentrePopulationSharePct` are derived from raster population, treating missing UCDB urban-centre population as `0` when raster population exists.
 - `canonical-country-data.json` rolls province raster totals up to country-level `raster*` settlement fields and applies the same UCDB-as-zero rule for raster-derived non-urban and share metrics.
 
-### 11. Natural Earth Strategic Infrastructure
+### 12. Natural Earth Strategic Infrastructure
 
 Script:
 
@@ -752,6 +815,7 @@ Input files:
 - `public/data/factbook-political-profiles.json`
 - `public/data/security-stats.json`
 - `public/data/health-stats.json`
+- `public/data/public-health-environment-stats.json`
 - `public/data/urban-centres.json`
 - `public/data/canonical-province-data.json`
 
@@ -768,6 +832,7 @@ Country naming precedence in the canonical builder:
 - WPP
 - Atlas
 - Factbook
+- Public health environment dataset
 - fallback to ISO3
 
 ### Overlap resolution between WDI and IMF
@@ -843,6 +908,21 @@ The canonical builder maps them as follows:
 - confidence does not directly modify `healthCapacityScore`; downstream simulation systems can decide whether to apply confidence adjustments
 - the frontend currently emphasizes the raw health-capacity factors plus `healthCapacityScore`; confidence remains available in canonical data but is not surfaced as a dedicated map layer
 
+`publicHealthEnvironment`
+
+- imported WASH fields: World Bank WDI / WHO-UNICEF JMP
+- imported electricity and clean-cooking fields: World Bank WDI / SDG7
+- `publicHealthEnvironmentScore`: weighted average over available:
+  `0.25 * safelyManagedDrinkingWaterPct + 0.25 * safelyManagedSanitationPct + 0.20 * basicHandwashingFacilitiesPct + 0.15 * accessToElectricityPct + 0.15 * cleanCookingFuelAccessPct`
+- `waterborneDiseaseRiskScore`: `100 - (0.55 * safelyManagedDrinkingWaterPct + 0.45 * safelyManagedSanitationPct)` reweighted over available components
+- `hygieneTransmissionRiskScore`: `100 - (0.50 * basicHandwashingFacilitiesPct + 0.30 * safelyManagedSanitationPct + 0.20 * safelyManagedDrinkingWaterPct)` reweighted over available components
+- `serviceReliabilityScore`: `0.50 * accessToElectricityPct + 0.20 * ruralElectricityAccessPct + 0.10 * urbanElectricityAccessPct + 0.20 * cleanCookingFuelAccessPct` reweighted over available components
+- `publicHealthEnvironmentFieldCoverageScore`: `available raw field count / 7 * 100`
+- `publicHealthEnvironmentFreshnessScore`: average freshness over available raw fields where `2024 => 100`, `2023 => 85`, `2022 => 70`
+- `publicHealthEnvironmentScoreConfidence`: `0.65 * publicHealthEnvironmentFieldCoverageScore + 0.35 * publicHealthEnvironmentFreshnessScore`
+- derived scores use the newest contributing raw-field year and source `Atlas Core derived from World Bank public health environment indicators`
+- the dataset is intentionally country-level only and should be treated as a strategic baseline rather than local water infrastructure or household-level modeling
+
 `politicalSystem`
 
 - all text, boolean, and normalized political-system fields: CIA World Factbook
@@ -868,6 +948,7 @@ Current coverage outputs:
 - `factbook-political-profiles-coverage.json`
 - `security-stats-coverage.json`
 - `health-stats-coverage.json`
+- `public-health-environment-stats-coverage.json`
 - `urban-centres-coverage.json`
 - `province-settlement-stats-coverage.json`
 - `province-raster-settlement-stats-coverage.json`
@@ -896,6 +977,7 @@ npm run import:atlas
 npm run import:factbook
 npm run import:security
 npm run import:health
+npm run import:public-health-environment
 npm run build:urban-centres
 npm run import:ghsl
 npm run import:ghsl-raster
@@ -941,6 +1023,7 @@ While `npm run import:ghsl-raster` is running, it logs source resolution, ZIP ex
 - `import:factbook`: import CIA Factbook political-system data
 - `import:security`: import World Bank security indicators
 - `import:health`: import World Bank health-system indicators
+- `import:public-health-environment`: import World Bank public-health-environment and basic-services indicators
 - `build:urban-centres`: build GHSL urban-centre records and coverage
 - `import:ghsl`: build province settlement rollups from matched GHSL urban centres
 - `import:ghsl-raster`: build province-wide GHSL raster population and built-up settlement rollups with GDAL mask aggregation and checkpoint files
@@ -964,6 +1047,7 @@ public/data/
   factbook-political-profiles.json
   security-stats.json
   health-stats.json
+  public-health-environment-stats.json
   urban-centres.json
   province-settlement-stats.json
   province-raster-settlement-stats.json
@@ -991,6 +1075,7 @@ scripts/
   importFactbookPoliticalProfiles.mjs
   importWorldBankSecurityStats.mjs
   importWorldBankHealthStats.mjs
+  importWorldBankPublicHealthEnvironmentStats.mjs
   buildUrbanCentres.mjs
   importGhslSettlementData.mjs
   importGhslRasterSettlementData.mjs
@@ -1013,11 +1098,13 @@ src/map/
 - WDI, WGI, IMF, and WPP all prefer `2024` with `2023` fallback where needed.
 - Security stats prefer `2024`, then `2023`, then the latest non-null year available per field.
 - Health-system stats prefer `2024`, then `2023`, then the latest non-null year available per field because publication lags are common.
+- Public-health-environment stats prefer `2024`, then `2023`, then the latest non-null year available per field only when that year is `>= 2022`.
 - Atlas currently resolves to `2016` because the selected official file does not expose `2024` or `2023`.
 - Factbook matching is incomplete for some territories, oceans, and supranational entities.
 - Province geometry is checked in directly and treated as ground truth by the current frontend.
 - GHSL settlement coverage now separates UCDB urban-centre aggregates (`urbanCentre*`) from full raster province and country totals (`raster*`).
 - The health-system dataset is intentionally country-level only and should not be treated as local hospital routing or province-scale capacity data.
+- The public-health-environment dataset is intentionally country-level only and should be treated as a strategic public-health environment / services baseline, not local water infrastructure or household-level modeling.
 - `settlementDataCompleteness` describes the UCDB urban-centre subset, while `rasterSettlementDataCompleteness` describes province-wide GHSL raster coverage.
 - The fast GHSL raster importer depends on GDAL unless `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1` is used.
 - Natural Earth infrastructure is generalized 1:10m data intended for strategic map context.

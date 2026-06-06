@@ -14,6 +14,13 @@ const ATLAS_PATH = resolve(__dirname, "..", "public", "data", "atlas-trade-profi
 const FACTBOOK_PATH = resolve(__dirname, "..", "public", "data", "factbook-political-profiles.json");
 const SECURITY_PATH = resolve(__dirname, "..", "public", "data", "security-stats.json");
 const HEALTH_PATH = resolve(__dirname, "..", "public", "data", "health-stats.json");
+const PUBLIC_HEALTH_ENVIRONMENT_PATH = resolve(
+  __dirname,
+  "..",
+  "public",
+  "data",
+  "public-health-environment-stats.json",
+);
 const URBAN_CENTRES_PATH = resolve(__dirname, "..", "public", "data", "urban-centres.json");
 const CANONICAL_PROVINCE_PATH = resolve(__dirname, "..", "public", "data", "canonical-province-data.json");
 const INFRASTRUCTURE_CONNECTIONS_PATH = resolve(
@@ -24,8 +31,12 @@ const INFRASTRUCTURE_CONNECTIONS_PATH = resolve(
   "infrastructure-connections.json",
 );
 
-const OUTPUT_PATH = resolve(__dirname, "..", "public", "data", "canonical-country-data.json");
-const COVERAGE_PATH = resolve(__dirname, "..", "public", "data", "canonical-country-data-coverage.json");
+const OUTPUT_PATH = process.env.CANONICAL_COUNTRY_OUTPUT_PATH
+  ? resolve(process.env.CANONICAL_COUNTRY_OUTPUT_PATH)
+  : resolve(__dirname, "..", "public", "data", "canonical-country-data.json");
+const COVERAGE_PATH = process.env.CANONICAL_COUNTRY_COVERAGE_PATH
+  ? resolve(process.env.CANONICAL_COUNTRY_COVERAGE_PATH)
+  : resolve(__dirname, "..", "public", "data", "canonical-country-data-coverage.json");
 
 const OVERLAP_CONFIG = {
   gdpCurrentUsd: {
@@ -99,6 +110,23 @@ const HEALTH_KEYS = [
   "healthCapacityScoreConfidence",
 ];
 
+const PUBLIC_HEALTH_ENVIRONMENT_KEYS = [
+  "safelyManagedDrinkingWaterPct",
+  "safelyManagedSanitationPct",
+  "basicHandwashingFacilitiesPct",
+  "accessToElectricityPct",
+  "ruralElectricityAccessPct",
+  "urbanElectricityAccessPct",
+  "cleanCookingFuelAccessPct",
+  "publicHealthEnvironmentScore",
+  "waterborneDiseaseRiskScore",
+  "hygieneTransmissionRiskScore",
+  "serviceReliabilityScore",
+  "publicHealthEnvironmentFieldCoverageScore",
+  "publicHealthEnvironmentFreshnessScore",
+  "publicHealthEnvironmentScoreConfidence",
+];
+
 const POLITICAL_SYSTEM_TEXT_KEYS = [
   "governmentType",
   "capital",
@@ -164,6 +192,7 @@ const CANONICAL_KEYS = {
   tradeStructure: TRADE_STRUCTURE_KEYS,
   security: SECURITY_KEYS,
   healthSystem: HEALTH_KEYS,
+  publicHealthEnvironment: PUBLIC_HEALTH_ENVIRONMENT_KEYS,
 };
 
 const HEALTH_RAW_SOURCE = "World Bank WDI / WHO";
@@ -172,6 +201,8 @@ const OUTBREAK_DERIVED_SOURCE =
   "Derived from World Bank WDI / WHO health indicators, World Bank WGI, and infrastructure connectivity";
 const HEALTH_CONFIDENCE_SOURCE =
   "Derived from World Bank WDI / WHO health indicator coverage and selected years";
+const PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE =
+  "Atlas Core derived from World Bank public health environment indicators";
 
 function isRecord(value) {
   return typeof value === "object" && value !== null;
@@ -275,6 +306,30 @@ function getHealthDataPoint(record, key) {
   return makeDataPoint(fact.value, fact.year, fact.source);
 }
 
+function getPublicHealthEnvironmentFact(record, key) {
+  const fact = record?.publicHealthEnvironment?.[key];
+  if (!isRecord(fact)) {
+    return null;
+  }
+
+  const value = typeof fact.value === "number" && Number.isFinite(fact.value) ? fact.value : null;
+  const year = typeof fact.year === "number" && Number.isFinite(fact.year) ? fact.year : null;
+  const source = typeof fact.source === "string" && fact.source.length > 0 ? fact.source : null;
+  if (value === null || year === null || source === null) {
+    return null;
+  }
+
+  return { value, year, source };
+}
+
+function getPublicHealthEnvironmentDataPoint(record, key) {
+  const fact = getPublicHealthEnvironmentFact(record, key);
+  if (!fact) {
+    return makeDataPoint(null, null, null);
+  }
+  return makeDataPoint(fact.value, fact.year, fact.source);
+}
+
 function makeDerivedSecurityDataPoint(value, year, source) {
   if (typeof value !== "number" || !Number.isFinite(value) || year === null || !source) {
     return makeDataPoint(null, null, null);
@@ -287,6 +342,13 @@ function makeDerivedScoreDataPoint(value, source) {
     return makeDataPoint(null, null, null);
   }
   return { value: roundNumber(clamp(value, 0, 100), 2), year: null, source };
+}
+
+function makeDerivedScoreDataPointWithYear(value, year, source) {
+  if (typeof value !== "number" || !Number.isFinite(value) || !Number.isFinite(year) || !source) {
+    return makeDataPoint(null, null, null);
+  }
+  return makeDataPoint(roundNumber(clamp(value, 0, 100), 2), year, source);
 }
 
 function derivePerCapitaPoint(numerator, denominator, source) {
@@ -369,7 +431,7 @@ function computeCoverageCounts(recordsByIso3, keys) {
   return counts;
 }
 
-function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security, health) {
+function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security, health, publicHealthEnvironment) {
   return (
     wdi?.countriesByIso3?.[iso3]?.name ??
     imf?.countriesByIso3?.[iso3]?.name ??
@@ -379,6 +441,7 @@ function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security, hea
     factbook?.countriesByIso3?.[iso3]?.name ??
     security?.countriesByIso3?.[iso3]?.name ??
     health?.countriesByIso3?.[iso3]?.name ??
+    publicHealthEnvironment?.[iso3]?.countryName ??
     iso3
   );
 }
@@ -556,6 +619,32 @@ function freshnessFactor(year) {
     return 0.4;
   }
   return 0.2;
+}
+
+function publicHealthEnvironmentFreshnessValue(year) {
+  if (!Number.isFinite(year)) {
+    return null;
+  }
+  if (year >= 2024) {
+    return 100;
+  }
+  if (year === 2023) {
+    return 85;
+  }
+  if (year === 2022) {
+    return 70;
+  }
+  return null;
+}
+
+function getNewestFactYear(points) {
+  const years = points
+    .map((point) => (typeof point?.year === "number" && Number.isFinite(point.year) ? point.year : null))
+    .filter((year) => year !== null);
+  if (years.length === 0) {
+    return null;
+  }
+  return Math.max(...years);
 }
 
 function computeHhi(values) {
@@ -1036,6 +1125,7 @@ async function main() {
     factbookMaybe,
     securityMaybe,
     healthMaybe,
+    publicHealthEnvironmentMaybe,
     urbanCentresMaybe,
     canonicalProvinceMaybe,
     infrastructureConnectionsMaybe,
@@ -1048,6 +1138,7 @@ async function main() {
     readJsonOptional(FACTBOOK_PATH),
     readJsonOptional(SECURITY_PATH),
     readJsonOptional(HEALTH_PATH),
+    readJsonOptional(PUBLIC_HEALTH_ENVIRONMENT_PATH),
     readJsonOptional(URBAN_CENTRES_PATH),
     readJsonOptional(CANONICAL_PROVINCE_PATH),
     readJsonOptional(INFRASTRUCTURE_CONNECTIONS_PATH),
@@ -1072,6 +1163,9 @@ async function main() {
     isRecord(securityMaybe?.countriesByIso3) ? securityMaybe.countriesByIso3 : {};
   const healthCountriesByIso3 =
     isRecord(healthMaybe?.countriesByIso3) ? healthMaybe.countriesByIso3 : {};
+  const publicHealthEnvironmentCountriesByIso3 = isRecord(publicHealthEnvironmentMaybe)
+    ? publicHealthEnvironmentMaybe
+    : {};
   if (!isRecord(atlasMaybe?.countriesByIso3)) {
     console.warn("atlas-trade-profiles.json not found or invalid; tradeStructure will be emitted as null datapoints.");
   }
@@ -1083,6 +1177,11 @@ async function main() {
   }
   if (!isRecord(healthMaybe?.countriesByIso3)) {
     console.warn("health-stats.json not found or invalid; healthSystem will be emitted as null datapoints.");
+  }
+  if (!isRecord(publicHealthEnvironmentMaybe)) {
+    console.warn(
+      "public-health-environment-stats.json not found or invalid; publicHealthEnvironment will be omitted.",
+    );
   }
   const urbanCentresById = isRecord(urbanCentresMaybe) ? urbanCentresMaybe : {};
   const canonicalProvinceDataById = isRecord(canonicalProvinceMaybe) ? canonicalProvinceMaybe : {};
@@ -1123,6 +1222,7 @@ async function main() {
       ...Object.keys(factbookCountriesByIso3),
       ...Object.keys(securityCountriesByIso3),
       ...Object.keys(healthCountriesByIso3),
+      ...Object.keys(publicHealthEnvironmentCountriesByIso3),
       ...Object.values(urbanCentresById)
         .map((record) => (isRecord(record) && typeof record.countryIso3 === "string" ? record.countryIso3 : null))
         .filter(Boolean),
@@ -1143,6 +1243,7 @@ async function main() {
     const factbookRecord = factbookCountriesByIso3[iso3];
     const securityRecord = securityCountriesByIso3[iso3];
     const healthRecord = healthCountriesByIso3[iso3];
+    const publicHealthEnvironmentRecord = publicHealthEnvironmentCountriesByIso3[iso3];
     const atlasYear = getAtlasIndicatorYear(atlasRecord);
     const factbookSource = factbookRecord?.source === "CIA World Factbook" ? "CIA World Factbook" : null;
 
@@ -1450,12 +1551,69 @@ async function main() {
       healthCapacityScoreConfidence: makeDataPoint(null, null, null),
     };
 
+    const publicHealthEnvironmentRaw = {
+      safelyManagedDrinkingWaterPct: getPublicHealthEnvironmentDataPoint(
+        publicHealthEnvironmentRecord,
+        "safelyManagedDrinkingWaterPct",
+      ),
+      safelyManagedSanitationPct: getPublicHealthEnvironmentDataPoint(
+        publicHealthEnvironmentRecord,
+        "safelyManagedSanitationPct",
+      ),
+      basicHandwashingFacilitiesPct: getPublicHealthEnvironmentDataPoint(
+        publicHealthEnvironmentRecord,
+        "basicHandwashingFacilitiesPct",
+      ),
+      accessToElectricityPct: getPublicHealthEnvironmentDataPoint(
+        publicHealthEnvironmentRecord,
+        "accessToElectricityPct",
+      ),
+      ruralElectricityAccessPct: getPublicHealthEnvironmentDataPoint(
+        publicHealthEnvironmentRecord,
+        "ruralElectricityAccessPct",
+      ),
+      urbanElectricityAccessPct: getPublicHealthEnvironmentDataPoint(
+        publicHealthEnvironmentRecord,
+        "urbanElectricityAccessPct",
+      ),
+      cleanCookingFuelAccessPct: getPublicHealthEnvironmentDataPoint(
+        publicHealthEnvironmentRecord,
+        "cleanCookingFuelAccessPct",
+      ),
+    };
+    const publicHealthEnvironmentHasAnyRawField = Object.values(publicHealthEnvironmentRaw).some(
+      (point) => point.value !== null,
+    );
+    const publicHealthEnvironment = publicHealthEnvironmentHasAnyRawField
+      ? {
+          ...publicHealthEnvironmentRaw,
+          publicHealthEnvironmentScore: makeDataPoint(null, null, null),
+          waterborneDiseaseRiskScore: makeDataPoint(null, null, null),
+          hygieneTransmissionRiskScore: makeDataPoint(null, null, null),
+          serviceReliabilityScore: makeDataPoint(null, null, null),
+          publicHealthEnvironmentFieldCoverageScore: makeDataPoint(null, null, null),
+          publicHealthEnvironmentFreshnessScore: makeDataPoint(null, null, null),
+          publicHealthEnvironmentScoreConfidence: makeDataPoint(null, null, null),
+        }
+      : null;
+
     const settlement = buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresById);
     const infrastructure = buildCountryInfrastructure(iso3, canonicalProvinceDataById, infrastructureConnectionsMaybe);
 
     countriesByIso3[iso3] = {
       iso3,
-      name: getCountryName(iso3, wdi, imf, wgi, wpp, atlasMaybe, factbookMaybe, securityMaybe, healthMaybe),
+      name: getCountryName(
+        iso3,
+        wdi,
+        imf,
+        wgi,
+        wpp,
+        atlasMaybe,
+        factbookMaybe,
+        securityMaybe,
+        healthMaybe,
+        publicHealthEnvironmentCountriesByIso3,
+      ),
       gameStartDate: "2025-01-01",
       economy,
       demographics,
@@ -1465,6 +1623,7 @@ async function main() {
       security,
       healthSystem,
       politicalSystem,
+      ...(publicHealthEnvironment ? { publicHealthEnvironment } : {}),
       settlement,
       infrastructure,
     };
@@ -1580,6 +1739,99 @@ async function main() {
         HEALTH_CONFIDENCE_SOURCE,
       ),
     };
+
+    if (country.publicHealthEnvironment) {
+      const rawPublicHealthFields = [
+        country.publicHealthEnvironment.safelyManagedDrinkingWaterPct,
+        country.publicHealthEnvironment.safelyManagedSanitationPct,
+        country.publicHealthEnvironment.basicHandwashingFacilitiesPct,
+        country.publicHealthEnvironment.accessToElectricityPct,
+        country.publicHealthEnvironment.ruralElectricityAccessPct,
+        country.publicHealthEnvironment.urbanElectricityAccessPct,
+        country.publicHealthEnvironment.cleanCookingFuelAccessPct,
+      ];
+      const newestPublicHealthEnvironmentYear = getNewestFactYear(rawPublicHealthFields);
+      const publicHealthEnvironmentScore = computeWeightedAverage([
+        { value: getPointValue(country.publicHealthEnvironment.safelyManagedDrinkingWaterPct), weight: 0.25 },
+        { value: getPointValue(country.publicHealthEnvironment.safelyManagedSanitationPct), weight: 0.25 },
+        { value: getPointValue(country.publicHealthEnvironment.basicHandwashingFacilitiesPct), weight: 0.20 },
+        { value: getPointValue(country.publicHealthEnvironment.accessToElectricityPct), weight: 0.15 },
+        { value: getPointValue(country.publicHealthEnvironment.cleanCookingFuelAccessPct), weight: 0.15 },
+      ]);
+      const waterborneDiseaseProtection = computeWeightedAverage([
+        { value: getPointValue(country.publicHealthEnvironment.safelyManagedDrinkingWaterPct), weight: 0.55 },
+        { value: getPointValue(country.publicHealthEnvironment.safelyManagedSanitationPct), weight: 0.45 },
+      ]);
+      const hygieneTransmissionProtection = computeWeightedAverage([
+        { value: getPointValue(country.publicHealthEnvironment.basicHandwashingFacilitiesPct), weight: 0.50 },
+        { value: getPointValue(country.publicHealthEnvironment.safelyManagedSanitationPct), weight: 0.30 },
+        { value: getPointValue(country.publicHealthEnvironment.safelyManagedDrinkingWaterPct), weight: 0.20 },
+      ]);
+      const serviceReliabilityScore = computeWeightedAverage([
+        { value: getPointValue(country.publicHealthEnvironment.accessToElectricityPct), weight: 0.50 },
+        { value: getPointValue(country.publicHealthEnvironment.ruralElectricityAccessPct), weight: 0.20 },
+        { value: getPointValue(country.publicHealthEnvironment.urbanElectricityAccessPct), weight: 0.10 },
+        { value: getPointValue(country.publicHealthEnvironment.cleanCookingFuelAccessPct), weight: 0.20 },
+      ]);
+      const waterborneDiseaseRiskScore =
+        waterborneDiseaseProtection === null ? null : 100 - waterborneDiseaseProtection;
+      const hygieneTransmissionRiskScore =
+        hygieneTransmissionProtection === null ? null : 100 - hygieneTransmissionProtection;
+      const availablePublicHealthFieldCount = rawPublicHealthFields.filter((point) => point.value !== null).length;
+      const publicHealthEnvironmentFieldCoverageScore =
+        availablePublicHealthFieldCount > 0
+          ? roundNumber((availablePublicHealthFieldCount / 7) * 100, 2)
+          : null;
+      const publicHealthEnvironmentFreshnessScore = computeWeightedAverage(
+        rawPublicHealthFields.map((point) => ({
+          value: publicHealthEnvironmentFreshnessValue(point.year),
+          weight: 1,
+        })),
+      );
+      const publicHealthEnvironmentScoreConfidence = computeWeightedAverage([
+        { value: publicHealthEnvironmentFieldCoverageScore, weight: 0.65 },
+        { value: publicHealthEnvironmentFreshnessScore, weight: 0.35 },
+      ]);
+
+      country.publicHealthEnvironment = {
+        ...country.publicHealthEnvironment,
+        publicHealthEnvironmentScore: makeDerivedScoreDataPointWithYear(
+          publicHealthEnvironmentScore,
+          newestPublicHealthEnvironmentYear,
+          PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE,
+        ),
+        waterborneDiseaseRiskScore: makeDerivedScoreDataPointWithYear(
+          waterborneDiseaseRiskScore,
+          newestPublicHealthEnvironmentYear,
+          PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE,
+        ),
+        hygieneTransmissionRiskScore: makeDerivedScoreDataPointWithYear(
+          hygieneTransmissionRiskScore,
+          newestPublicHealthEnvironmentYear,
+          PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE,
+        ),
+        serviceReliabilityScore: makeDerivedScoreDataPointWithYear(
+          serviceReliabilityScore,
+          newestPublicHealthEnvironmentYear,
+          PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE,
+        ),
+        publicHealthEnvironmentFieldCoverageScore: makeDerivedScoreDataPointWithYear(
+          publicHealthEnvironmentFieldCoverageScore,
+          newestPublicHealthEnvironmentYear,
+          PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE,
+        ),
+        publicHealthEnvironmentFreshnessScore: makeDerivedScoreDataPointWithYear(
+          publicHealthEnvironmentFreshnessScore,
+          newestPublicHealthEnvironmentYear,
+          PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE,
+        ),
+        publicHealthEnvironmentScoreConfidence: makeDerivedScoreDataPointWithYear(
+          publicHealthEnvironmentScoreConfidence,
+          newestPublicHealthEnvironmentYear,
+          PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE,
+        ),
+      };
+    }
   }
 
   const canonical = {
@@ -1603,6 +1855,9 @@ async function main() {
     derivedSecurityValuesUsed: 0,
     healthWhoValuesUsed: 0,
     derivedHealthValuesUsed: 0,
+    publicHealthEnvironmentJmpValuesUsed: 0,
+    publicHealthEnvironmentSdg7ValuesUsed: 0,
+    derivedPublicHealthEnvironmentValuesUsed: 0,
     factbookTextValuesUsed: 0,
     factbookBooleanValuesUsed: 0,
   };
@@ -1619,6 +1874,8 @@ async function main() {
         "World Bank WDI / SIPRI": 0,
         "World Bank WDI / IISS": 0,
         "World Bank WDI / WHO": 0,
+        "World Bank WDI / WHO-UNICEF JMP": 0,
+        "World Bank WDI / SDG7": 0,
         derived: 0,
         nullSource: 0,
       };
@@ -1630,7 +1887,7 @@ async function main() {
 
     for (const section of Object.keys(CANONICAL_KEYS)) {
       for (const metric of CANONICAL_KEYS[section]) {
-        const point = country[section][metric];
+        const point = country[section]?.[metric] ?? makeDataPoint(null, null, null);
         if (point.value !== null) {
           metricCoverage[metric] += 1;
         } else {
@@ -1661,6 +1918,15 @@ async function main() {
         } else if (point.source === "World Bank WDI / WHO") {
           sourceUsageByMetric[metric]["World Bank WDI / WHO"] += 1;
           sourceUsageTotals.healthWhoValuesUsed += 1;
+        } else if (point.source === "World Bank WDI / WHO-UNICEF JMP") {
+          sourceUsageByMetric[metric]["World Bank WDI / WHO-UNICEF JMP"] += 1;
+          sourceUsageTotals.publicHealthEnvironmentJmpValuesUsed += 1;
+        } else if (point.source === "World Bank WDI / SDG7") {
+          sourceUsageByMetric[metric]["World Bank WDI / SDG7"] += 1;
+          sourceUsageTotals.publicHealthEnvironmentSdg7ValuesUsed += 1;
+        } else if (point.source === PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE) {
+          sourceUsageByMetric[metric].derived += 1;
+          sourceUsageTotals.derivedPublicHealthEnvironmentValuesUsed += 1;
         } else if (typeof point.source === "string" && point.source.startsWith("Derived from ")) {
           sourceUsageByMetric[metric].derived += 1;
           if (HEALTH_KEYS.includes(metric)) {

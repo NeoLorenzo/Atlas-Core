@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-06T11:35:14.850Z",
+  "generatedAt": "2026-06-06T14:56:53.435Z",
   "totalCountries": 272,
   "coverageByCanonicalMetric": {
     "population": 216,
@@ -59,7 +59,21 @@
     "outbreakTreatmentScore": 254,
     "healthDataFreshnessScore": 209,
     "healthFieldCoverageScore": 209,
-    "healthCapacityScoreConfidence": 209
+    "healthCapacityScoreConfidence": 209,
+    "safelyManagedDrinkingWaterPct": 148,
+    "safelyManagedSanitationPct": 142,
+    "basicHandwashingFacilitiesPct": 102,
+    "accessToElectricityPct": 214,
+    "ruralElectricityAccessPct": 208,
+    "urbanElectricityAccessPct": 212,
+    "cleanCookingFuelAccessPct": 188,
+    "publicHealthEnvironmentScore": 215,
+    "waterborneDiseaseRiskScore": 168,
+    "hygieneTransmissionRiskScore": 185,
+    "serviceReliabilityScore": 214,
+    "publicHealthEnvironmentFieldCoverageScore": 215,
+    "publicHealthEnvironmentFreshnessScore": 215,
+    "publicHealthEnvironmentScoreConfidence": 215
   },
   "sourceUsedByMetric": {
     "population": {
@@ -71,6 +85,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -83,6 +99,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 64
     },
@@ -95,6 +113,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 64
     },
@@ -107,6 +127,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 63
     },
@@ -119,6 +141,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 75
     },
@@ -131,6 +155,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 89
     },
@@ -143,6 +169,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -155,6 +183,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -167,6 +197,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 99
     },
@@ -179,6 +211,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -191,6 +225,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -203,6 +239,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -215,6 +253,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -227,6 +267,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -239,6 +281,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -251,6 +295,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -263,6 +309,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -275,6 +323,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -287,6 +337,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -299,6 +351,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -311,6 +365,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 79
     },
@@ -323,6 +379,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 82
     },
@@ -335,6 +393,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -347,6 +407,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -359,6 +421,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -371,6 +435,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -383,6 +449,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -395,6 +463,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -407,6 +477,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -419,6 +491,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -431,6 +505,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -443,6 +519,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -455,6 +533,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -467,6 +547,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -479,6 +561,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -491,6 +575,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -503,6 +589,8 @@
       "World Bank WDI / SIPRI": 166,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 106
     },
@@ -515,6 +603,8 @@
       "World Bank WDI / SIPRI": 163,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 109
     },
@@ -527,6 +617,8 @@
       "World Bank WDI / SIPRI": 160,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 112
     },
@@ -539,6 +631,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 173,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 99
     },
@@ -551,6 +645,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 171,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 101
     },
@@ -563,6 +659,8 @@
       "World Bank WDI / SIPRI": 186,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 86
     },
@@ -575,6 +673,8 @@
       "World Bank WDI / SIPRI": 124,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 148
     },
@@ -587,6 +687,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 166,
       "nullSource": 106
     },
@@ -599,6 +701,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 162,
       "nullSource": 110
     },
@@ -611,6 +715,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 173,
       "nullSource": 99
     },
@@ -623,6 +729,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 200,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 72
     },
@@ -635,6 +743,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 207,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 65
     },
@@ -647,6 +757,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 197,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 75
     },
@@ -659,6 +771,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 192,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -671,6 +785,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 192,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -683,6 +799,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 209,
       "nullSource": 63
     },
@@ -695,6 +813,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 208,
       "nullSource": 64
     },
@@ -707,6 +827,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 200,
       "nullSource": 72
     },
@@ -719,6 +841,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 254,
       "nullSource": 18
     },
@@ -731,6 +855,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 209,
       "nullSource": 63
     },
@@ -743,6 +869,8 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 209,
       "nullSource": 63
     },
@@ -755,8 +883,206 @@
       "World Bank WDI / SIPRI": 0,
       "World Bank WDI / IISS": 0,
       "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
       "derived": 209,
       "nullSource": 63
+    },
+    "safelyManagedDrinkingWaterPct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 148,
+      "World Bank WDI / SDG7": 0,
+      "derived": 0,
+      "nullSource": 124
+    },
+    "safelyManagedSanitationPct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 142,
+      "World Bank WDI / SDG7": 0,
+      "derived": 0,
+      "nullSource": 130
+    },
+    "basicHandwashingFacilitiesPct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 102,
+      "World Bank WDI / SDG7": 0,
+      "derived": 0,
+      "nullSource": 170
+    },
+    "accessToElectricityPct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 214,
+      "derived": 0,
+      "nullSource": 58
+    },
+    "ruralElectricityAccessPct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 208,
+      "derived": 0,
+      "nullSource": 64
+    },
+    "urbanElectricityAccessPct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 212,
+      "derived": 0,
+      "nullSource": 60
+    },
+    "cleanCookingFuelAccessPct": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 188,
+      "derived": 0,
+      "nullSource": 84
+    },
+    "publicHealthEnvironmentScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "derived": 215,
+      "nullSource": 57
+    },
+    "waterborneDiseaseRiskScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "derived": 168,
+      "nullSource": 104
+    },
+    "hygieneTransmissionRiskScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "derived": 185,
+      "nullSource": 87
+    },
+    "serviceReliabilityScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "derived": 214,
+      "nullSource": 58
+    },
+    "publicHealthEnvironmentFieldCoverageScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "derived": 215,
+      "nullSource": 57
+    },
+    "publicHealthEnvironmentFreshnessScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "derived": 215,
+      "nullSource": 57
+    },
+    "publicHealthEnvironmentScoreConfidence": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "derived": 215,
+      "nullSource": 57
     }
   },
   "politicalSystemCoverage": {
@@ -832,10 +1158,13 @@
   "derivedSecurityValuesUsed": 501,
   "healthWhoValuesUsed": 988,
   "derivedHealthValuesUsed": 1498,
+  "publicHealthEnvironmentJmpValuesUsed": 392,
+  "publicHealthEnvironmentSdg7ValuesUsed": 822,
+  "derivedPublicHealthEnvironmentValuesUsed": 1427,
   "factbookTextValuesUsed": 3908,
   "factbookBooleanValuesUsed": 1825,
   "unresolvedMissingValues": {
-    "countriesWithMissingMetrics": 169,
+    "countriesWithMissingMetrics": 242,
     "missingByCountry": {
       "ABW": {
         "name": "Aruba",
@@ -860,7 +1189,20 @@
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "cleanCookingFuelAccessPct",
+          "waterborneDiseaseRiskScore"
+        ]
+      },
+      "AGO": {
+        "name": "Angola",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "ruralElectricityAccessPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "AIA": {
@@ -904,7 +1246,27 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "ALB": {
+        "name": "Albania",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "ALD": {
@@ -966,7 +1328,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "AND": {
@@ -983,7 +1359,8 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "ANS": {
@@ -1038,7 +1415,37 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "ARE": {
+        "name": "United Arab Emirates",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "ARG": {
+        "name": "Argentina",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "ASM": {
@@ -1073,7 +1480,13 @@
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "serviceReliabilityScore"
         ]
       },
       "ATA": {
@@ -1127,7 +1540,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "ATC": {
@@ -1189,7 +1616,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "ATF": {
@@ -1243,7 +1684,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "ATG": {
@@ -1257,7 +1712,25 @@
           "armedForcesPctOfLaborForce",
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
-          "militarySpendPerSoldierUsd"
+          "militarySpendPerSoldierUsd",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "AUS": {
+        "name": "Australia",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "AUT": {
+        "name": "Austria",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "AZE": {
@@ -1270,7 +1743,16 @@
         "name": "Burundi",
         "missingMetrics": [
           "tradePctOfGdp",
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
+        ]
+      },
+      "BEL": {
+        "name": "Belgium",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "BEN": {
@@ -1321,13 +1803,35 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "BFA": {
         "name": "Burkina Faso",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct"
+        ]
+      },
+      "BGR": {
+        "name": "Bulgaria",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "BHS": {
@@ -1337,7 +1841,19 @@
           "militaryExpenditurePctOfGdp",
           "militaryExpenditurePctOfGovtExpenditure",
           "militarySpendPerCapitaUsd",
-          "militarySpendPerSoldierUsd"
+          "militarySpendPerSoldierUsd",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "BIH": {
+        "name": "Bosnia and Herzegovina",
+        "missingMetrics": [
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "BLM": {
@@ -1381,13 +1897,36 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "BLR": {
+        "name": "Belarus",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "BLZ": {
         "name": "Belize",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "BMU": {
@@ -1416,13 +1955,28 @@
           "mobilizationBasePct",
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "BOL": {
         "name": "Bolivia",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
+        ]
+      },
+      "BRA": {
+        "name": "Brazil",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "BRB": {
@@ -1434,7 +1988,22 @@
           "militaryExpenditurePctOfGovtExpenditure",
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
-          "militarySpendPerSoldierUsd"
+          "militarySpendPerSoldierUsd",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "BRN": {
+        "name": "Brunei Darussalam",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "BTN": {
@@ -1500,13 +2069,29 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "BWA": {
         "name": "Botswana",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "CAF": {
@@ -1516,6 +2101,12 @@
           "governmentNetLendingBorrowingPctOfGdp",
           "governmentGrossDebtPctOfGdp",
           "armsExportsSipriTiv"
+        ]
+      },
+      "CAN": {
+        "name": "Canada",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "CCK": {
@@ -1570,7 +2161,27 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "CHE": {
+        "name": "Switzerland",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "CHI": {
@@ -1617,7 +2228,25 @@
           "mobilizationBasePct",
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "CHL": {
+        "name": "Chile",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "CHN": {
+        "name": "China",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "CLP": {
@@ -1679,19 +2308,41 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "CMR": {
         "name": "Cameroon",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "COG": {
         "name": "Congo, Rep.",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "COK": {
@@ -1735,7 +2386,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "COM": {
@@ -1748,13 +2413,17 @@
           "armedForcesPctOfLaborForce",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "CPV": {
         "name": "Cabo Verde",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "CRI": {
@@ -1823,7 +2492,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "CUB": {
@@ -1835,7 +2518,8 @@
           "currentAccountBalancePctOfGdp",
           "governmentNetLendingBorrowingPctOfGdp",
           "governmentGrossDebtPctOfGdp",
-          "militaryExpenditurePctOfGovtExpenditure"
+          "militaryExpenditurePctOfGovtExpenditure",
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "CUW": {
@@ -1873,7 +2557,13 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "CXR": {
@@ -1928,7 +2618,21 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "CYM": {
@@ -1957,7 +2661,13 @@
           "militarySpendPerSoldierUsd",
           "mobilizationBasePct",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "CYN": {
@@ -2019,13 +2729,46 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "CYP": {
+        "name": "Cyprus",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "CZE": {
+        "name": "Czechia",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "DEU": {
+        "name": "Germany",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "DJI": {
         "name": "Djibouti",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "DMA": {
@@ -2042,7 +2785,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "DNK": {
+        "name": "Denmark",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "ERI": {
@@ -2055,7 +2809,12 @@
           "tradePctOfGdp",
           "currentAccountBalancePctOfGdp",
           "governmentNetLendingBorrowingPctOfGdp",
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "ESB": {
@@ -2117,7 +2876,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "ESH": {
@@ -2162,7 +2935,39 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "ESP": {
+        "name": "Spain",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "EST": {
+        "name": "Estonia",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "FIN": {
+        "name": "Finland",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "FJI": {
@@ -2212,7 +3017,27 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "FRA": {
+        "name": "France",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "FRO": {
@@ -2249,7 +3074,13 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "FSM": {
@@ -2264,7 +3095,26 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "GAB": {
+        "name": "Gabon",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
+        ]
+      },
+      "GBR": {
+        "name": "United Kingdom",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "GGY": {
@@ -2316,7 +3166,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "GIB": {
@@ -2357,13 +3221,19 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "GIN": {
         "name": "Guinea",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "GLP": {
@@ -2416,7 +3286,21 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "GMB": {
@@ -2434,7 +3318,18 @@
       "GNQ": {
         "name": "Equatorial Guinea",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "GRC": {
+        "name": "Greece",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "GRD": {
@@ -2450,7 +3345,14 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "GRL": {
@@ -2479,13 +3381,18 @@
           "mobilizationBasePct",
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "safelyManagedDrinkingWaterPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "GTM": {
         "name": "Guatemala",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "GUF": {
@@ -2538,7 +3445,21 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "GUM": {
@@ -2571,7 +3492,10 @@
           "hospitalBedsPer1000",
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "GUY": {
@@ -2600,7 +3524,9 @@
           "militarySpendPerSoldierUsd",
           "mobilizationBasePct",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "HMD": {
@@ -2654,19 +3580,56 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "HND": {
         "name": "Honduras",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedSanitationPct"
+        ]
+      },
+      "HRV": {
+        "name": "Croatia",
+        "missingMetrics": [
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "HTI": {
         "name": "Haiti",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
+        ]
+      },
+      "HUN": {
+        "name": "Hungary",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "IDN": {
+        "name": "Indonesia",
+        "missingMetrics": [
+          "safelyManagedSanitationPct"
         ]
       },
       "IMN": {
@@ -2707,7 +3670,9 @@
           "mobilizationBasePct",
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "IMY": {
@@ -2770,7 +3735,21 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "IOA": {
@@ -2832,7 +3811,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "IOT": {
@@ -2886,7 +3879,34 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "IRL": {
+        "name": "Ireland",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "IRN": {
+        "name": "Iran, Islamic Rep.",
+        "missingMetrics": [
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "ISL": {
@@ -2894,14 +3914,29 @@
         "missingMetrics": [
           "militaryExpenditurePctOfGdp",
           "militaryExpenditurePctOfGovtExpenditure",
-          "militarySpendPerSoldierUsd"
+          "militarySpendPerSoldierUsd",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "ISR": {
+        "name": "Israel",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "ITA": {
+        "name": "Italy",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "JAM": {
         "name": "Jamaica",
         "missingMetrics": [
           "tradePctOfGdp",
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "JEY": {
@@ -2953,7 +3988,33 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "JOR": {
+        "name": "Jordan",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "JPN": {
+        "name": "Japan",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "KAB": {
@@ -3015,7 +4076,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "KAS": {
@@ -3077,7 +4152,34 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "KAZ": {
+        "name": "Kazakhstan",
+        "missingMetrics": [
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "KEN": {
+        "name": "Kenya",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "KIR": {
@@ -3092,7 +4194,8 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "ruralElectricityAccessPct"
         ]
       },
       "KNA": {
@@ -3108,7 +4211,18 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "KOR": {
+        "name": "Korea, Rep.",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "KOS": {
@@ -3170,7 +4284,27 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "KWT": {
+        "name": "Kuwait",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "LAO": {
@@ -3180,18 +4314,31 @@
           "armsExportsSipriTiv"
         ]
       },
+      "LBN": {
+        "name": "Lebanon",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
+        ]
+      },
       "LBR": {
         "name": "Liberia",
         "missingMetrics": [
           "tradePctOfGdp",
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "LBY": {
         "name": "Libya",
         "missingMetrics": [
           "governmentGrossDebtPctOfGdp",
-          "militarySpendPerSoldierUsd"
+          "militarySpendPerSoldierUsd",
+          "safelyManagedDrinkingWaterPct",
+          "ruralElectricityAccessPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "LCA": {
@@ -3207,7 +4354,12 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "LIE": {
@@ -3237,13 +4389,39 @@
           "physiciansPer1000",
           "nursesMidwivesPer1000",
           "medicalWorkforceScore",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
+        ]
+      },
+      "LKA": {
+        "name": "Sri Lanka",
+        "missingMetrics": [
+          "safelyManagedSanitationPct"
         ]
       },
       "LSO": {
         "name": "Lesotho",
         "missingMetrics": [
           "armsExportsSipriTiv"
+        ]
+      },
+      "LTU": {
+        "name": "Lithuania",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "LUX": {
+        "name": "Luxembourg",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "LVA": {
+        "name": "Latvia",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "MAC": {
@@ -3266,7 +4444,9 @@
           "militarySpendPerSoldierUsd",
           "mobilizationBasePct",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "MAF": {
@@ -3315,7 +4495,16 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
+        ]
+      },
+      "MAR": {
+        "name": "Morocco",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "MCO": {
@@ -3344,7 +4533,15 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "MDA": {
+        "name": "Moldova",
+        "missingMetrics": [
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "MDG": {
@@ -3361,7 +4558,12 @@
           "militaryExpenditurePctOfGovtExpenditure",
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
-          "militarySpendPerSoldierUsd"
+          "militarySpendPerSoldierUsd",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "MFX": {
@@ -3424,7 +4626,21 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "MHL": {
@@ -3439,13 +4655,25 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "MLI": {
         "name": "Mali",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct"
+        ]
+      },
+      "MLT": {
+        "name": "Malta",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "MMR": {
@@ -3493,13 +4721,20 @@
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "MRT": {
         "name": "Mauritania",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "ruralElectricityAccessPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "MSR": {
@@ -3543,7 +4778,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "MTQ": {
@@ -3596,13 +4845,38 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "MUS": {
         "name": "Mauritius",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "MYS": {
+        "name": "Malaysia",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "MYT": {
@@ -3655,13 +4929,32 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "NAM": {
         "name": "Namibia",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "NCL": {
@@ -3691,7 +4984,16 @@
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
+        ]
+      },
+      "NER": {
+        "name": "Niger",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "NFK": {
@@ -3745,13 +5047,37 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "NGA": {
         "name": "Nigeria",
         "missingMetrics": [
           "tradePctOfGdp"
+        ]
+      },
+      "NIC": {
+        "name": "Nicaragua",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "NIU": {
@@ -3795,7 +5121,33 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "NLD": {
+        "name": "Netherlands",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "NOR": {
+        "name": "Norway",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "NPL": {
@@ -3818,6 +5170,35 @@
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
           "mobilizationBasePct"
+        ]
+      },
+      "NZL": {
+        "name": "New Zealand",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "OMN": {
+        "name": "Oman",
+        "missingMetrics": [
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "PAK": {
+        "name": "Pakistan",
+        "missingMetrics": [
+          "safelyManagedSanitationPct"
+        ]
+      },
+      "PAN": {
+        "name": "Panama",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "PCN": {
@@ -3871,7 +5252,27 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "PER": {
+        "name": "Peru",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "PGA": {
@@ -3933,7 +5334,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "PLW": {
@@ -3948,14 +5363,23 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "PNG": {
         "name": "Papua New Guinea",
         "missingMetrics": [
           "tradePctOfGdp",
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct"
+        ]
+      },
+      "POL": {
+        "name": "Poland",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "PRI": {
@@ -3988,7 +5412,9 @@
           "mobilizationBasePct",
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "PRK": {
@@ -4005,13 +5431,24 @@
           "militaryExpenditurePctOfGdp",
           "militaryExpenditurePctOfGovtExpenditure",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct"
+        ]
+      },
+      "PRT": {
+        "name": "Portugal",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "PRY": {
         "name": "Paraguay",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "PSE": {
@@ -4032,7 +5469,8 @@
           "militaryExpenditurePctOfGovtExpenditure",
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
-          "militarySpendPerSoldierUsd"
+          "militarySpendPerSoldierUsd",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "PSX": {
@@ -4094,7 +5532,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "PYF": {
@@ -4124,7 +5576,10 @@
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "QAT": {
@@ -4183,13 +5638,42 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "ROU": {
+        "name": "Romania",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "RUS": {
+        "name": "Russian Federation",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "RWA": {
         "name": "Rwanda",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "SAH": {
@@ -4251,13 +5735,36 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "SAU": {
+        "name": "Saudi Arabia",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "SDN": {
         "name": "Sudan",
         "missingMetrics": [
-          "unemploymentPct"
+          "unemploymentPct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "SDS": {
@@ -4319,7 +5826,27 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "SGP": {
+        "name": "Singapore",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "SGS": {
@@ -4373,7 +5900,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "SHN": {
@@ -4417,7 +5958,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "SJM": {
@@ -4480,7 +6035,21 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "SLB": {
@@ -4494,13 +6063,24 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "SLE": {
         "name": "Sierra Leone",
         "missingMetrics": [
           "armsExportsSipriTiv"
+        ]
+      },
+      "SLV": {
+        "name": "El Salvador",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "SMR": {
@@ -4516,7 +6096,8 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "SOL": {
@@ -4578,14 +6159,29 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "SOM": {
         "name": "Somalia, Fed. Rep.",
         "missingMetrics": [
           "governmentGrossDebtPctOfGdp",
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "SPM": {
@@ -4629,7 +6225,27 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "SRB": {
+        "name": "Serbia",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "SSD": {
@@ -4638,7 +6254,10 @@
           "tradePctOfGdp",
           "armsExportsSipriTiv",
           "hospitalBedsPer1000",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "STP": {
@@ -4664,6 +6283,24 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd"
+        ]
+      },
+      "SVK": {
+        "name": "Slovak Republic",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "SVN": {
+        "name": "Slovenia",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "SWE": {
+        "name": "Sweden",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "SWZ": {
@@ -4707,7 +6344,13 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "SYC": {
@@ -4715,7 +6358,9 @@
         "missingMetrics": [
           "unemploymentPct",
           "armedForcesPctOfLaborForce",
-          "militarySpendPerSoldierUsd"
+          "militarySpendPerSoldierUsd",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "SYR": {
@@ -4728,7 +6373,10 @@
           "tradePctOfGdp",
           "currentAccountBalancePctOfGdp",
           "governmentNetLendingBorrowingPctOfGdp",
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       },
       "TCA": {
@@ -4766,7 +6414,8 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "TGO": {
@@ -4776,10 +6425,17 @@
           "armsExportsSipriTiv"
         ]
       },
+      "THA": {
+        "name": "Thailand",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct"
+        ]
+      },
       "TJK": {
         "name": "Tajikistan",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedSanitationPct"
         ]
       },
       "TKL": {
@@ -4824,19 +6480,39 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "TKM": {
         "name": "Turkmenistan",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedSanitationPct"
         ]
       },
       "TLS": {
         "name": "Timor-Leste",
         "missingMetrics": [
-          "armsExportsSipriTiv"
+          "armsExportsSipriTiv",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "TON": {
@@ -4887,7 +6563,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "TUN": {
@@ -4899,7 +6589,9 @@
       "TUR": {
         "name": "Turkiye",
         "missingMetrics": [
-          "militaryExpenditurePctOfGovtExpenditure"
+          "militaryExpenditurePctOfGovtExpenditure",
+          "safelyManagedDrinkingWaterPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "TUV": {
@@ -4952,7 +6644,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "TZA": {
@@ -5018,7 +6724,37 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
+        ]
+      },
+      "URY": {
+        "name": "Uruguay",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
+        ]
+      },
+      "USA": {
+        "name": "United States",
+        "missingMetrics": [
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "USG": {
@@ -5080,7 +6816,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "UVK": {
@@ -5136,7 +6886,21 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "VAT": {
@@ -5180,7 +6944,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "VCT": {
@@ -5195,13 +6973,20 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "VEN": {
         "name": "Venezuela, RB",
         "missingMetrics": [
-          "militaryExpenditurePctOfGovtExpenditure"
+          "militaryExpenditurePctOfGovtExpenditure",
+          "safelyManagedDrinkingWaterPct",
+          "basicHandwashingFacilitiesPct"
         ]
       },
       "VGB": {
@@ -5236,7 +7021,13 @@
           "physiciansPer1000",
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
-          "hospitalSurgeCapacityScore"
+          "hospitalSurgeCapacityScore",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore"
         ]
       },
       "VIR": {
@@ -5276,7 +7067,10 @@
           "mobilizationBasePct",
           "nursesMidwivesPer1000",
           "currentHealthExpenditurePerCapitaUsd",
-          "currentHealthExpenditurePctOfGdp"
+          "currentHealthExpenditurePctOfGdp",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "cleanCookingFuelAccessPct"
         ]
       },
       "VUT": {
@@ -5291,7 +7085,8 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "mobilizationBasePct"
+          "mobilizationBasePct",
+          "safelyManagedSanitationPct"
         ]
       },
       "WBG": {
@@ -5347,7 +7142,21 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "WLF": {
@@ -5391,7 +7200,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "WSB": {
@@ -5453,7 +7276,21 @@
           "hospitalSurgeCapacityScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "WSM": {
@@ -5507,14 +7344,29 @@
           "outbreakTreatmentScore",
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
-          "healthCapacityScoreConfidence"
+          "healthCapacityScoreConfidence",
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "basicHandwashingFacilitiesPct",
+          "accessToElectricityPct",
+          "ruralElectricityAccessPct",
+          "urbanElectricityAccessPct",
+          "cleanCookingFuelAccessPct",
+          "publicHealthEnvironmentScore",
+          "waterborneDiseaseRiskScore",
+          "hygieneTransmissionRiskScore",
+          "serviceReliabilityScore",
+          "publicHealthEnvironmentFieldCoverageScore",
+          "publicHealthEnvironmentFreshnessScore",
+          "publicHealthEnvironmentScoreConfidence"
         ]
       },
       "YEM": {
         "name": "Yemen, Rep.",
         "missingMetrics": [
           "tradePctOfGdp",
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "safelyManagedDrinkingWaterPct"
         ]
       },
       "ZAF": {
@@ -5522,7 +7374,16 @@
         "missingMetrics": [
           "currentAccountBalancePctOfGdp",
           "governmentNetLendingBorrowingPctOfGdp",
-          "governmentGrossDebtPctOfGdp"
+          "governmentGrossDebtPctOfGdp",
+          "basicHandwashingFacilitiesPct"
+        ]
+      },
+      "ZMB": {
+        "name": "Zambia",
+        "missingMetrics": [
+          "safelyManagedDrinkingWaterPct",
+          "safelyManagedSanitationPct",
+          "waterborneDiseaseRiskScore"
         ]
       }
     }
