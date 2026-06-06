@@ -1,6 +1,6 @@
 {
-  "source": "Natural Earth provinces + GHSL settlement rollup + GHSL raster aggregation",
-  "generatedAt": "2026-06-05T15:38:29.565Z",
+  "source": "Natural Earth provinces + GHSL settlement rollup + GHSL raster aggregation + Natural Earth infrastructure rollup",
+  "generatedAt": "2026-06-06T10:46:21.548Z",
   "provinces": {
     "total": 4596,
     "withSettlementData": 4596,
@@ -30,7 +30,9 @@
   "notes": [
     "Province area is derived from Natural Earth province geometry.",
     "Settlement metrics in this file are urban-centre-only aggregates from matched GHSL UCDB records.",
-    "Raster settlement metrics in this file are province-wide GHSL raster aggregates merged alongside UCDB-only fields."
+    "Raster settlement metrics in this file are province-wide GHSL raster aggregates merged alongside UCDB-only fields.",
+    "Infrastructure metrics in this file are strategic Natural Earth 1:10m transport rollups rather than street-level network data.",
+    "Province connection fields in this file are abstract Natural Earth 1:10m road and rail adjacencies rather than detailed routing."
   ],
   "settlementDataCompleteness": {
     "value": "urban-centres-only",

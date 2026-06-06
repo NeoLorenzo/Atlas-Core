@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-06-06T11:17:12.229Z",
+  "sourceLayersUsed": [
+    "Natural Earth 1:10m roads",
+    "Natural Earth 1:10m railroads",
+    "Natural Earth 1:10m airports",
+    "Natural Earth 1:10m ports"
+  ],
+  "rawFeatureCountsByLayer": {
+    "airports": 893,
+    "ports": 1081,
+    "roads": 56600,
+    "railroads": 25413
+  },
+  "pointLayerMatching": {
+    "airports": {
+      "matched": 893,
+      "unmatched": 0,
+      "major": 170
+    },
+    "ports": {
+      "matched": 1081,
+      "unmatched": 0,
+      "major": 67
+    }
+  },
+  "lineProcessing": {
+    "roads": {
+      "featuresKept": 15846,
+      "featuresFilteredOut": 40754,
+      "segmentsProcessed": 161789,
+      "segmentsMatched": 161069,
+      "segmentsUnmatched": 720
+    },
+    "railroads": {
+      "segmentsProcessed": 1371067,
+      "segmentsMatched": 1368550,
+      "segmentsUnmatched": 2517
+    }
+  },
+  "provinces": {
+    "total": 4596,
+    "withAirports": 667,
+    "withPorts": 646,
+    "withRail": 2616,
+    "withHighways": 1813,
+    "withAnyInfrastructure": 3091,
+    "missingProvinceCount": 0
+  },
+  "notes": [
+    "Natural Earth is generalized 1:10m data.",
+    "Line lengths are assigned to provinces by segment midpoint.",
+    "Roads are high-level only and are filtered defensively only when the layer exposes usable hierarchy signals.",
+    "No local road network, rural accessibility modeling, or street-level routing is included."
+  ]
+}

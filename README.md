@@ -30,6 +30,7 @@ Implemented:
 - Canonical merged country dataset in `public/data/canonical-country-data.json`
 - Canonical province settlement dataset in `public/data/canonical-province-data.json`
 - GHSL urban-centre, province-settlement, and province-raster-settlement rollups in `public/data/urban-centres.json`, `public/data/province-settlement-stats.json`, and `public/data/province-raster-settlement-stats.json`
+- Natural Earth 1:10m strategic infrastructure stats, province-to-province connection graph, and frontend-ready visualization layers
 
 Not implemented yet:
 
@@ -69,7 +70,7 @@ The frontend primarily uses:
 - `public/data/canonical-country-data.json`
 - `public/data/canonical-province-data.json`
 
-The source-specific dataset files remain in `public/data/` for inspection, coverage auditing, and rebuilds, but the map UI reads from the canonical country file for country statistics and political-system metadata and from the canonical province file for GHSL settlement overlays.
+The source-specific dataset files remain in `public/data/` for inspection, coverage auditing, and rebuilds. The map UI reads from the canonical country file for country statistics and political-system metadata, from the canonical province file for settlement and province-level infrastructure overlays, and lazily loads the frontend-ready infrastructure GeoJSON files when the infrastructure layer toggles are enabled.
 
 ## Canonical Data Model
 
@@ -92,6 +93,46 @@ Each province in `public/data/canonical-province-data.json` currently contains:
 - `countryName`
 - `areaKm2`
 - `settlement`
+- `infrastructure`
+
+The `infrastructure` object currently includes:
+
+- strategic airport, port, rail, and highway stats
+- a province-level strategic `connectivityScore`
+- province-to-province transport connection summaries under `infrastructure.connections`
+- an abstract `connectionScore` derived from the strategic road and rail connection graph
+
+## Strategic Infrastructure Files
+
+The Natural Earth strategic-infrastructure pipeline now produces three different kinds of outputs:
+
+- `public/data/infrastructure-stats.json`
+  Province-level strategic infrastructure stats and the data that roll into canonical province and country infrastructure sections.
+- `public/data/infrastructure-connections.json`
+  An abstract province-to-province strategic connection graph derived from Natural Earth 1:10m roads and railroads.
+- `public/data/infrastructure-airports.geojson`
+- `public/data/infrastructure-ports.geojson`
+- `public/data/infrastructure-railroads.geojson`
+- `public/data/infrastructure-highways.geojson`
+  Frontend-ready visualization layers for actual map rendering.
+- `public/data/infrastructure-visual-layers-coverage.json`
+  Coverage and export summary for the frontend visualization layers.
+
+The app uses these in two separate ways:
+
+- Province thematic overlays:
+  `connectivityScore`, `connectionScore`, airport/port counts, highway-connected province count, rail-connected province count, connected-country count, and density views.
+- Actual infrastructure visual layers:
+  airports, major airports, ports, major ports, railroads, and highways rendered directly on the map as points and lines.
+
+Important scope note:
+
+- These visual layers show generalized Natural Earth 1:10m strategic infrastructure.
+- They are not OpenStreetMap-derived.
+- They are not a routing network.
+- They do not represent local or rural roads.
+- They are intended for map visualization and high-level gameplay context, not turn-by-turn travel modeling.
+- Point features are matched to provinces for metadata only.
 
 Each numeric field is stored as:
 
@@ -562,6 +603,78 @@ How it is used in canonical data:
 - Province `nonUrbanCentrePopulationEstimate` and `urbanCentrePopulationSharePct` are derived from raster population, treating missing UCDB urban-centre population as `0` when raster population exists.
 - `canonical-country-data.json` rolls province raster totals up to country-level `raster*` settlement fields and applies the same UCDB-as-zero rule for raster-derived non-urban and share metrics.
 
+### 10. Natural Earth Strategic Infrastructure
+
+Script:
+
+- `scripts/importNaturalEarthInfrastructure.mjs`
+
+Generated files:
+
+- `public/data/infrastructure-stats.json`
+- `public/data/infrastructure-stats-coverage.json`
+- `public/data/infrastructure-connections.json`
+- `public/data/infrastructure-connections-coverage.json`
+- `public/data/infrastructure-airports.geojson`
+- `public/data/infrastructure-ports.geojson`
+- `public/data/infrastructure-railroads.geojson`
+- `public/data/infrastructure-highways.geojson`
+- `public/data/infrastructure-visual-layers-coverage.json`
+- cached archives in `public/data/raw/natural-earth-infrastructure/`
+
+Source behavior:
+
+- Downloads Natural Earth 1:10m cultural transport layers for roads, railroads, airports, and ports
+- Caches the raw ZIP archives locally
+- Matches airports and ports to province polygons, with a small nearest-province fallback for near-boundary points
+- Splits roads and railroads into coordinate-to-coordinate segments and assigns segment length by midpoint province
+- Densifies kept roads and railroads at a coarse interval to derive a province-to-province strategic connection graph
+- Uses the Natural Earth roads layer as high-level strategic transport only and defensively filters obviously minor classes only when usable hierarchy signals exist
+- Exports frontend-ready GeoJSON layers so the map UI does not need to parse shapefiles or raw archives
+
+Province infrastructure fields emitted:
+
+- `airports.count`
+- `airports.majorCount`
+- `airports.hasAirport`
+- `ports.count`
+- `ports.majorCount`
+- `ports.hasPort`
+- `rail.lengthKm`
+- `rail.densityKmPer1000Km2`
+- `rail.hasRail`
+- `roads.highwayLengthKm`
+- `roads.densityKmPer1000Km2`
+- `roads.hasHighway`
+- `connectivityScore`
+- `connections.highwayConnectedProvinceCount`
+- `connections.railConnectedProvinceCount`
+- `connections.connectedProvinceCount`
+- `connections.connectedCountryCount`
+- `connections.hasInternationalHighwayConnection`
+- `connections.hasInternationalRailConnection`
+- `connectionScore`
+
+Country infrastructure rollups emitted:
+
+- airport and port totals plus province counts
+- rail and highway totals plus country-level densities
+- province-weighted strategic `connectivityScore`
+- `connections.domesticHighwayEdgeCount`
+- `connections.domesticRailEdgeCount`
+- `connections.internationalHighwayEdgeCount`
+- `connections.internationalRailEdgeCount`
+- `connections.connectedCountryCount`
+- `connections.internationallyConnectedCountryIso3s`
+
+How it is used in canonical data:
+
+- `canonical-province-data.json` carries the province-level strategic infrastructure bundle under `province.infrastructure`
+- `canonical-country-data.json` rolls province infrastructure up to country-level counts, lengths, densities, and connectivity
+- `infrastructure-connections.json` is the abstract province-to-province strategic road and rail graph
+- `infrastructure-*.geojson` files are used by the frontend to render actual airports, ports, railroads, and highways as map layers
+- The infrastructure layer is intentionally strategic and generalized, not a street-level routing or rural-access dataset
+
 ## Canonical Merge Rules
 
 The canonical merge step is implemented in `scripts/buildCanonicalCountryData.mjs`.
@@ -678,6 +791,9 @@ Current coverage outputs:
 - `urban-centres-coverage.json`
 - `province-settlement-stats-coverage.json`
 - `province-raster-settlement-stats-coverage.json`
+- `infrastructure-stats-coverage.json`
+- `infrastructure-connections-coverage.json`
+- `infrastructure-visual-layers-coverage.json`
 - `canonical-province-data-coverage.json`
 - `canonical-country-data-coverage.json`
 
@@ -702,9 +818,11 @@ npm run import:security
 npm run build:urban-centres
 npm run import:ghsl
 npm run import:ghsl-raster
+npm run import:infrastructure
 npm run build:province-data
 npm run build:country-data
 npm run generate:country-borders
+npm run build
 ```
 
 Optional audit:
@@ -744,8 +862,9 @@ While `npm run import:ghsl-raster` is running, it logs source resolution, ZIP ex
 - `build:urban-centres`: build GHSL urban-centre records and coverage
 - `import:ghsl`: build province settlement rollups from matched GHSL urban centres
 - `import:ghsl-raster`: build province-wide GHSL raster population and built-up settlement rollups with GDAL mask aggregation and checkpoint files
-- `build:province-data`: build canonical province settlement data
-- `build:country-data`: build canonical merged country data
+- `import:infrastructure`: build strategic infrastructure stats, connection graph, and frontend-ready Natural Earth visualization layers
+- `build:province-data`: build canonical province settlement and infrastructure data
+- `build:country-data`: build canonical merged country data, including rolled-up infrastructure
 - `generate:country-borders`: derive country borders from provinces
 - `audit:stats`: audit overlapping WDI/IMF macro indicators
 
@@ -765,9 +884,16 @@ public/data/
   urban-centres.json
   province-settlement-stats.json
   province-raster-settlement-stats.json
+  infrastructure-stats.json
+  infrastructure-connections.json
+  infrastructure-airports.geojson
+  infrastructure-ports.geojson
+  infrastructure-railroads.geojson
+  infrastructure-highways.geojson
   canonical-province-data.json
   canonical-country-data.json
   *-coverage.json
+  raw/natural-earth-infrastructure/
   raw/ghsl-raster/
     province-index-4326-30ss.geojson
     province-id-mask-population-4326-30ss.tif
@@ -784,10 +910,12 @@ scripts/
   buildUrbanCentres.mjs
   importGhslSettlementData.mjs
   importGhslRasterSettlementData.mjs
+  importNaturalEarthInfrastructure.mjs
   buildCanonicalProvinceData.mjs
   buildCanonicalCountryData.mjs
   generateCountryBorders.mjs
   auditCountryStatsOverlap.mjs
+  lib/infrastructureConnections.mjs
   lib/ghslRaster.mjs
 
 src/map/
@@ -806,12 +934,17 @@ src/map/
 - GHSL settlement coverage now separates UCDB urban-centre aggregates (`urbanCentre*`) from full raster province and country totals (`raster*`).
 - `settlementDataCompleteness` describes the UCDB urban-centre subset, while `rasterSettlementDataCompleteness` describes province-wide GHSL raster coverage.
 - The fast GHSL raster importer depends on GDAL unless `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1` is used.
+- Natural Earth infrastructure is generalized 1:10m data intended for strategic map context.
+- The visual infrastructure layers are not a detailed routing network and do not model local or rural accessibility.
+- The province-to-province connection graph is an abstract transport graph derived from generalized Natural Earth roads and railroads.
 
 ## Recommended Extension Pattern
 
 - Keep `public/data/canonical-country-data.json` as the single country-state input for gameplay systems.
 - Keep `public/data/canonical-province-data.json` as the province settlement input for province-level overlays and inspectors.
+- Keep `public/data/infrastructure-*.geojson` as the frontend visualization inputs for actual strategic infrastructure layers.
 - Add new datasets through importer scripts rather than frontend-specific data patches.
 - Extend `scripts/buildCanonicalCountryData.mjs` when adding new canonical fields.
 - Extend `scripts/buildCanonicalProvinceData.mjs`, `scripts/lib/ghslSettlement.mjs`, and `scripts/lib/ghslRaster.mjs` when adding better province settlement coverage.
+- Extend `scripts/importNaturalEarthInfrastructure.mjs` and `scripts/lib/infrastructureConnections.mjs` when adding or refining strategic infrastructure layers.
 - Preserve the province-first geometry model and treat country-level values as overlays.

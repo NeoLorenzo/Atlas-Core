@@ -16,6 +16,14 @@ const RASTER_SETTLEMENT_STATS_PATH = resolve(
   "data",
   "province-raster-settlement-stats.json",
 );
+const INFRASTRUCTURE_STATS_PATH = resolve(__dirname, "..", "public", "data", "infrastructure-stats.json");
+const INFRASTRUCTURE_CONNECTIONS_PATH = resolve(
+  __dirname,
+  "..",
+  "public",
+  "data",
+  "infrastructure-connections.json",
+);
 const OUTPUT_PATH = resolve(__dirname, "..", "public", "data", "canonical-province-data.json");
 const COVERAGE_PATH = resolve(__dirname, "..", "public", "data", "canonical-province-data-coverage.json");
 
@@ -71,6 +79,159 @@ function createEmptySettlement() {
   };
 }
 
+function createEmptyInfrastructure() {
+  return {
+    airports: {
+      count: { value: 0, year: 2025, source: "Natural Earth 1:10m airports" },
+      majorCount: { value: 0, year: 2025, source: "Natural Earth 1:10m airports" },
+      hasAirport: { value: false, year: 2025, source: "Natural Earth 1:10m airports" },
+    },
+    ports: {
+      count: { value: 0, year: 2025, source: "Natural Earth 1:10m ports" },
+      majorCount: { value: 0, year: 2025, source: "Natural Earth 1:10m ports" },
+      hasPort: { value: false, year: 2025, source: "Natural Earth 1:10m ports" },
+    },
+    rail: {
+      lengthKm: { value: 0, year: 2025, source: "Natural Earth 1:10m railroads" },
+      densityKmPer1000Km2: { value: 0, year: 2025, source: "Natural Earth 1:10m railroads" },
+      hasRail: { value: false, year: 2025, source: "Natural Earth 1:10m railroads" },
+    },
+    roads: {
+      highwayLengthKm: { value: 0, year: 2025, source: "Natural Earth 1:10m roads" },
+      densityKmPer1000Km2: { value: 0, year: 2025, source: "Natural Earth 1:10m roads" },
+      hasHighway: { value: false, year: 2025, source: "Natural Earth 1:10m roads" },
+    },
+    connectivityScore: {
+      value: 0,
+      year: 2025,
+      source: "Derived from Natural Earth 1:10m transport layers",
+    },
+  };
+}
+
+function createEmptyInfrastructureConnections() {
+  return {
+    highwayConnectedProvinceCount: {
+      value: 0,
+      year: 2025,
+      source: "Derived from Natural Earth 1:10m roads",
+    },
+    railConnectedProvinceCount: {
+      value: 0,
+      year: 2025,
+      source: "Derived from Natural Earth 1:10m railroads",
+    },
+    connectedProvinceCount: {
+      value: 0,
+      year: 2025,
+      source: "Derived from Natural Earth 1:10m transport connections",
+    },
+    connectedCountryCount: {
+      value: 0,
+      year: 2025,
+      source: "Derived from Natural Earth 1:10m transport connections",
+    },
+    hasInternationalHighwayConnection: {
+      value: false,
+      year: 2025,
+      source: "Derived from Natural Earth 1:10m roads",
+    },
+    hasInternationalRailConnection: {
+      value: false,
+      year: 2025,
+      source: "Derived from Natural Earth 1:10m railroads",
+    },
+  };
+}
+
+function buildConnectionScore(connections) {
+  const highwayConnectedProvinceCount = connections.highwayConnectedProvinceCount.value ?? 0;
+  const railConnectedProvinceCount = connections.railConnectedProvinceCount.value ?? 0;
+  const hasInternationalHighwayConnection = connections.hasInternationalHighwayConnection.value === true;
+  const hasInternationalRailConnection = connections.hasInternationalRailConnection.value === true;
+
+  // This is an intentionally abstract strategic connection score for province overlays,
+  // not a route-planning index or a detailed transport-capacity model.
+  let score = 0;
+  score += (Math.min(highwayConnectedProvinceCount, 8) / 8) * 35;
+  score += (Math.min(railConnectedProvinceCount, 8) / 8) * 35;
+  if (hasInternationalHighwayConnection) {
+    score += 15;
+  }
+  if (hasInternationalRailConnection) {
+    score += 15;
+  }
+
+  return {
+    value: roundNumber(Math.max(0, Math.min(100, score)), 2),
+    year: 2025,
+    source: "Derived from Natural Earth 1:10m transport connections",
+  };
+}
+
+function buildProvinceConnectionSummaries(connectionEdges) {
+  const summaries = new Map();
+
+  const ensureSummary = (provinceId) => {
+    if (!summaries.has(provinceId)) {
+      summaries.set(provinceId, {
+        highwayProvinces: new Set(),
+        railProvinces: new Set(),
+        allProvinces: new Set(),
+        connectedCountries: new Set(),
+        hasInternationalHighwayConnection: false,
+        hasInternationalRailConnection: false,
+      });
+    }
+    return summaries.get(provinceId);
+  };
+
+  const registerEndpoint = (provinceId, otherProvinceId, otherCountryIso3, mode, isInternational) => {
+    if (typeof provinceId !== "string" || provinceId.length === 0) {
+      return;
+    }
+    if (typeof otherProvinceId !== "string" || otherProvinceId.length === 0 || otherProvinceId === provinceId) {
+      return;
+    }
+
+    const summary = ensureSummary(provinceId);
+    summary.allProvinces.add(otherProvinceId);
+
+    if (mode === "highway") {
+      summary.highwayProvinces.add(otherProvinceId);
+      if (isInternational) {
+        summary.hasInternationalHighwayConnection = true;
+      }
+    } else if (mode === "rail") {
+      summary.railProvinces.add(otherProvinceId);
+      if (isInternational) {
+        summary.hasInternationalRailConnection = true;
+      }
+    }
+
+    if (isInternational && typeof otherCountryIso3 === "string" && otherCountryIso3.length > 0) {
+      summary.connectedCountries.add(otherCountryIso3);
+    }
+  };
+
+  for (const edge of Array.isArray(connectionEdges) ? connectionEdges : []) {
+    if (!edge || typeof edge !== "object") {
+      continue;
+    }
+
+    const mode = edge.mode;
+    if (mode !== "highway" && mode !== "rail") {
+      continue;
+    }
+
+    const isInternational = edge.isInternational === true;
+    registerEndpoint(edge.fromProvinceId, edge.toProvinceId, edge.toCountryIso3, mode, isInternational);
+    registerEndpoint(edge.toProvinceId, edge.fromProvinceId, edge.fromCountryIso3, mode, isInternational);
+  }
+
+  return summaries;
+}
+
 function buildDerivedSettlement(urbanSettlement, rasterSettlement) {
   const merged = {
     ...createEmptySettlement(),
@@ -115,6 +276,19 @@ async function main() {
   const provinceIndex = await buildProvinceIndex();
   const settlementStats = JSON.parse(await readFile(SETTLEMENT_STATS_PATH, "utf8"));
   const rasterSettlementStats = await readJsonOptional(RASTER_SETTLEMENT_STATS_PATH);
+  const infrastructureStats = await readJsonOptional(INFRASTRUCTURE_STATS_PATH);
+  const infrastructureConnections = await readJsonOptional(INFRASTRUCTURE_CONNECTIONS_PATH);
+
+  if (!infrastructureStats) {
+    console.warn("infrastructure-stats.json not found; canonical province data will emit empty infrastructure placeholders.");
+  }
+  if (!Array.isArray(infrastructureConnections)) {
+    console.warn(
+      "infrastructure-connections.json not found or invalid; canonical province data will omit province-to-province connection fields.",
+    );
+  }
+
+  const connectionSummaries = buildProvinceConnectionSummaries(infrastructureConnections);
 
   const canonicalProvinceData = {};
   let provincesWithSettlementData = 0;
@@ -139,6 +313,24 @@ async function main() {
         }
       : null;
     const settlement = buildDerivedSettlement(urbanSettlement, rasterSettlement);
+    const infrastructure = infrastructureStats?.[province.provinceId]?.infrastructure ?? createEmptyInfrastructure();
+
+    if (Array.isArray(infrastructureConnections)) {
+      const summary = connectionSummaries.get(province.provinceId);
+      const connections = createEmptyInfrastructureConnections();
+
+      if (summary) {
+        connections.highwayConnectedProvinceCount.value = summary.highwayProvinces.size;
+        connections.railConnectedProvinceCount.value = summary.railProvinces.size;
+        connections.connectedProvinceCount.value = summary.allProvinces.size;
+        connections.connectedCountryCount.value = summary.connectedCountries.size;
+        connections.hasInternationalHighwayConnection.value = summary.hasInternationalHighwayConnection;
+        connections.hasInternationalRailConnection.value = summary.hasInternationalRailConnection;
+      }
+
+      infrastructure.connections = connections;
+      infrastructure.connectionScore = buildConnectionScore(connections);
+    }
 
     if (urbanSettlement) {
       provincesWithSettlementData += 1;
@@ -167,13 +359,14 @@ async function main() {
         source: "Derived from Natural Earth province geometry",
       },
       settlement,
+      infrastructure,
     };
   }
 
   const canonicalProvinceValues = Object.values(canonicalProvinceData);
 
   const coverage = {
-    source: "Natural Earth provinces + GHSL settlement rollup + GHSL raster aggregation",
+    source: "Natural Earth provinces + GHSL settlement rollup + GHSL raster aggregation + Natural Earth infrastructure rollup",
     generatedAt: new Date().toISOString(),
     provinces: {
       total: provinceIndex.provinces.length,
@@ -221,6 +414,8 @@ async function main() {
       "Province area is derived from Natural Earth province geometry.",
       "Settlement metrics in this file are urban-centre-only aggregates from matched GHSL UCDB records.",
       "Raster settlement metrics in this file are province-wide GHSL raster aggregates merged alongside UCDB-only fields.",
+      "Infrastructure metrics in this file are strategic Natural Earth 1:10m transport rollups rather than street-level network data.",
+      "Province connection fields in this file are abstract Natural Earth 1:10m road and rail adjacencies rather than detailed routing.",
     ],
     settlementDataCompleteness: {
       value: "urban-centres-only",

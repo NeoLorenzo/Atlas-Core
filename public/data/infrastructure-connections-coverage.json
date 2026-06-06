@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-06-06T11:17:12.231Z",
+  "sourceLayersUsed": [
+    "Natural Earth 1:10m roads",
+    "Natural Earth 1:10m railroads"
+  ],
+  "roadFeaturesProcessed": 15846,
+  "railFeaturesProcessed": 25413,
+  "roadFeaturesSkippedByExistingFilter": 40754,
+  "sampledHighwayPoints": 178467,
+  "sampledRailPoints": 1396536,
+  "unmatchedSampledPointsByMode": {
+    "highway": 0,
+    "rail": 106
+  },
+  "edgeCounts": {
+    "highway": 2300,
+    "rail": 3583,
+    "domesticHighway": 2050,
+    "domesticRail": 3184,
+    "internationalHighway": 250,
+    "internationalRail": 399
+  },
+  "provinces": {
+    "withHighwayConnections": 1757,
+    "withRailConnections": 2594,
+    "withAnyInfrastructureConnection": 2851
+  },
+  "countries": {
+    "withInternationalHighwayConnections": 84,
+    "withInternationalRailConnections": 114
+  },
+  "notes": [
+    "Natural Earth 1:10m generalized data.",
+    "High-level strategic graph only.",
+    "No detailed routing.",
+    "No local or rural roads.",
+    "No travel-time model.",
+    "Edge lengths are approximate."
+  ]
+}

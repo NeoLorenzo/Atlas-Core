@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-06-06T11:17:12.232Z",
+  "sourceLayersUsed": [
+    "Natural Earth 1:10m roads",
+    "Natural Earth 1:10m railroads",
+    "Natural Earth 1:10m airports",
+    "Natural Earth 1:10m ports"
+  ],
+  "exportedFeatureCounts": {
+    "airports": 893,
+    "ports": 1081,
+    "railroads": 25413,
+    "highways": 15846
+  },
+  "pointLayers": {
+    "airportsMatchedToProvinceMetadata": 893,
+    "portsMatchedToProvinceMetadata": 1081,
+    "majorAirports": 170,
+    "majorPorts": 67
+  },
+  "roadTypesIncluded": {
+    "Beltway": 168,
+    "Major Highway": 9752,
+    "Road": 225,
+    "Secondary Highway": 5701
+  },
+  "roadTypesExcluded": {
+    "Bypass": 5,
+    "Ferry Route": 309,
+    "Ferry, seasonal": 5,
+    "Road": 11306,
+    "Secondary Highway": 3324,
+    "Track": 39,
+    "Unknown": 25766
+  },
+  "notes": [
+    "Visualization layers are Natural Earth 1:10m generalized features.",
+    "They are not a routing network.",
+    "They do not include rural or local roads.",
+    "They are not province choropleths.",
+    "Point features are matched to provinces for metadata only."
+  ]
+}

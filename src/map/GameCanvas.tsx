@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type MutableRefObject } from "react";
 import type { FeatureCollection, GeoJsonProperties, Geometry } from "geojson";
 import maplibregl, {
   type ErrorEvent,
@@ -57,8 +57,30 @@ const ISO3_PROPERTY_CANDIDATES = [
   "GU_A3",
 ];
 
+const EMPTY_GEOJSON: GenericFeatureCollection = {
+  type: "FeatureCollection",
+  features: [],
+};
+
+const INFRASTRUCTURE_SOURCE_IDS = {
+  airports: "infrastructure-airports",
+  ports: "infrastructure-ports",
+  railroads: "infrastructure-railroads",
+  highways: "infrastructure-highways",
+} as const;
+
+const INFRASTRUCTURE_LAYER_IDS = {
+  highways: "infrastructure-highways-line",
+  railroads: "infrastructure-railroads-line",
+  airports: "infrastructure-airports-circle",
+  majorAirports: "infrastructure-airports-major-circle",
+  ports: "infrastructure-ports-circle",
+  majorPorts: "infrastructure-ports-major-circle",
+} as const;
+
 type FeatureProperties = Record<string, unknown>;
 type ProvinceFeatureCollection = FeatureCollection<Geometry, GeoJsonProperties>;
+type GenericFeatureCollection = FeatureCollection<Geometry, GeoJsonProperties>;
 type DataSource = string | null;
 
 type DataPoint = {
@@ -69,6 +91,12 @@ type DataPoint = {
 
 type TextFactPoint = {
   value: string | null;
+  year: number | null;
+  source: DataSource;
+};
+
+type BooleanFactPoint = {
+  value: boolean | null;
   year: number | null;
   source: DataSource;
 };
@@ -254,6 +282,39 @@ type ProvinceSettlementData = {
   settlementDataCompleteness: TextFactPoint;
 };
 
+type ProvinceInfrastructureData = {
+  airports: {
+    count: DataPoint;
+    majorCount: DataPoint;
+    hasAirport: BooleanFactPoint;
+  };
+  ports: {
+    count: DataPoint;
+    majorCount: DataPoint;
+    hasPort: BooleanFactPoint;
+  };
+  rail: {
+    lengthKm: DataPoint;
+    densityKmPer1000Km2: DataPoint;
+    hasRail: BooleanFactPoint;
+  };
+  roads: {
+    highwayLengthKm: DataPoint;
+    densityKmPer1000Km2: DataPoint;
+    hasHighway: BooleanFactPoint;
+  };
+  connections: {
+    highwayConnectedProvinceCount: DataPoint;
+    railConnectedProvinceCount: DataPoint;
+    connectedProvinceCount: DataPoint;
+    connectedCountryCount: DataPoint;
+    hasInternationalHighwayConnection: BooleanFactPoint;
+    hasInternationalRailConnection: BooleanFactPoint;
+  };
+  connectivityScore: DataPoint;
+  connectionScore: DataPoint;
+};
+
 type CanonicalProvinceData = {
   provinceId: string;
   provinceName: string;
@@ -261,6 +322,7 @@ type CanonicalProvinceData = {
   countryName: string;
   areaKm2: DataPoint;
   settlement: ProvinceSettlementData;
+  infrastructure: ProvinceInfrastructureData;
 };
 
 type CanonicalProvinceDataFile = Record<string, CanonicalProvinceData>;
@@ -273,6 +335,15 @@ type MapMode =
   | "rasterPopulationDensity"
   | "urbanCentreCount"
   | "urbanCentreBuiltUpSharePct"
+  | "provinceConnectivity"
+  | "provinceConnectionScore"
+  | "provinceAirports"
+  | "provincePorts"
+  | "provinceHighwayConnections"
+  | "provinceRailConnections"
+  | "provinceConnectedCountries"
+  | "provinceRailDensity"
+  | "provinceHighwayDensity"
   | "population"
   | "gdp"
   | "gdpPerCapita"
@@ -326,6 +397,15 @@ type SelectedProvince = {
   rawProperties: Record<string, unknown>;
 };
 
+type InfrastructureLayerToggleState = {
+  airports: boolean;
+  majorAirports: boolean;
+  ports: boolean;
+  majorPorts: boolean;
+  railroads: boolean;
+  highways: boolean;
+};
+
 type IndicatorRange = {
   min: number;
   max: number;
@@ -367,6 +447,15 @@ const COLOR_RAMPS = {
   rasterPopulationDensity: { low: "#082f49", high: "#67e8f9" },
   urbanCentreCount: { low: "#4c0519", high: "#fb7185" },
   urbanCentreBuiltUpSharePct: { low: "#422006", high: "#f59e0b" },
+  provinceConnectivity: { low: "#102a43", high: "#2dd4bf" },
+  provinceConnectionScore: { low: "#172554", high: "#60a5fa" },
+  provinceAirports: { low: "#3b0764", high: "#e879f9" },
+  provincePorts: { low: "#083344", high: "#67e8f9" },
+  provinceHighwayConnections: { low: "#431407", high: "#fdba74" },
+  provinceRailConnections: { low: "#1f2937", high: "#bef264" },
+  provinceConnectedCountries: { low: "#052e16", high: "#86efac" },
+  provinceRailDensity: { low: "#1f2937", high: "#a3e635" },
+  provinceHighwayDensity: { low: "#3f1d0d", high: "#fb923c" },
   population: { low: "#0f172a", high: "#38bdf8" },
   gdp: { low: "#052e16", high: "#4ade80" },
   gdpPerCapita: { low: "#422006", high: "#fde047" },
@@ -444,6 +533,15 @@ const MAP_MODES: { key: MapMode; label: string }[] = [
   { key: "rasterPopulationDensity", label: "Raster population density" },
   { key: "urbanCentreCount", label: "Urban-centre count" },
   { key: "urbanCentreBuiltUpSharePct", label: "Urban-centre built-up share" },
+  { key: "provinceConnectivity", label: "Province connectivity" },
+  { key: "provinceConnectionScore", label: "Connection score" },
+  { key: "provinceAirports", label: "Airports" },
+  { key: "provincePorts", label: "Ports" },
+  { key: "provinceHighwayConnections", label: "Highway-connected provinces" },
+  { key: "provinceRailConnections", label: "Rail-connected provinces" },
+  { key: "provinceConnectedCountries", label: "Connected countries" },
+  { key: "provinceRailDensity", label: "Rail density" },
+  { key: "provinceHighwayDensity", label: "Highway density" },
   { key: "population", label: "Population" },
   { key: "gdp", label: "GDP" },
   { key: "gdpPerCapita", label: "GDP per Capita" },
@@ -494,6 +592,15 @@ const MAP_MODE_COLOR_PROPERTY: Record<MapMode, string> = {
   rasterPopulationDensity: "__rasterPopulationDensityColor",
   urbanCentreCount: "__urbanCentreCountColor",
   urbanCentreBuiltUpSharePct: "__urbanCentreBuiltUpSharePctColor",
+  provinceConnectivity: "__provinceConnectivityColor",
+  provinceConnectionScore: "__provinceConnectionScoreColor",
+  provinceAirports: "__provinceAirportsColor",
+  provincePorts: "__provincePortsColor",
+  provinceHighwayConnections: "__provinceHighwayConnectionsColor",
+  provinceRailConnections: "__provinceRailConnectionsColor",
+  provinceConnectedCountries: "__provinceConnectedCountriesColor",
+  provinceRailDensity: "__provinceRailDensityColor",
+  provinceHighwayDensity: "__provinceHighwayDensityColor",
   population: "__populationColor",
   gdp: "__gdpColor",
   gdpPerCapita: "__gdpPerCapitaColor",
@@ -544,6 +651,15 @@ const MAP_MODE_LABEL: Record<MapMode, string> = {
   rasterPopulationDensity: "Raster population density",
   urbanCentreCount: "Urban-centre count",
   urbanCentreBuiltUpSharePct: "Urban-centre built-up share",
+  provinceConnectivity: "Province connectivity",
+  provinceConnectionScore: "Connection score",
+  provinceAirports: "Airports",
+  provincePorts: "Ports",
+  provinceHighwayConnections: "Highway-connected provinces",
+  provinceRailConnections: "Rail-connected provinces",
+  provinceConnectedCountries: "Connected countries",
+  provinceRailDensity: "Rail density",
+  provinceHighwayDensity: "Highway density",
   population: "Population",
   gdp: "GDP",
   gdpPerCapita: "GDP per Capita",
@@ -688,6 +804,78 @@ function getMapColorLegend(mode: MapMode): MapColorLegend {
       MAP_MODE_LABEL[mode],
       "Share of province area covered by matched urban-centre built-up surface.",
       COLOR_RAMPS.urbanCentreBuiltUpSharePct,
+    );
+  }
+
+  if (mode === "provinceConnectivity") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Abstract strategic infrastructure score from airports, ports, rail, and highways.",
+      COLOR_RAMPS.provinceConnectivity,
+    );
+  }
+
+  if (mode === "provinceConnectionScore") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Abstract province-to-province road and rail connection score from Natural Earth 1:10m transport links.",
+      COLOR_RAMPS.provinceConnectionScore,
+    );
+  }
+
+  if (mode === "provinceAirports") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Natural Earth 1:10m airport count by province.",
+      COLOR_RAMPS.provinceAirports,
+    );
+  }
+
+  if (mode === "provincePorts") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Natural Earth 1:10m port count by province.",
+      COLOR_RAMPS.provincePorts,
+    );
+  }
+
+  if (mode === "provinceHighwayConnections") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Count of distinct provinces connected by strategic Natural Earth highways.",
+      COLOR_RAMPS.provinceHighwayConnections,
+    );
+  }
+
+  if (mode === "provinceRailConnections") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Count of distinct provinces connected by strategic Natural Earth railroads.",
+      COLOR_RAMPS.provinceRailConnections,
+    );
+  }
+
+  if (mode === "provinceConnectedCountries") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Count of foreign countries connected by strategic Natural Earth road or rail links.",
+      COLOR_RAMPS.provinceConnectedCountries,
+    );
+  }
+
+  if (mode === "provinceRailDensity") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Strategic rail length per 1,000 km² from Natural Earth 1:10m railroads.",
+      COLOR_RAMPS.provinceRailDensity,
+    );
+  }
+
+  if (mode === "provinceHighwayDensity") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "Strategic road length per 1,000 km² from Natural Earth 1:10m roads.",
+      COLOR_RAMPS.provinceHighwayDensity,
     );
   }
 
@@ -953,6 +1141,7 @@ function getMapColorLegend(mode: MapMode): MapColorLegend {
 
 const EMPTY_POINT: DataPoint = { value: null, year: null, source: null };
 const EMPTY_TEXT_FACT_POINT: TextFactPoint = { value: null, year: null, source: null };
+const EMPTY_BOOLEAN_FACT_POINT: BooleanFactPoint = { value: null, year: null, source: null };
 
 function normalizeProvinceSettlementData(settlement: Record<string, unknown>): ProvinceSettlementData {
   return {
@@ -1001,6 +1190,64 @@ function normalizeProvinceSettlementData(settlement: Record<string, unknown>): P
   };
 }
 
+function isBooleanFactPoint(value: unknown): value is BooleanFactPoint {
+  return (
+    isRecord(value) &&
+    (typeof value.value === "boolean" || value.value === null) &&
+    (typeof value.year === "number" || value.year === null) &&
+    (typeof value.source === "string" || value.source === null)
+  );
+}
+
+function normalizeProvinceInfrastructureData(infrastructure: Record<string, unknown> | null | undefined): ProvinceInfrastructureData {
+  const airports = isRecord(infrastructure?.airports) ? infrastructure.airports : {};
+  const ports = isRecord(infrastructure?.ports) ? infrastructure.ports : {};
+  const rail = isRecord(infrastructure?.rail) ? infrastructure.rail : {};
+  const roads = isRecord(infrastructure?.roads) ? infrastructure.roads : {};
+  const connections = isRecord(infrastructure?.connections) ? infrastructure.connections : {};
+
+  return {
+    airports: {
+      count: isDataPoint(airports.count) ? airports.count : EMPTY_POINT,
+      majorCount: isDataPoint(airports.majorCount) ? airports.majorCount : EMPTY_POINT,
+      hasAirport: isBooleanFactPoint(airports.hasAirport) ? airports.hasAirport : EMPTY_BOOLEAN_FACT_POINT,
+    },
+    ports: {
+      count: isDataPoint(ports.count) ? ports.count : EMPTY_POINT,
+      majorCount: isDataPoint(ports.majorCount) ? ports.majorCount : EMPTY_POINT,
+      hasPort: isBooleanFactPoint(ports.hasPort) ? ports.hasPort : EMPTY_BOOLEAN_FACT_POINT,
+    },
+    rail: {
+      lengthKm: isDataPoint(rail.lengthKm) ? rail.lengthKm : EMPTY_POINT,
+      densityKmPer1000Km2: isDataPoint(rail.densityKmPer1000Km2) ? rail.densityKmPer1000Km2 : EMPTY_POINT,
+      hasRail: isBooleanFactPoint(rail.hasRail) ? rail.hasRail : EMPTY_BOOLEAN_FACT_POINT,
+    },
+    roads: {
+      highwayLengthKm: isDataPoint(roads.highwayLengthKm) ? roads.highwayLengthKm : EMPTY_POINT,
+      densityKmPer1000Km2: isDataPoint(roads.densityKmPer1000Km2) ? roads.densityKmPer1000Km2 : EMPTY_POINT,
+      hasHighway: isBooleanFactPoint(roads.hasHighway) ? roads.hasHighway : EMPTY_BOOLEAN_FACT_POINT,
+    },
+    connections: {
+      highwayConnectedProvinceCount: isDataPoint(connections.highwayConnectedProvinceCount)
+        ? connections.highwayConnectedProvinceCount
+        : EMPTY_POINT,
+      railConnectedProvinceCount: isDataPoint(connections.railConnectedProvinceCount)
+        ? connections.railConnectedProvinceCount
+        : EMPTY_POINT,
+      connectedProvinceCount: isDataPoint(connections.connectedProvinceCount) ? connections.connectedProvinceCount : EMPTY_POINT,
+      connectedCountryCount: isDataPoint(connections.connectedCountryCount) ? connections.connectedCountryCount : EMPTY_POINT,
+      hasInternationalHighwayConnection: isBooleanFactPoint(connections.hasInternationalHighwayConnection)
+        ? connections.hasInternationalHighwayConnection
+        : EMPTY_BOOLEAN_FACT_POINT,
+      hasInternationalRailConnection: isBooleanFactPoint(connections.hasInternationalRailConnection)
+        ? connections.hasInternationalRailConnection
+        : EMPTY_BOOLEAN_FACT_POINT,
+    },
+    connectivityScore: isDataPoint(infrastructure?.connectivityScore) ? infrastructure.connectivityScore : EMPTY_POINT,
+    connectionScore: isDataPoint(infrastructure?.connectionScore) ? infrastructure.connectionScore : EMPTY_POINT,
+  };
+}
+
 function normalizeCanonicalProvinceDataFile(value: CanonicalProvinceDataFile): CanonicalProvinceDataFile {
   return Object.fromEntries(
     Object.entries(value).map(([provinceId, record]) => [
@@ -1008,6 +1255,9 @@ function normalizeCanonicalProvinceDataFile(value: CanonicalProvinceDataFile): C
       {
         ...record,
         settlement: normalizeProvinceSettlementData(record.settlement as unknown as Record<string, unknown>),
+        infrastructure: normalizeProvinceInfrastructureData(
+          isRecord(record.infrastructure) ? (record.infrastructure as Record<string, unknown>) : null,
+        ),
       },
     ]),
   );
@@ -1228,6 +1478,89 @@ function isProvinceFeatureCollection(value: unknown): value is ProvinceFeatureCo
     return false;
   }
   return value.features.every((feature) => isRecord(feature) && feature.type === "Feature");
+}
+
+function isGenericFeatureCollection(value: unknown): value is GenericFeatureCollection {
+  if (!isRecord(value) || value.type !== "FeatureCollection" || !Array.isArray(value.features)) {
+    return false;
+  }
+  return value.features.every((feature) => isRecord(feature) && feature.type === "Feature");
+}
+
+function setLayerVisibility(map: MapLibreMap, layerId: string, visible: boolean) {
+  if (!map.getLayer(layerId)) {
+    return;
+  }
+  map.setLayoutProperty(layerId, "visibility", visible ? "visible" : "none");
+}
+
+function toPopupText(value: unknown): string {
+  if (typeof value === "string" && value.trim().length > 0) {
+    return value.trim();
+  }
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return String(value);
+  }
+  if (typeof value === "boolean") {
+    return value ? "Yes" : "No";
+  }
+  return "Unknown";
+}
+
+function buildInfrastructurePopupHtml(properties: Record<string, unknown>): string {
+  const rows: string[] = [];
+  const source = toPopupText(properties.source);
+  const country = toPopupText(properties.countryName);
+  const province = toPopupText(properties.provinceName);
+
+  if (properties.type !== undefined || properties.level !== undefined) {
+    rows.push(`<div><strong>Type:</strong> ${toPopupText(properties.type ?? properties.level)}</div>`);
+  }
+  if (properties.level !== undefined && properties.type !== properties.level) {
+    rows.push(`<div><strong>Level:</strong> ${toPopupText(properties.level)}</div>`);
+  }
+  if (properties.provinceName !== undefined) {
+    rows.push(`<div><strong>Province:</strong> ${province}</div>`);
+  }
+  if (properties.countryName !== undefined) {
+    rows.push(`<div><strong>Country:</strong> ${country}</div>`);
+  }
+  if (properties.isMajor !== undefined) {
+    rows.push(`<div><strong>Major:</strong> ${toPopupText(properties.isMajor)}</div>`);
+  }
+  rows.push(`<div><strong>Source:</strong> ${source}</div>`);
+
+  return `
+    <div class="infrastructure-popup">
+      <div><strong>${toPopupText(properties.name)}</strong></div>
+      ${rows.join("")}
+    </div>
+  `;
+}
+
+async function ensureInfrastructureSourceData(
+  map: MapLibreMap,
+  cache: MutableRefObject<Record<string, GenericFeatureCollection | null>>,
+  sourceId: string,
+  url: string,
+) {
+  if (cache.current[sourceId]) {
+    return;
+  }
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status} while loading ${url}`);
+  }
+
+  const data: unknown = await response.json();
+  if (!isGenericFeatureCollection(data)) {
+    throw new Error(`Invalid infrastructure GeoJSON at ${url}`);
+  }
+
+  cache.current[sourceId] = data;
+  const source = map.getSource(sourceId) as { setData: (nextData: GenericFeatureCollection) => void } | undefined;
+  source?.setData(data);
 }
 
 function normalizeName(value: string): string {
@@ -1508,6 +1841,13 @@ function formatHhi(value: number | null): string {
   return value.toFixed(3);
 }
 
+function formatNumber(value: number | null): string {
+  if (value === null) {
+    return "No data";
+  }
+  return value.toFixed(2);
+}
+
 function formatBooleanValue(value: boolean | null): string {
   if (value === null) {
     return "Unknown";
@@ -1684,6 +2024,60 @@ function getActiveMapValue(
       formatPercent,
     )}`;
   }
+  if (mode === "provinceConnectivity") {
+    return `Province connectivity - ${formatPoint(
+      provinceData?.infrastructure.connectivityScore ?? EMPTY_POINT,
+      formatNumber,
+    )}`;
+  }
+  if (mode === "provinceConnectionScore") {
+    return `Connection score - ${formatPoint(
+      provinceData?.infrastructure.connectionScore ?? EMPTY_POINT,
+      formatNumber,
+    )}`;
+  }
+  if (mode === "provinceAirports") {
+    return `Airports - ${formatPoint(
+      provinceData?.infrastructure.airports.count ?? EMPTY_POINT,
+      formatInteger,
+    )}`;
+  }
+  if (mode === "provincePorts") {
+    return `Ports - ${formatPoint(
+      provinceData?.infrastructure.ports.count ?? EMPTY_POINT,
+      formatInteger,
+    )}`;
+  }
+  if (mode === "provinceHighwayConnections") {
+    return `Highway-connected provinces - ${formatPoint(
+      provinceData?.infrastructure.connections.highwayConnectedProvinceCount ?? EMPTY_POINT,
+      formatInteger,
+    )}`;
+  }
+  if (mode === "provinceRailConnections") {
+    return `Rail-connected provinces - ${formatPoint(
+      provinceData?.infrastructure.connections.railConnectedProvinceCount ?? EMPTY_POINT,
+      formatInteger,
+    )}`;
+  }
+  if (mode === "provinceConnectedCountries") {
+    return `Connected countries - ${formatPoint(
+      provinceData?.infrastructure.connections.connectedCountryCount ?? EMPTY_POINT,
+      formatInteger,
+    )}`;
+  }
+  if (mode === "provinceRailDensity") {
+    return `Rail density - ${formatPoint(
+      provinceData?.infrastructure.rail.densityKmPer1000Km2 ?? EMPTY_POINT,
+      formatNumber,
+    )} km / 1,000 km²`;
+  }
+  if (mode === "provinceHighwayDensity") {
+    return `Highway density - ${formatPoint(
+      provinceData?.infrastructure.roads.densityKmPer1000Km2 ?? EMPTY_POINT,
+      formatNumber,
+    )} km / 1,000 km²`;
+  }
 
   if (!countryData) {
     return "No data";
@@ -1844,12 +2238,30 @@ export function GameCanvas() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const baseProcessedGeoJsonRef = useRef<ProvinceFeatureCollection | null>(null);
+  const infrastructureDataCacheRef = useRef<Record<string, GenericFeatureCollection | null>>({});
+  const infrastructurePopupRef = useRef<maplibregl.Popup | null>(null);
+  const infrastructureLayerTogglesRef = useRef<InfrastructureLayerToggleState>({
+    airports: false,
+    majorAirports: false,
+    ports: false,
+    majorPorts: false,
+    railroads: false,
+    highways: false,
+  });
   const hoveredProvinceIdRef = useRef<string | null>(null);
   const selectedProvinceIdRef = useRef<string | null>(null);
   const hasLoggedCountryBorderErrorRef = useRef(false);
 
   const [mapMode, setMapMode] = useState<MapMode>("countries");
   const [selectedProvince, setSelectedProvince] = useState<SelectedProvince | null>(null);
+  const [infrastructureLayerToggles, setInfrastructureLayerToggles] = useState<InfrastructureLayerToggleState>({
+    airports: false,
+    majorAirports: false,
+    ports: false,
+    majorPorts: false,
+    railroads: false,
+    highways: false,
+  });
   const [overlaySummary, setOverlaySummary] = useState<CanonicalOverlaySummary>({
     countriesWithData: 0,
     provinceMatchRate: 0,
@@ -1878,6 +2290,10 @@ export function GameCanvas() {
     () => (selectedProvince?.countryCanonicalData?.tradeStructure.topImports ?? []).slice(0, 5),
     [selectedProvince],
   );
+
+  useEffect(() => {
+    infrastructureLayerTogglesRef.current = infrastructureLayerToggles;
+  }, [infrastructureLayerToggles]);
 
   useEffect(() => {
     if (mapRef.current || !containerRef.current) {
@@ -1984,6 +2400,33 @@ export function GameCanvas() {
           );
           const builtUpSharePctRange = getIndicatorRange(
             provinceValues.map((province) => province.settlement.urbanCentreBuiltUpSharePct.value),
+          );
+          const provinceConnectivityRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.connectivityScore.value),
+          );
+          const provinceConnectionScoreRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.connectionScore.value),
+          );
+          const provinceAirportCountRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.airports.count.value),
+          );
+          const provincePortCountRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.ports.count.value),
+          );
+          const provinceHighwayConnectionRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.connections.highwayConnectedProvinceCount.value),
+          );
+          const provinceRailConnectionRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.connections.railConnectedProvinceCount.value),
+          );
+          const provinceConnectedCountriesRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.connections.connectedCountryCount.value),
+          );
+          const provinceRailDensityRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.rail.densityKmPer1000Km2.value),
+          );
+          const provinceHighwayDensityRange = getIndicatorRange(
+            provinceValues.map((province) => province.infrastructure.roads.densityKmPer1000Km2.value),
           );
           const gdpRange = getIndicatorRange(countryValues.map((country) => country.economy.gdpCurrentUsd.value));
           const gdpPerCapitaRange = getIndicatorRange(
@@ -2299,6 +2742,78 @@ export function GameCanvas() {
                     builtUpSharePctRange.max,
                   )
                 : null;
+            const provinceConnectivityT =
+              provinceCanonicalData && provinceConnectivityRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.connectivityScore.value,
+                    provinceConnectivityRange.min,
+                    provinceConnectivityRange.max,
+                  )
+                : null;
+            const provinceConnectionScoreT =
+              provinceCanonicalData && provinceConnectionScoreRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.connectionScore.value,
+                    provinceConnectionScoreRange.min,
+                    provinceConnectionScoreRange.max,
+                  )
+                : null;
+            const provinceAirportCountT =
+              provinceCanonicalData && provinceAirportCountRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.airports.count.value,
+                    provinceAirportCountRange.min,
+                    provinceAirportCountRange.max,
+                  )
+                : null;
+            const provincePortCountT =
+              provinceCanonicalData && provincePortCountRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.ports.count.value,
+                    provincePortCountRange.min,
+                    provincePortCountRange.max,
+                  )
+                : null;
+            const provinceHighwayConnectionsT =
+              provinceCanonicalData && provinceHighwayConnectionRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.connections.highwayConnectedProvinceCount.value,
+                    provinceHighwayConnectionRange.min,
+                    provinceHighwayConnectionRange.max,
+                  )
+                : null;
+            const provinceRailConnectionsT =
+              provinceCanonicalData && provinceRailConnectionRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.connections.railConnectedProvinceCount.value,
+                    provinceRailConnectionRange.min,
+                    provinceRailConnectionRange.max,
+                  )
+                : null;
+            const provinceConnectedCountriesT =
+              provinceCanonicalData && provinceConnectedCountriesRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.connections.connectedCountryCount.value,
+                    provinceConnectedCountriesRange.min,
+                    provinceConnectedCountriesRange.max,
+                  )
+                : null;
+            const provinceRailDensityT =
+              provinceCanonicalData && provinceRailDensityRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.rail.densityKmPer1000Km2.value,
+                    provinceRailDensityRange.min,
+                    provinceRailDensityRange.max,
+                  )
+                : null;
+            const provinceHighwayDensityT =
+              provinceCanonicalData && provinceHighwayDensityRange
+                ? normalizeValue(
+                    provinceCanonicalData.infrastructure.roads.densityKmPer1000Km2.value,
+                    provinceHighwayDensityRange.min,
+                    provinceHighwayDensityRange.max,
+                  )
+                : null;
 
             return {
               ...feature,
@@ -2349,6 +2864,78 @@ export function GameCanvas() {
                         COLOR_RAMPS.urbanCentreBuiltUpSharePct.low,
                         COLOR_RAMPS.urbanCentreBuiltUpSharePct.high,
                         builtUpSharePctT,
+                      ),
+                __provinceConnectivityColor:
+                  provinceConnectivityT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provinceConnectivity.low,
+                        COLOR_RAMPS.provinceConnectivity.high,
+                        provinceConnectivityT,
+                      ),
+                __provinceConnectionScoreColor:
+                  provinceConnectionScoreT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provinceConnectionScore.low,
+                        COLOR_RAMPS.provinceConnectionScore.high,
+                        provinceConnectionScoreT,
+                      ),
+                __provinceAirportsColor:
+                  provinceAirportCountT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provinceAirports.low,
+                        COLOR_RAMPS.provinceAirports.high,
+                        provinceAirportCountT,
+                      ),
+                __provincePortsColor:
+                  provincePortCountT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provincePorts.low,
+                        COLOR_RAMPS.provincePorts.high,
+                        provincePortCountT,
+                      ),
+                __provinceHighwayConnectionsColor:
+                  provinceHighwayConnectionsT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provinceHighwayConnections.low,
+                        COLOR_RAMPS.provinceHighwayConnections.high,
+                        provinceHighwayConnectionsT,
+                      ),
+                __provinceRailConnectionsColor:
+                  provinceRailConnectionsT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provinceRailConnections.low,
+                        COLOR_RAMPS.provinceRailConnections.high,
+                        provinceRailConnectionsT,
+                      ),
+                __provinceConnectedCountriesColor:
+                  provinceConnectedCountriesT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provinceConnectedCountries.low,
+                        COLOR_RAMPS.provinceConnectedCountries.high,
+                        provinceConnectedCountriesT,
+                      ),
+                __provinceRailDensityColor:
+                  provinceRailDensityT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provinceRailDensity.low,
+                        COLOR_RAMPS.provinceRailDensity.high,
+                        provinceRailDensityT,
+                      ),
+                __provinceHighwayDensityColor:
+                  provinceHighwayDensityT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.provinceHighwayDensity.low,
+                        COLOR_RAMPS.provinceHighwayDensity.high,
+                        provinceHighwayDensityT,
                       ),
                 __populationColor:
                   populationT === null
@@ -2684,6 +3271,121 @@ export function GameCanvas() {
             },
           });
 
+          map.addSource(INFRASTRUCTURE_SOURCE_IDS.highways, {
+            type: "geojson",
+            data: EMPTY_GEOJSON,
+          });
+          map.addSource(INFRASTRUCTURE_SOURCE_IDS.railroads, {
+            type: "geojson",
+            data: EMPTY_GEOJSON,
+          });
+          map.addSource(INFRASTRUCTURE_SOURCE_IDS.airports, {
+            type: "geojson",
+            data: EMPTY_GEOJSON,
+          });
+          map.addSource(INFRASTRUCTURE_SOURCE_IDS.ports, {
+            type: "geojson",
+            data: EMPTY_GEOJSON,
+          });
+
+          map.addLayer({
+            id: INFRASTRUCTURE_LAYER_IDS.highways,
+            type: "line",
+            source: INFRASTRUCTURE_SOURCE_IDS.highways,
+            layout: { visibility: "none" },
+            paint: {
+              "line-color": "#f59e0b",
+              "line-width": ["interpolate", ["linear"], ["zoom"], 1, 0.4, 3, 0.8, 5, 1.5, 7, 2.3],
+              "line-opacity": 0.8,
+            },
+          }, "province-borders");
+
+          map.addLayer({
+            id: INFRASTRUCTURE_LAYER_IDS.railroads,
+            type: "line",
+            source: INFRASTRUCTURE_SOURCE_IDS.railroads,
+            layout: { visibility: "none" },
+            paint: {
+              "line-color": "#93c5fd",
+              "line-width": ["interpolate", ["linear"], ["zoom"], 1, 0.3, 3, 0.7, 5, 1.1, 7, 1.7],
+              "line-opacity": 0.8,
+              "line-dasharray": [2, 1.5],
+            },
+          }, "province-borders");
+
+          map.addLayer({
+            id: INFRASTRUCTURE_LAYER_IDS.airports,
+            type: "circle",
+            source: INFRASTRUCTURE_SOURCE_IDS.airports,
+            layout: { visibility: "none" },
+            paint: {
+              "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 1.2, 4, 2.2, 7, 3.2],
+              "circle-color": "#f472b6",
+              "circle-stroke-color": "#1f2937",
+              "circle-stroke-width": 0.5,
+              "circle-opacity": 0.85,
+            },
+          });
+
+          map.addLayer({
+            id: INFRASTRUCTURE_LAYER_IDS.majorAirports,
+            type: "circle",
+            source: INFRASTRUCTURE_SOURCE_IDS.airports,
+            layout: { visibility: "none" },
+            filter: ["==", ["get", "isMajor"], true],
+            paint: {
+              "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 2.2, 4, 4, 7, 5.5],
+              "circle-color": "#ec4899",
+              "circle-stroke-color": "#ffffff",
+              "circle-stroke-width": 1,
+              "circle-opacity": 0.95,
+            },
+          });
+
+          map.addLayer({
+            id: INFRASTRUCTURE_LAYER_IDS.ports,
+            type: "circle",
+            source: INFRASTRUCTURE_SOURCE_IDS.ports,
+            layout: { visibility: "none" },
+            paint: {
+              "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 1.2, 4, 2.3, 7, 3.4],
+              "circle-color": "#22d3ee",
+              "circle-stroke-color": "#164e63",
+              "circle-stroke-width": 0.7,
+              "circle-opacity": 0.85,
+            },
+          });
+
+          map.addLayer({
+            id: INFRASTRUCTURE_LAYER_IDS.majorPorts,
+            type: "circle",
+            source: INFRASTRUCTURE_SOURCE_IDS.ports,
+            layout: { visibility: "none" },
+            filter: ["==", ["get", "isMajor"], true],
+            paint: {
+              "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 2.2, 4, 4, 7, 5.5],
+              "circle-color": "#06b6d4",
+              "circle-stroke-color": "#ffffff",
+              "circle-stroke-width": 1,
+              "circle-opacity": 0.95,
+            },
+          });
+
+          for (const [sourceId, cachedData] of Object.entries(infrastructureDataCacheRef.current)) {
+            if (!cachedData) {
+              continue;
+            }
+            const source = map.getSource(sourceId) as { setData: (data: GenericFeatureCollection) => void } | undefined;
+            source?.setData(cachedData);
+          }
+
+          setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.highways, infrastructureLayerTogglesRef.current.highways);
+          setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.railroads, infrastructureLayerTogglesRef.current.railroads);
+          setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.airports, infrastructureLayerTogglesRef.current.airports);
+          setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.majorAirports, infrastructureLayerTogglesRef.current.majorAirports);
+          setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.ports, infrastructureLayerTogglesRef.current.ports);
+          setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.majorPorts, infrastructureLayerTogglesRef.current.majorPorts);
+
           const clearHoveredFeatureState = () => {
             if (hoveredProvinceIdRef.current !== null) {
               map.setFeatureState({ source: "provinces", id: hoveredProvinceIdRef.current }, { hover: false });
@@ -2705,6 +3407,32 @@ export function GameCanvas() {
             }
             const rendered = map.queryRenderedFeatures(event.point, { layers: ["province-fill"] });
             return rendered[0];
+          };
+
+          const showInfrastructurePopup = (event: MapLayerMouseEvent) => {
+            const feature = event.features?.[0];
+            if (!feature) {
+              return;
+            }
+
+            const properties = getFeatureProperties(feature);
+            infrastructurePopupRef.current?.remove();
+            infrastructurePopupRef.current = new maplibregl.Popup({
+              closeButton: true,
+              closeOnClick: false,
+              maxWidth: "320px",
+            })
+              .setLngLat(event.lngLat)
+              .setHTML(buildInfrastructurePopupHtml(properties))
+              .addTo(map);
+          };
+
+          const handleInfrastructureMouseEnter = () => {
+            map.getCanvas().style.cursor = "pointer";
+          };
+
+          const handleInfrastructureMouseLeave = () => {
+            map.getCanvas().style.cursor = "";
           };
 
           const handleProvinceMouseMove = (event: MapLayerMouseEvent) => {
@@ -2781,12 +3509,24 @@ export function GameCanvas() {
           map.on("mouseleave", "province-fill", handleProvinceMouseLeave);
           map.on("click", "province-fill", handleProvinceClick);
           map.on("click", handleMapClick);
+          for (const layerId of Object.values(INFRASTRUCTURE_LAYER_IDS)) {
+            map.on("mouseenter", layerId, handleInfrastructureMouseEnter);
+            map.on("mouseleave", layerId, handleInfrastructureMouseLeave);
+            map.on("click", layerId, showInfrastructurePopup);
+          }
 
           map.on("remove", () => {
             map.off("mousemove", "province-fill", handleProvinceMouseMove);
             map.off("mouseleave", "province-fill", handleProvinceMouseLeave);
             map.off("click", "province-fill", handleProvinceClick);
             map.off("click", handleMapClick);
+            for (const layerId of Object.values(INFRASTRUCTURE_LAYER_IDS)) {
+              map.off("mouseenter", layerId, handleInfrastructureMouseEnter);
+              map.off("mouseleave", layerId, handleInfrastructureMouseLeave);
+              map.off("click", layerId, showInfrastructurePopup);
+            }
+            infrastructurePopupRef.current?.remove();
+            infrastructurePopupRef.current = null;
           });
         } catch (error) {
           console.error(
@@ -2841,6 +3581,61 @@ export function GameCanvas() {
       map.setFeatureState({ source: "provinces", id: selectedProvinceIdRef.current }, { selected: true });
     }
   }, [mapMode]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) {
+      return;
+    }
+
+    const syncInfrastructureLayers = async () => {
+      try {
+        if (infrastructureLayerToggles.highways) {
+          await ensureInfrastructureSourceData(
+            map,
+            infrastructureDataCacheRef,
+            INFRASTRUCTURE_SOURCE_IDS.highways,
+            "/data/infrastructure-highways.geojson",
+          );
+        }
+        if (infrastructureLayerToggles.railroads) {
+          await ensureInfrastructureSourceData(
+            map,
+            infrastructureDataCacheRef,
+            INFRASTRUCTURE_SOURCE_IDS.railroads,
+            "/data/infrastructure-railroads.geojson",
+          );
+        }
+        if (infrastructureLayerToggles.airports || infrastructureLayerToggles.majorAirports) {
+          await ensureInfrastructureSourceData(
+            map,
+            infrastructureDataCacheRef,
+            INFRASTRUCTURE_SOURCE_IDS.airports,
+            "/data/infrastructure-airports.geojson",
+          );
+        }
+        if (infrastructureLayerToggles.ports || infrastructureLayerToggles.majorPorts) {
+          await ensureInfrastructureSourceData(
+            map,
+            infrastructureDataCacheRef,
+            INFRASTRUCTURE_SOURCE_IDS.ports,
+            "/data/infrastructure-ports.geojson",
+          );
+        }
+      } catch (error) {
+        console.error("Failed to load infrastructure visualization layer.", error);
+      }
+
+      setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.highways, infrastructureLayerToggles.highways);
+      setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.railroads, infrastructureLayerToggles.railroads);
+      setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.airports, infrastructureLayerToggles.airports);
+      setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.majorAirports, infrastructureLayerToggles.majorAirports);
+      setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.ports, infrastructureLayerToggles.ports);
+      setLayerVisibility(map, INFRASTRUCTURE_LAYER_IDS.majorPorts, infrastructureLayerToggles.majorPorts);
+    };
+
+    void syncInfrastructureLayers();
+  }, [infrastructureLayerToggles]);
 
   const activeMapLegend = useMemo(() => {
     if (mapMode === "countries" || mapMode === "provinces") {
@@ -2940,6 +3735,17 @@ export function GameCanvas() {
               <div className="info-panel__row"><span>Population concentration:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.settlement.populationConcentrationHhi ?? EMPTY_POINT, formatHhi)}</strong></div>
               <div className="info-panel__row"><span>Settlement completeness:</span><strong>{formatTextPoint(selectedProvince.provinceCanonicalData?.settlement.settlementDataCompleteness ?? { value: null, year: null, source: null })}</strong></div>
               <div className="info-panel__row"><span>Raster completeness:</span><strong>{formatTextPoint(selectedProvince.provinceCanonicalData?.settlement.rasterSettlementDataCompleteness ?? { value: null, year: null, source: null })}</strong></div>
+
+              <h3 className="info-panel__subtitle">Infrastructure - Natural Earth</h3>
+              <div className="info-panel__row"><span>Connectivity score:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.connectivityScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Connection score:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.connectionScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Airports:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.airports.count ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Ports:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.ports.count ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Highway-connected provinces:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.connections.highwayConnectedProvinceCount ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Rail-connected provinces:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.connections.railConnectedProvinceCount ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Connected countries:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.connections.connectedCountryCount ?? EMPTY_POINT, formatInteger)}</strong></div>
+              <div className="info-panel__row"><span>Rail density:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.rail.densityKmPer1000Km2 ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Highway density:</span><strong>{formatPoint(selectedProvince.provinceCanonicalData?.infrastructure.roads.densityKmPer1000Km2 ?? EMPTY_POINT, formatNumber)}</strong></div>
 
               <h3 className="info-panel__subtitle">Economy</h3>
               <div className="info-panel__row"><span>Population:</span><strong>{formatPoint(selectedProvince.canonicalData?.economy.population ?? EMPTY_POINT, formatInteger)}</strong></div>
@@ -3133,6 +3939,60 @@ export function GameCanvas() {
                 onClick={() => setMapMode(mode.key)}
               >
                 {mode.label}
+              </button>
+            ))}
+          </div>
+
+          <p className="map-mode__section-title">Infrastructure</p>
+          <div className="map-mode__buttons">
+            {MAP_MODES.filter((mode) =>
+              [
+                "provinceConnectivity",
+                "provinceConnectionScore",
+                "provinceAirports",
+                "provincePorts",
+                "provinceHighwayConnections",
+                "provinceRailConnections",
+                "provinceConnectedCountries",
+                "provinceRailDensity",
+                "provinceHighwayDensity",
+              ].includes(mode.key),
+            ).map((mode) => (
+              <button
+                key={mode.key}
+                type="button"
+                className={`map-mode__button${mapMode === mode.key ? " map-mode__button--active" : ""}`}
+                onClick={() => setMapMode(mode.key)}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+
+          <p className="map-mode__section-title">Infrastructure Layers</p>
+          <div className="map-mode__buttons">
+            {[
+              ["airports", "Airports"],
+              ["majorAirports", "Major airports only"],
+              ["ports", "Ports"],
+              ["majorPorts", "Major ports only"],
+              ["railroads", "Railroads"],
+              ["highways", "Highways"],
+            ].map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                className={`map-mode__button${
+                  infrastructureLayerToggles[key as keyof InfrastructureLayerToggleState] ? " map-mode__button--active" : ""
+                }`}
+                onClick={() =>
+                  setInfrastructureLayerToggles((current) => ({
+                    ...current,
+                    [key]: !current[key as keyof InfrastructureLayerToggleState],
+                  }))
+                }
+              >
+                {label}
               </button>
             ))}
           </div>

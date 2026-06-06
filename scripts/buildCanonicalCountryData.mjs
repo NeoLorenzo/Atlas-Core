@@ -15,6 +15,13 @@ const FACTBOOK_PATH = resolve(__dirname, "..", "public", "data", "factbook-polit
 const SECURITY_PATH = resolve(__dirname, "..", "public", "data", "security-stats.json");
 const URBAN_CENTRES_PATH = resolve(__dirname, "..", "public", "data", "urban-centres.json");
 const CANONICAL_PROVINCE_PATH = resolve(__dirname, "..", "public", "data", "canonical-province-data.json");
+const INFRASTRUCTURE_CONNECTIONS_PATH = resolve(
+  __dirname,
+  "..",
+  "public",
+  "data",
+  "infrastructure-connections.json",
+);
 
 const OUTPUT_PATH = resolve(__dirname, "..", "public", "data", "canonical-country-data.json");
 const COVERAGE_PATH = resolve(__dirname, "..", "public", "data", "canonical-country-data-coverage.json");
@@ -373,6 +380,10 @@ function getNumericFactValue(fact) {
   return typeof fact?.value === "number" && Number.isFinite(fact.value) ? fact.value : null;
 }
 
+function getBooleanFactValue(fact) {
+  return typeof fact?.value === "boolean" ? fact.value : null;
+}
+
 function sumNumbers(values) {
   return values.reduce((sum, value) => sum + value, 0);
 }
@@ -406,6 +417,255 @@ function buildSettlementDataPoint(value, year, source, digits = 3) {
   }
   const factor = 10 ** digits;
   return makeDataPoint(Math.round(value * factor) / factor, year, source);
+}
+
+function buildInfrastructureDataPoint(value, source, digits = 3) {
+  if (typeof value !== "number" || !Number.isFinite(value) || !source) {
+    return makeDataPoint(null, null, null);
+  }
+  return makeDataPoint(roundNumber(value, digits), 2025, source);
+}
+
+function buildInfrastructureBooleanPoint(value, source) {
+  if (typeof value !== "boolean" || !source) {
+    return { value: null, year: null, source: null };
+  }
+  return { value, year: 2025, source };
+}
+
+function buildInfrastructureArrayPoint(value, source) {
+  if (!Array.isArray(value) || !source) {
+    return { value: [], year: null, source: null };
+  }
+  return { value, year: 2025, source };
+}
+
+function getProvinceWeight(record) {
+  const rasterPopulation = getNumericFactValue(record?.settlement?.rasterPopulationEstimate);
+  if (rasterPopulation !== null && rasterPopulation > 0) {
+    return { value: rasterPopulation, basis: "population" };
+  }
+
+  const areaKm2 = getNumericFactValue(record?.areaKm2);
+  if (areaKm2 !== null && areaKm2 > 0) {
+    return { value: areaKm2, basis: "area" };
+  }
+
+  return { value: 1, basis: "simple-average" };
+}
+
+function createEmptyCountryConnectionRollup() {
+  return {
+    domesticHighwayEdgeCount: buildInfrastructureDataPoint(0, "Derived from Natural Earth 1:10m roads", 0),
+    domesticRailEdgeCount: buildInfrastructureDataPoint(0, "Derived from Natural Earth 1:10m railroads", 0),
+    internationalHighwayEdgeCount: buildInfrastructureDataPoint(0, "Derived from Natural Earth 1:10m roads", 0),
+    internationalRailEdgeCount: buildInfrastructureDataPoint(0, "Derived from Natural Earth 1:10m railroads", 0),
+    connectedCountryCount: buildInfrastructureDataPoint(0, "Derived from Natural Earth 1:10m transport connections", 0),
+    internationallyConnectedCountryIso3s: buildInfrastructureArrayPoint(
+      [],
+      "Derived from Natural Earth 1:10m transport connections",
+    ),
+  };
+}
+
+function buildCountryConnectionRollup(iso3, connectionEdges) {
+  const rollup = createEmptyCountryConnectionRollup();
+  const connectedCountries = new Set();
+
+  for (const edge of Array.isArray(connectionEdges) ? connectionEdges : []) {
+    if (!edge || typeof edge !== "object") {
+      continue;
+    }
+
+    const mode = edge.mode;
+    if (mode !== "highway" && mode !== "rail") {
+      continue;
+    }
+
+    if (edge.fromCountryIso3 !== iso3 && edge.toCountryIso3 !== iso3) {
+      continue;
+    }
+
+    if (edge.isInternational === true) {
+      const otherCountryIso3 = edge.fromCountryIso3 === iso3 ? edge.toCountryIso3 : edge.fromCountryIso3;
+      if (typeof otherCountryIso3 === "string" && otherCountryIso3.length > 0 && otherCountryIso3 !== iso3) {
+        connectedCountries.add(otherCountryIso3);
+      }
+
+      if (mode === "highway") {
+        rollup.internationalHighwayEdgeCount.value += 1;
+      } else {
+        rollup.internationalRailEdgeCount.value += 1;
+      }
+      continue;
+    }
+
+    if (edge.fromCountryIso3 === iso3 && edge.toCountryIso3 === iso3) {
+      if (mode === "highway") {
+        rollup.domesticHighwayEdgeCount.value += 1;
+      } else {
+        rollup.domesticRailEdgeCount.value += 1;
+      }
+    }
+  }
+
+  rollup.connectedCountryCount.value = connectedCountries.size;
+  rollup.internationallyConnectedCountryIso3s = buildInfrastructureArrayPoint(
+    [...connectedCountries].sort(),
+    "Derived from Natural Earth 1:10m transport connections",
+  );
+
+  return rollup;
+}
+
+function buildCountryInfrastructure(iso3, canonicalProvinceDataById, connectionEdges = null) {
+  const provinceRecords = Object.values(canonicalProvinceDataById).filter((record) => record?.countryIso3 === iso3);
+
+  if (provinceRecords.length === 0) {
+    const infrastructure = {
+      airports: {
+        count: 0,
+        majorCount: 0,
+        provinceCountWithAirport: 0,
+        hasAirport: false,
+      },
+      ports: {
+        count: 0,
+        majorCount: 0,
+        provinceCountWithPort: 0,
+        hasPort: false,
+      },
+      rail: {
+        lengthKm: 0,
+        densityKmPer1000Km2: 0,
+        provinceCountWithRail: 0,
+        hasRail: false,
+      },
+      roads: {
+        highwayLengthKm: 0,
+        densityKmPer1000Km2: 0,
+        provinceCountWithHighway: 0,
+        hasHighway: false,
+      },
+      connectivityScore: {
+        value: null,
+        year: null,
+        source: null,
+      },
+    };
+    if (Array.isArray(connectionEdges)) {
+      infrastructure.connections = createEmptyCountryConnectionRollup();
+    }
+    return infrastructure;
+  }
+
+  const totalAreaKm2 = sumNumbers(provinceRecords.map((record) => getNumericFactValue(record?.areaKm2)).filter((value) => value !== null));
+
+  const airportCount = sumNumbers(
+    provinceRecords.map((record) => getNumericFactValue(record?.infrastructure?.airports?.count)).filter((value) => value !== null),
+  );
+  const airportMajorCount = sumNumbers(
+    provinceRecords.map((record) => getNumericFactValue(record?.infrastructure?.airports?.majorCount)).filter((value) => value !== null),
+  );
+  const provincesWithAirport = provinceRecords.filter(
+    (record) => getBooleanFactValue(record?.infrastructure?.airports?.hasAirport) === true,
+  ).length;
+
+  const portCount = sumNumbers(
+    provinceRecords.map((record) => getNumericFactValue(record?.infrastructure?.ports?.count)).filter((value) => value !== null),
+  );
+  const portMajorCount = sumNumbers(
+    provinceRecords.map((record) => getNumericFactValue(record?.infrastructure?.ports?.majorCount)).filter((value) => value !== null),
+  );
+  const provincesWithPort = provinceRecords.filter(
+    (record) => getBooleanFactValue(record?.infrastructure?.ports?.hasPort) === true,
+  ).length;
+
+  const railLengthKm = sumNumbers(
+    provinceRecords.map((record) => getNumericFactValue(record?.infrastructure?.rail?.lengthKm)).filter((value) => value !== null),
+  );
+  const provincesWithRail = provinceRecords.filter(
+    (record) => getBooleanFactValue(record?.infrastructure?.rail?.hasRail) === true,
+  ).length;
+
+  const highwayLengthKm = sumNumbers(
+    provinceRecords.map((record) => getNumericFactValue(record?.infrastructure?.roads?.highwayLengthKm)).filter((value) => value !== null),
+  );
+  const provincesWithHighway = provinceRecords.filter(
+    (record) => getBooleanFactValue(record?.infrastructure?.roads?.hasHighway) === true,
+  ).length;
+
+  let weightedConnectivitySum = 0;
+  let totalWeight = 0;
+  let weightingMode = "simple average";
+  let sawPopulationWeight = false;
+  let sawAreaWeight = false;
+
+  for (const record of provinceRecords) {
+    const score = getNumericFactValue(record?.infrastructure?.connectivityScore);
+    if (score === null) {
+      continue;
+    }
+    const weight = getProvinceWeight(record);
+    if (weight.basis === "population") {
+      sawPopulationWeight = true;
+    } else if (weight.basis === "area") {
+      sawAreaWeight = true;
+    }
+    weightedConnectivitySum += score * weight.value;
+    totalWeight += weight.value;
+  }
+
+  if (sawPopulationWeight) {
+    weightingMode = "province raster population where available, then province area, then simple average";
+  } else if (sawAreaWeight) {
+    weightingMode = "province area where raster population is unavailable, then simple average";
+  }
+
+  const connectivityValue = totalWeight > 0 ? weightedConnectivitySum / totalWeight : null;
+
+  const infrastructure = {
+    airports: {
+      count: airportCount,
+      majorCount: airportMajorCount,
+      provinceCountWithAirport: provincesWithAirport,
+      hasAirport: airportCount > 0,
+    },
+    ports: {
+      count: portCount,
+      majorCount: portMajorCount,
+      provinceCountWithPort: provincesWithPort,
+      hasPort: portCount > 0,
+    },
+    rail: {
+      lengthKm: roundNumber(railLengthKm, 3) ?? 0,
+      densityKmPer1000Km2: totalAreaKm2 > 0 ? roundNumber((railLengthKm / totalAreaKm2) * 1000, 3) ?? 0 : 0,
+      provinceCountWithRail: provincesWithRail,
+      hasRail: railLengthKm > 0,
+    },
+    roads: {
+      highwayLengthKm: roundNumber(highwayLengthKm, 3) ?? 0,
+      densityKmPer1000Km2: totalAreaKm2 > 0 ? roundNumber((highwayLengthKm / totalAreaKm2) * 1000, 3) ?? 0 : 0,
+      provinceCountWithHighway: provincesWithHighway,
+      hasHighway: highwayLengthKm > 0,
+    },
+    // Country connectivity rolls up province strategic-infrastructure scores using province raster population when available,
+    // otherwise province area, otherwise a simple average, so countries with larger populated provinces carry proportionate weight.
+    connectivityScore: {
+      value: connectivityValue === null ? null : roundNumber(connectivityValue, 2),
+      year: connectivityValue === null ? null : 2025,
+      source:
+        connectivityValue === null
+          ? null
+          : `Derived from province strategic infrastructure rollup weighted by ${weightingMode}`,
+    },
+  };
+
+  if (Array.isArray(connectionEdges)) {
+    infrastructure.connections = buildCountryConnectionRollup(iso3, connectionEdges);
+  }
+
+  return infrastructure;
 }
 
 function buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresById) {
@@ -605,7 +865,7 @@ function buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresByI
 }
 
 async function main() {
-  const [wdi, wgi, imf, wpp, atlasMaybe, factbookMaybe, securityMaybe, urbanCentresMaybe, canonicalProvinceMaybe] = await Promise.all([
+  const [wdi, wgi, imf, wpp, atlasMaybe, factbookMaybe, securityMaybe, urbanCentresMaybe, canonicalProvinceMaybe, infrastructureConnectionsMaybe] = await Promise.all([
     readJson(WDI_PATH),
     readJson(WGI_PATH),
     readJson(IMF_PATH),
@@ -615,6 +875,7 @@ async function main() {
     readJsonOptional(SECURITY_PATH),
     readJsonOptional(URBAN_CENTRES_PATH),
     readJsonOptional(CANONICAL_PROVINCE_PATH),
+    readJsonOptional(INFRASTRUCTURE_CONNECTIONS_PATH),
   ]);
 
   if (
@@ -650,6 +911,11 @@ async function main() {
   }
   if (!isRecord(canonicalProvinceMaybe)) {
     console.warn("canonical-province-data.json not found or invalid; settlement province rollups will be emitted as nulls.");
+  }
+  if (!Array.isArray(infrastructureConnectionsMaybe)) {
+    console.warn(
+      "infrastructure-connections.json not found or invalid; country infrastructure will omit province-connection rollups.",
+    );
   }
 
   const wdiCoverage = computeCoverageCounts(wdi.countriesByIso3, [
@@ -985,6 +1251,7 @@ async function main() {
     };
 
     const settlement = buildCountrySettlement(iso3, canonicalProvinceDataById, urbanCentresById);
+    const infrastructure = buildCountryInfrastructure(iso3, canonicalProvinceDataById, infrastructureConnectionsMaybe);
 
     countriesByIso3[iso3] = {
       iso3,
@@ -998,6 +1265,7 @@ async function main() {
       security,
       politicalSystem,
       settlement,
+      infrastructure,
     };
   }
 
@@ -1188,6 +1456,18 @@ async function main() {
         year: 2025,
         source: "GHSL GHS-POP R2023A + GHSL GHS-BUILT-S R2023A",
       },
+    },
+    infrastructureCoverage: {
+      countriesWithInfrastructureData: Object.values(countriesByIso3).filter(
+        (country) => country.infrastructure.connectivityScore.value !== null,
+      ).length,
+      countriesWithAirport: Object.values(countriesByIso3).filter((country) => country.infrastructure.airports.hasAirport === true).length,
+      countriesWithPort: Object.values(countriesByIso3).filter((country) => country.infrastructure.ports.hasPort === true).length,
+      countriesWithRail: Object.values(countriesByIso3).filter((country) => country.infrastructure.rail.hasRail === true).length,
+      countriesWithHighway: Object.values(countriesByIso3).filter((country) => country.infrastructure.roads.hasHighway === true).length,
+      countriesWithConnectionRollups: Object.values(countriesByIso3).filter(
+        (country) => country.infrastructure.connections?.connectedCountryCount?.year === 2025,
+      ).length,
     },
     ...sourceUsageTotals,
     unresolvedMissingValues: {
