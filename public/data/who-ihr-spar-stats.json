@@ -1,0 +1,1538 @@
+{
+  "AFG": {
+    "countryIso3": "AFG",
+    "ihrSparAverageScore": {
+      "value": 35,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "AGO": {
+    "countryIso3": "AGO",
+    "ihrSparAverageScore": {
+      "value": 52,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ALB": {
+    "countryIso3": "ALB",
+    "ihrSparAverageScore": {
+      "value": 88,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "AND": {
+    "countryIso3": "AND",
+    "ihrSparAverageScore": {
+      "value": 50,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ARE": {
+    "countryIso3": "ARE",
+    "ihrSparAverageScore": {
+      "value": 97,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ARG": {
+    "countryIso3": "ARG",
+    "ihrSparAverageScore": {
+      "value": 59,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ARM": {
+    "countryIso3": "ARM",
+    "ihrSparAverageScore": {
+      "value": 59,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ATG": {
+    "countryIso3": "ATG",
+    "ihrSparAverageScore": {
+      "value": 57,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "AUS": {
+    "countryIso3": "AUS",
+    "ihrSparAverageScore": {
+      "value": 91,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "AUT": {
+    "countryIso3": "AUT",
+    "ihrSparAverageScore": {
+      "value": 67,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "AZE": {
+    "countryIso3": "AZE",
+    "ihrSparAverageScore": {
+      "value": 67,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BDI": {
+    "countryIso3": "BDI",
+    "ihrSparAverageScore": {
+      "value": 35,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BEL": {
+    "countryIso3": "BEL",
+    "ihrSparAverageScore": {
+      "value": 76,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BEN": {
+    "countryIso3": "BEN",
+    "ihrSparAverageScore": {
+      "value": 42,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BFA": {
+    "countryIso3": "BFA",
+    "ihrSparAverageScore": {
+      "value": 37,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BGD": {
+    "countryIso3": "BGD",
+    "ihrSparAverageScore": {
+      "value": 69,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BGR": {
+    "countryIso3": "BGR",
+    "ihrSparAverageScore": {
+      "value": 74,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BHR": {
+    "countryIso3": "BHR",
+    "ihrSparAverageScore": {
+      "value": 92,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BHS": {
+    "countryIso3": "BHS",
+    "ihrSparAverageScore": {
+      "value": 60,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BIH": {
+    "countryIso3": "BIH",
+    "ihrSparAverageScore": {
+      "value": 33.87,
+      "year": 2023,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BLR": {
+    "countryIso3": "BLR",
+    "ihrSparAverageScore": {
+      "value": 96,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BLZ": {
+    "countryIso3": "BLZ",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BOL": {
+    "countryIso3": "BOL",
+    "ihrSparAverageScore": {
+      "value": 46,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BRA": {
+    "countryIso3": "BRA",
+    "ihrSparAverageScore": {
+      "value": 65,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BRB": {
+    "countryIso3": "BRB",
+    "ihrSparAverageScore": {
+      "value": 67,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BRN": {
+    "countryIso3": "BRN",
+    "ihrSparAverageScore": {
+      "value": 71,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BTN": {
+    "countryIso3": "BTN",
+    "ihrSparAverageScore": {
+      "value": 64,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "BWA": {
+    "countryIso3": "BWA",
+    "ihrSparAverageScore": {
+      "value": 45,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CAF": {
+    "countryIso3": "CAF",
+    "ihrSparAverageScore": {
+      "value": 34,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CAN": {
+    "countryIso3": "CAN",
+    "ihrSparAverageScore": {
+      "value": 96,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CHE": {
+    "countryIso3": "CHE",
+    "ihrSparAverageScore": {
+      "value": 90,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CHL": {
+    "countryIso3": "CHL",
+    "ihrSparAverageScore": {
+      "value": 79,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CHN": {
+    "countryIso3": "CHN",
+    "ihrSparAverageScore": {
+      "value": 94,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CIV": {
+    "countryIso3": "CIV",
+    "ihrSparAverageScore": {
+      "value": 47,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CMR": {
+    "countryIso3": "CMR",
+    "ihrSparAverageScore": {
+      "value": 44,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "COD": {
+    "countryIso3": "COD",
+    "ihrSparAverageScore": {
+      "value": 37,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "COG": {
+    "countryIso3": "COG",
+    "ihrSparAverageScore": {
+      "value": 34,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "COL": {
+    "countryIso3": "COL",
+    "ihrSparAverageScore": {
+      "value": 68,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "COM": {
+    "countryIso3": "COM",
+    "ihrSparAverageScore": {
+      "value": 50,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CPV": {
+    "countryIso3": "CPV",
+    "ihrSparAverageScore": {
+      "value": 60,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CRI": {
+    "countryIso3": "CRI",
+    "ihrSparAverageScore": {
+      "value": 66,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CUB": {
+    "countryIso3": "CUB",
+    "ihrSparAverageScore": {
+      "value": 90,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CYP": {
+    "countryIso3": "CYP",
+    "ihrSparAverageScore": {
+      "value": 61,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "CZE": {
+    "countryIso3": "CZE",
+    "ihrSparAverageScore": {
+      "value": 77,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "DEU": {
+    "countryIso3": "DEU",
+    "ihrSparAverageScore": {
+      "value": 85,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "DJI": {
+    "countryIso3": "DJI",
+    "ihrSparAverageScore": {
+      "value": 30,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "DMA": {
+    "countryIso3": "DMA",
+    "ihrSparAverageScore": {
+      "value": 71,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "DNK": {
+    "countryIso3": "DNK",
+    "ihrSparAverageScore": {
+      "value": 97,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "DOM": {
+    "countryIso3": "DOM",
+    "ihrSparAverageScore": {
+      "value": 60,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "DZA": {
+    "countryIso3": "DZA",
+    "ihrSparAverageScore": {
+      "value": 80,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ECU": {
+    "countryIso3": "ECU",
+    "ihrSparAverageScore": {
+      "value": 54,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "EGY": {
+    "countryIso3": "EGY",
+    "ihrSparAverageScore": {
+      "value": 90,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ERI": {
+    "countryIso3": "ERI",
+    "ihrSparAverageScore": {
+      "value": 60,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ESP": {
+    "countryIso3": "ESP",
+    "ihrSparAverageScore": {
+      "value": 78,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "EST": {
+    "countryIso3": "EST",
+    "ihrSparAverageScore": {
+      "value": 73,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ETH": {
+    "countryIso3": "ETH",
+    "ihrSparAverageScore": {
+      "value": 69,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "FIN": {
+    "countryIso3": "FIN",
+    "ihrSparAverageScore": {
+      "value": 85,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "FJI": {
+    "countryIso3": "FJI",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "FRA": {
+    "countryIso3": "FRA",
+    "ihrSparAverageScore": {
+      "value": 88,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "FSM": {
+    "countryIso3": "FSM",
+    "ihrSparAverageScore": {
+      "value": 42,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GAB": {
+    "countryIso3": "GAB",
+    "ihrSparAverageScore": {
+      "value": 49,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GBR": {
+    "countryIso3": "GBR",
+    "ihrSparAverageScore": {
+      "value": 95,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GEO": {
+    "countryIso3": "GEO",
+    "ihrSparAverageScore": {
+      "value": 60,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GHA": {
+    "countryIso3": "GHA",
+    "ihrSparAverageScore": {
+      "value": 52,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GIN": {
+    "countryIso3": "GIN",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GMB": {
+    "countryIso3": "GMB",
+    "ihrSparAverageScore": {
+      "value": 27,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GNB": {
+    "countryIso3": "GNB",
+    "ihrSparAverageScore": {
+      "value": 50,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GNQ": {
+    "countryIso3": "GNQ",
+    "ihrSparAverageScore": {
+      "value": 49,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GRC": {
+    "countryIso3": "GRC",
+    "ihrSparAverageScore": {
+      "value": 60,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GRD": {
+    "countryIso3": "GRD",
+    "ihrSparAverageScore": {
+      "value": 54,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GTM": {
+    "countryIso3": "GTM",
+    "ihrSparAverageScore": {
+      "value": 37,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "GUY": {
+    "countryIso3": "GUY",
+    "ihrSparAverageScore": {
+      "value": 37,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "HND": {
+    "countryIso3": "HND",
+    "ihrSparAverageScore": {
+      "value": 54,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "HRV": {
+    "countryIso3": "HRV",
+    "ihrSparAverageScore": {
+      "value": 75,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "HTI": {
+    "countryIso3": "HTI",
+    "ihrSparAverageScore": {
+      "value": 54,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "HUN": {
+    "countryIso3": "HUN",
+    "ihrSparAverageScore": {
+      "value": 71,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "IDN": {
+    "countryIso3": "IDN",
+    "ihrSparAverageScore": {
+      "value": 80,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "IND": {
+    "countryIso3": "IND",
+    "ihrSparAverageScore": {
+      "value": 88,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "IRL": {
+    "countryIso3": "IRL",
+    "ihrSparAverageScore": {
+      "value": 77,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "IRN": {
+    "countryIso3": "IRN",
+    "ihrSparAverageScore": {
+      "value": 76,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "IRQ": {
+    "countryIso3": "IRQ",
+    "ihrSparAverageScore": {
+      "value": 59,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ISL": {
+    "countryIso3": "ISL",
+    "ihrSparAverageScore": {
+      "value": 78,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ISR": {
+    "countryIso3": "ISR",
+    "ihrSparAverageScore": {
+      "value": 86,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ITA": {
+    "countryIso3": "ITA",
+    "ihrSparAverageScore": {
+      "value": 69,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "JAM": {
+    "countryIso3": "JAM",
+    "ihrSparAverageScore": {
+      "value": 69,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "JOR": {
+    "countryIso3": "JOR",
+    "ihrSparAverageScore": {
+      "value": 73,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "JPN": {
+    "countryIso3": "JPN",
+    "ihrSparAverageScore": {
+      "value": 99,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "KAZ": {
+    "countryIso3": "KAZ",
+    "ihrSparAverageScore": {
+      "value": 73,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "KEN": {
+    "countryIso3": "KEN",
+    "ihrSparAverageScore": {
+      "value": 57,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "KGZ": {
+    "countryIso3": "KGZ",
+    "ihrSparAverageScore": {
+      "value": 49,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "KHM": {
+    "countryIso3": "KHM",
+    "ihrSparAverageScore": {
+      "value": 64,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "KIR": {
+    "countryIso3": "KIR",
+    "ihrSparAverageScore": {
+      "value": 42,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "KNA": {
+    "countryIso3": "KNA",
+    "ihrSparAverageScore": {
+      "value": 68,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "KOR": {
+    "countryIso3": "KOR",
+    "ihrSparAverageScore": {
+      "value": 99,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "KWT": {
+    "countryIso3": "KWT",
+    "ihrSparAverageScore": {
+      "value": 97,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LAO": {
+    "countryIso3": "LAO",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LBN": {
+    "countryIso3": "LBN",
+    "ihrSparAverageScore": {
+      "value": 70,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LBR": {
+    "countryIso3": "LBR",
+    "ihrSparAverageScore": {
+      "value": 48,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LBY": {
+    "countryIso3": "LBY",
+    "ihrSparAverageScore": {
+      "value": 38,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LCA": {
+    "countryIso3": "LCA",
+    "ihrSparAverageScore": {
+      "value": 61,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LIE": {
+    "countryIso3": "LIE",
+    "ihrSparAverageScore": {
+      "value": 80,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LKA": {
+    "countryIso3": "LKA",
+    "ihrSparAverageScore": {
+      "value": 66,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LSO": {
+    "countryIso3": "LSO",
+    "ihrSparAverageScore": {
+      "value": 42,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LTU": {
+    "countryIso3": "LTU",
+    "ihrSparAverageScore": {
+      "value": 87,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LUX": {
+    "countryIso3": "LUX",
+    "ihrSparAverageScore": {
+      "value": 67,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "LVA": {
+    "countryIso3": "LVA",
+    "ihrSparAverageScore": {
+      "value": 68,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MAR": {
+    "countryIso3": "MAR",
+    "ihrSparAverageScore": {
+      "value": 75,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MCO": {
+    "countryIso3": "MCO",
+    "ihrSparAverageScore": {
+      "value": 79,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MDA": {
+    "countryIso3": "MDA",
+    "ihrSparAverageScore": {
+      "value": 62,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MDG": {
+    "countryIso3": "MDG",
+    "ihrSparAverageScore": {
+      "value": 59,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MDV": {
+    "countryIso3": "MDV",
+    "ihrSparAverageScore": {
+      "value": 58,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MEX": {
+    "countryIso3": "MEX",
+    "ihrSparAverageScore": {
+      "value": 79,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MHL": {
+    "countryIso3": "MHL",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MKD": {
+    "countryIso3": "MKD",
+    "ihrSparAverageScore": {
+      "value": 62,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MLI": {
+    "countryIso3": "MLI",
+    "ihrSparAverageScore": {
+      "value": 46,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MLT": {
+    "countryIso3": "MLT",
+    "ihrSparAverageScore": {
+      "value": 69,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MMR": {
+    "countryIso3": "MMR",
+    "ihrSparAverageScore": {
+      "value": 64,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MNE": {
+    "countryIso3": "MNE",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MNG": {
+    "countryIso3": "MNG",
+    "ihrSparAverageScore": {
+      "value": 60,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MOZ": {
+    "countryIso3": "MOZ",
+    "ihrSparAverageScore": {
+      "value": 53,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MRT": {
+    "countryIso3": "MRT",
+    "ihrSparAverageScore": {
+      "value": 29,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MUS": {
+    "countryIso3": "MUS",
+    "ihrSparAverageScore": {
+      "value": 46,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MWI": {
+    "countryIso3": "MWI",
+    "ihrSparAverageScore": {
+      "value": 58,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "MYS": {
+    "countryIso3": "MYS",
+    "ihrSparAverageScore": {
+      "value": 87,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NAM": {
+    "countryIso3": "NAM",
+    "ihrSparAverageScore": {
+      "value": 64,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NER": {
+    "countryIso3": "NER",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NGA": {
+    "countryIso3": "NGA",
+    "ihrSparAverageScore": {
+      "value": 57,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NIC": {
+    "countryIso3": "NIC",
+    "ihrSparAverageScore": {
+      "value": 62,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NLD": {
+    "countryIso3": "NLD",
+    "ihrSparAverageScore": {
+      "value": 85,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NOR": {
+    "countryIso3": "NOR",
+    "ihrSparAverageScore": {
+      "value": 95,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NPL": {
+    "countryIso3": "NPL",
+    "ihrSparAverageScore": {
+      "value": 49,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NRU": {
+    "countryIso3": "NRU",
+    "ihrSparAverageScore": {
+      "value": 47,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "NZL": {
+    "countryIso3": "NZL",
+    "ihrSparAverageScore": {
+      "value": 85,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "OMN": {
+    "countryIso3": "OMN",
+    "ihrSparAverageScore": {
+      "value": 76,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PAK": {
+    "countryIso3": "PAK",
+    "ihrSparAverageScore": {
+      "value": 52,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PAN": {
+    "countryIso3": "PAN",
+    "ihrSparAverageScore": {
+      "value": 68,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PER": {
+    "countryIso3": "PER",
+    "ihrSparAverageScore": {
+      "value": 40,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PHL": {
+    "countryIso3": "PHL",
+    "ihrSparAverageScore": {
+      "value": 62,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PLW": {
+    "countryIso3": "PLW",
+    "ihrSparAverageScore": {
+      "value": 57,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PNG": {
+    "countryIso3": "PNG",
+    "ihrSparAverageScore": {
+      "value": 45,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "POL": {
+    "countryIso3": "POL",
+    "ihrSparAverageScore": {
+      "value": 74,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PRK": {
+    "countryIso3": "PRK",
+    "ihrSparAverageScore": {
+      "value": 59,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PRT": {
+    "countryIso3": "PRT",
+    "ihrSparAverageScore": {
+      "value": 85,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "PRY": {
+    "countryIso3": "PRY",
+    "ihrSparAverageScore": {
+      "value": 63,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "QAT": {
+    "countryIso3": "QAT",
+    "ihrSparAverageScore": {
+      "value": 89,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ROU": {
+    "countryIso3": "ROU",
+    "ihrSparAverageScore": {
+      "value": 62,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "RUS": {
+    "countryIso3": "RUS",
+    "ihrSparAverageScore": {
+      "value": 100,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "RWA": {
+    "countryIso3": "RWA",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SAU": {
+    "countryIso3": "SAU",
+    "ihrSparAverageScore": {
+      "value": 95,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SDN": {
+    "countryIso3": "SDN",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SEN": {
+    "countryIso3": "SEN",
+    "ihrSparAverageScore": {
+      "value": 53,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SGP": {
+    "countryIso3": "SGP",
+    "ihrSparAverageScore": {
+      "value": 96,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SLB": {
+    "countryIso3": "SLB",
+    "ihrSparAverageScore": {
+      "value": 50,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SLE": {
+    "countryIso3": "SLE",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SLV": {
+    "countryIso3": "SLV",
+    "ihrSparAverageScore": {
+      "value": 91,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SMR": {
+    "countryIso3": "SMR",
+    "ihrSparAverageScore": {
+      "value": 29,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SOM": {
+    "countryIso3": "SOM",
+    "ihrSparAverageScore": {
+      "value": 33,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SRB": {
+    "countryIso3": "SRB",
+    "ihrSparAverageScore": {
+      "value": 73,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SSD": {
+    "countryIso3": "SSD",
+    "ihrSparAverageScore": {
+      "value": 43,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "STP": {
+    "countryIso3": "STP",
+    "ihrSparAverageScore": {
+      "value": 47,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SUR": {
+    "countryIso3": "SUR",
+    "ihrSparAverageScore": {
+      "value": 40,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SVK": {
+    "countryIso3": "SVK",
+    "ihrSparAverageScore": {
+      "value": 50,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SVN": {
+    "countryIso3": "SVN",
+    "ihrSparAverageScore": {
+      "value": 81,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SWE": {
+    "countryIso3": "SWE",
+    "ihrSparAverageScore": {
+      "value": 90,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SWZ": {
+    "countryIso3": "SWZ",
+    "ihrSparAverageScore": {
+      "value": 43,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SYC": {
+    "countryIso3": "SYC",
+    "ihrSparAverageScore": {
+      "value": 68,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "SYR": {
+    "countryIso3": "SYR",
+    "ihrSparAverageScore": {
+      "value": 41,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TCD": {
+    "countryIso3": "TCD",
+    "ihrSparAverageScore": {
+      "value": 36,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TGO": {
+    "countryIso3": "TGO",
+    "ihrSparAverageScore": {
+      "value": 36,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "THA": {
+    "countryIso3": "THA",
+    "ihrSparAverageScore": {
+      "value": 89,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TJK": {
+    "countryIso3": "TJK",
+    "ihrSparAverageScore": {
+      "value": 60,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TKM": {
+    "countryIso3": "TKM",
+    "ihrSparAverageScore": {
+      "value": 81,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TLS": {
+    "countryIso3": "TLS",
+    "ihrSparAverageScore": {
+      "value": 51,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TON": {
+    "countryIso3": "TON",
+    "ihrSparAverageScore": {
+      "value": 54,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TUN": {
+    "countryIso3": "TUN",
+    "ihrSparAverageScore": {
+      "value": 78,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TUR": {
+    "countryIso3": "TUR",
+    "ihrSparAverageScore": {
+      "value": 75,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TUV": {
+    "countryIso3": "TUV",
+    "ihrSparAverageScore": {
+      "value": 53,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "TZA": {
+    "countryIso3": "TZA",
+    "ihrSparAverageScore": {
+      "value": 63,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "UGA": {
+    "countryIso3": "UGA",
+    "ihrSparAverageScore": {
+      "value": 61,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "UKR": {
+    "countryIso3": "UKR",
+    "ihrSparAverageScore": {
+      "value": 75,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "URY": {
+    "countryIso3": "URY",
+    "ihrSparAverageScore": {
+      "value": 76,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "USA": {
+    "countryIso3": "USA",
+    "ihrSparAverageScore": {
+      "value": 84,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "UZB": {
+    "countryIso3": "UZB",
+    "ihrSparAverageScore": {
+      "value": 73,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "VCT": {
+    "countryIso3": "VCT",
+    "ihrSparAverageScore": {
+      "value": 56,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "VEN": {
+    "countryIso3": "VEN",
+    "ihrSparAverageScore": {
+      "value": 75,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "VNM": {
+    "countryIso3": "VNM",
+    "ihrSparAverageScore": {
+      "value": 56,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "VUT": {
+    "countryIso3": "VUT",
+    "ihrSparAverageScore": {
+      "value": 50,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "WSM": {
+    "countryIso3": "WSM",
+    "ihrSparAverageScore": {
+      "value": 47,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "YEM": {
+    "countryIso3": "YEM",
+    "ihrSparAverageScore": {
+      "value": 36,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ZAF": {
+    "countryIso3": "ZAF",
+    "ihrSparAverageScore": {
+      "value": 63,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ZMB": {
+    "countryIso3": "ZMB",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  },
+  "ZWE": {
+    "countryIso3": "ZWE",
+    "ihrSparAverageScore": {
+      "value": 55,
+      "year": 2024,
+      "source": "WHO GHO / IHR SPAR second edition"
+    }
+  }
+}

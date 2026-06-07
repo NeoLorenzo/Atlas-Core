@@ -210,6 +210,12 @@ type PublicHealthEnvironmentData = {
   publicHealthEnvironmentScoreConfidence?: CanonicalNumberField;
 };
 
+type HealthEmergencyPreparednessData = {
+  ihrSparAverageScore?: CanonicalNumberField;
+  outbreakPreparednessScore?: CanonicalNumberField;
+  outbreakPreparednessScoreConfidence?: CanonicalNumberField;
+};
+
 type TextDataPoint = {
   value: string | null;
   source: DataSource;
@@ -262,6 +268,7 @@ type CanonicalCountryData = {
   security: SecurityData;
   healthSystem?: HealthSystemData;
   publicHealthEnvironment?: PublicHealthEnvironmentData;
+  healthEmergencyPreparedness?: HealthEmergencyPreparednessData;
   politicalSystem: PoliticalSystemData;
   settlement?: CountrySettlementData;
 };
@@ -420,6 +427,7 @@ type MapMode =
   | "nursesMidwivesPer1000"
   | "healthExpenditurePerCapita"
   | "healthExpenditurePctOfGdp"
+  | "healthEmergencyPreparedness"
   | "publicHealthEnvironment"
   | "waterborneDiseaseRisk"
   | "hygieneTransmissionRisk"
@@ -541,6 +549,7 @@ const COLOR_RAMPS = {
   nursesMidwivesPer1000: { low: "#14532d", high: "#86efac" },
   healthExpenditurePerCapita: { low: "#4a1d06", high: "#f59e0b" },
   healthExpenditurePctOfGdp: { low: "#4c0519", high: "#fb7185" },
+  healthEmergencyPreparedness: { low: "#102a43", high: "#38bdf8" },
   publicHealthEnvironment: { low: "#123524", high: "#6ee7b7" },
   waterborneDiseaseRisk: { low: "#164e63", high: "#ef4444" },
   hygieneTransmissionRisk: { low: "#1d4ed8", high: "#f97316" },
@@ -646,6 +655,7 @@ const MAP_MODES: { key: MapMode; label: string }[] = [
   { key: "nursesMidwivesPer1000", label: "Nurses & Midwives / 1,000" },
   { key: "healthExpenditurePerCapita", label: "Health Spend per Capita" },
   { key: "healthExpenditurePctOfGdp", label: "Health Spend (% GDP)" },
+  { key: "healthEmergencyPreparedness", label: "Health Emergency Preparedness" },
   { key: "publicHealthEnvironment", label: "Public Health Environment" },
   { key: "waterborneDiseaseRisk", label: "Waterborne Disease Risk" },
   { key: "hygieneTransmissionRisk", label: "Hygiene Transmission Risk" },
@@ -719,6 +729,7 @@ const MAP_MODE_COLOR_PROPERTY: Record<MapMode, string> = {
   nursesMidwivesPer1000: "__nursesMidwivesPer1000Color",
   healthExpenditurePerCapita: "__healthExpenditurePerCapitaColor",
   healthExpenditurePctOfGdp: "__healthExpenditurePctOfGdpColor",
+  healthEmergencyPreparedness: "__healthEmergencyPreparednessColor",
   publicHealthEnvironment: "__publicHealthEnvironmentColor",
   waterborneDiseaseRisk: "__waterborneDiseaseRiskColor",
   hygieneTransmissionRisk: "__hygieneTransmissionRiskColor",
@@ -792,6 +803,7 @@ const MAP_MODE_LABEL: Record<MapMode, string> = {
   nursesMidwivesPer1000: "Nurses & Midwives / 1,000",
   healthExpenditurePerCapita: "Health Spend per Capita",
   healthExpenditurePctOfGdp: "Health Spend (% GDP)",
+  healthEmergencyPreparedness: "Health Emergency Preparedness",
   publicHealthEnvironment: "Public Health Environment",
   waterborneDiseaseRisk: "Waterborne Disease Risk",
   hygieneTransmissionRisk: "Hygiene Transmission Risk",
@@ -1126,6 +1138,13 @@ function getMapColorLegend(mode: MapMode): MapColorLegend {
       MAP_MODE_LABEL[mode],
       "Current health expenditure as a share of GDP.",
       COLOR_RAMPS.healthExpenditurePctOfGdp,
+    );
+  }
+  if (mode === "healthEmergencyPreparedness") {
+    return createSequentialLegend(
+      MAP_MODE_LABEL[mode],
+      "WHO IHR SPAR country-level self-assessed outbreak preparedness baseline.",
+      COLOR_RAMPS.healthEmergencyPreparedness,
     );
   }
   if (mode === "publicHealthEnvironment") {
@@ -1531,6 +1550,9 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
   const publicHealthEnvironment = isRecord(record.publicHealthEnvironment)
     ? (record.publicHealthEnvironment as Record<string, unknown>)
     : null;
+  const healthEmergencyPreparedness = isRecord(record.healthEmergencyPreparedness)
+    ? (record.healthEmergencyPreparedness as Record<string, unknown>)
+    : null;
 
   const economyKeys: Array<keyof EconomyData> = [
     "population",
@@ -1606,6 +1628,11 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
     "publicHealthEnvironmentFreshnessScore",
     "publicHealthEnvironmentScoreConfidence",
   ];
+  const healthEmergencyPreparednessKeys: Array<keyof HealthEmergencyPreparednessData> = [
+    "ihrSparAverageScore",
+    "outbreakPreparednessScore",
+    "outbreakPreparednessScoreConfidence",
+  ];
   const politicalTextKeys: Array<keyof Omit<PoliticalSystemData, "source" | "hasMonarchy" | "hasParliament" | "hasElections" | "hasUniversalSuffrage" | "isFederal" | "isRepublic" | "isOnePartyState" | "isMilitaryRegime">> = [
     "governmentType",
     "capital",
@@ -1656,6 +1683,8 @@ function isCanonicalCountryData(value: unknown): value is CanonicalCountryData {
     demographicsKeys.every((key) => isDataPoint(demographics[key])) &&
     tradeStructureKeys.every((key) => isDataPoint(tradeStructure[key])) &&
     securityKeys.every((key) => isDataPoint(security[key])) &&
+    (healthEmergencyPreparedness === null ||
+      healthEmergencyPreparednessKeys.every((key) => isDataPoint(healthEmergencyPreparedness[key]))) &&
     (publicHealthEnvironment === null ||
       publicHealthEnvironmentKeys.every((key) => isDataPoint(publicHealthEnvironment[key]))) &&
     Array.isArray(tradeStructure.topExports) &&
@@ -2427,6 +2456,9 @@ function getActiveMapValue(
   if (mode === "healthExpenditurePctOfGdp") {
     return `Health Spend (% GDP) - ${formatPercent(countryData.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null)}`;
   }
+  if (mode === "healthEmergencyPreparedness") {
+    return `Health Emergency Preparedness - ${formatNumber(countryData.healthEmergencyPreparedness?.outbreakPreparednessScore?.value ?? null)}`;
+  }
   if (mode === "publicHealthEnvironment") {
     return `Public Health Environment - ${formatNumber(countryData.publicHealthEnvironment?.publicHealthEnvironmentScore?.value ?? null)}`;
   }
@@ -2780,6 +2812,9 @@ export function GameCanvas() {
           const healthExpenditurePctOfGdpRange = getIndicatorRange(
             countryValues.map((country) => country.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null),
           );
+          const healthEmergencyPreparednessRange = getIndicatorRange(
+            countryValues.map((country) => country.healthEmergencyPreparedness?.outbreakPreparednessScore?.value ?? null),
+          );
           const publicHealthEnvironmentRange = getIndicatorRange(
             countryValues.map((country) => country.publicHealthEnvironment?.publicHealthEnvironmentScore?.value ?? null),
           );
@@ -3057,6 +3092,14 @@ export function GameCanvas() {
                     countryCanonicalData.healthSystem?.currentHealthExpenditurePctOfGdp?.value ?? null,
                     healthExpenditurePctOfGdpRange.min,
                     healthExpenditurePctOfGdpRange.max,
+                  )
+                : null;
+            const healthEmergencyPreparednessT =
+              countryCanonicalData && healthEmergencyPreparednessRange
+                ? normalizeValue(
+                    countryCanonicalData.healthEmergencyPreparedness?.outbreakPreparednessScore?.value ?? null,
+                    healthEmergencyPreparednessRange.min,
+                    healthEmergencyPreparednessRange.max,
                   )
                 : null;
             const publicHealthEnvironmentT =
@@ -3582,6 +3625,14 @@ export function GameCanvas() {
                         COLOR_RAMPS.healthExpenditurePctOfGdp.low,
                         COLOR_RAMPS.healthExpenditurePctOfGdp.high,
                         healthExpenditurePctOfGdpT,
+                      ),
+                __healthEmergencyPreparednessColor:
+                  healthEmergencyPreparednessT === null
+                    ? NO_DATA_COLOR
+                    : interpolateColor(
+                        COLOR_RAMPS.healthEmergencyPreparedness.low,
+                        COLOR_RAMPS.healthEmergencyPreparedness.high,
+                        healthEmergencyPreparednessT,
                       ),
                 __publicHealthEnvironmentColor:
                   publicHealthEnvironmentT === null
@@ -4398,6 +4449,11 @@ export function GameCanvas() {
               <div className="info-panel__row"><span>Health Data Freshness:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.healthDataFreshnessScore ?? EMPTY_POINT, formatNumber)}</strong></div>
               <div className="info-panel__row"><span>Health Field Coverage:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthSystem?.healthFieldCoverageScore ?? EMPTY_POINT, formatNumber)}</strong></div>
 
+              <h3 className="info-panel__subtitle">Health Emergency Preparedness - WHO GHO</h3>
+              <div className="info-panel__row"><span>IHR SPAR Average:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthEmergencyPreparedness?.ihrSparAverageScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Outbreak Preparedness Score:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthEmergencyPreparedness?.outbreakPreparednessScore ?? EMPTY_POINT, formatNumber)}</strong></div>
+              <div className="info-panel__row"><span>Preparedness Confidence:</span><strong>{formatPoint(selectedProvince.canonicalData?.healthEmergencyPreparedness?.outbreakPreparednessScoreConfidence ?? EMPTY_POINT, formatNumber)}</strong></div>
+
               <h3 className="info-panel__subtitle">Public Health Environment - World Bank WDI</h3>
               <div className="info-panel__row"><span>Safely Managed Drinking Water:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.safelyManagedDrinkingWaterPct ?? EMPTY_POINT, formatPercent)}</strong></div>
               <div className="info-panel__row"><span>Safely Managed Sanitation:</span><strong>{formatPoint(selectedProvince.canonicalData?.publicHealthEnvironment?.safelyManagedSanitationPct ?? EMPTY_POINT, formatPercent)}</strong></div>
@@ -4701,6 +4757,20 @@ export function GameCanvas() {
                 "healthExpenditurePctOfGdp",
               ].includes(mode.key),
             ).map((mode) => (
+              <button
+                key={mode.key}
+                type="button"
+                className={`map-mode__button${mapMode === mode.key ? " map-mode__button--active" : ""}`}
+                onClick={() => setMapMode(mode.key)}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+
+          <p className="map-mode__section-title">Health Emergency Preparedness</p>
+          <div className="map-mode__buttons">
+            {MAP_MODES.filter((mode) => ["healthEmergencyPreparedness"].includes(mode.key)).map((mode) => (
               <button
                 key={mode.key}
                 type="button"

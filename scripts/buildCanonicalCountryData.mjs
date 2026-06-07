@@ -21,6 +21,7 @@ const PUBLIC_HEALTH_ENVIRONMENT_PATH = resolve(
   "data",
   "public-health-environment-stats.json",
 );
+const WHO_IHR_SPAR_PATH = resolve(__dirname, "..", "public", "data", "who-ihr-spar-stats.json");
 const URBAN_CENTRES_PATH = resolve(__dirname, "..", "public", "data", "urban-centres.json");
 const CANONICAL_PROVINCE_PATH = resolve(__dirname, "..", "public", "data", "canonical-province-data.json");
 const INFRASTRUCTURE_CONNECTIONS_PATH = resolve(
@@ -127,6 +128,12 @@ const PUBLIC_HEALTH_ENVIRONMENT_KEYS = [
   "publicHealthEnvironmentScoreConfidence",
 ];
 
+const HEALTH_EMERGENCY_PREPAREDNESS_KEYS = [
+  "ihrSparAverageScore",
+  "outbreakPreparednessScore",
+  "outbreakPreparednessScoreConfidence",
+];
+
 const POLITICAL_SYSTEM_TEXT_KEYS = [
   "governmentType",
   "capital",
@@ -193,6 +200,7 @@ const CANONICAL_KEYS = {
   security: SECURITY_KEYS,
   healthSystem: HEALTH_KEYS,
   publicHealthEnvironment: PUBLIC_HEALTH_ENVIRONMENT_KEYS,
+  healthEmergencyPreparedness: HEALTH_EMERGENCY_PREPAREDNESS_KEYS,
 };
 
 const HEALTH_RAW_SOURCE = "World Bank WDI / WHO";
@@ -203,6 +211,9 @@ const HEALTH_CONFIDENCE_SOURCE =
   "Derived from World Bank WDI / WHO health indicator coverage and selected years";
 const PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE =
   "Atlas Core derived from World Bank public health environment indicators";
+const HEALTH_EMERGENCY_PREPAREDNESS_RAW_SOURCE = "WHO GHO / IHR SPAR second edition";
+const HEALTH_EMERGENCY_PREPAREDNESS_DERIVED_SOURCE =
+  "Atlas Core derived from WHO GHO IHR SPAR second edition";
 
 function isRecord(value) {
   return typeof value === "object" && value !== null;
@@ -330,6 +341,30 @@ function getPublicHealthEnvironmentDataPoint(record, key) {
   return makeDataPoint(fact.value, fact.year, fact.source);
 }
 
+function getHealthEmergencyPreparednessFact(record, key) {
+  const fact = record?.[key];
+  if (!isRecord(fact)) {
+    return null;
+  }
+
+  const value = typeof fact.value === "number" && Number.isFinite(fact.value) ? fact.value : null;
+  const year = typeof fact.year === "number" && Number.isFinite(fact.year) ? fact.year : null;
+  const source = typeof fact.source === "string" && fact.source.length > 0 ? fact.source : null;
+  if (value === null || year === null || source === null) {
+    return null;
+  }
+
+  return { value, year, source };
+}
+
+function getHealthEmergencyPreparednessDataPoint(record, key) {
+  const fact = getHealthEmergencyPreparednessFact(record, key);
+  if (!fact) {
+    return makeDataPoint(null, null, null);
+  }
+  return makeDataPoint(fact.value, fact.year, fact.source);
+}
+
 function makeDerivedSecurityDataPoint(value, year, source) {
   if (typeof value !== "number" || !Number.isFinite(value) || year === null || !source) {
     return makeDataPoint(null, null, null);
@@ -431,7 +466,19 @@ function computeCoverageCounts(recordsByIso3, keys) {
   return counts;
 }
 
-function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security, health, publicHealthEnvironment) {
+function getCountryName(
+  iso3,
+  wdi,
+  imf,
+  wgi,
+  wpp,
+  atlas,
+  factbook,
+  security,
+  health,
+  publicHealthEnvironment,
+  healthEmergencyPreparedness,
+) {
   return (
     wdi?.countriesByIso3?.[iso3]?.name ??
     imf?.countriesByIso3?.[iso3]?.name ??
@@ -442,6 +489,7 @@ function getCountryName(iso3, wdi, imf, wgi, wpp, atlas, factbook, security, hea
     security?.countriesByIso3?.[iso3]?.name ??
     health?.countriesByIso3?.[iso3]?.name ??
     publicHealthEnvironment?.[iso3]?.countryName ??
+    healthEmergencyPreparedness?.[iso3]?.countryName ??
     iso3
   );
 }
@@ -622,6 +670,22 @@ function freshnessFactor(year) {
 }
 
 function publicHealthEnvironmentFreshnessValue(year) {
+  if (!Number.isFinite(year)) {
+    return null;
+  }
+  if (year >= 2024) {
+    return 100;
+  }
+  if (year === 2023) {
+    return 85;
+  }
+  if (year === 2022) {
+    return 70;
+  }
+  return null;
+}
+
+function healthEmergencyPreparednessFreshnessValue(year) {
   if (!Number.isFinite(year)) {
     return null;
   }
@@ -1126,6 +1190,7 @@ async function main() {
     securityMaybe,
     healthMaybe,
     publicHealthEnvironmentMaybe,
+    healthEmergencyPreparednessMaybe,
     urbanCentresMaybe,
     canonicalProvinceMaybe,
     infrastructureConnectionsMaybe,
@@ -1139,6 +1204,7 @@ async function main() {
     readJsonOptional(SECURITY_PATH),
     readJsonOptional(HEALTH_PATH),
     readJsonOptional(PUBLIC_HEALTH_ENVIRONMENT_PATH),
+    readJsonOptional(WHO_IHR_SPAR_PATH),
     readJsonOptional(URBAN_CENTRES_PATH),
     readJsonOptional(CANONICAL_PROVINCE_PATH),
     readJsonOptional(INFRASTRUCTURE_CONNECTIONS_PATH),
@@ -1166,6 +1232,9 @@ async function main() {
   const publicHealthEnvironmentCountriesByIso3 = isRecord(publicHealthEnvironmentMaybe)
     ? publicHealthEnvironmentMaybe
     : {};
+  const healthEmergencyPreparednessByIso3 = isRecord(healthEmergencyPreparednessMaybe)
+    ? healthEmergencyPreparednessMaybe
+    : {};
   if (!isRecord(atlasMaybe?.countriesByIso3)) {
     console.warn("atlas-trade-profiles.json not found or invalid; tradeStructure will be emitted as null datapoints.");
   }
@@ -1181,6 +1250,11 @@ async function main() {
   if (!isRecord(publicHealthEnvironmentMaybe)) {
     console.warn(
       "public-health-environment-stats.json not found or invalid; publicHealthEnvironment will be omitted.",
+    );
+  }
+  if (!isRecord(healthEmergencyPreparednessMaybe)) {
+    console.warn(
+      "who-ihr-spar-stats.json not found or invalid; healthEmergencyPreparedness will be emitted as null datapoints.",
     );
   }
   const urbanCentresById = isRecord(urbanCentresMaybe) ? urbanCentresMaybe : {};
@@ -1223,6 +1297,7 @@ async function main() {
       ...Object.keys(securityCountriesByIso3),
       ...Object.keys(healthCountriesByIso3),
       ...Object.keys(publicHealthEnvironmentCountriesByIso3),
+      ...Object.keys(healthEmergencyPreparednessByIso3),
       ...Object.values(urbanCentresById)
         .map((record) => (isRecord(record) && typeof record.countryIso3 === "string" ? record.countryIso3 : null))
         .filter(Boolean),
@@ -1244,6 +1319,7 @@ async function main() {
     const securityRecord = securityCountriesByIso3[iso3];
     const healthRecord = healthCountriesByIso3[iso3];
     const publicHealthEnvironmentRecord = publicHealthEnvironmentCountriesByIso3[iso3];
+    const healthEmergencyPreparednessRecord = healthEmergencyPreparednessByIso3[iso3];
     const atlasYear = getAtlasIndicatorYear(atlasRecord);
     const factbookSource = factbookRecord?.source === "CIA World Factbook" ? "CIA World Factbook" : null;
 
@@ -1613,6 +1689,7 @@ async function main() {
         securityMaybe,
         healthMaybe,
         publicHealthEnvironmentCountriesByIso3,
+        healthEmergencyPreparednessByIso3,
       ),
       gameStartDate: "2025-01-01",
       economy,
@@ -1622,6 +1699,14 @@ async function main() {
       tradeStructure,
       security,
       healthSystem,
+      healthEmergencyPreparedness: {
+        ihrSparAverageScore: getHealthEmergencyPreparednessDataPoint(
+          healthEmergencyPreparednessRecord,
+          "ihrSparAverageScore",
+        ),
+        outbreakPreparednessScore: makeDataPoint(null, null, null),
+        outbreakPreparednessScoreConfidence: makeDataPoint(null, null, null),
+      },
       politicalSystem,
       ...(publicHealthEnvironment ? { publicHealthEnvironment } : {}),
       settlement,
@@ -1832,6 +1917,29 @@ async function main() {
         ),
       };
     }
+
+    const ihrSparAverageScore = country.healthEmergencyPreparedness?.ihrSparAverageScore ?? makeDataPoint(null, null, null);
+    const outbreakPreparednessScoreConfidence = healthEmergencyPreparednessFreshnessValue(ihrSparAverageScore.year);
+
+    country.healthEmergencyPreparedness = {
+      ...country.healthEmergencyPreparedness,
+      outbreakPreparednessScore:
+        ihrSparAverageScore.value !== null && ihrSparAverageScore.year !== null
+          ? makeDataPoint(
+              ihrSparAverageScore.value,
+              ihrSparAverageScore.year,
+              HEALTH_EMERGENCY_PREPAREDNESS_DERIVED_SOURCE,
+            )
+          : makeDataPoint(null, null, null),
+      outbreakPreparednessScoreConfidence:
+        outbreakPreparednessScoreConfidence !== null && ihrSparAverageScore.year !== null
+          ? makeDataPoint(
+              outbreakPreparednessScoreConfidence,
+              ihrSparAverageScore.year,
+              HEALTH_EMERGENCY_PREPAREDNESS_DERIVED_SOURCE,
+            )
+          : makeDataPoint(null, null, null),
+    };
   }
 
   const canonical = {
@@ -1858,6 +1966,8 @@ async function main() {
     publicHealthEnvironmentJmpValuesUsed: 0,
     publicHealthEnvironmentSdg7ValuesUsed: 0,
     derivedPublicHealthEnvironmentValuesUsed: 0,
+    healthEmergencyPreparednessWhoValuesUsed: 0,
+    derivedHealthEmergencyPreparednessValuesUsed: 0,
     factbookTextValuesUsed: 0,
     factbookBooleanValuesUsed: 0,
   };
@@ -1876,6 +1986,7 @@ async function main() {
         "World Bank WDI / WHO": 0,
         "World Bank WDI / WHO-UNICEF JMP": 0,
         "World Bank WDI / SDG7": 0,
+        "WHO GHO / IHR SPAR second edition": 0,
         derived: 0,
         nullSource: 0,
       };
@@ -1924,6 +2035,12 @@ async function main() {
         } else if (point.source === "World Bank WDI / SDG7") {
           sourceUsageByMetric[metric]["World Bank WDI / SDG7"] += 1;
           sourceUsageTotals.publicHealthEnvironmentSdg7ValuesUsed += 1;
+        } else if (point.source === HEALTH_EMERGENCY_PREPAREDNESS_RAW_SOURCE) {
+          sourceUsageByMetric[metric]["WHO GHO / IHR SPAR second edition"] += 1;
+          sourceUsageTotals.healthEmergencyPreparednessWhoValuesUsed += 1;
+        } else if (point.source === HEALTH_EMERGENCY_PREPAREDNESS_DERIVED_SOURCE) {
+          sourceUsageByMetric[metric].derived += 1;
+          sourceUsageTotals.derivedHealthEmergencyPreparednessValuesUsed += 1;
         } else if (point.source === PUBLIC_HEALTH_ENVIRONMENT_DERIVED_SOURCE) {
           sourceUsageByMetric[metric].derived += 1;
           sourceUsageTotals.derivedPublicHealthEnvironmentValuesUsed += 1;

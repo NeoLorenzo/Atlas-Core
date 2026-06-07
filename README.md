@@ -79,6 +79,13 @@ Current health-system frontend usage:
   `Health Capacity`, `Hospital Beds / 1,000`, `Physicians / 1,000`, `Nurses & Midwives / 1,000`, `Health Spend per Capita`, and `Health Spend (% GDP)`
 - Health confidence remains in canonical data for simulation/data-quality use, but is not currently shown as a dedicated frontend map layer
 
+Current health-emergency-preparedness frontend usage:
+
+- The inspector reads `country.healthEmergencyPreparedness` from `public/data/canonical-country-data.json`
+- Country map modes currently expose:
+  `Health Emergency Preparedness`
+- This dataset is country-level only and currently reflects only the average WHO IHR SPAR score, not the full capacity-by-capacity SPAR breakdown
+
 Current public-health-environment frontend usage:
 
 - The inspector reads `country.publicHealthEnvironment` from `public/data/canonical-country-data.json`
@@ -97,6 +104,7 @@ Each country in `public/data/canonical-country-data.json` can contain:
 - `tradeStructure`
 - `security`
 - `healthSystem`
+- `healthEmergencyPreparedness`
 - `publicHealthEnvironment`
 - `politicalSystem`
 - `settlement`
@@ -602,7 +610,54 @@ Coverage diagnostics:
 - `public-health-environment-stats-coverage.json` includes total eligible countries, matched-country count, countries with at least one field, per-field coverage counts, per-field selected-year distributions, per-field missing counts, and countries with no public-health-environment fields
 - It also includes per-field freshness buckets for `2024`, `2023`, `2022`, `missing`, and `stale_before_2022`
 
-### 10. GHSL Urban Centres And Province Settlement
+### 10. WHO GHO IHR SPAR Stats
+
+Script:
+
+- `scripts/importWhoIhrSparStats.mjs`
+
+Generated files:
+
+- `public/data/who-ihr-spar-stats.json`
+- `public/data/who-ihr-spar-stats-coverage.json`
+
+Source behavior:
+
+- Uses the WHO Global Health Observatory OData API
+- Reads indicator `SDGIHR2021`
+- Prefers year `2024`
+- Falls back to `2023`, then `2022`
+- Does not use observations before `2022`
+- Does not use `2025` by default because Atlas Core is anchored to `gameStartDate: 2025-01-01`
+- Filters out global, regional, and non-country rows
+- Matches only ISO3 codes already present in the project country-stat universe
+- Country-level only; intended as a strategic preparedness baseline rather than local hospital capacity or province-scale outbreak spread modeling
+
+Imported indicator:
+
+- `ihrSparAverageScore`
+
+Canonical fields:
+
+- raw imported field:
+  `ihrSparAverageScore`
+- derived preparedness fields:
+  `outbreakPreparednessScore`, `outbreakPreparednessScoreConfidence`
+
+How it is used in canonical data:
+
+- Populates the `healthEmergencyPreparedness` section
+- Leaves the raw WHO field as `{ value, year, source }`
+- Sets `outbreakPreparednessScore = ihrSparAverageScore` in the first pass
+- Derives `outbreakPreparednessScoreConfidence` from freshness only:
+  `2024 => 100`, `2023 => 85`, `2022 => 70`
+- Keeps this layer separate from `healthSystem`
+
+Coverage diagnostics:
+
+- `who-ihr-spar-stats-coverage.json` includes total eligible countries, matched-country count, countries with selected values, countries missing selected values, selected-year distribution, invalid/out-of-range value counts, aggregate/non-country rows skipped, and a capped unmatched-code sample
+
+### 11. GHSL Urban Centres And Province Settlement
 
 Scripts:
 
@@ -665,7 +720,7 @@ Important semantic note:
 - They are matched urban-centre aggregates only.
 - The field names intentionally use `urbanCentre*` wording to avoid implying full raster coverage.
 
-### 11. GHSL Raster Province Settlement
+### 12. GHSL Raster Province Settlement
 
 Scripts:
 
@@ -729,7 +784,7 @@ How it is used in canonical data:
 - Province `nonUrbanCentrePopulationEstimate` and `urbanCentrePopulationSharePct` are derived from raster population, treating missing UCDB urban-centre population as `0` when raster population exists.
 - `canonical-country-data.json` rolls province raster totals up to country-level `raster*` settlement fields and applies the same UCDB-as-zero rule for raster-derived non-urban and share metrics.
 
-### 12. Natural Earth Strategic Infrastructure
+### 13. Natural Earth Strategic Infrastructure
 
 Script:
 
@@ -816,6 +871,7 @@ Input files:
 - `public/data/security-stats.json`
 - `public/data/health-stats.json`
 - `public/data/public-health-environment-stats.json`
+- `public/data/who-ihr-spar-stats.json`
 - `public/data/urban-centres.json`
 - `public/data/canonical-province-data.json`
 
@@ -908,6 +964,15 @@ The canonical builder maps them as follows:
 - confidence does not directly modify `healthCapacityScore`; downstream simulation systems can decide whether to apply confidence adjustments
 - the frontend currently emphasizes the raw health-capacity factors plus `healthCapacityScore`; confidence remains available in canonical data but is not surfaced as a dedicated map layer
 
+`healthEmergencyPreparedness`
+
+- imported WHO field: `ihrSparAverageScore`
+- `outbreakPreparednessScore`: currently equals `ihrSparAverageScore`
+- `outbreakPreparednessScoreConfidence`: freshness-only confidence where `2024 => 100`, `2023 => 85`, `2022 => 70`
+- the dataset is WHO self-assessment / self-reporting
+- the dataset is intentionally country-level only and currently imports only the average SPAR score, not all 15 capacity scores
+- this layer is kept separate from `healthSystem` so strategic emergency preparedness is not conflated with hospital-treatment capacity
+
 `publicHealthEnvironment`
 
 - imported WASH fields: World Bank WDI / WHO-UNICEF JMP
@@ -949,6 +1014,7 @@ Current coverage outputs:
 - `security-stats-coverage.json`
 - `health-stats-coverage.json`
 - `public-health-environment-stats-coverage.json`
+- `who-ihr-spar-stats-coverage.json`
 - `urban-centres-coverage.json`
 - `province-settlement-stats-coverage.json`
 - `province-raster-settlement-stats-coverage.json`
@@ -978,6 +1044,7 @@ npm run import:factbook
 npm run import:security
 npm run import:health
 npm run import:public-health-environment
+npm run import:ihr-spar
 npm run build:urban-centres
 npm run import:ghsl
 npm run import:ghsl-raster
@@ -1024,6 +1091,7 @@ While `npm run import:ghsl-raster` is running, it logs source resolution, ZIP ex
 - `import:security`: import World Bank security indicators
 - `import:health`: import World Bank health-system indicators
 - `import:public-health-environment`: import World Bank public-health-environment and basic-services indicators
+- `import:ihr-spar`: import WHO GHO IHR SPAR country-level preparedness scores
 - `build:urban-centres`: build GHSL urban-centre records and coverage
 - `import:ghsl`: build province settlement rollups from matched GHSL urban centres
 - `import:ghsl-raster`: build province-wide GHSL raster population and built-up settlement rollups with GDAL mask aggregation and checkpoint files
@@ -1048,6 +1116,7 @@ public/data/
   security-stats.json
   health-stats.json
   public-health-environment-stats.json
+  who-ihr-spar-stats.json
   urban-centres.json
   province-settlement-stats.json
   province-raster-settlement-stats.json
@@ -1076,6 +1145,7 @@ scripts/
   importWorldBankSecurityStats.mjs
   importWorldBankHealthStats.mjs
   importWorldBankPublicHealthEnvironmentStats.mjs
+  importWhoIhrSparStats.mjs
   buildUrbanCentres.mjs
   importGhslSettlementData.mjs
   importGhslRasterSettlementData.mjs
@@ -1099,11 +1169,14 @@ src/map/
 - Security stats prefer `2024`, then `2023`, then the latest non-null year available per field.
 - Health-system stats prefer `2024`, then `2023`, then the latest non-null year available per field because publication lags are common.
 - Public-health-environment stats prefer `2024`, then `2023`, then the latest non-null year available per field only when that year is `>= 2022`.
+- WHO IHR SPAR stats prefer `2024`, then `2023`, then `2022`, and intentionally do not use `2025` by default against the `2025-01-01` baseline.
 - Atlas currently resolves to `2016` because the selected official file does not expose `2024` or `2023`.
 - Factbook matching is incomplete for some territories, oceans, and supranational entities.
 - Province geometry is checked in directly and treated as ground truth by the current frontend.
 - GHSL settlement coverage now separates UCDB urban-centre aggregates (`urbanCentre*`) from full raster province and country totals (`raster*`).
 - The health-system dataset is intentionally country-level only and should not be treated as local hospital routing or province-scale capacity data.
+- The WHO IHR SPAR dataset is self-assessment / self-reporting, country-level only, and should be treated as a strategic emergency-preparedness baseline rather than local hospital capacity or province-level disease-spread modeling.
+- The current WHO IHR SPAR import only brings in the average SPAR score, not the full 15-capacity breakdown.
 - The public-health-environment dataset is intentionally country-level only and should be treated as a strategic public-health environment / services baseline, not local water infrastructure or household-level modeling.
 - `settlementDataCompleteness` describes the UCDB urban-centre subset, while `rasterSettlementDataCompleteness` describes province-wide GHSL raster coverage.
 - The fast GHSL raster importer depends on GDAL unless `GHSL_RASTER_USE_SLOW_POLYGON_MODE=1` is used.

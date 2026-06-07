@@ -16,6 +16,7 @@
     "import:ghsl": "node scripts/importGhslSettlementData.mjs",
     "import:ghsl-raster": "node scripts/importGhslRasterSettlementData.mjs",
     "import:health": "node scripts/importWorldBankHealthStats.mjs",
+    "import:ihr-spar": "node scripts/importWhoIhrSparStats.mjs",
     "import:infrastructure": "node scripts/importNaturalEarthInfrastructure.mjs",
     "import:public-health-environment": "node scripts/importWorldBankPublicHealthEnvironmentStats.mjs",
     "import:security": "node scripts/importWorldBankSecurityStats.mjs",

@@ -1,0 +1,258 @@
+{
+  "generatedAt": "2026-06-07T04:15:15.595Z",
+  "sourceName": "WHO GHO / IHR SPAR second edition",
+  "indicatorCode": "SDGIHR2021",
+  "apiUrl": "https://ghoapi.azureedge.net/api/SDGIHR2021",
+  "preferredYears": [
+    2024,
+    2023,
+    2022
+  ],
+  "minimumAcceptedYear": 2022,
+  "defaultMaximumAcceptedYear": 2024,
+  "totalRecordsFetched": 1115,
+  "totalEligibleCountries": 216,
+  "matchedCountryCount": 193,
+  "countriesWithSelectedValue": 192,
+  "countriesMissingSelectedValueCount": 24,
+  "countriesMissingSelectedValue": [
+    {
+      "iso3": "ABW",
+      "countryName": "Aruba"
+    },
+    {
+      "iso3": "ASM",
+      "countryName": "American Samoa"
+    },
+    {
+      "iso3": "BMU",
+      "countryName": "Bermuda"
+    },
+    {
+      "iso3": "CHI",
+      "countryName": "Channel Islands"
+    },
+    {
+      "iso3": "CUW",
+      "countryName": "Curacao"
+    },
+    {
+      "iso3": "CYM",
+      "countryName": "Cayman Islands"
+    },
+    {
+      "iso3": "FRO",
+      "countryName": "Faroe Islands"
+    },
+    {
+      "iso3": "GIB",
+      "countryName": "Gibraltar"
+    },
+    {
+      "iso3": "GRL",
+      "countryName": "Greenland"
+    },
+    {
+      "iso3": "GUM",
+      "countryName": "Guam"
+    },
+    {
+      "iso3": "HKG",
+      "countryName": "Hong Kong SAR, China"
+    },
+    {
+      "iso3": "IMN",
+      "countryName": "Isle of Man"
+    },
+    {
+      "iso3": "MAC",
+      "countryName": "Macao SAR, China"
+    },
+    {
+      "iso3": "MAF",
+      "countryName": "St. Martin (French part)"
+    },
+    {
+      "iso3": "MNP",
+      "countryName": "Northern Mariana Islands"
+    },
+    {
+      "iso3": "NCL",
+      "countryName": "New Caledonia"
+    },
+    {
+      "iso3": "PRI",
+      "countryName": "Puerto Rico (US)"
+    },
+    {
+      "iso3": "PSE",
+      "countryName": "West Bank and Gaza"
+    },
+    {
+      "iso3": "PYF",
+      "countryName": "French Polynesia"
+    },
+    {
+      "iso3": "SXM",
+      "countryName": "Sint Maarten (Dutch part)"
+    },
+    {
+      "iso3": "TCA",
+      "countryName": "Turks and Caicos Islands"
+    },
+    {
+      "iso3": "VGB",
+      "countryName": "British Virgin Islands"
+    },
+    {
+      "iso3": "VIR",
+      "countryName": "Virgin Islands (U.S.)"
+    },
+    {
+      "iso3": "XKX",
+      "countryName": "Kosovo"
+    }
+  ],
+  "countriesMissingSelectedValueSample": [
+    {
+      "iso3": "ABW",
+      "countryName": "Aruba"
+    },
+    {
+      "iso3": "ASM",
+      "countryName": "American Samoa"
+    },
+    {
+      "iso3": "BMU",
+      "countryName": "Bermuda"
+    },
+    {
+      "iso3": "CHI",
+      "countryName": "Channel Islands"
+    },
+    {
+      "iso3": "CUW",
+      "countryName": "Curacao"
+    },
+    {
+      "iso3": "CYM",
+      "countryName": "Cayman Islands"
+    },
+    {
+      "iso3": "FRO",
+      "countryName": "Faroe Islands"
+    },
+    {
+      "iso3": "GIB",
+      "countryName": "Gibraltar"
+    },
+    {
+      "iso3": "GRL",
+      "countryName": "Greenland"
+    },
+    {
+      "iso3": "GUM",
+      "countryName": "Guam"
+    },
+    {
+      "iso3": "HKG",
+      "countryName": "Hong Kong SAR, China"
+    },
+    {
+      "iso3": "IMN",
+      "countryName": "Isle of Man"
+    },
+    {
+      "iso3": "MAC",
+      "countryName": "Macao SAR, China"
+    },
+    {
+      "iso3": "MAF",
+      "countryName": "St. Martin (French part)"
+    },
+    {
+      "iso3": "MNP",
+      "countryName": "Northern Mariana Islands"
+    },
+    {
+      "iso3": "NCL",
+      "countryName": "New Caledonia"
+    },
+    {
+      "iso3": "PRI",
+      "countryName": "Puerto Rico (US)"
+    },
+    {
+      "iso3": "PSE",
+      "countryName": "West Bank and Gaza"
+    },
+    {
+      "iso3": "PYF",
+      "countryName": "French Polynesia"
+    },
+    {
+      "iso3": "SXM",
+      "countryName": "Sint Maarten (Dutch part)"
+    },
+    {
+      "iso3": "TCA",
+      "countryName": "Turks and Caicos Islands"
+    },
+    {
+      "iso3": "VGB",
+      "countryName": "British Virgin Islands"
+    },
+    {
+      "iso3": "VIR",
+      "countryName": "Virgin Islands (U.S.)"
+    },
+    {
+      "iso3": "XKX",
+      "countryName": "Kosovo"
+    }
+  ],
+  "selectedYearDistribution": {
+    "2022": 0,
+    "2023": 1,
+    "2024": 191
+  },
+  "invalidOrOutOfRangeValueCount": 0,
+  "invalidOrOutOfRangeValueSamples": [],
+  "rowsMissingYear": 0,
+  "rowsMissingNumericValue": 1,
+  "rowsOutsideAcceptedYearWindow": 381,
+  "aggregateOrNonCountryRowsSkipped": 155,
+  "unmatchedCountryOrTerritoryCodes": [
+    "COK",
+    "NIU",
+    "TTO"
+  ],
+  "unmatchedCountryOrTerritoryCodeCount": 3,
+  "firstRecordKeys": [
+    "Comments",
+    "DataSourceDim",
+    "DataSourceDimType",
+    "Date",
+    "Dim1",
+    "Dim1Type",
+    "Dim2",
+    "Dim2Type",
+    "Dim3",
+    "Dim3Type",
+    "High",
+    "Id",
+    "IndicatorCode",
+    "Low",
+    "NumericValue",
+    "ParentLocation",
+    "ParentLocationCode",
+    "SpatialDim",
+    "SpatialDimType",
+    "TimeDim",
+    "TimeDimType",
+    "TimeDimensionBegin",
+    "TimeDimensionEnd",
+    "TimeDimensionValue",
+    "Value"
+  ]
+}

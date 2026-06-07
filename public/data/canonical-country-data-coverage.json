@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-06T14:56:53.435Z",
+  "generatedAt": "2026-06-07T04:15:41.104Z",
   "totalCountries": 272,
   "coverageByCanonicalMetric": {
     "population": 216,
@@ -73,7 +73,10 @@
     "serviceReliabilityScore": 214,
     "publicHealthEnvironmentFieldCoverageScore": 215,
     "publicHealthEnvironmentFreshnessScore": 215,
-    "publicHealthEnvironmentScoreConfidence": 215
+    "publicHealthEnvironmentScoreConfidence": 215,
+    "ihrSparAverageScore": 192,
+    "outbreakPreparednessScore": 192,
+    "outbreakPreparednessScoreConfidence": 192
   },
   "sourceUsedByMetric": {
     "population": {
@@ -87,6 +90,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -101,6 +105,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 64
     },
@@ -115,6 +120,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 64
     },
@@ -129,6 +135,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 63
     },
@@ -143,6 +150,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 75
     },
@@ -157,6 +165,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 89
     },
@@ -171,6 +180,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -185,6 +195,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 56
     },
@@ -199,6 +210,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 99
     },
@@ -213,6 +225,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -227,6 +240,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -241,6 +255,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -255,6 +270,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -269,6 +285,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -283,6 +300,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -297,6 +315,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -311,6 +330,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -325,6 +345,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -339,6 +360,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 35
     },
@@ -353,6 +375,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -367,6 +390,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 79
     },
@@ -381,6 +405,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 82
     },
@@ -395,6 +420,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -409,6 +435,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -423,6 +450,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -437,6 +465,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -451,6 +480,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -465,6 +495,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -479,6 +510,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -493,6 +525,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -507,6 +540,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -521,6 +555,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -535,6 +570,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -549,6 +585,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -563,6 +600,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -577,6 +615,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 37
     },
@@ -591,6 +630,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 106
     },
@@ -605,6 +645,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 109
     },
@@ -619,6 +660,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 112
     },
@@ -633,6 +675,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 99
     },
@@ -647,6 +690,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 101
     },
@@ -661,6 +705,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 86
     },
@@ -675,6 +720,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 148
     },
@@ -689,6 +735,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 166,
       "nullSource": 106
     },
@@ -703,6 +750,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 162,
       "nullSource": 110
     },
@@ -717,6 +765,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 173,
       "nullSource": 99
     },
@@ -731,6 +780,7 @@
       "World Bank WDI / WHO": 200,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 72
     },
@@ -745,6 +795,7 @@
       "World Bank WDI / WHO": 207,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 65
     },
@@ -759,6 +810,7 @@
       "World Bank WDI / WHO": 197,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 75
     },
@@ -773,6 +825,7 @@
       "World Bank WDI / WHO": 192,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -787,6 +840,7 @@
       "World Bank WDI / WHO": 192,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 80
     },
@@ -801,6 +855,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 209,
       "nullSource": 63
     },
@@ -815,6 +870,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 208,
       "nullSource": 64
     },
@@ -829,6 +885,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 200,
       "nullSource": 72
     },
@@ -843,6 +900,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 254,
       "nullSource": 18
     },
@@ -857,6 +915,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 209,
       "nullSource": 63
     },
@@ -871,6 +930,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 209,
       "nullSource": 63
     },
@@ -885,6 +945,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 209,
       "nullSource": 63
     },
@@ -899,6 +960,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 148,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 124
     },
@@ -913,6 +975,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 142,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 130
     },
@@ -927,6 +990,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 102,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 170
     },
@@ -941,6 +1005,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 214,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 58
     },
@@ -955,6 +1020,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 208,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 64
     },
@@ -969,6 +1035,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 212,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 60
     },
@@ -983,6 +1050,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 188,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 0,
       "nullSource": 84
     },
@@ -997,6 +1065,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 215,
       "nullSource": 57
     },
@@ -1011,6 +1080,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 168,
       "nullSource": 104
     },
@@ -1025,6 +1095,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 185,
       "nullSource": 87
     },
@@ -1039,6 +1110,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 214,
       "nullSource": 58
     },
@@ -1053,6 +1125,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 215,
       "nullSource": 57
     },
@@ -1067,6 +1140,7 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 215,
       "nullSource": 57
     },
@@ -1081,8 +1155,54 @@
       "World Bank WDI / WHO": 0,
       "World Bank WDI / WHO-UNICEF JMP": 0,
       "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
       "derived": 215,
       "nullSource": 57
+    },
+    "ihrSparAverageScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 192,
+      "derived": 0,
+      "nullSource": 80
+    },
+    "outbreakPreparednessScore": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
+      "derived": 192,
+      "nullSource": 80
+    },
+    "outbreakPreparednessScoreConfidence": {
+      "World Bank WDI": 0,
+      "IMF WEO / DataMapper": 0,
+      "World Bank WGI": 0,
+      "UN WPP 2024": 0,
+      "Atlas of Economic Complexity": 0,
+      "World Bank WDI / SIPRI": 0,
+      "World Bank WDI / IISS": 0,
+      "World Bank WDI / WHO": 0,
+      "World Bank WDI / WHO-UNICEF JMP": 0,
+      "World Bank WDI / SDG7": 0,
+      "WHO GHO / IHR SPAR second edition": 0,
+      "derived": 192,
+      "nullSource": 80
     }
   },
   "politicalSystemCoverage": {
@@ -1161,6 +1281,8 @@
   "publicHealthEnvironmentJmpValuesUsed": 392,
   "publicHealthEnvironmentSdg7ValuesUsed": 822,
   "derivedPublicHealthEnvironmentValuesUsed": 1427,
+  "healthEmergencyPreparednessWhoValuesUsed": 192,
+  "derivedHealthEmergencyPreparednessValuesUsed": 384,
   "factbookTextValuesUsed": 3908,
   "factbookBooleanValuesUsed": 1825,
   "unresolvedMissingValues": {
@@ -1193,7 +1315,10 @@
           "safelyManagedDrinkingWaterPct",
           "safelyManagedSanitationPct",
           "cleanCookingFuelAccessPct",
-          "waterborneDiseaseRiskScore"
+          "waterborneDiseaseRiskScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "AGO": {
@@ -1260,7 +1385,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ALB": {
@@ -1342,7 +1470,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "AND": {
@@ -1429,7 +1560,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ARE": {
@@ -1486,7 +1620,10 @@
           "ruralElectricityAccessPct",
           "urbanElectricityAccessPct",
           "cleanCookingFuelAccessPct",
-          "serviceReliabilityScore"
+          "serviceReliabilityScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ATA": {
@@ -1554,7 +1691,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ATC": {
@@ -1630,7 +1770,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ATF": {
@@ -1698,7 +1841,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ATG": {
@@ -1817,7 +1963,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "BFA": {
@@ -1911,7 +2060,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "BLR": {
@@ -1961,7 +2113,10 @@
           "basicHandwashingFacilitiesPct",
           "cleanCookingFuelAccessPct",
           "waterborneDiseaseRiskScore",
-          "hygieneTransmissionRiskScore"
+          "hygieneTransmissionRiskScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "BOL": {
@@ -2083,7 +2238,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "BWA": {
@@ -2175,7 +2333,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "CHE": {
@@ -2234,7 +2395,10 @@
           "basicHandwashingFacilitiesPct",
           "cleanCookingFuelAccessPct",
           "waterborneDiseaseRiskScore",
-          "hygieneTransmissionRiskScore"
+          "hygieneTransmissionRiskScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "CHL": {
@@ -2322,7 +2486,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "CMR": {
@@ -2400,7 +2567,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "COM": {
@@ -2506,7 +2676,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "CUB": {
@@ -2563,7 +2736,10 @@
           "basicHandwashingFacilitiesPct",
           "cleanCookingFuelAccessPct",
           "waterborneDiseaseRiskScore",
-          "hygieneTransmissionRiskScore"
+          "hygieneTransmissionRiskScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "CXR": {
@@ -2632,7 +2808,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "CYM": {
@@ -2667,7 +2846,10 @@
           "basicHandwashingFacilitiesPct",
           "cleanCookingFuelAccessPct",
           "waterborneDiseaseRiskScore",
-          "hygieneTransmissionRiskScore"
+          "hygieneTransmissionRiskScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "CYN": {
@@ -2743,7 +2925,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "CYP": {
@@ -2890,7 +3075,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ESH": {
@@ -2949,7 +3137,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ESP": {
@@ -3031,7 +3222,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "FRA": {
@@ -3080,7 +3274,10 @@
           "basicHandwashingFacilitiesPct",
           "cleanCookingFuelAccessPct",
           "waterborneDiseaseRiskScore",
-          "hygieneTransmissionRiskScore"
+          "hygieneTransmissionRiskScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "FSM": {
@@ -3180,7 +3377,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "GIB": {
@@ -3224,7 +3424,10 @@
           "healthCapacityScoreConfidence",
           "safelyManagedSanitationPct",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "GIN": {
@@ -3300,7 +3503,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "GMB": {
@@ -3384,7 +3590,10 @@
           "currentHealthExpenditurePctOfGdp",
           "safelyManagedDrinkingWaterPct",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "GTM": {
@@ -3459,7 +3668,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "GUM": {
@@ -3495,7 +3707,10 @@
           "hospitalSurgeCapacityScore",
           "safelyManagedSanitationPct",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "GUY": {
@@ -3526,7 +3741,10 @@
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "HMD": {
@@ -3594,7 +3812,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "HND": {
@@ -3672,7 +3893,10 @@
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "IMY": {
@@ -3749,7 +3973,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "IOA": {
@@ -3825,7 +4052,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "IOT": {
@@ -3893,7 +4123,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "IRL": {
@@ -4002,7 +4235,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "JOR": {
@@ -4090,7 +4326,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "KAS": {
@@ -4166,7 +4405,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "KAZ": {
@@ -4298,7 +4540,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "KWT": {
@@ -4446,7 +4691,10 @@
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "MAF": {
@@ -4498,7 +4746,10 @@
           "healthCapacityScoreConfidence",
           "safelyManagedSanitationPct",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "MAR": {
@@ -4640,7 +4891,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "MHL": {
@@ -4724,7 +4978,10 @@
           "hospitalSurgeCapacityScore",
           "safelyManagedSanitationPct",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "MRT": {
@@ -4792,7 +5049,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "MTQ": {
@@ -4859,7 +5119,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "MUS": {
@@ -4943,7 +5206,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "NAM": {
@@ -4987,7 +5253,10 @@
           "hospitalSurgeCapacityScore",
           "safelyManagedSanitationPct",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "NER": {
@@ -5061,7 +5330,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "NGA": {
@@ -5135,7 +5407,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "NLD": {
@@ -5266,7 +5541,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "PER": {
@@ -5348,7 +5626,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "PLW": {
@@ -5414,7 +5695,10 @@
           "currentHealthExpenditurePerCapitaUsd",
           "currentHealthExpenditurePctOfGdp",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "PRK": {
@@ -5470,7 +5754,10 @@
           "armsExportsSipriTiv",
           "militarySpendPerCapitaUsd",
           "militarySpendPerSoldierUsd",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "PSX": {
@@ -5546,7 +5833,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "PYF": {
@@ -5579,7 +5869,10 @@
           "hospitalSurgeCapacityScore",
           "safelyManagedSanitationPct",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "QAT": {
@@ -5652,7 +5945,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "ROU": {
@@ -5749,7 +6045,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "SAU": {
@@ -5840,7 +6139,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "SGP": {
@@ -5914,7 +6216,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "SHN": {
@@ -5972,7 +6277,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "SJM": {
@@ -6049,7 +6357,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "SLB": {
@@ -6173,7 +6484,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "SOM": {
@@ -6239,7 +6553,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "SRB": {
@@ -6350,7 +6667,10 @@
           "basicHandwashingFacilitiesPct",
           "cleanCookingFuelAccessPct",
           "waterborneDiseaseRiskScore",
-          "hygieneTransmissionRiskScore"
+          "hygieneTransmissionRiskScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "SYC": {
@@ -6415,7 +6735,10 @@
           "healthDataFreshnessScore",
           "healthFieldCoverageScore",
           "healthCapacityScoreConfidence",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "TGO": {
@@ -6494,7 +6817,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "TKM": {
@@ -6577,7 +6903,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "TUN": {
@@ -6658,7 +6987,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "TZA": {
@@ -6738,7 +7070,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "URY": {
@@ -6830,7 +7165,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "UVK": {
@@ -6900,7 +7238,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "VAT": {
@@ -6958,7 +7299,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "VCT": {
@@ -7027,7 +7371,10 @@
           "basicHandwashingFacilitiesPct",
           "cleanCookingFuelAccessPct",
           "waterborneDiseaseRiskScore",
-          "hygieneTransmissionRiskScore"
+          "hygieneTransmissionRiskScore",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "VIR": {
@@ -7070,7 +7417,10 @@
           "currentHealthExpenditurePctOfGdp",
           "safelyManagedSanitationPct",
           "basicHandwashingFacilitiesPct",
-          "cleanCookingFuelAccessPct"
+          "cleanCookingFuelAccessPct",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "VUT": {
@@ -7156,7 +7506,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "WLF": {
@@ -7214,7 +7567,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "WSB": {
@@ -7290,7 +7646,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "WSM": {
@@ -7358,7 +7717,10 @@
           "serviceReliabilityScore",
           "publicHealthEnvironmentFieldCoverageScore",
           "publicHealthEnvironmentFreshnessScore",
-          "publicHealthEnvironmentScoreConfidence"
+          "publicHealthEnvironmentScoreConfidence",
+          "ihrSparAverageScore",
+          "outbreakPreparednessScore",
+          "outbreakPreparednessScoreConfidence"
         ]
       },
       "YEM": {
